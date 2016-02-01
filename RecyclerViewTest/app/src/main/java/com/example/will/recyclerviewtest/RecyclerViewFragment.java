@@ -14,12 +14,8 @@ import android.view.ViewGroup;
  */
 public class RecyclerViewFragment extends Fragment {
 
+    public static final String FRAGMENT_RECYCLER_VIEW_TAG = "com.example.will.recyclerviewtest.RecyclerViewTest:FRAGMENT_RECYCLER_VIEW_TAG";
     RecyclerView mRecyclerView;
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Nullable
     @Override

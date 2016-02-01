@@ -1,10 +1,16 @@
 package com.example.will.recyclerviewtest;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import static com.example.will.recyclerviewtest.OtherFragment.FRAGMENT_OTHER_TAG;
+import static com.example.will.recyclerviewtest.RecyclerViewFragment.FRAGMENT_RECYCLER_VIEW_TAG;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,6 +20,37 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // If we are not restoring the activity (could otherwise override the fragments)
+        if (savedInstanceState == null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            RecyclerViewFragment recyclerViewFragment = new RecyclerViewFragment();
+            fragmentManager.beginTransaction()
+                    .add(R.id.fragment_recycler_view_fragment, recyclerViewFragment, FRAGMENT_RECYCLER_VIEW_TAG)
+                    .commit();
+        }
+
+        findViewById(R.id.activity_main_change_fragment_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                swapFragment();
+            }
+        });
+    }
+
+    private void swapFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment fragment;
+
+        if (fragmentManager.findFragmentById(R.id.fragment_recycler_view_fragment) instanceof RecyclerViewFragment) {
+            fragment = new OtherFragment();
+        } else {
+            fragment = new RecyclerViewFragment();
+        }
+
+        fragmentManager.beginTransaction()
+                .replace(R.id.fragment_recycler_view_fragment, fragment, FRAGMENT_OTHER_TAG)
+                .commit();
     }
 
     @Override
