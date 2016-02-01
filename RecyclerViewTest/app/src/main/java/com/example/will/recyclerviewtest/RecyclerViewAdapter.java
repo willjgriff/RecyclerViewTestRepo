@@ -51,4 +51,5 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             mPersonAge = (TextView) itemView.findViewById(R.id.person_age);
         }
     }
+    
 }
