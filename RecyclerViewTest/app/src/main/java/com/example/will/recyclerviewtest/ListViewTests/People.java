@@ -1,4 +1,6 @@
-package com.example.will.recyclerviewtest;
+package com.example.will.recyclerviewtest.ListViewTests;
+
+import com.example.will.recyclerviewtest.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,5 +31,50 @@ public class People {
             mPeople.add(new Person("Rob", "24", R.drawable.red_panda));
         }
         return mPeople;
+    }
+
+    public static String[] mNames = new String[]{
+            "Jigga bang",
+            "Bam Dook",
+            "Yipshlada",
+            "Es La Nouve",
+            "Jigga bang",
+            "Bam Dook",
+            "Yipshlada",
+            "Es La Nouve",
+            "Jigga bang",
+            "Bam Dook",
+            "Yipshlada",
+            "Es La Nouve",
+            "Jigga bang",
+            "Bam Dook",
+            "Yipshlada",
+            "Es La Nouve"
+    };
+
+    public static List<String> getNames() {
+        List<String> mNames = new ArrayList<>();
+        ;
+        mNames.add("Jigga bang");
+        mNames.add("Bam Dook");
+        mNames.add("Yipshlada");
+        mNames.add("Es La Nouve");
+        mNames.add("Jigga bang");
+        mNames.add("Bam Dook");
+        mNames.add("Yipshlada");
+        mNames.add("Es La Nouve");
+        mNames.add("Jigga bang");
+        mNames.add("Bam Dook");
+        mNames.add("Yipshlada");
+        mNames.add("Es La Nouve");
+        mNames.add("Jigga bang");
+        mNames.add("Bam Dook");
+        mNames.add("Yipshlada");
+        mNames.add("Es La Nouve");
+        mNames.add("Jigga bang");
+        mNames.add("Bam Dook");
+        mNames.add("Yipshlada");
+        mNames.add("Es La Nouve");
+        return mNames;
     }
 }

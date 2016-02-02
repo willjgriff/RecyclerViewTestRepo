@@ -1,11 +1,19 @@
 package com.example.will.recyclerviewtest;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.example.will.recyclerviewtest.ListViewTests.ListViewFragment;
+import com.example.will.recyclerviewtest.ListViewTests.RecyclerViewFragment;
+
+import static com.example.will.recyclerviewtest.ListViewTests.ListViewFragment.FRAGMENT_OTHER_TAG;
+import static com.example.will.recyclerviewtest.ListViewTests.RecyclerViewFragment.FRAGMENT_RECYCLER_VIEW_TAG;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,14 +24,36 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-        mRecyclerView.setHasFixedSize(true);
+        // If we are not restoring the activity (could otherwise override the fragments)
+        if (savedInstanceState == null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            RecyclerViewFragment recyclerViewFragment = new RecyclerViewFragment();
+            fragmentManager.beginTransaction()
+                    .add(R.id.fragment_recycler_view_fragment, recyclerViewFragment, FRAGMENT_RECYCLER_VIEW_TAG)
+                    .commit();
+        }
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(layoutManager);
+        findViewById(R.id.activity_main_change_fragment_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                swapFragment();
+            }
+        });
+    }
 
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(People.getPeople());
-        mRecyclerView.setAdapter(recyclerViewAdapter);
+    private void swapFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment fragment;
+
+        if (fragmentManager.findFragmentById(R.id.fragment_recycler_view_fragment) instanceof RecyclerViewFragment) {
+            fragment = new ListViewFragment();
+        } else {
+            fragment = new RecyclerViewFragment();
+        }
+
+        fragmentManager.beginTransaction()
+                .replace(R.id.fragment_recycler_view_fragment, fragment, FRAGMENT_OTHER_TAG)
+                .commit();
     }
 
     @Override
