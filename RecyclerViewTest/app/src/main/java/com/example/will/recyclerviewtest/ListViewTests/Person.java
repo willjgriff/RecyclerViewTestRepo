@@ -1,4 +1,4 @@
-package com.example.will.recyclerviewtest;
+package com.example.will.recyclerviewtest.ListViewTests;
 
 /**
  * Created by Will on 31/01/2016.

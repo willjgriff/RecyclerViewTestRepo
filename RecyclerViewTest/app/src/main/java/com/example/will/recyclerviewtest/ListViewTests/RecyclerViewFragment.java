@@ -1,4 +1,4 @@
-package com.example.will.recyclerviewtest;
+package com.example.will.recyclerviewtest.ListViewTests;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.will.recyclerviewtest.R;
 
 /**
  * Created by Will on 01/02/2016.

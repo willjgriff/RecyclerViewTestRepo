@@ -9,8 +9,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import static com.example.will.recyclerviewtest.OtherFragment.FRAGMENT_OTHER_TAG;
-import static com.example.will.recyclerviewtest.RecyclerViewFragment.FRAGMENT_RECYCLER_VIEW_TAG;
+import com.example.will.recyclerviewtest.ListViewTests.ListViewFragment;
+import com.example.will.recyclerviewtest.ListViewTests.RecyclerViewFragment;
+
+import static com.example.will.recyclerviewtest.ListViewTests.ListViewFragment.FRAGMENT_OTHER_TAG;
+import static com.example.will.recyclerviewtest.ListViewTests.RecyclerViewFragment.FRAGMENT_RECYCLER_VIEW_TAG;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment;
 
         if (fragmentManager.findFragmentById(R.id.fragment_recycler_view_fragment) instanceof RecyclerViewFragment) {
-            fragment = new OtherFragment();
+            fragment = new ListViewFragment();
         } else {
             fragment = new RecyclerViewFragment();
         }
