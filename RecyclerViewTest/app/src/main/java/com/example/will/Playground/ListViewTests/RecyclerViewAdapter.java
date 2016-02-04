@@ -1,4 +1,4 @@
-package com.example.will.recyclerviewtest.ListViewTests;
+package com.example.will.Playground.ListViewTests;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.will.recyclerviewtest.R;
+import com.example.will.Playground.R;
 
 import java.util.List;
 

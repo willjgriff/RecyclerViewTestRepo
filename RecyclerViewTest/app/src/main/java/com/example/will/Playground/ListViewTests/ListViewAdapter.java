@@ -1,4 +1,4 @@
-package com.example.will.recyclerviewtest.ListViewTests;
+package com.example.will.Playground.ListViewTests;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.will.recyclerviewtest.R;
+import com.example.will.Playground.R;
 
 import java.util.List;
 

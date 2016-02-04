@@ -5,14 +5,29 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/activity_main_change_fragment_button"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="@string/activity_main_change_fragment_button"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/activity_main_change_fragment_recycler_view_button"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:text="@string/activity_main_change_fragment_recycler_view_button" />
+
+        <Button
+            android:id="@+id/activity_main_change_fragment_list_view_button"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:text="@string/activity_main_change_fragment_list_view_button" />
+
+    </LinearLayout>
 
     <FrameLayout
-        android:id="@+id/fragment_recycler_view_fragment"
+        android:id="@+id/activity_main_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

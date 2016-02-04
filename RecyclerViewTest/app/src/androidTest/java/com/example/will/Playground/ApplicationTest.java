@@ -1,4 +1,4 @@
-package com.example.will.recyclerviewtest;
+package com.example.will.Playground;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

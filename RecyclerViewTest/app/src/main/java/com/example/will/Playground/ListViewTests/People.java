@@ -1,6 +1,6 @@
-package com.example.will.recyclerviewtest.ListViewTests;
+package com.example.will.Playground.ListViewTests;
 
-import com.example.will.recyclerviewtest.R;
+import com.example.will.Playground.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,6 @@ import java.util.List;
  * Created by Will on 31/01/2016.
  */
 public class People {
-
 
     public static List<Person> getPeople() {
         List<Person> mPeople = new ArrayList<>();
@@ -54,7 +53,6 @@ public class People {
 
     public static List<String> getNames() {
         List<String> mNames = new ArrayList<>();
-        ;
         mNames.add("Jigga bang");
         mNames.add("Bam Dook");
         mNames.add("Yipshlada");

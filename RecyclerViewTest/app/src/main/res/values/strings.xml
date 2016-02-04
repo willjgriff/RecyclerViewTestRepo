@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">RecyclerViewTest</string>
+    <string name="app_name">Playground</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="activity_main_change_fragment_button">CHANGE EL FRAGMENTOSOS</string>
+    <string name="action_main_activity">Main Activity</string>
+    <string name="action_other_activity">Other Activity</string>
+    <string name="activity_main_change_fragment_recycler_view_button">Recylcer View</string>
+    <string name="activity_main_change_fragment_list_view_button">List View</string>
 </resources>

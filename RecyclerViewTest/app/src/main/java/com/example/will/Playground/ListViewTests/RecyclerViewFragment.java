@@ -1,4 +1,4 @@
-package com.example.will.recyclerviewtest.ListViewTests;
+package com.example.will.Playground.ListViewTests;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,7 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.will.recyclerviewtest.R;
+import com.example.will.Playground.R;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.example.will.Playground.MainActivity.FRAGMENT_ARGS;
 
 /**
  * Created by Will on 01/02/2016.
@@ -22,7 +27,13 @@ public class RecyclerViewFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_recycler_view, container, false);
+        View view = inflater.inflate(R.layout.fragment_recycler_layout, container, false);
+
+        List<Person> people = new ArrayList<>();
+        Bundle args = getArguments();
+        if (args != null) {
+            people = args.getParcelableArrayList(FRAGMENT_ARGS);
+        }
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.fragment_recycler_view_recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -30,7 +41,7 @@ public class RecyclerViewFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(People.getPeople());
+        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(people);
         mRecyclerView.setAdapter(recyclerViewAdapter);
 
         return view;
