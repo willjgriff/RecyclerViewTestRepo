@@ -41,7 +41,7 @@ public class RecyclerViewFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(people);
+        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(people, R.layout.fragment_recycler_view_item);
         mRecyclerView.setAdapter(recyclerViewAdapter);
 
         return view;

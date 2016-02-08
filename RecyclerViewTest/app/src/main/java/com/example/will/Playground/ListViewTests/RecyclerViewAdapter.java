@@ -1,5 +1,6 @@
 package com.example.will.Playground.ListViewTests;
 
+import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,14 +18,17 @@ import java.util.List;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder> {
 
     private List<Person> mPeople;
+    private int mLayoutItem;
 
-    public RecyclerViewAdapter(List<Person> mPeople) {
+    // In reality I wouldn't pass a layout reference here, but for playing purpose it's okay.
+    public RecyclerViewAdapter(List<Person> mPeople, @LayoutRes int layoutItem) {
         this.mPeople = mPeople;
+        this.mLayoutItem = layoutItem;
     }
 
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View personCardView = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_recycler_view_item, parent, false);
+        View personCardView = LayoutInflater.from(parent.getContext()).inflate(mLayoutItem, parent, false);
         return new RecyclerViewHolder(personCardView);
     }
 

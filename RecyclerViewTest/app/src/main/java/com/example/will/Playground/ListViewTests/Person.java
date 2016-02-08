@@ -14,7 +14,7 @@ public class Person implements Parcelable {
 
     Person (String name, String age, int photoId) {
         this.mName = name;
-        this.mAge = name;
+        this.mAge = age;
         this.mPhotoId = photoId;
     }
 

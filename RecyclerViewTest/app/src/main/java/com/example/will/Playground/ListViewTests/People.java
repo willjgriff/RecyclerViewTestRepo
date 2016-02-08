@@ -16,15 +16,15 @@ public class People {
             mPeople.add(new Person("Will", "25", R.drawable.red_panda));
             mPeople.add(new Person("Josh", "26", R.drawable.red_panda));
             mPeople.add(new Person("Rob", "24", R.drawable.red_panda));
-            mPeople.add(new Person("Will", "25", R.drawable.red_panda));
+            mPeople.add(new Person("Will and co and ro", "25", R.drawable.red_panda));
             mPeople.add(new Person("Josh", "26", R.drawable.red_panda));
             mPeople.add(new Person("Rob", "24", R.drawable.red_panda));
             mPeople.add(new Person("Will", "25", R.drawable.red_panda));
-            mPeople.add(new Person("Josh", "26", R.drawable.red_panda));
+            mPeople.add(new Person("Joshs funny socks and whats", "26", R.drawable.red_panda));
             mPeople.add(new Person("Rob", "24", R.drawable.red_panda));
             mPeople.add(new Person("Will", "25", R.drawable.red_panda));
             mPeople.add(new Person("Josh", "26", R.drawable.red_panda));
-            mPeople.add(new Person("Rob", "24", R.drawable.red_panda));
+            mPeople.add(new Person("Robby shocking roundabout", "24", R.drawable.red_panda));
             mPeople.add(new Person("Will", "25", R.drawable.red_panda));
             mPeople.add(new Person("Josh", "26", R.drawable.red_panda));
             mPeople.add(new Person("Rob", "24", R.drawable.red_panda));

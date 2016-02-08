@@ -40,4 +40,6 @@ public class ListViewAdapter extends ArrayAdapter<Person> {
 
         return listItem;
     }
+
+
 }
