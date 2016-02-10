@@ -12,7 +12,7 @@ public class OtherActivity extends ToolbarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_other);
 
-        // Can we fix this...?
+        // Can we fix this warning...?
         getSupportActionBar().setTitle("El Titlei");
         getSupportActionBar().setSubtitle("Subdubbydub");
 

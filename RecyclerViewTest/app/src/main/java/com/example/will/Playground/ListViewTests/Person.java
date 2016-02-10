@@ -8,9 +8,9 @@ import android.os.Parcelable;
  */
 public class Person implements Parcelable {
 
-    String mName;
-    String mAge;
-    int mPhotoId;
+    public String mName;
+    public String mAge;
+    public int mPhotoId;
 
     Person (String name, String age, int photoId) {
         this.mName = name;

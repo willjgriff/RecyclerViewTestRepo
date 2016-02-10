@@ -21,7 +21,6 @@ import static com.example.will.Playground.MainActivity.FRAGMENT_ARGS;
  */
 public class RecyclerViewFragment extends Fragment {
 
-    public static final String FRAGMENT_RECYCLER_VIEW_TAG = "com.example.will.recyclerviewtest.RecyclerViewTest:FRAGMENT_RECYCLER_VIEW_TAG";
     RecyclerView mRecyclerView;
 
     @Nullable
