@@ -52,10 +52,7 @@ public class MainActivity extends ToolbarActivity implements RecyclerViewFragmen
     }
 
     private void openFragment(Fragment fragment, List<Person> data) {
-        FrameLayout fragmentFrameLayout = (FrameLayout) findViewById(R.id.activity_main_fragment);
-        if (fragmentFrameLayout.getChildCount() > 0) {
-            ((FrameLayout) findViewById(R.id.activity_main_fragment)).removeAllViews();
-        }
+        removeFragmentChildren();
 
         if (data != null) {
             Bundle fragmentBundle = new Bundle();
@@ -77,10 +74,7 @@ public class MainActivity extends ToolbarActivity implements RecyclerViewFragmen
 
     @Override
     public void itemSelected(Person person) {
-        FrameLayout parentFrameLayout = (FrameLayout) findViewById(R.id.activity_main_fragment);
-        if (parentFrameLayout.getChildCount() > 0) {
-            ((FrameLayout) findViewById(R.id.activity_main_fragment)).removeAllViews();
-        }
+        removeFragmentChildren();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment currentFragmentInView = fragmentManager.findFragmentById(R.id.activity_main_fragment);
@@ -89,9 +83,17 @@ public class MainActivity extends ToolbarActivity implements RecyclerViewFragmen
                     .remove(currentFragmentInView)
                     .commit();
         }
+        FrameLayout parentFrameLayout = (FrameLayout) findViewById(R.id.activity_main_fragment);
         View singleItem = getLayoutInflater().inflate(R.layout.recycler_view_grid_item, parentFrameLayout);
         ((ImageView) singleItem.findViewById(R.id.person_photo)).setImageResource(person.mPhotoId);
         ((TextView) singleItem.findViewById(R.id.person_age)).setText(person.mAge);
         ((TextView) singleItem.findViewById(R.id.person_name)).setText(person.mName);
+    }
+
+    private void removeFragmentChildren() {
+        FrameLayout parentFrameLayout = (FrameLayout) findViewById(R.id.activity_main_fragment);
+        if (parentFrameLayout.getChildCount() > 0) {
+            ((FrameLayout) findViewById(R.id.activity_main_fragment)).removeAllViews();
+        }
     }
 }
