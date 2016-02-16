@@ -1,4 +1,4 @@
-package com.example.will.Playground.ListViewTests;
+package com.example.will.Playground.ListViewTests.ListViewTests;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +14,7 @@ import com.example.will.Playground.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.will.Playground.MainActivity.FRAGMENT_ARGS;
+import static com.example.will.Playground.ListsActivity.FRAGMENT_ARGS;
 
 /**
  * Created by Will on 01/02/2016.
@@ -40,7 +40,7 @@ public class RecyclerViewFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(people, R.layout.fragment_recycler_view_item);
+        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(), people, R.layout.fragment_recycler_view_item);
         mRecyclerView.setAdapter(recyclerViewAdapter);
 
         return view;

@@ -1,4 +1,4 @@
-package com.example.will.Playground.ListViewTests;
+package com.example.will.Playground.ListViewTests.ListViewTests;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,7 +15,7 @@ import com.example.will.Playground.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.will.Playground.MainActivity.FRAGMENT_ARGS;
+import static com.example.will.Playground.ListsActivity.FRAGMENT_ARGS;
 
 /**
  * Created by Will on 01/02/2016.

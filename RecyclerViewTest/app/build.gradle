@@ -17,6 +17,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    def appModules = ['lists']
+
+    sourceSets {
+        main {
+            java.srcDirs += appModules.collect { "../$it/src/main/java" }
+            res.srcDirs += appModules.collect { "../$it/src/main/res" }
+        }
+        test {
+            java.srcDirs += appModules.collect { "../$it/src/test/java" }
+        }
+    }
 }
 
 dependencies {

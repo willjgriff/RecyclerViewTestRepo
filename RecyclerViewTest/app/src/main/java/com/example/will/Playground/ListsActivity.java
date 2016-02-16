@@ -9,17 +9,17 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.will.Playground.ListViewTests.ListViewFragment;
-import com.example.will.Playground.ListViewTests.People;
-import com.example.will.Playground.ListViewTests.Person;
-import com.example.will.Playground.ListViewTests.RecyclerViewDialogFragment;
-import com.example.will.Playground.ListViewTests.RecyclerViewDialogFragment.RecyclerViewFragmentListener;
-import com.example.will.Playground.ListViewTests.RecyclerViewFragment;
+import com.example.will.Playground.ListViewTests.ListViewTests.ListViewFragment;
+import com.example.will.Playground.ListViewTests.ListViewTests.People;
+import com.example.will.Playground.ListViewTests.ListViewTests.Person;
+import com.example.will.Playground.ListViewTests.ListViewTests.RecyclerViewDialogFragment;
+import com.example.will.Playground.ListViewTests.ListViewTests.RecyclerViewDialogFragment.RecyclerViewFragmentListener;
+import com.example.will.Playground.ListViewTests.ListViewTests.RecyclerViewFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends ToolbarActivity implements RecyclerViewFragmentListener {
+public class ListsActivity extends ToolbarActivity implements RecyclerViewFragmentListener {
 
     public static final String FRAGMENT_ARGS = "com.example.will.playground;FRAGMENT_ARGS";
     public static final String DIALOG_TAG = "com.example.will.playground;DIALOG_TAG";

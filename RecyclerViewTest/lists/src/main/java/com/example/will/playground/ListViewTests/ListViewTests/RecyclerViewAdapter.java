@@ -1,13 +1,15 @@
-package com.example.will.Playground.ListViewTests;
+package com.example.will.Playground.ListViewTests.ListViewTests;
 
+import android.content.Context;
 import android.support.annotation.LayoutRes;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.will.Playground.R;
 
@@ -18,11 +20,13 @@ import java.util.List;
  */
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder> {
 
+    private Context mContext;
     protected List<Person> mPeople;
     private int mLayoutItem;
 
     // In reality I wouldn't pass a layout reference here, but for playing purpose it's okay.
-    public RecyclerViewAdapter(List<Person> mPeople, @LayoutRes int layoutItem) {
+    public RecyclerViewAdapter(Context context, List<Person> mPeople, @LayoutRes int layoutItem) {
+        this.mContext = context;
         this.mPeople = mPeople;
         this.mLayoutItem = layoutItem;
     }
@@ -34,10 +38,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(RecyclerViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerViewHolder holder, final int position) {
         holder.mPersonImage.setImageResource(mPeople.get(position).mPhotoId);
         holder.mPersonName.setText(mPeople.get(position).mName);
         holder.mPersonAge.setText(mPeople.get(position).mAge);
+        holder.mLayoutView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "WASSUP " + mPeople.get(position).mName, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -47,14 +57,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public static class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
-        public CardView mCardView;
+        public LinearLayout mLayoutView;
         public ImageView mPersonImage;
         public TextView mPersonName;
         public TextView mPersonAge;
 
         public RecyclerViewHolder(View itemView) {
             super(itemView);
-            mCardView = (CardView) itemView.findViewById(R.id.fragment_recycler_view_whole_item_view);
+            mLayoutView = (LinearLayout) itemView.findViewById(R.id.fragment_recycler_view_whole_item_view);
             mPersonImage = (ImageView) itemView.findViewById(R.id.person_photo);
             mPersonName = (TextView) itemView.findViewById(R.id.person_name);
             mPersonAge = (TextView) itemView.findViewById(R.id.person_age);

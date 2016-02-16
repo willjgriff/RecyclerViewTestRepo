@@ -1,4 +1,4 @@
-package com.example.will.Playground.ListViewTests;
+package com.example.will.Playground.ListViewTests.ListViewTests;
 
 import android.support.annotation.LayoutRes;
 import android.view.View;
@@ -17,14 +17,14 @@ public class RecyclerViewDialogAdapter extends RecyclerViewAdapter {
     }
 
     public RecyclerViewDialogAdapter(RecyclerViewDialogListener recyclerViewDialogListener, List<Person> mPeople, @LayoutRes int layoutItem) {
-        super(mPeople, layoutItem);
+        super(null, mPeople, layoutItem);
         mRecyclerViewDialogListener = recyclerViewDialogListener;
     }
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, final int position) {
         super.onBindViewHolder(holder, position);
-        holder.mCardView.setOnClickListener(new View.OnClickListener() {
+        holder.mLayoutView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mRecyclerViewDialogListener.recyclerViewItemClick(mPeople.get(position));

@@ -20,7 +20,7 @@ public class ToolbarActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_main_activity:
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, ListsActivity.class));
                 break;
             case R.id.action_other_activity:
                 startActivity(new Intent(this, OtherActivity.class));
