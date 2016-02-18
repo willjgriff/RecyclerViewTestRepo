@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">Playground</string>
 
+    <!--Navigation titles-->
     <string name="action_main_activity">Main Activity</string>
     <string name="action_other_activity">Other Activity</string>
+    <string name="action_navigation_activity">Navigation Activity</string>
+
+    <!--List words-->
     <string name="activity_main_change_fragment_recycler_view_button">Recylcer View</string>
     <string name="activity_main_change_fragment_list_view_button">List View</string>
     <string name="activity_main_change_fragment_dialog_grid_view_button">Dialog Grid View</string>
+    <string name="activity_main_change_fragment_list_fragment_button">List Fragment</string>
 </resources>

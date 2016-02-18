@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="bg_standard">#fffbf7</color>
+    <color name="bg_nav_drawer">#8effff</color>
 
     <color name="item_pressed">#ffbd19</color>
     <color name="item_hover">#ffe0b0</color>

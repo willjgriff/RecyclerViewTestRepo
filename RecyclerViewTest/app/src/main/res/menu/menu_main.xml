@@ -13,4 +13,9 @@
         android:orderInCategory="100"
         android:title="@string/action_other_activity"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_navigation_activity"
+        android:orderInCategory="80"
+        android:title="@string/action_navigation_activity" />
 </menu>

@@ -25,6 +25,9 @@ public class ToolbarActivity extends AppCompatActivity {
             case R.id.action_other_activity:
                 startActivity(new Intent(this, OtherActivity.class));
                 break;
+            case R.id.action_navigation_activity:
+                startActivity(new Intent(this, NavigationActivity.class));
+                break;
             case android.R.id.home:
                 finish();
                 break;

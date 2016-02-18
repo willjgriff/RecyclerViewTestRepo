@@ -9,6 +9,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.will.Playground.ListViewTests.ListViewTests.ListFragmentFrag;
 import com.example.will.Playground.ListViewTests.ListViewTests.ListViewFragment;
 import com.example.will.Playground.ListViewTests.ListViewTests.People;
 import com.example.will.Playground.ListViewTests.ListViewTests.Person;
@@ -40,6 +41,13 @@ public class ListsActivity extends ToolbarActivity implements RecyclerViewFragme
             @Override
             public void onClick(View v) {
                 openFragment(new ListViewFragment(), People.getPeople());
+            }
+        });
+
+        findViewById(R.id.activity_main_change_fragment_list_fragment_button).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFragment(new ListFragmentFrag(), People.getPeople());
             }
         });
 

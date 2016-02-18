@@ -6,4 +6,3 @@
     android:layout_height="match_parent"
     android:background="@color/item_normal"
     android:listSelector="@drawable/selector_list_view_item"/>
-
