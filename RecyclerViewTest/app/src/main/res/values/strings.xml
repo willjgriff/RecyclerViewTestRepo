@@ -6,7 +6,10 @@
     <string name="action_other_activity">Other Activity</string>
     <string name="action_navigation_activity">Navigation Activity</string>
 
-    <!--List words-->
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+    <!--Words for lists-->
     <string name="activity_main_change_fragment_recycler_view_button">Recylcer View</string>
     <string name="activity_main_change_fragment_list_view_button">List View</string>
     <string name="activity_main_change_fragment_dialog_grid_view_button">Dialog Grid View</string>
