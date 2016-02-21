@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.will.Playground.ListViewTests.ListViewTests.RecyclerViewDialogAdapter.RecyclerViewDialogListener;
+import com.example.will.Playground.ListViewTests.ListViewTests.PeopleRecyclerViewDialogAdapter.RecyclerViewDialogListener;
 import com.example.will.Playground.R;
 
 /**
@@ -32,7 +32,7 @@ public class RecyclerViewDialogFragment extends DialogFragment implements Recycl
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_recycler_view_dialog_recycler_view);
 //        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-        recyclerView.setAdapter(new RecyclerViewDialogAdapter(this, People.getPeople(), R.layout.fragment_recycler_view_item_grid));
+        recyclerView.setAdapter(new PeopleRecyclerViewDialogAdapter(this, People.getPeople(), R.layout.fragment_recycler_view_item_grid));
 
 //      Remember AlertDialog allows you to set a custom title view!
         getDialog().setTitle("I AM DIALOG");

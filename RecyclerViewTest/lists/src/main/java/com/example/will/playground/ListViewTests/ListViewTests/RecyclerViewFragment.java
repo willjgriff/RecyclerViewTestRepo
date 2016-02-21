@@ -40,8 +40,8 @@ public class RecyclerViewFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(), people, R.layout.fragment_recycler_view_item);
-        mRecyclerView.setAdapter(recyclerViewAdapter);
+        PeopleRecyclerViewAdapter peopleRecyclerViewAdapter = new PeopleRecyclerViewAdapter(getContext(), people, R.layout.fragment_recycler_view_item);
+        mRecyclerView.setAdapter(peopleRecyclerViewAdapter);
 
         return view;
     }

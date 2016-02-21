@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Will on 10/02/2016.
  */
-public class RecyclerViewDialogAdapter extends RecyclerViewAdapter {
+public class PeopleRecyclerViewDialogAdapter extends PeopleRecyclerViewAdapter {
 
     private RecyclerViewDialogListener mRecyclerViewDialogListener;
 
@@ -16,7 +16,7 @@ public class RecyclerViewDialogAdapter extends RecyclerViewAdapter {
         void recyclerViewItemClick(Person person);
     }
 
-    public RecyclerViewDialogAdapter(RecyclerViewDialogListener recyclerViewDialogListener, List<Person> mPeople, @LayoutRes int layoutItem) {
+    public PeopleRecyclerViewDialogAdapter(RecyclerViewDialogListener recyclerViewDialogListener, List<Person> mPeople, @LayoutRes int layoutItem) {
         super(null, mPeople, layoutItem);
         mRecyclerViewDialogListener = recyclerViewDialogListener;
     }

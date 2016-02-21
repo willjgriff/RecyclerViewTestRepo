@@ -18,14 +18,14 @@ import java.util.List;
 /**
  * Created by Will on 01/02/2016.
  */
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder> {
+public class PeopleRecyclerViewAdapter extends RecyclerView.Adapter<PeopleRecyclerViewAdapter.RecyclerViewHolder> {
 
     private Context mContext;
     protected List<Person> mPeople;
     private int mLayoutItem;
 
     // In reality I wouldn't pass a layout reference here, but for playing purpose it's okay.
-    public RecyclerViewAdapter(Context context, List<Person> mPeople, @LayoutRes int layoutItem) {
+    public PeopleRecyclerViewAdapter(Context context, List<Person> mPeople, @LayoutRes int layoutItem) {
         this.mContext = context;
         this.mPeople = mPeople;
         this.mLayoutItem = layoutItem;

@@ -4,12 +4,10 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,28 +17,35 @@ import java.util.List;
  */
 public class NavigationActivity extends AppCompatActivity {
 
-    private ListView mNavigationList;
+    private RecyclerView mNavigationList;
     private ActionBarDrawerToggle mNavigationToggle;
     private DrawerLayout mNavigationDrawer;
     private String mActivityTitle;
+    private static List<String> navEntries = new ArrayList<>();
+
+    {
+        navEntries.add("Room satu");
+        navEntries.add("Roomo dua");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
 
-        mNavigationList = (ListView) findViewById(R.id.activity_navigation_list);
+        mNavigationList = (RecyclerView) findViewById(R.id.activity_navigation_list);
         mNavigationDrawer = (DrawerLayout) findViewById(R.id.activity_navigation_drawer);
         mActivityTitle = getTitle().toString();
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, getNavigationItems());
-        mNavigationList.setAdapter(arrayAdapter);
-        mNavigationList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(NavigationActivity.this, "YOLO: " + position, Toast.LENGTH_SHORT).show();
-            }
-        });
+//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, getNavigationItems());
+//        mNavigationList.setAdapter(arrayAdapter);
+
+        mNavigationList.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        mNavigationList.setLayoutManager(linearLayoutManager);
+        NavigationRecyclerViewAdapter adapter = new NavigationRecyclerViewAdapter(navEntries);
+//        PeopleRecyclerViewAdapter adapter = new PeopleRecyclerViewAdapter(this, People.getPeople(), R.layout.fragment_recycler_view_item);
+        mNavigationList.setAdapter(adapter);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);

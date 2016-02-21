@@ -7,4 +7,5 @@
     <color name="item_hover">#ffe0b0</color>
     <color name="item_normal">#ffffff</color>
 
+    <color name="dark">#de696969</color>
 </resources>
