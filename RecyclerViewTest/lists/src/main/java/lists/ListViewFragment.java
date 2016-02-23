@@ -1,4 +1,4 @@
-package com.example.will.Playground.ListViewTests.ListViewTests;
+package lists;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,6 +15,9 @@ import com.example.will.Playground.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import lists.adapters.ListViewAdapter;
+import lists.data.Person;
+
 import static com.example.will.Playground.ListsActivity.FRAGMENT_ARGS;
 
 /**
@@ -30,7 +33,7 @@ public class ListViewFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_list_layout, container, false);
+        View view = inflater.inflate(R.layout.fragment_list_view_layout, container, false);
 
         List<Person> people = new ArrayList<>();
         Bundle args = getArguments();

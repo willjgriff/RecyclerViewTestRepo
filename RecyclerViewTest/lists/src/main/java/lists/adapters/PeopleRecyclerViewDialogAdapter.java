@@ -1,9 +1,11 @@
-package com.example.will.Playground.ListViewTests.ListViewTests;
+package lists.adapters;
 
 import android.support.annotation.LayoutRes;
 import android.view.View;
 
 import java.util.List;
+
+import lists.data.Person;
 
 /**
  * Created by Will on 10/02/2016.

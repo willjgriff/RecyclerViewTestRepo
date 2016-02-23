@@ -1,4 +1,4 @@
-package com.example.will.Playground.ListViewTests.ListViewTests;
+package lists;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,6 +14,9 @@ import com.example.will.Playground.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import lists.adapters.PeopleRecyclerViewAdapter;
+import lists.data.Person;
+
 import static com.example.will.Playground.ListsActivity.FRAGMENT_ARGS;
 
 /**
@@ -26,7 +29,7 @@ public class RecyclerViewFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_recycler_layout, container, false);
+        View view = inflater.inflate(R.layout.fragment_recycler_view_layout, container, false);
 
         List<Person> people = new ArrayList<>();
         Bundle args = getArguments();
@@ -40,7 +43,7 @@ public class RecyclerViewFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
-        PeopleRecyclerViewAdapter peopleRecyclerViewAdapter = new PeopleRecyclerViewAdapter(getContext(), people, R.layout.fragment_recycler_view_item);
+        PeopleRecyclerViewAdapter peopleRecyclerViewAdapter = new PeopleRecyclerViewAdapter(getContext(), people, R.layout.adapter_recycler_view_item);
         mRecyclerView.setAdapter(peopleRecyclerViewAdapter);
 
         return view;

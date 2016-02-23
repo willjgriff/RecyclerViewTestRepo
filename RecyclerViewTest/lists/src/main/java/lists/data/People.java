@@ -1,4 +1,4 @@
-package com.example.will.Playground.ListViewTests.ListViewTests;
+package lists.data;
 
 import com.example.will.Playground.R;
 

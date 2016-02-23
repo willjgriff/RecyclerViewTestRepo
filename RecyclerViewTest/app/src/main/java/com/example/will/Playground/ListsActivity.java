@@ -9,16 +9,16 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.will.Playground.ListViewTests.ListViewTests.ListFragmentFrag;
-import com.example.will.Playground.ListViewTests.ListViewTests.ListViewFragment;
-import com.example.will.Playground.ListViewTests.ListViewTests.People;
-import com.example.will.Playground.ListViewTests.ListViewTests.Person;
-import com.example.will.Playground.ListViewTests.ListViewTests.RecyclerViewDialogFragment;
-import com.example.will.Playground.ListViewTests.ListViewTests.RecyclerViewDialogFragment.RecyclerViewFragmentListener;
-import com.example.will.Playground.ListViewTests.ListViewTests.RecyclerViewFragment;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import lists.ListFragmentFragment;
+import lists.ListViewFragment;
+import lists.RecyclerViewDialogFragment;
+import lists.RecyclerViewDialogFragment.RecyclerViewFragmentListener;
+import lists.RecyclerViewFragment;
+import lists.data.People;
+import lists.data.Person;
 
 public class ListsActivity extends ToolbarActivity implements RecyclerViewFragmentListener {
 
@@ -47,7 +47,7 @@ public class ListsActivity extends ToolbarActivity implements RecyclerViewFragme
         findViewById(R.id.activity_main_change_fragment_list_fragment_button).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                openFragment(new ListFragmentFrag(), People.getPeople());
+                openFragment(new ListFragmentFragment(), People.getPeople());
             }
         });
 
@@ -92,7 +92,7 @@ public class ListsActivity extends ToolbarActivity implements RecyclerViewFragme
                     .commit();
         }
         FrameLayout parentFrameLayout = (FrameLayout) findViewById(R.id.activity_main_fragment);
-        View singleItem = getLayoutInflater().inflate(R.layout.recycler_view_grid_item, parentFrameLayout);
+        View singleItem = getLayoutInflater().inflate(R.layout.adapter_recycler_view_grid_item, parentFrameLayout);
         ((ImageView) singleItem.findViewById(R.id.person_photo)).setImageResource(person.mPhotoId);
         ((TextView) singleItem.findViewById(R.id.person_age)).setText(person.mAge);
         ((TextView) singleItem.findViewById(R.id.person_name)).setText(person.mName);

@@ -1,4 +1,4 @@
-package com.example.will.Playground.ListViewTests.ListViewTests;
+package lists.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;

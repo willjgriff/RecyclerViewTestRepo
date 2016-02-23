@@ -1,4 +1,4 @@
-package com.example.will.Playground.ListViewTests.ListViewTests;
+package lists;
 
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
@@ -10,10 +10,13 @@ import com.example.will.Playground.ListsActivity;
 
 import java.util.List;
 
+import lists.adapters.ListViewAdapter;
+import lists.data.Person;
+
 /**
  * Created by Will on 18/02/2016.
  */
-public class ListFragmentFrag extends ListFragment {
+public class ListFragmentFragment extends ListFragment {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {

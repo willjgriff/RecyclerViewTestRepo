@@ -1,4 +1,4 @@
-package com.example.will.Playground.ListViewTests.ListViewTests;
+package lists;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,8 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.will.Playground.ListViewTests.ListViewTests.PeopleRecyclerViewDialogAdapter.RecyclerViewDialogListener;
 import com.example.will.Playground.R;
+
+import lists.adapters.PeopleRecyclerViewDialogAdapter;
+import lists.adapters.PeopleRecyclerViewDialogAdapter.RecyclerViewDialogListener;
+import lists.data.People;
+import lists.data.Person;
 
 /**
  * Created by Will on 09/02/2016.

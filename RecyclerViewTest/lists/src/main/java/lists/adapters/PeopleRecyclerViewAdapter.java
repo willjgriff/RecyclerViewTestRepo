@@ -1,4 +1,4 @@
-package com.example.will.Playground.ListViewTests.ListViewTests;
+package lists.adapters;
 
 import android.content.Context;
 import android.support.annotation.LayoutRes;
@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.example.will.Playground.R;
 
 import java.util.List;
+
+import lists.data.Person;
 
 /**
  * Created by Will on 01/02/2016.

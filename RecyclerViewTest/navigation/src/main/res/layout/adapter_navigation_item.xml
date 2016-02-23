@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/navigation_recycler_view_item_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/xsmall">
+    android:background="?attr/selectableItemBackground">
 
     <TextView
         android:id="@+id/navigation_recycler_view_item_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/xxsmall"
-        android:paddingTop="@dimen/xxsmall" />
+        android:padding="@dimen/xsmall"
+        android:textSize="@dimen/subhead"/>
 
     <View
         android:layout_width="match_parent"

@@ -2,10 +2,12 @@
     <string name="app_name">Playground</string>
 
     <!--Navigation titles-->
-    <string name="action_main_activity">Main Activity</string>
+    <string name="action_list_activity">List Activity</string>
     <string name="action_other_activity">Other Activity</string>
     <string name="action_navigation_activity">Navigation Activity</string>
+    <string name="action_tab_layout_fragment">Tab Layout</string>
 
+    <!--Navigation drawer-->
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
 
