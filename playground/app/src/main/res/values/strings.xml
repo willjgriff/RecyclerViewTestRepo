@@ -3,7 +3,7 @@
 
     <!--Navigation titles-->
     <string name="action_list_activity">List Activity</string>
-    <string name="action_other_activity">Other Activity</string>
+    <string name="action_other_fragment">Other Fragment</string>
     <string name="action_navigation_activity">Navigation Activity</string>
     <string name="action_tab_layout_fragment">Tab Layout</string>
 

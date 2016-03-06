@@ -6,8 +6,6 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.will.Playground.ListsActivity;
-
 import java.util.List;
 
 import lists.adapters.ListViewAdapter;
@@ -21,7 +19,7 @@ public class ListFragmentFragment extends ListFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        List<Person> people = getArguments().getParcelableArrayList(ListsActivity.FRAGMENT_ARGS);
+        List<Person> people = getArguments().getParcelableArrayList(ListsFragment.FRAGMENT_ARGS);
         ListViewAdapter listViewAdapter = new ListViewAdapter(getContext(), people);
         setListAdapter(listViewAdapter);
     }

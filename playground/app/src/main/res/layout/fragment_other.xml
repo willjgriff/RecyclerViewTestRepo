@@ -6,7 +6,7 @@
     tools:context=".MainActivity">
 
     <FrameLayout
-        android:id="@+id/activity_other_fragment"
+        android:id="@+id/fragment_other"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

@@ -18,7 +18,7 @@ import java.util.List;
 import lists.adapters.ListViewAdapter;
 import lists.data.Person;
 
-import static com.example.will.Playground.ListsActivity.FRAGMENT_ARGS;
+import static lists.ListsFragment.FRAGMENT_ARGS;
 
 /**
  * Created by Will on 01/02/2016.

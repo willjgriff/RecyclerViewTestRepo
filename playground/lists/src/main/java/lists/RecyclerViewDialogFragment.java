@@ -22,9 +22,17 @@ import lists.data.Person;
  */
 public class RecyclerViewDialogFragment extends DialogFragment implements RecyclerViewDialogListener {
 
-    RecyclerViewFragmentListener mRecyclerViewFragmentListener;
+    DialogFragmentListener mDialogFragmentListener;
 
-    public interface RecyclerViewFragmentListener {
+   public static final RecyclerViewDialogFragment newInstance(DialogFragmentListener dialogFragmentListener) {
+       RecyclerViewDialogFragment recyclerViewDialogFragment = new RecyclerViewDialogFragment();
+       Bundle bundle = new Bundle();
+       // put parcelable fragment, I think not...
+       recyclerViewDialogFragment.setArguments(bundle);
+       return recyclerViewDialogFragment;
+   }
+
+    public interface DialogFragmentListener {
         void itemSelected(Person person);
     }
 
@@ -47,12 +55,12 @@ public class RecyclerViewDialogFragment extends DialogFragment implements Recycl
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        mRecyclerViewFragmentListener = (RecyclerViewFragmentListener) activity;
+        mDialogFragmentListener = (DialogFragmentListener) activity;
     }
 
     @Override
     public void recyclerViewItemClick(Person person) {
-        mRecyclerViewFragmentListener.itemSelected(person);
+        mDialogFragmentListener.itemSelected(person);
         dismiss();
     }
 }

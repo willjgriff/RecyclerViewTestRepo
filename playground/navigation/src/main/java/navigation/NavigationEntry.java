@@ -7,7 +7,6 @@ import android.view.View;
  */
 public class NavigationEntry {
 
-    private String mNavigationId;
     private String mNavigationTitle;
     private View.OnClickListener mNavigationClickListener;
 
