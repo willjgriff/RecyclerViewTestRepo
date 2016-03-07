@@ -14,12 +14,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import lists.ListsFragment;
 import com.example.will.Playground.OtherFragment;
 import com.example.will.Playground.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import lists.ListsFragment;
+import tabs.TabLayoutFragment;
 
 /**
  * Created by Will on 18/02/2016.
@@ -75,7 +77,7 @@ public class NavigationActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_main_activity:
-                startActivity(new Intent(this, ListsFragment.class));
+                replaceFragment(new ListsFragment(), getString(R.string.action_list_activity));
                 break;
             case R.id.action_navigation_activity:
                 startActivity(new Intent(this, NavigationActivity.class));

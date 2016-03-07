@@ -1,6 +1,5 @@
 package lists;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -21,16 +20,6 @@ import lists.data.Person;
  * Created by Will on 09/02/2016.
  */
 public class RecyclerViewDialogFragment extends DialogFragment implements RecyclerViewDialogListener {
-
-    DialogFragmentListener mDialogFragmentListener;
-
-   public static final RecyclerViewDialogFragment newInstance(DialogFragmentListener dialogFragmentListener) {
-       RecyclerViewDialogFragment recyclerViewDialogFragment = new RecyclerViewDialogFragment();
-       Bundle bundle = new Bundle();
-       // put parcelable fragment, I think not...
-       recyclerViewDialogFragment.setArguments(bundle);
-       return recyclerViewDialogFragment;
-   }
 
     public interface DialogFragmentListener {
         void itemSelected(Person person);
@@ -53,14 +42,8 @@ public class RecyclerViewDialogFragment extends DialogFragment implements Recycl
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        mDialogFragmentListener = (DialogFragmentListener) activity;
-    }
-
-    @Override
     public void recyclerViewItemClick(Person person) {
-        mDialogFragmentListener.itemSelected(person);
+        ((DialogFragmentListener) getParentFragment()).itemSelected(person);
         dismiss();
     }
 }

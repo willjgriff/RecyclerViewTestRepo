@@ -4,9 +4,10 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/fragment_tab_layout_page_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="WHATS UP"
-        android:textSize="@dimen/display"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textSize="@dimen/display" />
+
 </LinearLayout>
