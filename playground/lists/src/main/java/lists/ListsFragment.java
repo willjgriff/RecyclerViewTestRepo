@@ -26,6 +26,8 @@ public class ListsFragment extends Fragment implements DialogFragmentListener {
     public static final String FRAGMENT_ARGS = "com.example.will.playground;FRAGMENT_ARGS";
     public static final String DIALOG_TAG = "com.example.will.playground;DIALOG_TAG";
 
+    private FrameLayout mParentFrameLayout;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,6 +61,8 @@ public class ListsFragment extends Fragment implements DialogFragmentListener {
             }
         });
 
+        mParentFrameLayout = (FrameLayout) view.findViewById(R.id.activity_main_fragment);
+
         return view;
     }
 
@@ -72,7 +76,7 @@ public class ListsFragment extends Fragment implements DialogFragmentListener {
             fragment.setArguments(fragmentBundle);
         }
 
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentManager fragmentManager = getChildFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.activity_main_fragment, fragment)
                 .commit();
@@ -80,31 +84,30 @@ public class ListsFragment extends Fragment implements DialogFragmentListener {
 
     private void openDialog() {
         RecyclerViewDialogFragment recyclerViewDialogFragment = new RecyclerViewDialogFragment();
-        recyclerViewDialogFragment.show(getActivity().getSupportFragmentManager(), DIALOG_TAG);
+        recyclerViewDialogFragment.show(getChildFragmentManager(), DIALOG_TAG);
     }
 
     @Override
     public void itemSelected(Person person) {
         removeFragmentChildren();
 
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentManager fragmentManager = getChildFragmentManager();
         Fragment currentFragmentInView = fragmentManager.findFragmentById(R.id.activity_main_fragment);
         if (currentFragmentInView != null) {
             fragmentManager.beginTransaction()
                     .remove(currentFragmentInView)
                     .commit();
         }
-        FrameLayout parentFrameLayout = (FrameLayout) getActivity().findViewById(R.id.activity_main_fragment);
-        View singleItem = getActivity().getLayoutInflater().inflate(R.layout.adapter_recycler_view_grid_item, parentFrameLayout);
+
+        View singleItem = LayoutInflater.from(getContext()).inflate(R.layout.adapter_recycler_view_grid_item, mParentFrameLayout);
         ((ImageView) singleItem.findViewById(R.id.person_photo)).setImageResource(person.mPhotoId);
         ((TextView) singleItem.findViewById(R.id.person_age)).setText(person.mAge);
         ((TextView) singleItem.findViewById(R.id.person_name)).setText(person.mName);
     }
 
     private void removeFragmentChildren() {
-        FrameLayout parentFrameLayout = (FrameLayout) getActivity().findViewById(R.id.activity_main_fragment);
-        if (parentFrameLayout.getChildCount() > 0) {
-            ((FrameLayout) getActivity().findViewById(R.id.activity_main_fragment)).removeAllViews();
+        if (mParentFrameLayout.getChildCount() > 0) {
+            mParentFrameLayout.removeAllViews();
         }
     }
 }

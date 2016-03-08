@@ -2,7 +2,7 @@
     <string name="app_name">Playground</string>
 
     <!--Navigation titles-->
-    <string name="action_list_activity">List Activity</string>
+    <string name="action_list_activity">Lists</string>
     <string name="action_other_fragment">Other Fragment</string>
     <string name="action_navigation_activity">Navigation Activity</string>
     <string name="action_tab_layout_fragment">Tab Layout</string>
@@ -11,12 +11,12 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
 
-    <!--Words for lists-->
+    <!--Lists-->
     <string name="activity_main_change_fragment_recycler_view_button">Recylcer View</string>
     <string name="activity_main_change_fragment_list_view_button">List View</string>
     <string name="activity_main_change_fragment_dialog_grid_view_button">Dialog Grid View</string>
     <string name="activity_main_change_fragment_list_fragment_button">List Fragment</string>
 
-    <!--Words for tabs-->
+    <!--Tab layout-->
     <string name="fragment_tab_layout_page_number">Page #%1$d</string>
 </resources>

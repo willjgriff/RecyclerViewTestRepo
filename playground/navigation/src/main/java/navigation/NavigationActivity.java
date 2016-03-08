@@ -3,8 +3,10 @@ package navigation;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -33,12 +35,28 @@ public class NavigationActivity extends AppCompatActivity {
     private RecyclerView mNavigationList;
     private DrawerLayout mNavigationDrawer;
 
+    enum Tag {
+        LISTS(R.string.action_list_activity),
+        OTHER(R.string.action_other_fragment),
+        TABS(R.string.action_tab_layout_fragment);
+
+        int mTitle;
+
+        Tag(@StringRes int title) {
+            mTitle = title;
+        }
+
+        public int getTitle() {
+            return mTitle;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
 
-        mNavigationList = (RecyclerView) findViewById(R.id.activity_navigation_list);
+        mNavigationList = (RecyclerView) findViewById(R.id.activity_navigation_view);
         mNavigationDrawer = (DrawerLayout) findViewById(R.id.activity_navigation_drawer);
 
         addNavEntries();
@@ -51,6 +69,11 @@ public class NavigationActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.activity_navigation_fragment_holder, new ListsFragment(), Tag.LISTS.name())
+                .commit();
 
         setNavigationToggle();
     }
@@ -77,7 +100,7 @@ public class NavigationActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_main_activity:
-                replaceFragment(new ListsFragment(), getString(R.string.action_list_activity));
+                replaceFragment(new ListsFragment(), getString(R.string.action_list_activity), Tag.LISTS);
                 break;
             case R.id.action_navigation_activity:
                 startActivity(new Intent(this, NavigationActivity.class));
@@ -96,6 +119,7 @@ public class NavigationActivity extends AppCompatActivity {
                 // We can do stuff here
 //                invalidateOptionsMenu();
             }
+
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
@@ -107,33 +131,40 @@ public class NavigationActivity extends AppCompatActivity {
         mNavigationDrawer.setDrawerListener(mNavigationToggle);
     }
 
-    private void replaceFragment(Fragment fragment, String title) {
+    private void replaceFragment(Fragment fragment, String title, Tag tag) {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager
+        Fragment currentFragment = fragmentManager.findFragmentById(R.id.activity_navigation_fragment_holder);
+
+        FragmentTransaction fragmentTransaction = fragmentManager
                 .beginTransaction()
-                .replace(R.id.activity_navigation_fragment_holder, fragment)
-                .commit();
+                .replace(R.id.activity_navigation_fragment_holder, fragment, tag.name());
+
+        if (!currentFragment.getTag().equals(tag.name())) {
+            fragmentTransaction.addToBackStack(tag.name());
+        }
+
+        fragmentTransaction.commit();
         getSupportActionBar().setTitle(title);
         mNavigationDrawer.closeDrawer(mNavigationList);
     }
 
     private void addNavEntries() {
-        mNavEntries.add(new NavigationEntry(getString(R.string.action_list_activity), new View.OnClickListener() {
+        mNavEntries.add(new NavigationEntry(getString(Tag.LISTS.getTitle()), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new ListsFragment(), getString(R.string.action_list_activity));
+                replaceFragment(new ListsFragment(), getString(Tag.LISTS.getTitle()), Tag.LISTS);
             }
         }));
-        mNavEntries.add(new NavigationEntry(getString(R.string.action_other_fragment), new View.OnClickListener() {
+        mNavEntries.add(new NavigationEntry(getString(Tag.OTHER.getTitle()), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new OtherFragment(), getString(R.string.action_other_fragment));
+                replaceFragment(new OtherFragment(), getString(Tag.OTHER.getTitle()), Tag.OTHER);
             }
         }));
-        mNavEntries.add(new NavigationEntry(getString(R.string.action_tab_layout_fragment), new View.OnClickListener() {
+        mNavEntries.add(new NavigationEntry(getString(Tag.TABS.getTitle()), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new TabLayoutFragment(), getString(R.string.action_tab_layout_fragment));
+                replaceFragment(new TabLayoutFragment(), getString(Tag.TABS.getTitle()), Tag.TABS);
             }
         }));
     }

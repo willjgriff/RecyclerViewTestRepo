@@ -12,8 +12,8 @@ public class TabLayoutPageAdapter extends FragmentPagerAdapter {
     private String[] mTabs = new String[]{"Tab 1", "Tab 2", "Tab 3"};
     private Context mContext;
 
-    public TabLayoutPageAdapter(FragmentManager fm, Context context) {
-        super(fm);
+    public TabLayoutPageAdapter(FragmentManager fragmentManager, Context context) {
+        super(fragmentManager);
         mContext = context;
     }
 
