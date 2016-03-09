@@ -14,7 +14,11 @@ import java.util.List;
 /**
  * Created by Will on 21/02/2016.
  */
-public class NavigationRecyclerViewAdapter extends RecyclerView.Adapter<NavigationRecyclerViewAdapter.NavRecyclerViewHolder> {
+public class NavigationRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    enum ItemType {
+        ITEM,
+        HEADER
+    }
 
     List<NavigationEntry> mNavEntries;
 
@@ -23,19 +27,56 @@ public class NavigationRecyclerViewAdapter extends RecyclerView.Adapter<Navigati
     }
 
     @Override
-    public NavRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View navEntry = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_navigation_item, parent, false);
-        return new NavRecyclerViewHolder(navEntry);
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        RecyclerView.ViewHolder viewHolder = null;
+
+        if (viewType == ItemType.HEADER.ordinal()) {
+            View header = layoutInflater.inflate(R.layout.adapter_navigation_header, parent, false);
+            viewHolder = new NavHeaderViewHolder(header);
+        } else if (viewType == ItemType.ITEM.ordinal()) {
+            View navEntry = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_navigation_item, parent, false);
+            viewHolder = new NavRecyclerViewHolder(navEntry);
+        }
+
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(NavRecyclerViewHolder holder, int position) {
-        holder.bindView(mNavEntries.get(position).getNavigationTitle(), mNavEntries.get(position).getNavigationClickListener());
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        if (holder instanceof NavHeaderViewHolder) {
+
+        } else if (holder instanceof NavRecyclerViewHolder) {
+            ((NavRecyclerViewHolder) holder).bindView(getItem(position).getNavigationTitle(), getItem(position).getNavigationClickListener());
+        }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        int itemType = ItemType.ITEM.ordinal();
+        if (isPositionHeader(position)) {
+            itemType = ItemType.HEADER.ordinal();
+        }
+        return itemType;
+    }
+
+    private boolean isPositionHeader(int position) {
+        return position == 0;
     }
 
     @Override
     public int getItemCount() {
-        return mNavEntries.size();
+        return mNavEntries.size() + 1;
+    }
+
+    private NavigationEntry getItem(int position) {
+        return mNavEntries.get(position - 1);
+    }
+
+    public static class NavHeaderViewHolder extends RecyclerView.ViewHolder {
+        public NavHeaderViewHolder(View itemView) {
+            super(itemView);
+        }
     }
 
     public static class NavRecyclerViewHolder extends RecyclerView.ViewHolder {

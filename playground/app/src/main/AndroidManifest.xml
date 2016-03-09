@@ -11,7 +11,8 @@
         <activity
             android:name="navigation.NavigationActivity"
             android:label="Navigation Activitanga"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.Playground.Navigation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

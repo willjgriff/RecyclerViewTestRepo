@@ -10,6 +10,7 @@
     <!--Navigation drawer-->
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+    <string name="adapter_navigation_header_text">El Menu</string>
 
     <!--Lists-->
     <string name="activity_main_change_fragment_recycler_view_button">Recylcer View</string>

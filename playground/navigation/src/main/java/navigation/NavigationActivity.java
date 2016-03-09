@@ -1,23 +1,24 @@
 package navigation;
 
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.example.will.Playground.OtherFragment;
 import com.example.will.Playground.R;
+import com.example.will.Playground.Utils.UiUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +68,9 @@ public class NavigationActivity extends AppCompatActivity {
         NavigationRecyclerViewAdapter adapter = new NavigationRecyclerViewAdapter(mNavEntries);
         mNavigationList.setAdapter(adapter);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_navigation_toolbar);
+        ViewCompat.setElevation(toolbar, UiUtils.convertDpToPixel(4, this));
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
@@ -91,23 +95,7 @@ public class NavigationActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_main_activity:
-                replaceFragment(new ListsFragment(), getString(R.string.action_list_activity), Tag.LISTS);
-                break;
-            case R.id.action_navigation_activity:
-                startActivity(new Intent(this, NavigationActivity.class));
-                break;
-            default:
-                break;
-        }
         return super.onOptionsItemSelected(item) || mNavigationToggle.onOptionsItemSelected(item);
     }
 
