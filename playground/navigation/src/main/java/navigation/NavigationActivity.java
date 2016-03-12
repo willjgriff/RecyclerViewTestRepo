@@ -125,6 +125,7 @@ public class NavigationActivity extends AppCompatActivity {
 
         FragmentTransaction fragmentTransaction = fragmentManager
                 .beginTransaction()
+                .setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out)
                 .replace(R.id.activity_navigation_fragment_holder, fragment, tag.name());
 
         if (!currentFragment.getTag().equals(tag.name())) {

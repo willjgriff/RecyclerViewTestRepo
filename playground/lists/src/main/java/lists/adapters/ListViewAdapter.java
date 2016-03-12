@@ -38,7 +38,7 @@ public class ListViewAdapter extends ArrayAdapter<Person> {
 
         ((TextView)listItem.findViewById(R.id.fragmnet_list_view_item_person_age)).setText(person.mAge);
         ((TextView)listItem.findViewById(R.id.fragmnet_list_view_item_person_name)).setText(person.mName);
-        ((ImageView)listItem.findViewById(R.id.fragmnet_list_view_item_person_photo)).setImageResource(person.mPhotoId);
+        ((ImageView)listItem.findViewById(R.id.fragment_list_view_item_person_photo)).setImageResource(person.mPhotoId);
 
         return listItem;
     }

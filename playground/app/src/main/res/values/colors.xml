@@ -4,6 +4,7 @@
     <color name="primary">#ff9800</color>
     <color name="primary_light">#ffe0b2</color>
     <color name="accent">#e040fb</color>
+    <color name="accent_alpha26">#42e040fb</color>
     
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#727272</color>
@@ -11,5 +12,7 @@
     <color name="icons">#727272</color>
     <color name="divider">#B6B6B6</color>
 
-    <color name="background">#ffffff</color>
+    <color name="bg_main">#ffffff</color>
+    <color name="bg_secondary">#f7f7f7</color>
+    <color name="bg_selected">#ececec</color>
 </resources>

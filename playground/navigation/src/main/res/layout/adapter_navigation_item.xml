@@ -9,14 +9,11 @@
 
     <TextView
         android:id="@+id/navigation_recycler_view_item_text"
+        style="@style/Text.Subtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/xsmall"
-        android:textSize="@dimen/subhead"/>
+        android:paddingTop="@dimen/xsmall"
+        android:paddingBottom="@dimen/xsmall"
+        android:paddingLeft="@dimen/small" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/divider"
-        />
 </LinearLayout>

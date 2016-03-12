@@ -2,12 +2,12 @@ package lists.adapters;
 
 import android.content.Context;
 import android.support.annotation.LayoutRes;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,14 +59,14 @@ public class PeopleRecyclerViewAdapter extends RecyclerView.Adapter<PeopleRecycl
 
     public static class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
-        public LinearLayout mLayoutView;
+        public CardView mLayoutView;
         public ImageView mPersonImage;
         public TextView mPersonName;
         public TextView mPersonAge;
 
         public RecyclerViewHolder(View itemView) {
             super(itemView);
-            mLayoutView = (LinearLayout) itemView.findViewById(R.id.fragment_recycler_view_whole_item_view);
+            mLayoutView = (CardView) itemView.findViewById(R.id.fragment_recycler_view_whole_item_view);
             mPersonImage = (ImageView) itemView.findViewById(R.id.person_photo);
             mPersonName = (TextView) itemView.findViewById(R.id.person_name);
             mPersonAge = (TextView) itemView.findViewById(R.id.person_age);

@@ -3,7 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="4dp"
+    android:paddingLeft="@dimen/xsmall"
+    android:paddingRight="@dimen/xsmall"
+    android:paddingBottom="@dimen/xxsmall"
+    android:paddingTop="@dimen/xxsmall"
     android:orientation="horizontal">
 
     <LinearLayout
@@ -14,6 +17,7 @@
 
         <TextView
             android:id="@+id/fragmnet_list_view_item_person_name"
+            style="@style/Text.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="23sp"
@@ -21,16 +25,16 @@
 
         <TextView
             android:id="@+id/fragmnet_list_view_item_person_age"
+            style="@style/Text.Subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="WHATS APP" />
+            tools:text="WHATS APP"/>
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/fragmnet_list_view_item_person_photo"
+        android:id="@+id/fragment_list_view_item_person_photo"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginRight="16dp"
         tools:src="@drawable/red_panda" />
 
 </LinearLayout>

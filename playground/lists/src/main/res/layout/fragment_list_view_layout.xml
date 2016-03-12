@@ -4,5 +4,4 @@
     android:id="@+id/fragment_list_view_list_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    android:listSelector="@drawable/selector_list_view_item"/>
+    android:background="@color/bg_main" />

@@ -78,6 +78,7 @@ public class ListsFragment extends Fragment implements DialogFragmentListener {
 
         FragmentManager fragmentManager = getChildFragmentManager();
         fragmentManager.beginTransaction()
+                .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
                 .replace(R.id.activity_main_fragment, fragment)
                 .commit();
     }

@@ -20,4 +20,5 @@
 
     <!--Tab layout-->
     <string name="fragment_tab_layout_page_number">Page #%1$d</string>
+    <string name="fragment_recycler_view_dialog_title">I AM DIALOG!</string>
 </resources>
