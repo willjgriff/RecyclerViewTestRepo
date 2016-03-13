@@ -20,7 +20,7 @@
         <item name="android:background">@color/bg_main</item>
     </style>
 
-    <style name="Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+    <style name="ActionBarTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:background">@color/primary</item>
     </style>
 

@@ -3,6 +3,6 @@
 
     <style name="AppTheme" parent="AppTheme.Base">
         <!--Make the status bar transparent-->
-        <!--<item name="android:windowTranslucentStatus">true</item>-->
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 </resources>

@@ -3,9 +3,10 @@
 
     <!--Navigation titles-->
     <string name="action_list_activity">Lists</string>
-    <string name="action_other_fragment">Other Fragment</string>
+    <string name="action_fab_fragment">Fab Fragment</string>
     <string name="action_navigation_activity">Navigation Activity</string>
     <string name="action_tab_layout_fragment">Tab Layout</string>
+    <string name="action_web_view_fragment">Web View</string>
 
     <!--Navigation drawer-->
     <string name="drawer_open">Open navigation drawer</string>
