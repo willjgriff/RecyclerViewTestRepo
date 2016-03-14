@@ -6,7 +6,6 @@ import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -36,6 +35,7 @@ public class NavigationActivity extends AppCompatActivity {
     private ActionBarDrawerToggle mNavigationToggle;
     private RecyclerView mNavigationList;
     private DrawerLayout mNavigationDrawer;
+    private NavigationRecyclerViewAdapter mNavAdapter;
 
     enum Tag {
         LISTS(R.string.action_list_activity),
@@ -67,19 +67,15 @@ public class NavigationActivity extends AppCompatActivity {
         mNavigationList.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mNavigationList.setLayoutManager(linearLayoutManager);
-        NavigationRecyclerViewAdapter adapter = new NavigationRecyclerViewAdapter(mNavEntries);
-        mNavigationList.setAdapter(adapter);
+        mNavAdapter = new NavigationRecyclerViewAdapter(mNavEntries);
+        mNavigationList.setAdapter(mNavAdapter);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_navigation_toolbar);
-        ViewCompat.setElevation(toolbar, UiUtils.convertDpToPixel(4, this));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.activity_navigation_fragment_holder, new ListsFragment(), Tag.LISTS.name())
-                .commit();
+        replaceFragment(new ListsFragment(), getString(Tag.LISTS.getTitle()), Tag.LISTS);
 
         setNavigationToggle();
     }
@@ -116,7 +112,7 @@ public class NavigationActivity extends AppCompatActivity {
                 .setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out, R.anim.fragment_fade_in, R.anim.fragment_fade_out)
                 .replace(R.id.activity_navigation_fragment_holder, fragment, tag.name());
 
-        if (!currentFragment.getTag().equals(tag.name())) {
+        if (currentFragment != null && !currentFragment.getTag().equals(tag.name())) {
             fragmentTransaction.addToBackStack(tag.name());
         }
 
@@ -126,6 +122,7 @@ public class NavigationActivity extends AppCompatActivity {
         getSupportActionBar().setElevation(UiUtils.convertDpToPixel(4, this));
 
         mNavigationDrawer.closeDrawer(mNavigationList);
+        mNavAdapter.setSelectedPosition(tag.ordinal());
     }
 
     private void addNavEntries() {

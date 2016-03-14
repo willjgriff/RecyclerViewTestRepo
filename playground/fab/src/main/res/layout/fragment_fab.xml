@@ -10,15 +10,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/fragment_fab_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/xxsmall"
+        app:fab_addButtonColorNormal="@color/accent"
+        app:fab_addButtonColorPressed="@color/accent_dark"
+        app:fab_addButtonPlusIconColor="@color/ic_white"
+        app:fab_labelStyle="@style/FabLabel"
+        app:fab_labelsPosition="left">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fragment_fab_recycler_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/accent"
+            app:fab_colorPressed="@color/accent_dark"
+            app:fab_size="mini"
+            app:fab_title="Recycler View"
+            app:fab_icon="@drawable/recycle" />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fragment_fab_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
+        android:layout_gravity="bottom|start"
         android:layout_margin="@dimen/xsmall"
         android:src="@drawable/ic_extension_white_24dp"
         app:layout_anchor="@id/fragment_fab_recycler_view"
-        app:layout_anchorGravity="bottom|right|end"
+        app:layout_anchorGravity="bottom|left|start"
         app:layout_behavior="fab.ScrollAwareFabBehaviour" />
 
 </android.support.design.widget.CoordinatorLayout>

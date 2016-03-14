@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.will.Playground.R;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import lists.adapters.PeopleRecyclerViewAdapter;
 import lists.data.People;
@@ -22,6 +23,7 @@ import lists.data.People;
 public class FabFragment extends Fragment {
 
     private RecyclerView mFabList;
+    private FloatingActionsMenu mFabMenu;
 
     @Nullable
     @Override
@@ -35,6 +37,16 @@ public class FabFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mFabList.setLayoutManager(linearLayoutManager);
         mFabList.setAdapter(new PeopleRecyclerViewAdapter(getContext(), People.getPeople(), R.layout.adapter_recycler_view_item));
+
+        mFabMenu = (FloatingActionsMenu)view.findViewById(R.id.fragment_fab_menu);
+        view.findViewById(R.id.fragment_fab_recycler_fragment).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mFabMenu.collapse();
+            }
+        });
+        
+        mFabMenu.collapse();
 
         view.findViewById(R.id.fragment_fab_button).setOnClickListener(new View.OnClickListener() {
             @Override

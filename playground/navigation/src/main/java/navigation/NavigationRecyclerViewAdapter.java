@@ -1,5 +1,6 @@
 package navigation;
 
+import android.content.Context;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import java.util.List;
 public class NavigationRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<NavigationEntry> mNavEntries;
+    private int mSelectedPosition;
 
     enum ItemType {
         ITEM,
@@ -77,6 +79,11 @@ public class NavigationRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
         return mNavEntries.get(position - 1);
     }
 
+    public void setSelectedPosition(int position) {
+        mSelectedPosition = position + 1;
+        notifyDataSetChanged();
+    }
+
     public class NavHeaderViewHolder extends RecyclerView.ViewHolder {
         public NavHeaderViewHolder(View itemView) {
             super(itemView);
@@ -87,15 +94,22 @@ public class NavigationRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
         private TextView mNavigationTitle;
         private LinearLayout mNavigationLayout;
 
+        Context mContext;
         public NavRecyclerViewHolder(View itemView) {
             super(itemView);
             mNavigationTitle = (TextView) itemView.findViewById(R.id.navigation_recycler_view_item_text);
             mNavigationLayout = (LinearLayout) itemView.findViewById(R.id.navigation_recycler_view_item_layout);
+            mContext = itemView.getContext();
         }
 
         public void bindView(String navTitle, View.OnClickListener navClickListener) {
             mNavigationTitle.setText(navTitle);
             mNavigationLayout.setOnClickListener(navClickListener);
+            if (getAdapterPosition() == mSelectedPosition) {
+                mNavigationLayout.setSelected(true);
+            } else {
+                mNavigationLayout.setSelected(false);
+            }
         }
     }
 }

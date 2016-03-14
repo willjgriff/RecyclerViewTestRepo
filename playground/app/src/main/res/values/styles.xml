@@ -24,6 +24,18 @@
         <item name="android:background">@color/primary</item>
     </style>
 
+    
+    
+    <style name="FabLabel" parent="Text">
+        <item name="android:textSize">@dimen/button</item>
+        <item name="android:textColor">@color/lite_text</item>
+        <item name="android:background">@color/bg_dark</item>
+        <item name="android:paddingLeft">@dimen/xxsmall</item>
+        <item name="android:paddingRight">@dimen/xxsmall</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+    
     <style name="Text">
     </style>
 
