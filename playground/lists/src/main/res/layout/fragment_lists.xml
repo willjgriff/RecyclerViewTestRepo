@@ -42,7 +42,7 @@
             app:fab_colorPressed="@color/accent_dark"
             app:fab_size="mini"
             app:fab_title="@string/fragment_lists_change_fragment_list_view"
-            app:fab_icon="@drawable/recycle" />
+            app:fab_icon="@drawable/format_list_bulleted" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/fragment_lists_fab_list_fragment"
@@ -52,7 +52,7 @@
             app:fab_colorPressed="@color/accent_dark"
             app:fab_size="mini"
             app:fab_title="@string/fragment_lists_change_fragment_list_fragment"
-            app:fab_icon="@drawable/recycle" />
+            app:fab_icon="@drawable/view_list" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/fragment_lists_fab_recycler_view_dialog"
@@ -62,7 +62,7 @@
             app:fab_colorPressed="@color/accent_dark"
             app:fab_size="mini"
             app:fab_title="@string/fragment_lists_change_fragment_recycler_view_dialog"
-            app:fab_icon="@drawable/recycle" />
+            app:fab_icon="@drawable/grid" />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

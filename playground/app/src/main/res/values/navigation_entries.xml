@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Navigation titles-->
+    <string name="navigation_list_activity">Lists</string>
+    <string name="navigation_coord_fragment">Coordinator Fragment</string>
+    <string name="navigation_navigation_activity">Navigation Activity</string>
+    <string name="navigation_tab_layout_fragment">Tab Layout</string>
+    <string name="navigation_web_view_fragment">Web View</string>
+
+    <!--Navigation positions-->
+    <integer name="navigation_list_activity">1</integer>
+    <integer name="navigation_coord_fragment">2</integer>
+    <integer name="navigation_tab_layout_fragment">3</integer>
+    <integer name="navigation_web_view_fragment">4</integer>
+</resources>
