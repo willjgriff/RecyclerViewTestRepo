@@ -2,11 +2,17 @@
     <string name="app_name">Playground</string>
 
     <!--Navigation titles-->
-    <string name="action_list_activity">Lists</string>
-    <string name="action_fab_fragment">Fab Fragment</string>
-    <string name="action_navigation_activity">Navigation Activity</string>
-    <string name="action_tab_layout_fragment">Tab Layout</string>
-    <string name="action_web_view_fragment">Web View</string>
+    <string name="navigation_list_activity">Lists</string>
+    <string name="navigation_coord_fragment">Fab Fragment</string>
+    <string name="navigation_navigation_activity">Navigation Activity</string>
+    <string name="navigation_tab_layout_fragment">Tab Layout</string>
+    <string name="navigation_web_view_fragment">Web View</string>
+
+    <!--Navigation positions-->
+    <integer name="navigation_list_activity">1</integer>
+    <integer name="navigation_coord_fragment">2</integer>
+    <integer name="navigation_tab_layout_fragment">3</integer>
+    <integer name="navigation_web_view_fragment">4</integer>
 
     <!--Navigation drawer-->
     <string name="drawer_open">Open navigation drawer</string>
@@ -14,10 +20,10 @@
     <string name="adapter_navigation_header_text">El Menu</string>
 
     <!--Lists-->
-    <string name="activity_main_change_fragment_recycler_view_button">Recylcer View</string>
-    <string name="activity_main_change_fragment_list_view_button">List View</string>
-    <string name="activity_main_change_fragment_dialog_grid_view_button">Dialog Grid View</string>
-    <string name="activity_main_change_fragment_list_fragment_button">List Fragment</string>
+    <string name="fragment_lists_change_fragment_recycler_view">Recycler View</string>
+    <string name="fragment_lists_change_fragment_list_view">List View</string>
+    <string name="fragment_lists_change_fragment_recycler_view_dialog">Dialog Grid View</string>
+    <string name="fragment_lists_change_fragment_list_fragment">List Fragment</string>
 
     <!--Tab layout-->
     <string name="fragment_tab_layout_page_number">Page #%1$d</string>

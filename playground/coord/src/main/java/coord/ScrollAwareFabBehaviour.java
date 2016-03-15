@@ -1,4 +1,4 @@
-package fab;
+package coord;
 
 import android.content.Context;
 import android.support.design.widget.CoordinatorLayout;

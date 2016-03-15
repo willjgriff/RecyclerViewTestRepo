@@ -17,7 +17,7 @@
 
     <color name="bg_main">@color/white</color>
     <color name="bg_secondary">#f7f7f7</color>
-    <color name="bg_selected">#ececec</color>
+    <color name="bg_selected">#f4f4f4</color>
     <color name="bg_dark">#818181</color>
 
     <color name="ic_white">@color/white</color>

@@ -18,7 +18,7 @@ android {
         }
     }
 
-    def appModules = ['navigation', 'lists', 'tabs', 'fab', 'web']
+    def appModules = ['navigation', 'lists', 'tabs', 'coord', 'web']
 
     sourceSets {
         main {

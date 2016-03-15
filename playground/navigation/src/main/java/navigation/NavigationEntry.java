@@ -8,15 +8,21 @@ import android.view.View;
 public class NavigationEntry {
 
     private String mNavigationTitle;
+    private int mNavigationPosition;
     private View.OnClickListener mNavigationClickListener;
 
-    public NavigationEntry(String mNavigationTitle, View.OnClickListener mNavigationClickListener) {
-        this.mNavigationTitle = mNavigationTitle;
-        this.mNavigationClickListener = mNavigationClickListener;
+    public NavigationEntry(String navigationTitle, int navigationPosition, View.OnClickListener navigationClickListener) {
+        this.mNavigationTitle = navigationTitle;
+        this.mNavigationPosition = navigationPosition;
+        this.mNavigationClickListener = navigationClickListener;
     }
 
     public String getNavigationTitle() {
         return mNavigationTitle;
+    }
+
+    public Integer getNavigationPosition() {
+        return mNavigationPosition;
     }
 
     public View.OnClickListener getNavigationClickListener() {

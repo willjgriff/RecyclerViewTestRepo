@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.will.Playground.R;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,46 +28,51 @@ public class ListsFragment extends Fragment implements DialogFragmentListener {
     public static final String DIALOG_TAG = "com.example.will.playground;DIALOG_TAG";
 
     private FrameLayout mParentFrameLayout;
+    private FloatingActionsMenu mFabMenu;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_lists, container, false);
 
-        view.findViewById(R.id.activity_main_change_fragment_recycler_view_button).setOnClickListener(new OnClickListener() {
+        view.findViewById(R.id.fragment_lists_fab_recycler_view).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 openFragment(new RecyclerViewFragment(), People.getPeople());
             }
         });
 
-        view.findViewById(R.id.activity_main_change_fragment_list_view_button).setOnClickListener(new OnClickListener() {
+        view.findViewById(R.id.fragment_lists_fab_list_view).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 openFragment(new ListViewFragment(), People.getPeople());
             }
         });
 
-        view.findViewById(R.id.activity_main_change_fragment_list_fragment_button).setOnClickListener(new OnClickListener() {
+        view.findViewById(R.id.fragment_lists_fab_list_fragment).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 openFragment(new ListFragmentFragment(), People.getPeople());
             }
         });
 
-        view.findViewById(R.id.activity_main_change_fragment_dialog_grid_view_button).setOnClickListener(new OnClickListener() {
+        view.findViewById(R.id.fragment_lists_fab_recycler_view_dialog).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 openDialog();
             }
         });
 
-        mParentFrameLayout = (FrameLayout) view.findViewById(R.id.activity_main_fragment);
+        mParentFrameLayout = (FrameLayout) view.findViewById(R.id.fragment_lists_container);
+        mFabMenu = (FloatingActionsMenu) view.findViewById(R.id.fragment_lists_fab_menu);
+
+        openFragment(new RecyclerViewFragment(), People.getPeople());
 
         return view;
     }
 
     private void openFragment(Fragment fragment, List<Person> data) {
+        closeFabMenu();
         removeFragmentChildren();
 
         if (data != null) {
@@ -78,14 +84,20 @@ public class ListsFragment extends Fragment implements DialogFragmentListener {
 
         FragmentManager fragmentManager = getChildFragmentManager();
         fragmentManager.beginTransaction()
-                .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-                .replace(R.id.activity_main_fragment, fragment)
+//                .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+                .setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out)
+                .replace(R.id.fragment_lists_container, fragment)
                 .commit();
     }
 
     private void openDialog() {
+        closeFabMenu();
         RecyclerViewDialogFragment recyclerViewDialogFragment = new RecyclerViewDialogFragment();
         recyclerViewDialogFragment.show(getChildFragmentManager(), DIALOG_TAG);
+    }
+
+    private void closeFabMenu() {
+        mFabMenu.collapse();
     }
 
     @Override
@@ -93,7 +105,7 @@ public class ListsFragment extends Fragment implements DialogFragmentListener {
         removeFragmentChildren();
 
         FragmentManager fragmentManager = getChildFragmentManager();
-        Fragment currentFragmentInView = fragmentManager.findFragmentById(R.id.activity_main_fragment);
+        Fragment currentFragmentInView = fragmentManager.findFragmentById(R.id.fragment_lists_container);
         if (currentFragmentInView != null) {
             fragmentManager.beginTransaction()
                     .remove(currentFragmentInView)

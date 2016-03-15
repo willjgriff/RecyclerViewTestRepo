@@ -1,58 +1,69 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:theme="@style/FragmentTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:theme="@style/ButtonStyle"
-            android:id="@+id/activity_main_change_fragment_recycler_view_button"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:text="@string/activity_main_change_fragment_recycler_view_button" />
-
-        <Button
-            android:theme="@style/ButtonStyle"
-            android:id="@+id/activity_main_change_fragment_list_view_button"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:text="@string/activity_main_change_fragment_list_view_button" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:theme="@style/ButtonStyle"
-            android:id="@+id/activity_main_change_fragment_dialog_grid_view_button"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:text="@string/activity_main_change_fragment_dialog_grid_view_button"/>
-
-        <Button
-            android:theme="@style/ButtonStyle"
-            android:id="@+id/activity_main_change_fragment_list_fragment_button"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:text="@string/activity_main_change_fragment_list_fragment_button" />
-    </LinearLayout>
-
-
     <FrameLayout
-        android:id="@+id/activity_main_fragment"
+        style="@style/FragmentTheme"
+        android:id="@+id/fragment_lists_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-</LinearLayout>
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/fragment_lists_fab_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/xxsmall"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        app:fab_addButtonColorNormal="@color/accent"
+        app:fab_addButtonColorPressed="@color/accent_dark"
+        app:fab_addButtonPlusIconColor="@color/ic_white"
+        app:fab_labelStyle="@style/FabLabel"
+        app:fab_labelsPosition="left">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fragment_lists_fab_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/accent"
+            app:fab_colorPressed="@color/accent_dark"
+            app:fab_size="mini"
+            app:fab_title="@string/fragment_lists_change_fragment_recycler_view"
+            app:fab_icon="@drawable/recycle" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fragment_lists_fab_list_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/accent"
+            app:fab_colorPressed="@color/accent_dark"
+            app:fab_size="mini"
+            app:fab_title="@string/fragment_lists_change_fragment_list_view"
+            app:fab_icon="@drawable/recycle" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fragment_lists_fab_list_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/accent"
+            app:fab_colorPressed="@color/accent_dark"
+            app:fab_size="mini"
+            app:fab_title="@string/fragment_lists_change_fragment_list_fragment"
+            app:fab_icon="@drawable/recycle" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fragment_lists_fab_recycler_view_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/accent"
+            app:fab_colorPressed="@color/accent_dark"
+            app:fab_size="mini"
+            app:fab_title="@string/fragment_lists_change_fragment_recycler_view_dialog"
+            app:fab_icon="@drawable/recycle" />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+</RelativeLayout>

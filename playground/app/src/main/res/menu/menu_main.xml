@@ -4,12 +4,12 @@
     <item
         android:id="@+id/action_main_activity"
         android:orderInCategory="90"
-        android:title="@string/action_list_activity"
+        android:title="@string/navigation_list_activity"
         android:icon="@drawable/red_panda"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_navigation_activity"
         android:orderInCategory="80"
-        android:title="@string/action_navigation_activity" />
+        android:title="@string/navigation_navigation_activity" />
 </menu>

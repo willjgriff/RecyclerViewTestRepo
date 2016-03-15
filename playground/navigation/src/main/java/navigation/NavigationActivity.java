@@ -19,15 +19,20 @@ import com.example.will.Playground.R;
 import com.example.will.Playground.Utils.UiUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
-import fab.FabFragment;
+import coord.CoordFragment;
 import lists.ListsFragment;
 import tabs.TabLayoutFragment;
 import web.WebViewFragment;
 
 /**
  * Created by Will on 18/02/2016.
+ * </p>
+ * Note: In future I'll use a NavigationView instead of a RecyclerView
+ * for navigation.
  */
 public class NavigationActivity extends AppCompatActivity {
 
@@ -38,19 +43,25 @@ public class NavigationActivity extends AppCompatActivity {
     private NavigationRecyclerViewAdapter mNavAdapter;
 
     enum Tag {
-        LISTS(R.string.action_list_activity),
-        FAB(R.string.action_fab_fragment),
-        TABS(R.string.action_tab_layout_fragment),
-        WEB(R.string.action_web_view_fragment);
+        LISTS(R.string.navigation_list_activity, R.integer.navigation_list_activity),
+        COORD(R.string.navigation_coord_fragment, R.integer.navigation_coord_fragment),
+        TABS(R.string.navigation_tab_layout_fragment, R.integer.navigation_tab_layout_fragment),
+        WEB(R.string.navigation_web_view_fragment, R.integer.navigation_web_view_fragment);
 
-        int mTitle;
+        private int mTitle;
+        private int mPosition;
 
-        Tag(@StringRes int title) {
+        Tag(@StringRes int title, int position) {
             mTitle = title;
+            mPosition = position;
         }
 
         public int getTitle() {
             return mTitle;
+        }
+
+        public int getPosition() {
+            return mPosition;
         }
     }
 
@@ -118,37 +129,44 @@ public class NavigationActivity extends AppCompatActivity {
 
         fragmentTransaction.commit();
         getSupportActionBar().setTitle(title);
-        // Unfortunate sometimes unnecessary command as tabLayout must remove the elevation.
+        // Unfortunate often unnecessary command as tabLayout must remove the elevation.
         getSupportActionBar().setElevation(UiUtils.convertDpToPixel(4, this));
 
         mNavigationDrawer.closeDrawer(mNavigationList);
-        mNavAdapter.setSelectedPosition(tag.ordinal());
+        mNavAdapter.setSelectedPosition(getResources().getInteger(tag.getPosition()) - 1);
     }
 
     private void addNavEntries() {
-        mNavEntries.add(new NavigationEntry(getString(Tag.LISTS.getTitle()), new View.OnClickListener() {
+        mNavEntries.add(new NavigationEntry(getString(Tag.LISTS.getTitle()), getResources().getInteger(Tag.LISTS.getPosition()), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 replaceFragment(new ListsFragment(), getString(Tag.LISTS.getTitle()), Tag.LISTS);
             }
         }));
-        mNavEntries.add(new NavigationEntry(getString(Tag.FAB.getTitle()), new View.OnClickListener() {
+        mNavEntries.add(new NavigationEntry(getString(Tag.COORD.getTitle()), getResources().getInteger(Tag.COORD.getPosition()), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new FabFragment(), getString(Tag.FAB.getTitle()), Tag.FAB);
+                replaceFragment(new CoordFragment(), getString(Tag.COORD.getTitle()), Tag.COORD);
             }
         }));
-        mNavEntries.add(new NavigationEntry(getString(Tag.TABS.getTitle()), new View.OnClickListener() {
+        mNavEntries.add(new NavigationEntry(getString(Tag.TABS.getTitle()), getResources().getInteger(Tag.TABS.getPosition()), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 replaceFragment(new TabLayoutFragment(), getString(Tag.TABS.getTitle()), Tag.TABS);
             }
         }));
-        mNavEntries.add(new NavigationEntry(getString(Tag.WEB.getTitle()), new View.OnClickListener() {
+        mNavEntries.add(new NavigationEntry(getString(Tag.WEB.getTitle()), getResources().getInteger(Tag.WEB.getPosition()), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 replaceFragment(new WebViewFragment(), getString(Tag.WEB.getTitle()), Tag.WEB);
             }
         }));
+
+        Collections.sort(mNavEntries, new Comparator<NavigationEntry>() {
+            @Override
+            public int compare(NavigationEntry lhs, NavigationEntry rhs) {
+                return lhs.getNavigationPosition().compareTo(rhs.getNavigationPosition());
+            }
+        });
     }
 }
