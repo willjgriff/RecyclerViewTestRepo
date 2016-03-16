@@ -16,6 +16,12 @@
     <style name="Theme.Playground.Navigation" parent="AppTheme">
     </style>
 
+    <style name="Theme.Playground.FabCoord" parent="AppTheme">
+    </style>
+
+    <style name="Theme.Playground.ToolbarCoord" parent="AppTheme">
+    </style>
+
     <style name="FragmentTheme" parent="AppTheme">
         <item name="android:background">@color/bg_main</item>
     </style>

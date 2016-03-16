@@ -18,4 +18,7 @@
     <dimen name="large">56dp</dimen>
     <dimen name="xlarge">64dp</dimen>
     <dimen name="xxlarge">72dp</dimen>
+
+    <dimen name="coord_toolbar_height">200dp</dimen>
+    <dimen name="half_coord_height">100dp</dimen>
 </resources>

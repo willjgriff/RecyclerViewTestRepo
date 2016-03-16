@@ -23,7 +23,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import coord.CoordFragment;
+import coord.CoordsFragment;
 import lists.ListsFragment;
 import tabs.TabLayoutFragment;
 import web.WebViewFragment;
@@ -31,7 +31,6 @@ import web.WebViewFragment;
 import static navigation.NavigationActivity.EntryTag.COORD;
 import static navigation.NavigationActivity.EntryTag.LISTS;
 import static navigation.NavigationActivity.EntryTag.TABS;
-import static navigation.NavigationActivity.EntryTag.WEB;
 
 /**
  * Created by Will on 18/02/2016.
@@ -46,6 +45,7 @@ public class NavigationActivity extends AppCompatActivity {
     private RecyclerView mNavigationList;
     private DrawerLayout mNavigationDrawer;
     private NavigationRecyclerViewAdapter mNavAdapter;
+    private Toolbar mToolbar;
 
     enum EntryTag {
         LISTS(R.string.navigation_list_activity, R.integer.navigation_list_activity),
@@ -86,8 +86,8 @@ public class NavigationActivity extends AppCompatActivity {
         mNavAdapter = new NavigationRecyclerViewAdapter(mNavEntries);
         mNavigationList.setAdapter(mNavAdapter);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_navigation_toolbar);
-        setSupportActionBar(toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.activity_navigation_toolbar);
+        setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
@@ -180,7 +180,7 @@ public class NavigationActivity extends AppCompatActivity {
         mNavEntries.add(new NavigationEntry(getString(COORD.getTitle()), getResources().getInteger(COORD.getPosition()), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new CoordFragment(), COORD);
+                replaceFragment(new CoordsFragment(), COORD);
             }
         }));
         mNavEntries.add(new NavigationEntry(getString(TABS.getTitle()), getResources().getInteger(TABS.getPosition()), new View.OnClickListener() {
@@ -189,10 +189,10 @@ public class NavigationActivity extends AppCompatActivity {
                 replaceFragment(new TabLayoutFragment(), TABS);
             }
         }));
-        mNavEntries.add(new NavigationEntry(getString(WEB.getTitle()), getResources().getInteger(WEB.getPosition()), new View.OnClickListener() {
+        mNavEntries.add(new NavigationEntry(getString(EntryTag.WEB.getTitle()), getResources().getInteger(EntryTag.WEB.getPosition()), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new WebViewFragment(), WEB);
+                replaceFragment(new WebViewFragment(), EntryTag.WEB);
             }
         }));
 
