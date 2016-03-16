@@ -28,6 +28,11 @@ import lists.ListsFragment;
 import tabs.TabLayoutFragment;
 import web.WebViewFragment;
 
+import static navigation.NavigationActivity.EntryTag.COORD;
+import static navigation.NavigationActivity.EntryTag.LISTS;
+import static navigation.NavigationActivity.EntryTag.TABS;
+import static navigation.NavigationActivity.EntryTag.WEB;
+
 /**
  * Created by Will on 18/02/2016.
  * </p>
@@ -42,7 +47,7 @@ public class NavigationActivity extends AppCompatActivity {
     private DrawerLayout mNavigationDrawer;
     private NavigationRecyclerViewAdapter mNavAdapter;
 
-    enum Tag {
+    enum EntryTag {
         LISTS(R.string.navigation_list_activity, R.integer.navigation_list_activity),
         COORD(R.string.navigation_coord_fragment, R.integer.navigation_coord_fragment),
         TABS(R.string.navigation_tab_layout_fragment, R.integer.navigation_tab_layout_fragment),
@@ -51,7 +56,7 @@ public class NavigationActivity extends AppCompatActivity {
         private int mTitle;
         private int mPosition;
 
-        Tag(@StringRes int title, int position) {
+        EntryTag(@StringRes int title, int position) {
             mTitle = title;
             mPosition = position;
         }
@@ -86,7 +91,14 @@ public class NavigationActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        replaceFragment(new ListsFragment(), getString(Tag.LISTS.getTitle()), Tag.LISTS);
+        replaceFragment(new ListsFragment(), LISTS);
+
+        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                updateView();
+            }
+        });
 
         setNavigationToggle();
     }
@@ -108,57 +120,79 @@ public class NavigationActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item) || mNavigationToggle.onOptionsItemSelected(item);
     }
 
+    private void updateView() {
+        String fragmentTag = getSupportFragmentManager().findFragmentById(R.id.activity_navigation_fragment_holder).getTag();
+        EntryTag entryTag = EntryTag.valueOf(fragmentTag);
+
+        // Update selected navigation entry
+        int entryPositionRes = entryTag.getPosition();
+        mNavAdapter.setSelectedPosition(getResources().getInteger(entryPositionRes) - 1);
+
+        // Update toolbar title
+        int entryTitleRes = entryTag.getTitle();
+        getSupportActionBar().setTitle(getString(entryTitleRes));
+
+        // TODO: This is unsustainable and needs to be fixed.
+        if (TABS != entryTag) {
+            // The tabLayout must remove the elevation so we put it back here.
+            getSupportActionBar().setElevation(UiUtils.convertDpToPixel(4, NavigationActivity.this));
+        }
+
+        mNavigationDrawer.closeDrawer(mNavigationList);
+    }
+
     private void setNavigationToggle() {
         mNavigationToggle = new ActionBarDrawerToggle(this, mNavigationDrawer, R.string.drawer_open, R.string.drawer_close);
         mNavigationToggle.setDrawerIndicatorEnabled(true);
         mNavigationDrawer.setDrawerListener(mNavigationToggle);
     }
 
-    private void replaceFragment(Fragment fragment, String title, Tag tag) {
+    private void replaceFragment(Fragment fragment, EntryTag entryTag) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment currentFragment = fragmentManager.findFragmentById(R.id.activity_navigation_fragment_holder);
 
         FragmentTransaction fragmentTransaction = fragmentManager
                 .beginTransaction()
                 .setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out, R.anim.fragment_fade_in, R.anim.fragment_fade_out)
-                .replace(R.id.activity_navigation_fragment_holder, fragment, tag.name());
-
-        if (currentFragment != null && !currentFragment.getTag().equals(tag.name())) {
-            fragmentTransaction.addToBackStack(tag.name());
+                .replace(R.id.activity_navigation_fragment_holder, fragment, entryTag.name());
+        if (currentFragment != null && !currentFragment.getTag().equals(entryTag.name())) {
+            fragmentTransaction.addToBackStack(entryTag.name());
         }
-
         fragmentTransaction.commit();
-        getSupportActionBar().setTitle(title);
-        // Unfortunate often unnecessary command as tabLayout must remove the elevation.
-        getSupportActionBar().setElevation(UiUtils.convertDpToPixel(4, this));
 
-        mNavigationDrawer.closeDrawer(mNavigationList);
-        mNavAdapter.setSelectedPosition(getResources().getInteger(tag.getPosition()) - 1);
+        // If this is the first fragment to be added on startup, no backstack listener called
+        if (currentFragment == null) {
+            // TODO: This is undesirable but the fragment needs to be added before I can update the activity view.
+            // I could put a listener in here for when the fragment is created and would implement
+            // it in whatever fragment I choose to load first.
+            fragmentManager.executePendingTransactions();
+            updateView();
+        }
     }
 
     private void addNavEntries() {
-        mNavEntries.add(new NavigationEntry(getString(Tag.LISTS.getTitle()), getResources().getInteger(Tag.LISTS.getPosition()), new View.OnClickListener() {
+        mNavEntries.add(new NavigationEntry(getString(LISTS.getTitle()), getResources().getInteger(LISTS.getPosition()), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new ListsFragment(), getString(Tag.LISTS.getTitle()), Tag.LISTS);
+                replaceFragment(new ListsFragment(), LISTS);
             }
         }));
-        mNavEntries.add(new NavigationEntry(getString(Tag.COORD.getTitle()), getResources().getInteger(Tag.COORD.getPosition()), new View.OnClickListener() {
+        mNavEntries.add(new NavigationEntry(getString(COORD.getTitle()), getResources().getInteger(COORD.getPosition()), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new CoordFragment(), getString(Tag.COORD.getTitle()), Tag.COORD);
+                replaceFragment(new CoordFragment(), COORD);
             }
         }));
-        mNavEntries.add(new NavigationEntry(getString(Tag.TABS.getTitle()), getResources().getInteger(Tag.TABS.getPosition()), new View.OnClickListener() {
+        mNavEntries.add(new NavigationEntry(getString(TABS.getTitle()), getResources().getInteger(TABS.getPosition()), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new TabLayoutFragment(), getString(Tag.TABS.getTitle()), Tag.TABS);
+                replaceFragment(new TabLayoutFragment(), TABS);
             }
         }));
-        mNavEntries.add(new NavigationEntry(getString(Tag.WEB.getTitle()), getResources().getInteger(Tag.WEB.getPosition()), new View.OnClickListener() {
+        mNavEntries.add(new NavigationEntry(getString(WEB.getTitle()), getResources().getInteger(WEB.getPosition()), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new WebViewFragment(), getString(Tag.WEB.getTitle()), Tag.WEB);
+                replaceFragment(new WebViewFragment(), WEB);
             }
         }));
 
