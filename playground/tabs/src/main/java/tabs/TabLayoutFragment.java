@@ -28,10 +28,10 @@ public class TabLayoutFragment extends Fragment {
         viewPager.setAdapter(new TabLayoutPageAdapter(getChildFragmentManager(), getActivity()));
 
         TabLayout tabLayout = (TabLayout) view.findViewById(R.id.fragment_tab_layout_tabs);
+        ViewCompat.setElevation(tabLayout, UiUtils.convertDpToPixel(4, getContext()));
         tabLayout.setupWithViewPager(viewPager);
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().setElevation(0);
-        ViewCompat.setElevation(tabLayout, UiUtils.convertDpToPixel(4, getContext()));
 
         return view;
     }

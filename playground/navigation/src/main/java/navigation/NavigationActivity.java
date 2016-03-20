@@ -88,8 +88,9 @@ public class NavigationActivity extends AppCompatActivity {
 
         mToolbar = (Toolbar) findViewById(R.id.activity_navigation_toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setElevation(UiUtils.convertDpToPixel(4, NavigationActivity.this));
         getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         replaceFragment(new ListsFragment(), LISTS);
 
@@ -113,6 +114,15 @@ public class NavigationActivity extends AppCompatActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mNavigationToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+            getSupportFragmentManager().popBackStack();
+        } else {
+            finish();
+        }
     }
 
     @Override
@@ -155,19 +165,14 @@ public class NavigationActivity extends AppCompatActivity {
                 .beginTransaction()
                 .setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out, R.anim.fragment_fade_in, R.anim.fragment_fade_out)
                 .replace(R.id.activity_navigation_fragment_holder, fragment, entryTag.name());
-        if (currentFragment != null && !currentFragment.getTag().equals(entryTag.name())) {
+
+        if (currentFragment != null && currentFragment.getTag().equals(entryTag.name())) {
+            mNavigationDrawer.closeDrawer(mNavigationList);
+        } else {
             fragmentTransaction.addToBackStack(entryTag.name());
         }
-        fragmentTransaction.commit();
 
-        // If this is the first fragment to be added on startup, no backstack listener called
-        if (currentFragment == null) {
-            // TODO: This is undesirable but the fragment needs to be added before I can update the activity view.
-            // I could put a listener in here for when the fragment is created and would implement
-            // it in whatever fragment I choose to load first.
-            fragmentManager.executePendingTransactions();
-            updateView();
-        }
+        fragmentTransaction.commit();
     }
 
     private void addNavEntries() {

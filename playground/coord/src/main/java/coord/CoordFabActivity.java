@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.example.will.Playground.R;
@@ -23,20 +24,25 @@ public class CoordFabActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_fab_coord);
+        setContentView(R.layout.fragment_coord_fab);
 
         final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.fragment_fab_coordinator);
 
-        mCoordList = (RecyclerView) findViewById(R.id.fragment_fab_recycler_view);
+        mCoordList = (RecyclerView) findViewById(R.id.fragment_coord_fab_recycler_view);
         mCoordList.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mCoordList.setLayoutManager(linearLayoutManager);
         mCoordList.setAdapter(new PeopleRecyclerViewAdapter(this, People.getPeople(), R.layout.adapter_recycler_view_item));
 
-        findViewById(R.id.fragment_fab_button).setOnClickListener(new View.OnClickListener() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.fragment_coord_fab_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        findViewById(R.id.fragment_coord_fab_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(coordinatorLayout, "FAB-ulous", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(coordinatorLayout, R.string.fragment_coord_snackbar, Snackbar.LENGTH_SHORT).show();
             }
         });
     }

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ButtonStyle"
-        android:text="@string/fragment_coord_buttons_fab_coordinator_layout"/>
+        android:text="@string/fragment_coord_buttons_title"/>
 
     <Button
         android:id="@+id/fragment_coord_buttons_toolbar"

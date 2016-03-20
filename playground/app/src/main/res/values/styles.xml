@@ -5,9 +5,9 @@
         <!--Maybe needed to prevent getSupportActionBar() returning null...-->
         <item name="android:windowActionBar">true</item>
 
+        <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/accent</item>
-        <item name="colorPrimary">@color/primary</item>
     </style>
 
     <style name="AppTheme" parent="AppTheme.Base">
@@ -41,7 +41,16 @@
         <item name="android:paddingTop">4dp</item>
         <item name="android:paddingBottom">4dp</item>
     </style>
-    
+
+    <style name="ButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/lite_text</item>
+        <item name="android:textSize">@dimen/button</item>
+        <item name="android:paddingLeft">@dimen/xsmall</item>
+        <item name="android:paddingRight">@dimen/xsmall</item>
+        <item name="colorButtonNormal">@color/accent</item>
+    </style>
+
     <style name="Text">
     </style>
 
@@ -55,13 +64,8 @@
         <item name="android:textColor">@color/secondary_text</item>
     </style>
 
-    <style name="ButtonStyle" parent="Widget.AppCompat.Button">
-        <item name="android:textAllCaps">true</item>
-        <item name="android:textColor">@color/lite_text</item>
-        <item name="android:textSize">@dimen/button</item>
-        <item name="android:paddingLeft">@dimen/xsmall</item>
-        <item name="android:paddingRight">@dimen/xsmall</item>
-        <item name="colorButtonNormal">@color/accent</item>
+    <style name="Text.CoordinatorToolbar">
+        <item name="android:textSize">@dimen/headline</item>
     </style>
 
 </resources>
