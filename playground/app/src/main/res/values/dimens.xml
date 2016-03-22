@@ -19,7 +19,10 @@
     <dimen name="xlarge">64dp</dimen>
     <dimen name="xxlarge">72dp</dimen>
 
+    <dimen name="elevation">4dp</dimen>
+
     <dimen name="coord_toolbar_height">256dp</dimen>
     <dimen name="half_coord_height">128dp</dimen>
     <dimen name="status_bar_height">24dp</dimen>
+    <dimen name="status_bar_plus_toolbar">80dp</dimen>
 </resources>

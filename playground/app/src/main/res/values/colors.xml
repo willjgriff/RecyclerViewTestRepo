@@ -22,5 +22,7 @@
 
     <color name="ic_white">@color/white</color>
 
+    <color name="status_bar_colour_hack">#995b00</color>
+
     <color name="white">#FFFFFF</color>
 </resources>

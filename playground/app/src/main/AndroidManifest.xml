@@ -9,7 +9,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="navigation.NavigationActivity"
+            android:name="com.playground.will.navigation.NavigationActivity"
             android:label="Navigation Activitanga"
             android:launchMode="singleTop"
             android:theme="@style/Theme.Playground.Navigation">
@@ -21,22 +21,22 @@
         </activity>
 
         <activity
-            android:name="coord.CoordFabActivity"
+            android:name="com.playground.will.coord.CoordFabActivity"
             android:label="Fab Coord Activitanga"
             android:theme="@style/Theme.Playground.FabCoord">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="navigation.NavigationActivity" />
+                android:value="com.playground.will.navigation.NavigationActivity" />
             />
         </activity>
 
         <activity
-            android:name="coord.CoordToolbarActivity"
+            android:name="com.playground.will.coord.CoordToolbarActivity"
             android:label="Toolbar Coord Activitanga"
             android:theme="@style/Theme.Playground.ToolbarCoord">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="navigation.NavigationActivity" />
+                android:value="com.playground.will.navigation.NavigationActivity" />
             />
         </activity>
 
