@@ -22,10 +22,11 @@
             app:expandedTitleMarginStart="@dimen/medium"
             app:expandedTitleMarginEnd="@dimen/medium"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:expandedTitleTextAppearance="@style/Text.CoordinatorToolbar">
+            app:expandedTitleTextAppearance="@style/Text.Headline">
 
             <ImageView
                 android:id="@+id/fragment_coord_toolbar_backdrop"
+                android:transitionName="item_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"

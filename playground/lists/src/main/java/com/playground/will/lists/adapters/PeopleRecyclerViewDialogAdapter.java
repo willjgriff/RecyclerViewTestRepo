@@ -3,12 +3,15 @@ package com.playground.will.lists.adapters;
 import android.support.annotation.LayoutRes;
 import android.view.View;
 
-import java.util.List;
-
 import com.playground.will.lists.data.Person;
+
+import java.util.List;
 
 /**
  * Created by Will on 10/02/2016.
+ * </p>
+ * I would probably create a new recyclerView here instead
+ * of extending one but for testing purposes this is acceptable.
  */
 public class PeopleRecyclerViewDialogAdapter extends PeopleRecyclerViewAdapter {
 

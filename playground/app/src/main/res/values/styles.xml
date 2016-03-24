@@ -22,6 +22,9 @@
     <style name="Theme.Playground.ToolbarCoord" parent="AppTheme">
     </style>
 
+    <style name="Theme.Playground.RecyclerItem" parent="AppTheme">
+    </style>
+
     <style name="FragmentTheme" parent="AppTheme">
         <item name="android:background">@color/bg_main</item>
     </style>
@@ -49,23 +52,6 @@
         <item name="android:paddingLeft">@dimen/xsmall</item>
         <item name="android:paddingRight">@dimen/xsmall</item>
         <item name="colorButtonNormal">@color/accent</item>
-    </style>
-
-    <style name="Text">
-    </style>
-
-    <style name="Text.Title">
-        <item name="android:textSize">@dimen/title</item>
-        <item name="android:textColor">@color/primary_text</item>
-    </style>
-
-    <style name="Text.Subtitle">
-        <item name="android:textSize">@dimen/subtitle</item>
-        <item name="android:textColor">@color/secondary_text</item>
-    </style>
-
-    <style name="Text.CoordinatorToolbar">
-        <item name="android:textSize">@dimen/headline</item>
     </style>
 
 </resources>

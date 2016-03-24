@@ -12,10 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.will.Playground.R;
+import com.playground.will.lists.data.Person;
 
 import java.util.List;
-
-import com.playground.will.lists.data.Person;
 
 /**
  * Created by Will on 01/02/2016.
@@ -26,10 +25,14 @@ public class PeopleRecyclerViewAdapter extends RecyclerView.Adapter<PeopleRecycl
     protected List<Person> mPeople;
     private int mLayoutItem;
 
-    // In reality I wouldn't pass a layout reference here, but for playing purpose it's okay.
-    public PeopleRecyclerViewAdapter(Context context, List<Person> mPeople, @LayoutRes int layoutItem) {
+    public PeopleRecyclerViewAdapter(Context context, List<Person> mPeople) {
+        this(context, mPeople, R.layout.adapter_recycler_view_item);
+    }
+
+    // In reality I think I would create a new recyclerView here instead of passing the layout.
+    public PeopleRecyclerViewAdapter(Context context, List<Person> people, @LayoutRes int layoutItem) {
         this.mContext = context;
-        this.mPeople = mPeople;
+        this.mPeople = people;
         this.mLayoutItem = layoutItem;
     }
 

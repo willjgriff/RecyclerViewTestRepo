@@ -1,8 +1,11 @@
 package com.playground.will.lists;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,19 +13,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.will.Playground.R;
+import com.playground.will.lists.adapters.PeopleRecyclerViewAdapter;
+import com.playground.will.lists.adapters.PeopleRecyclerViewWithClickAdapter;
+import com.playground.will.lists.adapters.PeopleRecyclerViewWithClickAdapter.RecyclerViewListener;
+import com.playground.will.lists.data.Person;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.playground.will.lists.adapters.PeopleRecyclerViewAdapter;
-import com.playground.will.lists.data.Person;
 
 import static com.playground.will.lists.ListsFragment.FRAGMENT_ARGS;
 
 /**
  * Created by Will on 01/02/2016.
  */
-public class RecyclerViewFragment extends Fragment {
+public class RecyclerViewFragment extends Fragment implements RecyclerViewListener {
 
     RecyclerView mRecyclerView;
 
@@ -43,9 +47,22 @@ public class RecyclerViewFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
-        PeopleRecyclerViewAdapter peopleRecyclerViewAdapter = new PeopleRecyclerViewAdapter(getContext(), people, R.layout.adapter_recycler_view_item);
+        PeopleRecyclerViewAdapter peopleRecyclerViewAdapter = new PeopleRecyclerViewWithClickAdapter(getContext(), people, this);
         mRecyclerView.setAdapter(peopleRecyclerViewAdapter);
 
         return view;
+    }
+
+    @Override
+    public void recyclerViewItemClick(Person person, View transitionImage, View transitionName, View transitionAge) {
+        Intent intent = new Intent(getActivity(), RecyclerItemActivity.class);
+        intent.putExtra(RecyclerItemActivity.EXTRA_PERSON, person);
+
+        Pair<View, String> pairImage = Pair.create(transitionImage, "item_image");
+        Pair<View, String> pairName = Pair.create(transitionName, "item_name");
+        Pair<View, String> pairAge = Pair.create(transitionAge, "item_age");
+
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), pairImage, pairName, pairAge);
+        getActivity().startActivity(intent, options.toBundle());
     }
 }

@@ -10,7 +10,7 @@
 
         <activity
             android:name="com.playground.will.navigation.NavigationActivity"
-            android:label="Navigation Activitanga"
+            android:label="Navigation Activity"
             android:launchMode="singleTop"
             android:theme="@style/Theme.Playground.Navigation">
             <intent-filter>
@@ -22,7 +22,7 @@
 
         <activity
             android:name="com.playground.will.coord.CoordFabActivity"
-            android:label="Fab Coord Activitanga"
+            android:label="Fab Coord Activity"
             android:theme="@style/Theme.Playground.FabCoord">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -32,8 +32,19 @@
 
         <activity
             android:name="com.playground.will.coord.CoordToolbarActivity"
-            android:label="Toolbar Coord Activitanga"
+            android:label="Toolbar Coord Activity"
             android:theme="@style/Theme.Playground.ToolbarCoord">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.playground.will.navigation.NavigationActivity" />
+            />
+        </activity>
+
+        RecyclerItemActivity
+        <activity
+            android:name="com.playground.will.lists.RecyclerItemActivity"
+            android:label="Recycler Item Activity"
+            android:theme="@style/Theme.Playground.RecyclerItem">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.playground.will.navigation.NavigationActivity" />
