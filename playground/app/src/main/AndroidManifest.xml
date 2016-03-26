@@ -9,7 +9,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="com.playground.will.navigation.NavigationActivity"
+            android:name="com.github.willjgriff.playground.navigation.NavigationActivity"
             android:label="Navigation Activity"
             android:launchMode="singleTop"
             android:theme="@style/Theme.Playground.Navigation">
@@ -21,33 +21,33 @@
         </activity>
 
         <activity
-            android:name="com.playground.will.coord.CoordFabActivity"
+            android:name="com.github.willjgriff.playground.coord.CoordFabActivity"
             android:label="Fab Coord Activity"
             android:theme="@style/Theme.Playground.FabCoord">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.playground.will.navigation.NavigationActivity" />
+                android:value="com.github.willjgriff.playground.navigation.NavigationActivity" />
             />
         </activity>
 
         <activity
-            android:name="com.playground.will.coord.CoordToolbarActivity"
+            android:name="com.github.willjgriff.playground.coord.CoordToolbarActivity"
             android:label="Toolbar Coord Activity"
             android:theme="@style/Theme.Playground.ToolbarCoord">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.playground.will.navigation.NavigationActivity" />
+                android:value="com.github.willjgriff.playground.navigation.NavigationActivity" />
             />
         </activity>
 
         RecyclerItemActivity
         <activity
-            android:name="com.playground.will.lists.RecyclerItemActivity"
+            android:name="com.github.willjgriff.playground.lists.RecyclerItemActivity"
             android:label="Recycler Item Activity"
             android:theme="@style/Theme.Playground.RecyclerItem">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.playground.will.navigation.NavigationActivity" />
+                android:value="com.github.willjgriff.playground.navigation.NavigationActivity" />
             />
         </activity>
 
