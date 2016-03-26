@@ -17,16 +17,15 @@ import android.view.View;
 
 import com.example.will.Playground.R;
 import com.github.willjgriff.playground.UiUtils;
+import com.github.willjgriff.playground.coord.CoordsFragment;
+import com.github.willjgriff.playground.lists.ListsFragment;
+import com.github.willjgriff.playground.tabs.TabLayoutFragment;
+import com.github.willjgriff.playground.web.WebViewFragment;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import com.github.willjgriff.playground.coord.CoordsFragment;
-import com.github.willjgriff.playground.lists.ListsFragment;
-import com.github.willjgriff.playground.tabs.TabLayoutFragment;
-import com.github.willjgriff.playground.web.WebViewFragment;
 
 import static com.github.willjgriff.playground.navigation.NavigationActivity.EntryTag.COORD;
 import static com.github.willjgriff.playground.navigation.NavigationActivity.EntryTag.LISTS;
@@ -141,12 +140,6 @@ public class NavigationActivity extends AppCompatActivity {
         int entryTitleRes = entryTag.getTitle();
         getSupportActionBar().setTitle(getString(entryTitleRes));
 
-//        // TODO: This is unsustainable and needs to be fixed.
-//        if (getSupportActionBar().getElevation() == 0) {
-//            // The tabLayout must remove the elevation so we put it back here.
-//            getSupportActionBar().setElevation(UiUtils.convertDpToPixel(4, NavigationActivity.this));
-//        }
-
         mNavigationDrawer.closeDrawer(mNavigationList);
     }
 
@@ -159,7 +152,7 @@ public class NavigationActivity extends AppCompatActivity {
     private void replaceFragment(Fragment fragment, EntryTag entryTag) {
         if (getSupportActionBar().getElevation() == 0) {
             // The tabLayout must remove the elevation so we put it back here.
-            // Visually this isn't ideal.
+            // TODO: Visually this isn't ideal.
             getSupportActionBar().setElevation(UiUtils.convertDpToPixel(4, NavigationActivity.this));
         }
 
