@@ -10,8 +10,8 @@
         android:id="@+id/fragment_coord_toolbar_app_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/coord_toolbar_height"
-        android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:background="#00000000" >
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/fragment_coord_toolbar_collapsing_toolbar"
@@ -26,20 +26,20 @@
 
             <ImageView
                 android:id="@+id/fragment_coord_toolbar_backdrop"
-                android:transitionName="item_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:fitsSystemWindows="true"
                 android:src="@drawable/red_panda"
+                android:fitsSystemWindows="true"
                 app:layout_collapseMode="parallax"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/fragment_coord_toolbar_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                app:layout_collapseMode="pin"/>
+                android:fitsSystemWindows="true"
+                app:contentScrim="@color/primary"
+                app:layout_collapseMode="pin" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
 

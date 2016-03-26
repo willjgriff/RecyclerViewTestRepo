@@ -15,4 +15,9 @@
         <item name="android:windowContentTransitions">true</item>
     </style>
 
+    <style name="Theme.Playground.ToolbarCoord" parent="AppTheme">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/accent</item>
+    </style>
+
 </resources>

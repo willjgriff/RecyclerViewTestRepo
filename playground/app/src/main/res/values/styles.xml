@@ -25,6 +25,8 @@
     <style name="Theme.Playground.RecyclerItem" parent="AppTheme">
     </style>
 
+
+
     <style name="FragmentTheme" parent="AppTheme">
         <item name="android:background">@color/bg_main</item>
     </style>
