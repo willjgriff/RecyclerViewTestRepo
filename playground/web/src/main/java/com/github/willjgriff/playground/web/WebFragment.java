@@ -26,26 +26,23 @@ import retrofit.Retrofit;
 /**
  * Created by Will on 13/03/2016.
  */
-public class WebViewFragment extends Fragment {
-
-    final String apiKey = "4eeec5eabda1a778430eed3981449334";
+public class WebFragment extends Fragment {
 
     ArrayAdapter<StackOverflowQuestion> mAdapter;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_web_view, container, false);
+        View view = inflater.inflate(R.layout.fragment_web, container, false);
 
-        ListView soList = (ListView) view.findViewById(R.id.fragment_web_view_questions_list);
-
+        ListView soQuestionsList = (ListView) view.findViewById(R.id.fragment_web_questions_list);
         mAdapter = new ArrayAdapter<>(getActivity(),
                         android.R.layout.simple_list_item_1,
                         android.R.id.text1,
                         new ArrayList<StackOverflowQuestion>());
-        soList.setAdapter(mAdapter);
+        soQuestionsList.setAdapter(mAdapter);
 
-        view.findViewById(R.id.fragment_web_view_get_questions).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.fragment_web_get_questions).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loadSoQuestions();

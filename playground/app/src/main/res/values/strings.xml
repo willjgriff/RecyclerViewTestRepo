@@ -22,6 +22,6 @@
     <string name="fragment_coord_toolbar_title">Coordinator Layout</string>
     <string name="fragment_coord_snackbar">FAB-ulous</string>
 
-
-    <string name="get_fragment_web_view_stack_overflow_questions">Get Stack Overflow Questions</string>
+    <!--Web responses-->
+    <string name="fragment_web_stack_overflow_questions">Get Stack Overflow Questions</string>
 </resources>

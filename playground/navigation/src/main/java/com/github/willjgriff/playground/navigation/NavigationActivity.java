@@ -20,7 +20,7 @@ import com.github.willjgriff.playground.UiUtils;
 import com.github.willjgriff.playground.coord.CoordsFragment;
 import com.github.willjgriff.playground.lists.ListsFragment;
 import com.github.willjgriff.playground.tabs.TabLayoutFragment;
-import com.github.willjgriff.playground.web.WebViewFragment;
+import com.github.willjgriff.playground.web.WebFragment;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -195,7 +195,7 @@ public class NavigationActivity extends AppCompatActivity {
         mNavEntries.add(new NavigationEntry(getString(EntryTag.WEB.getTitle()), getResources().getInteger(EntryTag.WEB.getPosition()), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new WebViewFragment(), EntryTag.WEB);
+                replaceFragment(new WebFragment(), EntryTag.WEB);
             }
         }));
 

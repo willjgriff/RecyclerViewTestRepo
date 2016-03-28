@@ -1,5 +1,7 @@
 package com.github.willjgriff.playground.api.model.stackoverflow;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -7,9 +9,10 @@ import java.util.List;
  */
 public class StackOverflowQuestions {
 
-    public List<StackOverflowQuestion> items;
+    @SerializedName("items")
+    public List<StackOverflowQuestion> stackOverflowQuestions;
 
     public List<StackOverflowQuestion> getQuestions() {
-        return items;
+        return stackOverflowQuestions;
     }
 }

@@ -5,7 +5,7 @@
     <string name="navigation_coord_fragment">Coordinators</string>
     <string name="navigation_navigation_activity">Navigation Activity</string>
     <string name="navigation_tab_layout_fragment">Tab Layout</string>
-    <string name="navigation_web_view_fragment">Web View</string>
+    <string name="navigation_web_view_fragment">Web</string>
 
     <!--Navigation positions-->
     <integer name="navigation_list_activity">1</integer>

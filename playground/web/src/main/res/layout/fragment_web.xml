@@ -6,14 +6,14 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/fragment_web_view_get_questions"
+        android:id="@+id/fragment_web_get_questions"
         android:theme="@style/ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/get_fragment_web_view_stack_overflow_questions" />
+        android:text="@string/fragment_web_stack_overflow_questions" />
 
     <ListView
-        android:id="@+id/fragment_web_view_questions_list"
+        android:id="@+id/fragment_web_questions_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
