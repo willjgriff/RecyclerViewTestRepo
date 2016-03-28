@@ -2,6 +2,7 @@ package com.github.willjgriff.playground.api.model.movies;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
  */
 public class TopMovies {
 
+    @SerializedName("results")
     List<Movie> topMovies = new ArrayList<>();
 
     public List<Movie> getTopMovies() {

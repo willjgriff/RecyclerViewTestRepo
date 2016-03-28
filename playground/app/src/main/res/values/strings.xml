@@ -24,4 +24,5 @@
 
     <!--Web responses-->
     <string name="fragment_web_stack_overflow_questions">Get Stack Overflow Questions</string>
+    <string name="fragment_web_top_movies">Get Top Movies</string>
 </resources>

@@ -10,6 +10,6 @@ import retrofit.http.GET;
  */
 public interface TheMovieDbApi {
 
-    @GET("/lists/movies/box_office.json")
-    public Call<TopMovies> listRepos();
+    @GET("/3/movie/popular")
+    public Call<TopMovies> listTopMovies();
 }

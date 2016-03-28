@@ -35,8 +35,8 @@ ext {
     supportLibVersion = '23.1.1'
     fabVersion = '1.10.1'
     gsonVersion = '2.4'
-    androidAsyncHttpVersion = '1.4.9'
     retrofitVersion = '2.0.0-beta2'
+    picassoVersion = '2.5.2'
 }
 
 dependencies {
@@ -46,9 +46,8 @@ dependencies {
     compile "com.android.support:cardview-v7:${supportLibVersion}"
     compile "com.android.support:recyclerview-v7:${supportLibVersion}"
 
-    compile "com.google.code.gson:gson:${gsonVersion}"
     compile "com.squareup.retrofit:retrofit:${retrofitVersion}"
     compile "com.squareup.retrofit:converter-gson:${retrofitVersion}"
-    compile "com.loopj.android:android-async-http:${androidAsyncHttpVersion}"
     compile "com.getbase:floatingactionbutton:${fabVersion}"
+    compile "com.squareup.picasso:picasso:${picassoVersion}"
 }

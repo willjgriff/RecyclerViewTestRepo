@@ -10,7 +10,7 @@ import java.util.List;
 public class StackOverflowQuestions {
 
     @SerializedName("items")
-    public List<StackOverflowQuestion> stackOverflowQuestions;
+    List<StackOverflowQuestion> stackOverflowQuestions;
 
     public List<StackOverflowQuestion> getQuestions() {
         return stackOverflowQuestions;

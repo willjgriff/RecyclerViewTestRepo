@@ -1,20 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:theme="@style/FragmentTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:theme="@style/FragmentTheme">
 
     <Button
         android:id="@+id/fragment_web_get_questions"
-        android:theme="@style/ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/fragment_web_stack_overflow_questions" />
+        android:text="@string/fragment_web_stack_overflow_questions"
+        android:theme="@style/ButtonStyle" />
 
-    <ListView
-        android:id="@+id/fragment_web_questions_list"
+    <Button
+        android:id="@+id/fragment_web_get_top_movies"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_web_top_movies"
+        android:theme="@style/ButtonStyle" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/fragment_web_questions_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ProgressBar
+            android:id="@+id/fragment_web_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+
+    <!--<ListView-->
+        <!--android:id="@+id/fragment_web_questions_list"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
 
 </LinearLayout>

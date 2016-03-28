@@ -152,7 +152,7 @@ public class NavigationActivity extends AppCompatActivity {
     private void replaceFragment(Fragment fragment, EntryTag entryTag) {
         if (getSupportActionBar().getElevation() == 0) {
             // The tabLayout must remove the elevation so we put it back here.
-            // TODO: Visually this isn't ideal.
+            // TODO: This doesn't work. Elevation can be left at 0 when popping backstack. Needs rethinking.
             getSupportActionBar().setElevation(UiUtils.convertDpToPixel(4, NavigationActivity.this));
         }
 

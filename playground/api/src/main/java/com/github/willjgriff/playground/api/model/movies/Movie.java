@@ -30,5 +30,10 @@ public class Movie {
         return releaseDate;
     }
 
+    @Override
+    public String toString() {
+        return title;
+    }
+
 
 }
