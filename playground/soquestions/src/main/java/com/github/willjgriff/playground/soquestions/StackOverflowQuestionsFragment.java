@@ -1,4 +1,4 @@
-package com.github.willjgriff.playground.web;
+package com.github.willjgriff.playground.soquestions;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -25,7 +25,7 @@ import retrofit.Retrofit;
 /**
  * Created by Will on 13/03/2016.
  */
-public class WebFragment extends Fragment {
+public class StackOverflowQuestionsFragment extends Fragment {
 
     ArrayAdapter<Object> mAdapter;
     ProgressBar mProgressBar;
@@ -33,30 +33,18 @@ public class WebFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_web, container, false);
+        View view = inflater.inflate(R.layout.fragment_stack_overflow_questions, container, false);
 
-        mProgressBar = (ProgressBar) view.findViewById(R.id.fragment_web_progress_bar);
-        ListView soQuestionsList = (ListView) view.findViewById(R.id.fragment_web_questions_list);
+        mProgressBar = (ProgressBar) view.findViewById(R.id.fragment_stack_overflow_questions_progress_bar);
+        ListView soQuestionsList = (ListView) view.findViewById(R.id.fragment_stack_overflow_questions_list);
         mAdapter = new ArrayAdapter<>(getActivity(),
                         android.R.layout.simple_list_item_1,
                         android.R.id.text1,
                         new ArrayList<>());
         soQuestionsList.setAdapter(mAdapter);
 
-        view.findViewById(R.id.fragment_web_get_questions).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showProgressBar();
-                loadStackOverflowQuestions();
-            }
-        });
-        view.findViewById(R.id.fragment_web_get_top_movies).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showProgressBar();
-                loadTopMovies();
-            }
-        });
+        showProgressBar();
+        loadStackOverflowQuestions();
 
         return view;
     }

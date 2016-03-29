@@ -5,11 +5,13 @@
     <string name="navigation_coord_fragment">Coordinators</string>
     <string name="navigation_navigation_activity">Navigation Activity</string>
     <string name="navigation_tab_layout_fragment">Tab Layout</string>
-    <string name="navigation_web_view_fragment">Web</string>
+    <string name="navigation_so_questions_fragment">Stack Overflow Questions</string>
+    <string name="navigation_top_movies_fragment">Top Movies</string>
 
     <!--Navigation positions-->
     <integer name="navigation_list_activity">1</integer>
     <integer name="navigation_coord_fragment">2</integer>
     <integer name="navigation_tab_layout_fragment">3</integer>
-    <integer name="navigation_web_view_fragment">4</integer>
+    <integer name="navigation_so_questions_fragment">4</integer>
+    <integer name="navigation_top_movies_fragment">5</integer>
 </resources>

@@ -19,8 +19,9 @@ import com.example.will.Playground.R;
 import com.github.willjgriff.playground.UiUtils;
 import com.github.willjgriff.playground.coord.CoordsFragment;
 import com.github.willjgriff.playground.lists.ListsFragment;
+import com.github.willjgriff.playground.movies.TopMoviesFragment;
 import com.github.willjgriff.playground.tabs.TabLayoutFragment;
-import com.github.willjgriff.playground.web.WebFragment;
+import com.github.willjgriff.playground.soquestions.StackOverflowQuestionsFragment;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -50,7 +51,8 @@ public class NavigationActivity extends AppCompatActivity {
         LISTS(R.string.navigation_list_activity, R.integer.navigation_list_activity),
         COORD(R.string.navigation_coord_fragment, R.integer.navigation_coord_fragment),
         TABS(R.string.navigation_tab_layout_fragment, R.integer.navigation_tab_layout_fragment),
-        WEB(R.string.navigation_web_view_fragment, R.integer.navigation_web_view_fragment);
+        SO_QUESTIONS(R.string.navigation_so_questions_fragment, R.integer.navigation_so_questions_fragment),
+        TOP_MOVIES(R.string.navigation_top_movies_fragment, R.integer.navigation_top_movies_fragment);
 
         private int mTitle;
         private int mPosition;
@@ -192,10 +194,16 @@ public class NavigationActivity extends AppCompatActivity {
                 replaceFragment(new TabLayoutFragment(), TABS);
             }
         }));
-        mNavEntries.add(new NavigationEntry(getString(EntryTag.WEB.getTitle()), getResources().getInteger(EntryTag.WEB.getPosition()), new View.OnClickListener() {
+        mNavEntries.add(new NavigationEntry(getString(EntryTag.SO_QUESTIONS.getTitle()), getResources().getInteger(EntryTag.SO_QUESTIONS.getPosition()), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new WebFragment(), EntryTag.WEB);
+                replaceFragment(new StackOverflowQuestionsFragment(), EntryTag.SO_QUESTIONS);
+            }
+        }));
+        mNavEntries.add(new NavigationEntry(getString(EntryTag.TOP_MOVIES.getTitle()), getResources().getInteger(EntryTag.TOP_MOVIES.getPosition()), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new TopMoviesFragment(), EntryTag.TOP_MOVIES);
             }
         }));
 
