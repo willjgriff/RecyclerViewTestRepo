@@ -3,19 +3,17 @@ package com.github.willjgriff.playground.movies;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.example.will.Playground.R;
 import com.github.willjgriff.playground.api.RetrofitCalls;
 import com.github.willjgriff.playground.api.model.movies.TopMovies;
-
-import java.util.ArrayList;
 
 import retrofit.Callback;
 import retrofit.Response;
@@ -26,8 +24,9 @@ import retrofit.Retrofit;
  */
 public class TopMoviesFragment extends Fragment {
 
-    ArrayAdapter<Object> mAdapter;
+    TopMoviesAdapter mAdapter;
     ProgressBar mProgressBar;
+    RecyclerView mRecyclerView;
 
     @Nullable
     @Override
@@ -35,15 +34,16 @@ public class TopMoviesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_top_movies, container, false);
 
         mProgressBar = (ProgressBar) view.findViewById(R.id.fragment_top_movies_progress_bar);
-        mAdapter = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_list_item_1,
-                android.R.id.text1,
-                new ArrayList<>());
 
-        ListView topMoviesList = (ListView) view.findViewById(R.id.fragment_top_movies_list);
-        topMoviesList.setAdapter(mAdapter);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.fragment_top_movies_recycler_view);
+        mRecyclerView.setHasFixedSize(true);
 
-        showProgressBar();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+
+        mAdapter = new TopMoviesAdapter(getContext());
+        mRecyclerView.setAdapter(mAdapter);
+
         loadTopMovies();
 
         return view;
@@ -53,7 +53,7 @@ public class TopMoviesFragment extends Fragment {
         RetrofitCalls.topMoviesCall().enqueue(new Callback<TopMovies>() {
             @Override
             public void onResponse(Response<TopMovies> response, Retrofit retrofit) {
-                mAdapter.addAll(response.body().getTopMovies());
+                mAdapter.setMovies(response.body().getTopMovies());
                 dismissProgressBar();
             }
 
@@ -62,11 +62,6 @@ public class TopMoviesFragment extends Fragment {
                 Log.e("Tag", "Failed to connect to The Move Db");
             }
         });
-    }
-
-    private void showProgressBar() {
-        mAdapter.clear();
-        mProgressBar.setVisibility(View.VISIBLE);
     }
 
     private void dismissProgressBar() {

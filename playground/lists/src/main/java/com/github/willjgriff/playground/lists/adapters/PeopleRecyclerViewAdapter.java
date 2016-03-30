@@ -26,7 +26,7 @@ public class PeopleRecyclerViewAdapter extends RecyclerView.Adapter<PeopleRecycl
     private int mLayoutItem;
 
     public PeopleRecyclerViewAdapter(Context context, List<Person> mPeople) {
-        this(context, mPeople, R.layout.adapter_recycler_view_item);
+        this(context, mPeople, R.layout.view_recycler_view_item);
     }
 
     // In reality I think I would create a new recyclerView here instead of passing the layout.

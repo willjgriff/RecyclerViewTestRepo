@@ -18,6 +18,9 @@ public class Movie {
     @SerializedName("release_date")
     String releaseDate;
 
+    @SerializedName("poster_path")
+    String posterImage;
+
     public String getId() {
         return id;
     }
@@ -28,6 +31,10 @@ public class Movie {
 
     public String getReleaseDate() {
         return releaseDate;
+    }
+
+    public String getPosterImage() {
+        return posterImage;
     }
 
     @Override

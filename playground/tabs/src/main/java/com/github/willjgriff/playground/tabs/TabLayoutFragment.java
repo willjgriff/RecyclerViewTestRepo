@@ -35,4 +35,10 @@ public class TabLayoutFragment extends Fragment {
 
         return view;
     }
+
+    @Override
+    public void onDestroyView() {
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setElevation(UiUtils.convertDpToPixel(4, getContext()));
+        super.onDestroyView();
+    }
 }

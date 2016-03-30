@@ -11,7 +11,7 @@
         android:theme="@style/Text.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/adapter_navigation_header_text"
+        android:text="@string/view_navigation_header_text"
         android:paddingTop="@dimen/large"
         android:textColor="@color/lite_text"/>
 

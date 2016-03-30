@@ -14,7 +14,8 @@
             android:name="com.github.willjgriff.playground.navigation.NavigationActivity"
             android:label="Navigation Activity"
             android:launchMode="singleTop"
-            android:theme="@style/Theme.Playground.Navigation">
+            android:theme="@style/Theme.Playground.Navigation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,7 +26,8 @@
         <activity
             android:name="com.github.willjgriff.playground.coord.CoordFabActivity"
             android:label="Fab Coord Activity"
-            android:theme="@style/Theme.Playground.FabCoord">
+            android:theme="@style/Theme.Playground.FabCoord"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.github.willjgriff.playground.navigation.NavigationActivity" />
@@ -35,7 +37,8 @@
         <activity
             android:name="com.github.willjgriff.playground.coord.CoordToolbarActivity"
             android:label="Toolbar Coord Activity"
-            android:theme="@style/Theme.Playground.ToolbarCoord">
+            android:theme="@style/Theme.Playground.ToolbarCoord"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.github.willjgriff.playground.navigation.NavigationActivity" />
@@ -46,7 +49,8 @@
         <activity
             android:name="com.github.willjgriff.playground.lists.RecyclerItemActivity"
             android:label="Recycler Item Activity"
-            android:theme="@style/Theme.Playground.RecyclerItem">
+            android:theme="@style/Theme.Playground.RecyclerItem"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.github.willjgriff.playground.navigation.NavigationActivity" />

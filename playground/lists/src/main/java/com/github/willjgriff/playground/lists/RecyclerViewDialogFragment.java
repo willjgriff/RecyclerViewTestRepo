@@ -36,7 +36,7 @@ public class RecyclerViewDialogFragment extends DialogFragment implements Recycl
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_recycler_view_dialog_recycler_view);
 //        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-        recyclerView.setAdapter(new PeopleRecyclerViewDialogAdapter(this, People.getPeople(), R.layout.adapter_recycler_view_grid_item));
+        recyclerView.setAdapter(new PeopleRecyclerViewDialogAdapter(this, People.getPeople(), R.layout.view_recycler_view_grid_item));
 
 //      Remember AlertDialog allows you to set a custom title view!
 //        getDialog().setTitle("I AM DIALOG");

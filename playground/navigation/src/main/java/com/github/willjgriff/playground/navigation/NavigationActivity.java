@@ -6,6 +6,7 @@ import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,8 +21,8 @@ import com.github.willjgriff.playground.UiUtils;
 import com.github.willjgriff.playground.coord.CoordsFragment;
 import com.github.willjgriff.playground.lists.ListsFragment;
 import com.github.willjgriff.playground.movies.TopMoviesFragment;
-import com.github.willjgriff.playground.tabs.TabLayoutFragment;
 import com.github.willjgriff.playground.soquestions.StackOverflowQuestionsFragment;
+import com.github.willjgriff.playground.tabs.TabLayoutFragment;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -88,6 +89,7 @@ public class NavigationActivity extends AppCompatActivity {
         mNavigationList.setAdapter(mNavAdapter);
 
         mToolbar = (Toolbar) findViewById(R.id.activity_navigation_toolbar);
+        ViewCompat.setElevation(mToolbar, UiUtils.convertDpToPixel(4, this));
         setSupportActionBar(mToolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -152,12 +154,6 @@ public class NavigationActivity extends AppCompatActivity {
     }
 
     private void replaceFragment(Fragment fragment, EntryTag entryTag) {
-        if (getSupportActionBar().getElevation() == 0) {
-            // The tabLayout must remove the elevation so we put it back here.
-            // TODO: This doesn't work. Elevation can be left at 0 when popping backstack. Needs rethinking.
-            getSupportActionBar().setElevation(UiUtils.convertDpToPixel(4, NavigationActivity.this));
-        }
-
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment currentFragment = fragmentManager.findFragmentById(R.id.activity_navigation_fragment_holder);
 

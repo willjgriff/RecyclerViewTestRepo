@@ -111,7 +111,7 @@ public class ListsFragment extends Fragment implements RecyclerViewDialogFragmen
                     .commit();
         }
 
-        View singleItem = LayoutInflater.from(getContext()).inflate(R.layout.adapter_recycler_view_grid_item, mParentFrameLayout);
+        View singleItem = LayoutInflater.from(getContext()).inflate(R.layout.view_recycler_view_grid_item, mParentFrameLayout);
         ((ImageView) singleItem.findViewById(R.id.person_photo)).setImageResource(person.mPhotoId);
         ((TextView) singleItem.findViewById(R.id.person_age)).setText(person.mAge);
         ((TextView) singleItem.findViewById(R.id.person_name)).setText(person.mName);

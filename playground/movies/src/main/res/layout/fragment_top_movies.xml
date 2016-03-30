@@ -4,17 +4,16 @@
     android:layout_height="match_parent"
     android:theme="@style/FragmentTheme">
 
-    <ListView
-        android:id="@+id/fragment_top_movies_list"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/fragment_top_movies_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/bg_main"/>
+        android:layout_height="match_parent" />
 
     <ProgressBar
         android:id="@+id/fragment_top_movies_progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:visibility="invisible" />
+        android:visibility="visible" />
 </RelativeLayout>
 

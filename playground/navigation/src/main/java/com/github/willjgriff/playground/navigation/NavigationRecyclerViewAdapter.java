@@ -37,11 +37,11 @@ public class NavigationRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
         RecyclerView.ViewHolder viewHolder = null;
 
         if (viewType == ItemType.HEADER.ordinal()) {
-            View header = layoutInflater.inflate(R.layout.adapter_navigation_header, parent, false);
+            View header = layoutInflater.inflate(R.layout.view_navigation_header_item, parent, false);
             ViewCompat.setElevation(header, UiUtils.convertDpToPixel(4, parent.getContext()));
             viewHolder = new NavHeaderViewHolder(header);
         } else if (viewType == ItemType.ITEM.ordinal()) {
-            View navEntry = layoutInflater.inflate(R.layout.adapter_navigation_item, parent, false);
+            View navEntry = layoutInflater.inflate(R.layout.view_navigation_item, parent, false);
             viewHolder = new NavRecyclerViewHolder(navEntry);
         }
 

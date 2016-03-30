@@ -32,7 +32,7 @@ public class ListViewAdapter extends ArrayAdapter<Person> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View listItem = layoutInflater.inflate(R.layout.adapter_list_view_item, parent, false);
+        View listItem = layoutInflater.inflate(R.layout.view_list_view_item, parent, false);
 
         Person person = mPeople.get(position);
 
