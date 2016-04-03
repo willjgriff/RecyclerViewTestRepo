@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/view_movie_item_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -7,39 +8,44 @@
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground">
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/xsmall">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/view_movie_item_image"
             android:transitionName="item_image"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="16dp" />
-
-        <TextView
-            android:id="@+id/view_movie_item_name"
-            style="@style/Text.Title"
-            android:transitionName="item_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/person_photo"
-            android:textSize="23sp" />
+            android:adjustViewBounds="true"
+            tools:src="@drawable/red_panda" />
 
-        <TextView
-            android:id="@+id/view_movie_item_description"
-            style="@style/Text.Subtitle"
-            android:transitionName="item_age"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/person_name"
-            android:layout_toRightOf="@+id/person_photo" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/movie_item_gradient" />
 
-    </RelativeLayout>
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/view_movie_item_name"-->
+                <!--style="@style/Text.Title"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentTop="true"-->
+                <!--android:textSize="23sp" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/view_movie_item_description"-->
+                <!--style="@style/Text.Subtitle"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" />-->
+
+        <!--</LinearLayout>-->
+    </FrameLayout>
 
 </android.support.v7.widget.CardView>

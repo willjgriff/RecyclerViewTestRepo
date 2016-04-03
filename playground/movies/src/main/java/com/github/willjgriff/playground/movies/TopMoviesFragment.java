@@ -24,9 +24,8 @@ import retrofit.Retrofit;
  */
 public class TopMoviesFragment extends Fragment {
 
-    TopMoviesAdapter mAdapter;
-    ProgressBar mProgressBar;
-    RecyclerView mRecyclerView;
+    private TopMoviesAdapter mAdapter;
+    private ProgressBar mProgressBar;
 
     @Nullable
     @Override
@@ -35,14 +34,14 @@ public class TopMoviesFragment extends Fragment {
 
         mProgressBar = (ProgressBar) view.findViewById(R.id.fragment_top_movies_progress_bar);
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.fragment_top_movies_recycler_view);
-        mRecyclerView.setHasFixedSize(true);
+        RecyclerView topMovieList = (RecyclerView) view.findViewById(R.id.fragment_top_movies_recycler_view);
+        topMovieList.setHasFixedSize(true);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        mRecyclerView.setLayoutManager(linearLayoutManager);
+        topMovieList.setLayoutManager(linearLayoutManager);
 
         mAdapter = new TopMoviesAdapter(getContext());
-        mRecyclerView.setAdapter(mAdapter);
+        topMovieList.setAdapter(mAdapter);
 
         loadTopMovies();
 

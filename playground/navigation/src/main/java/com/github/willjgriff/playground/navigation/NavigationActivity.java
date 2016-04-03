@@ -33,7 +33,7 @@ import static com.github.willjgriff.playground.utils.SharedPreferenceUtils.SHARE
 /**
  * Created by Will on 18/02/2016.
  * </p>
- * Note: In future I'll use a NavigationView instead of a RecyclerView
+ * Note: In future I'll try using a NavigationView instead of a RecyclerView
  * for navigation.
  */
 public class NavigationActivity extends AppCompatActivity implements NavigationEntries.NavigationListener {
@@ -152,7 +152,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationE
             @Override
             public void onResponse(Response<MoviesConfig> response, Retrofit retrofit) {
                 Log.d("TAG", "Successfully retrieved TheMovieDb Configuration");
-                SharedPreferenceUtils.writeToPreferences(NavigationActivity.this, SHARED_MOVIES_CONFIG, response.body());
+                SharedPreferenceUtils.writeObjectToPreferences(NavigationActivity.this, SHARED_MOVIES_CONFIG, response.body());
             }
 
             @Override

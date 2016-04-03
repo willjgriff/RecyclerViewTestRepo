@@ -18,7 +18,8 @@ import com.github.willjgriff.playground.utils.SharedPreferenceUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.github.willjgriff.playground.utils.SharedPreferenceUtils.readFromPreferences;
+import static com.github.willjgriff.playground.utils.Defaults.isNull;
+import static com.github.willjgriff.playground.utils.SharedPreferenceUtils.readObjectFromPreferences;
 
 /**
  * Created by Will on 30/03/2016.
@@ -64,15 +65,19 @@ public class TopMoviesAdapter extends RecyclerView.Adapter<TopMoviesAdapter.TopM
             super(itemView);
             mLayoutView = (CardView) itemView.findViewById(R.id.view_movie_item_container);
             mMovieImage = (ImageView) itemView.findViewById(R.id.view_movie_item_image);
-            mMovieName = (TextView) itemView.findViewById(R.id.view_movie_item_name);
-            mMovieDescription = (TextView) itemView.findViewById(R.id.view_movie_item_description);
+//            mMovieName = (TextView) itemView.findViewById(R.id.view_movie_item_name);
+//            mMovieDescription = (TextView) itemView.findViewById(R.id.view_movie_item_description);
         }
 
         public void bindView(Movie movie) {
-            MoviesConfig moviesConfig = (MoviesConfig) readFromPreferences(itemView.getContext(), SharedPreferenceUtils.SHARED_MOVIES_CONFIG, MoviesConfig.class);
-            String smallPosterSize = moviesConfig.getImageConfig().getPosterSizes().get(0);
-            ApiMovieImageUtils.showImage(movie.getPosterImage(), mMovieImage)
-                    .withPlaceholder(R.drawable.movie_poster_placeholder)
+            MoviesConfig moviesConfig = readObjectFromPreferences(itemView.getContext(), SharedPreferenceUtils.SHARED_MOVIES_CONFIG, MoviesConfig.class);
+            String smallPosterSize = null;
+            if (!isNull(moviesConfig)) {
+                List<String> backdropSizes = moviesConfig.getImageConfig().getBackdropSizes();
+                smallPosterSize = backdropSizes.get(backdropSizes.size() - 2);
+            }
+            ApiMovieImageUtils.showImage(movie.getBackdropPath(), mMovieImage)
+                    .withPlaceholder(R.drawable.movie_banner_placeholder)
                     .withImageSize(smallPosterSize)
                     .now();
         }

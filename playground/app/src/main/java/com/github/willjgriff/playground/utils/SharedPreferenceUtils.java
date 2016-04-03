@@ -3,6 +3,7 @@ package com.github.willjgriff.playground.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
 
 import com.google.gson.Gson;
 
@@ -15,7 +16,7 @@ public class SharedPreferenceUtils {
 
     public static final String SHARED_MOVIES_CONFIG = "com.github.willjgriff.playground.utils;SHARED_MOVIES_CONFIG";
 
-    public static void writeToPreferences(Context context, String key, Object value) {
+    public static void writeObjectToPreferences(Context context, String key, Object value) {
         Gson gson = new Gson();
         SharedPreferences prefs = context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE);
         Editor prefsEditor = prefs.edit();
@@ -23,15 +24,11 @@ public class SharedPreferenceUtils {
         prefsEditor.putString(key, json).apply();
     }
 
-    /**
-     * This requires casting the returned object after calling. This isn't great.
-     * TODO: I think I need to understand Generics to return the correct type.
-     */
-    public static Object readFromPreferences(Context context, String key, Class<?> returnType) {
+    public static <T> T readObjectFromPreferences(Context context, String key, Class<T> returnType) {
+        PreferenceManager.getDefaultSharedPreferences(context);
         Gson gson = new Gson();
         SharedPreferences prefs = context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE);
-        Object object = gson.fromJson(prefs.getString(key, ""), returnType);
-        return object;
+        return gson.fromJson(prefs.getString(SHARED_MOVIES_CONFIG, ""), returnType);
     }
 
 }
