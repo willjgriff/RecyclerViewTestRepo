@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.will.Playground.R;
+import com.github.willjgriff.playground.api.ApiMovieImageUtils;
 import com.github.willjgriff.playground.api.model.movies.Movie;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +65,7 @@ public class TopMoviesAdapter extends RecyclerView.Adapter<TopMoviesAdapter.TopM
         }
 
         public void bindView(Movie movie) {
-            Picasso.with(mContext).load("http://image.tmdb.org/t/p/w500" + movie.getPosterImage()).into(mMovieImage);
+            ApiMovieImageUtils.loadMovieImageInto(movie.getPosterImage(), mMovieImage);
         }
     }
 }

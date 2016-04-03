@@ -2,7 +2,6 @@ package com.github.willjgriff.playground.navigation;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -13,25 +12,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.will.Playground.R;
 import com.github.willjgriff.playground.UiUtils;
-import com.github.willjgriff.playground.coord.CoordsFragment;
+import com.github.willjgriff.playground.api.RetrofitCalls;
+import com.github.willjgriff.playground.api.model.movies.MoviesConfig;
 import com.github.willjgriff.playground.lists.ListsFragment;
-import com.github.willjgriff.playground.movies.TopMoviesFragment;
-import com.github.willjgriff.playground.soquestions.StackOverflowQuestionsFragment;
-import com.github.willjgriff.playground.tabs.TabLayoutFragment;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
-import static com.github.willjgriff.playground.navigation.NavigationActivity.EntryTag.COORD;
-import static com.github.willjgriff.playground.navigation.NavigationActivity.EntryTag.LISTS;
-import static com.github.willjgriff.playground.navigation.NavigationActivity.EntryTag.TABS;
+import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag;
+import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag.LISTS;
 
 /**
  * Created by Will on 18/02/2016.
@@ -39,38 +34,13 @@ import static com.github.willjgriff.playground.navigation.NavigationActivity.Ent
  * Note: In future I'll use a NavigationView instead of a RecyclerView
  * for navigation.
  */
-public class NavigationActivity extends AppCompatActivity {
+public class NavigationActivity extends AppCompatActivity implements NavigationEntries.NavigationListener {
 
-    private List<NavigationEntry> mNavEntries = new ArrayList<>();
     private ActionBarDrawerToggle mNavigationToggle;
     private RecyclerView mNavigationList;
     private DrawerLayout mNavigationDrawer;
     private NavigationRecyclerViewAdapter mNavAdapter;
     private Toolbar mToolbar;
-
-    enum EntryTag {
-        LISTS(R.string.navigation_list_activity, R.integer.navigation_list_activity),
-        COORD(R.string.navigation_coord_fragment, R.integer.navigation_coord_fragment),
-        TABS(R.string.navigation_tab_layout_fragment, R.integer.navigation_tab_layout_fragment),
-        SO_QUESTIONS(R.string.navigation_so_questions_fragment, R.integer.navigation_so_questions_fragment),
-        TOP_MOVIES(R.string.navigation_top_movies_fragment, R.integer.navigation_top_movies_fragment);
-
-        private int mTitle;
-        private int mPosition;
-
-        EntryTag(@StringRes int title, int position) {
-            mTitle = title;
-            mPosition = position;
-        }
-
-        public int getTitle() {
-            return mTitle;
-        }
-
-        public int getPosition() {
-            return mPosition;
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,12 +50,10 @@ public class NavigationActivity extends AppCompatActivity {
         mNavigationList = (RecyclerView) findViewById(R.id.activity_navigation_view);
         mNavigationDrawer = (DrawerLayout) findViewById(R.id.activity_navigation_drawer);
 
-        addNavEntries();
-
         mNavigationList.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mNavigationList.setLayoutManager(linearLayoutManager);
-        mNavAdapter = new NavigationRecyclerViewAdapter(mNavEntries);
+        mNavAdapter = new NavigationRecyclerViewAdapter(new NavigationEntries(this, this).getNavEntries());
         mNavigationList.setAdapter(mNavAdapter);
 
         mToolbar = (Toolbar) findViewById(R.id.activity_navigation_toolbar);
@@ -104,6 +72,7 @@ public class NavigationActivity extends AppCompatActivity {
         });
 
         setNavigationToggle();
+        startupApiCalls();
     }
 
     @Override
@@ -130,6 +99,11 @@ public class NavigationActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item) || mNavigationToggle.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onEntryClicked(Fragment fragment, NavigationEntries.EntryTag entryTag) {
+        replaceFragment(fragment, entryTag);
     }
 
     private void updateView() {
@@ -171,42 +145,17 @@ public class NavigationActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    private void addNavEntries() {
-        mNavEntries.add(new NavigationEntry(getString(LISTS.getTitle()), getResources().getInteger(LISTS.getPosition()), new View.OnClickListener() {
+    private void startupApiCalls() {
+        RetrofitCalls.moviesConfigCall().enqueue(new Callback<MoviesConfig>() {
             @Override
-            public void onClick(View v) {
-                replaceFragment(new ListsFragment(), LISTS);
+            public void onResponse(Response<MoviesConfig> response, Retrofit retrofit) {
+                //Save response in DB.
+                Log.d("TAG", "Successfully retrieved TheMovieDb Configuration");
             }
-        }));
-        mNavEntries.add(new NavigationEntry(getString(COORD.getTitle()), getResources().getInteger(COORD.getPosition()), new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new CoordsFragment(), COORD);
-            }
-        }));
-        mNavEntries.add(new NavigationEntry(getString(TABS.getTitle()), getResources().getInteger(TABS.getPosition()), new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new TabLayoutFragment(), TABS);
-            }
-        }));
-        mNavEntries.add(new NavigationEntry(getString(EntryTag.SO_QUESTIONS.getTitle()), getResources().getInteger(EntryTag.SO_QUESTIONS.getPosition()), new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new StackOverflowQuestionsFragment(), EntryTag.SO_QUESTIONS);
-            }
-        }));
-        mNavEntries.add(new NavigationEntry(getString(EntryTag.TOP_MOVIES.getTitle()), getResources().getInteger(EntryTag.TOP_MOVIES.getPosition()), new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new TopMoviesFragment(), EntryTag.TOP_MOVIES);
-            }
-        }));
 
-        Collections.sort(mNavEntries, new Comparator<NavigationEntry>() {
             @Override
-            public int compare(NavigationEntry lhs, NavigationEntry rhs) {
-                return lhs.getNavigationPosition().compareTo(rhs.getNavigationPosition());
+            public void onFailure(Throwable t) {
+
             }
         });
     }

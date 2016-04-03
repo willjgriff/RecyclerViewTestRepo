@@ -7,19 +7,23 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Movie {
 
-    public String DATE_FORMAT = "yyyy-MM-dd";
+    // For Gson conversion
+//    public String DATE_FORMAT = "yyyy-MM-dd";
 
     @SerializedName("id")
-    String id;
+    private String id;
 
     @SerializedName("original_title")
-    String title;
+    private String title;
 
     @SerializedName("release_date")
-    String releaseDate;
+    private String releaseDate;
 
     @SerializedName("poster_path")
-    String posterImage;
+    private String posterImage;
+
+    @SerializedName("backdrop_path")
+    private String backdropPath;
 
     public String getId() {
         return id;
@@ -37,10 +41,7 @@ public class Movie {
         return posterImage;
     }
 
-    @Override
-    public String toString() {
-        return title;
+    public String getBackdropPath() {
+        return backdropPath;
     }
-
-
 }

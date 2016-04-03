@@ -13,7 +13,6 @@ import android.widget.ProgressBar;
 
 import com.example.will.Playground.R;
 import com.github.willjgriff.playground.api.RetrofitCalls;
-import com.github.willjgriff.playground.api.model.movies.TopMovies;
 import com.github.willjgriff.playground.api.model.stackoverflow.StackOverflowQuestions;
 
 import java.util.ArrayList;
@@ -61,21 +60,6 @@ public class StackOverflowQuestionsFragment extends Fragment {
             @Override
             public void onFailure(Throwable t) {
                 Log.e("Tag", "Failed to connect to Stack Overflow");
-            }
-        });
-    }
-
-    private void loadTopMovies() {
-        RetrofitCalls.topMoviesCall().enqueue(new Callback<TopMovies>() {
-            @Override
-            public void onResponse(Response<TopMovies> response, Retrofit retrofit) {
-                mAdapter.addAll(response.body().getTopMovies());
-                dismissProgressBar();
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-                Log.e("Tag", "Failed to connect to The Move Db");
             }
         });
     }

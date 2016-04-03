@@ -1,7 +1,5 @@
 package com.github.willjgriff.playground.api.model.movies;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
@@ -13,15 +11,15 @@ import java.util.List;
 public class TopMovies {
 
     @SerializedName("results")
-    List<Movie> topMovies = new ArrayList<>();
+    private List<Movie> topMovies = new ArrayList<>();
 
     public List<Movie> getTopMovies() {
         return topMovies;
     }
 
-    public static TopMovies parseResponse(String response) {
-        Gson gson = new GsonBuilder().create();
-        TopMovies topMoviesList = gson.fromJson(response, TopMovies.class);
-        return topMoviesList;
-    }
+//    public static TopMovies parseResponse(String response) {
+//        Gson gson = new GsonBuilder().create();
+//        TopMovies topMoviesList = gson.fromJson(response, TopMovies.class);
+//        return topMoviesList;
+//    }
 }
