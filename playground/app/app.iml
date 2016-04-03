@@ -116,6 +116,15 @@
     <content url="file://$MODULE_DIR$/../coord/src/test/java">
       <sourceFolder url="file://$MODULE_DIR$/../coord/src/test/java" isTestSource="true" />
     </content>
+    <content url="file://$MODULE_DIR$/../db/src/main/java">
+      <sourceFolder url="file://$MODULE_DIR$/../db/src/main/java" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../db/src/main/res">
+      <sourceFolder url="file://$MODULE_DIR$/../db/src/main/res" type="java-resource" />
+    </content>
+    <content url="file://$MODULE_DIR$/../db/src/test/java">
+      <sourceFolder url="file://$MODULE_DIR$/../db/src/test/java" isTestSource="true" />
+    </content>
     <content url="file://$MODULE_DIR$/../lists/src/main/java">
       <sourceFolder url="file://$MODULE_DIR$/../lists/src/main/java" isTestSource="false" />
     </content>

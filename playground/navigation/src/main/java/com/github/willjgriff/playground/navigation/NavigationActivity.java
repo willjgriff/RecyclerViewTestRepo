@@ -16,10 +16,11 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.will.Playground.R;
-import com.github.willjgriff.playground.UiUtils;
 import com.github.willjgriff.playground.api.RetrofitCalls;
 import com.github.willjgriff.playground.api.model.movies.MoviesConfig;
 import com.github.willjgriff.playground.lists.ListsFragment;
+import com.github.willjgriff.playground.utils.SharedPreferenceUtils;
+import com.github.willjgriff.playground.utils.UiUtils;
 
 import retrofit.Callback;
 import retrofit.Response;
@@ -27,6 +28,7 @@ import retrofit.Retrofit;
 
 import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag;
 import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag.LISTS;
+import static com.github.willjgriff.playground.utils.SharedPreferenceUtils.SHARED_MOVIES_CONFIG;
 
 /**
  * Created by Will on 18/02/2016.
@@ -149,13 +151,13 @@ public class NavigationActivity extends AppCompatActivity implements NavigationE
         RetrofitCalls.moviesConfigCall().enqueue(new Callback<MoviesConfig>() {
             @Override
             public void onResponse(Response<MoviesConfig> response, Retrofit retrofit) {
-                //Save response in DB.
                 Log.d("TAG", "Successfully retrieved TheMovieDb Configuration");
+                SharedPreferenceUtils.writeToPreferences(NavigationActivity.this, SHARED_MOVIES_CONFIG, response.body());
             }
 
             @Override
             public void onFailure(Throwable t) {
-
+                Log.e("TAG", "Failed to get TheMovieDb Configuration");
             }
         });
     }

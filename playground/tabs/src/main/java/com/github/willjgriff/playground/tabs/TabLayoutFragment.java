@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.will.Playground.R;
-import com.github.willjgriff.playground.UiUtils;
+import com.github.willjgriff.playground.utils.UiUtils;
 
 /**
  * Created by Will on 23/02/2016.

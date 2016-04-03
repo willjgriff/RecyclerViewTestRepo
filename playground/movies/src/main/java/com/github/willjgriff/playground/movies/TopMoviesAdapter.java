@@ -12,9 +12,13 @@ import android.widget.TextView;
 import com.example.will.Playground.R;
 import com.github.willjgriff.playground.api.ApiMovieImageUtils;
 import com.github.willjgriff.playground.api.model.movies.Movie;
+import com.github.willjgriff.playground.api.model.movies.MoviesConfig;
+import com.github.willjgriff.playground.utils.SharedPreferenceUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.github.willjgriff.playground.utils.SharedPreferenceUtils.readFromPreferences;
 
 /**
  * Created by Will on 30/03/2016.
@@ -65,7 +69,12 @@ public class TopMoviesAdapter extends RecyclerView.Adapter<TopMoviesAdapter.TopM
         }
 
         public void bindView(Movie movie) {
-            ApiMovieImageUtils.loadMovieImageInto(movie.getPosterImage(), mMovieImage);
+            MoviesConfig moviesConfig = (MoviesConfig) readFromPreferences(itemView.getContext(), SharedPreferenceUtils.SHARED_MOVIES_CONFIG, MoviesConfig.class);
+            String smallPosterSize = moviesConfig.getImageConfig().getPosterSizes().get(0);
+            ApiMovieImageUtils.showImage(movie.getPosterImage(), mMovieImage)
+                    .withPlaceholder(R.drawable.movie_poster_placeholder)
+                    .withImageSize(smallPosterSize)
+                    .now();
         }
     }
 }

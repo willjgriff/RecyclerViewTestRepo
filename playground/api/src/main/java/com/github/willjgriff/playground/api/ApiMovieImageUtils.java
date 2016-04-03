@@ -4,16 +4,8 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.widget.ImageView;
 
-import com.example.will.Playground.R;
-import com.github.willjgriff.playground.api.model.movies.MoviesConfig;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
-
-import java.util.List;
-
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
 
 import static com.github.willjgriff.playground.api.ApiConstants.TheMovieDb.URI_MOVIE_IMAGE;
 
@@ -22,33 +14,11 @@ import static com.github.willjgriff.playground.api.ApiConstants.TheMovieDb.URI_M
  */
 public class ApiMovieImageUtils {
 
-    public static void loadMovieImageInto(final String imageUri, final ImageView imageView) {
-
-        RetrofitCalls.moviesConfigCall().enqueue(new Callback<MoviesConfig>() {
-            @Override
-            public void onResponse(Response<MoviesConfig> response, Retrofit retrofit) {
-                List<String> posterSizes = response.body().getImageConfig().getPosterSizes();
-
-                // Should do more processing here to determine which size to use (eg sort list by size and use largest)
-                String largePosterSize = posterSizes.get(0);
-                showImage(imageUri, imageView)
-                        .withPlaceholder(R.drawable.movie_poster_placeholder)
-                        .withImageSize(largePosterSize)
-                        .now();
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-
-            }
-        });
-    }
-
     public static Builder showImage(String imageUri, ImageView imageView) {
         return new Builder(imageUri, imageView);
     }
 
-    private static class Builder {
+    public static class Builder {
 
         private String mImageUri;
         private ImageView mImageView;
@@ -76,8 +46,8 @@ public class ApiMovieImageUtils {
             return this;
         }
 
-        void now() {
-            RequestCreator picassoLoader = Picasso.with(mImageView.getContext()).load(getCompleteImageUri()).fit();
+        public void now() {
+            RequestCreator picassoLoader = Picasso.with(mImageView.getContext()).load(getCompleteImageUri());
 
             if (mPlaceholder != 0) {
                 picassoLoader.placeholder(mPlaceholder);

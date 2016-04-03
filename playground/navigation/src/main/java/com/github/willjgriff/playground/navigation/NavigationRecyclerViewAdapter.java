@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.will.Playground.R;
-import com.github.willjgriff.playground.UiUtils;
+import com.github.willjgriff.playground.utils.UiUtils;
 
 import java.util.List;
 

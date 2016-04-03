@@ -1,4 +1,4 @@
-package com.github.willjgriff.playground;
+package com.github.willjgriff.playground.utils;
 
 import android.content.Context;
 import android.content.res.Resources;
