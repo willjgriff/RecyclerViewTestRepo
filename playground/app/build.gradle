@@ -18,7 +18,7 @@ android {
         }
     }
 
-    def appModules = ['api', 'db', 'navigation', 'lists', 'tabs', 'coord', 'soquestions', 'movies']
+    def appModules = ['api', 'mvp', 'navigation', 'lists', 'tabs', 'coord', 'soquestions', 'movies']
 
     sourceSets {
         main {

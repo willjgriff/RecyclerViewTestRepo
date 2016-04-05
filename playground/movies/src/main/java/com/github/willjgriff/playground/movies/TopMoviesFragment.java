@@ -15,6 +15,7 @@ import com.example.will.Playground.R;
 import com.github.willjgriff.playground.api.RetrofitCalls;
 import com.github.willjgriff.playground.api.model.movies.TopMovies;
 
+import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
@@ -26,6 +27,7 @@ public class TopMoviesFragment extends Fragment {
 
     private TopMoviesAdapter mAdapter;
     private ProgressBar mProgressBar;
+    private Call<TopMovies> topMoviesCall;
 
     @Nullable
     @Override
@@ -49,7 +51,8 @@ public class TopMoviesFragment extends Fragment {
     }
 
     private void loadTopMovies() {
-        RetrofitCalls.topMoviesCall().enqueue(new Callback<TopMovies>() {
+        topMoviesCall = RetrofitCalls.topMoviesCall();
+        topMoviesCall.enqueue(new Callback<TopMovies>() {
             @Override
             public void onResponse(Response<TopMovies> response, Retrofit retrofit) {
                 mAdapter.setMovies(response.body().getTopMovies());
@@ -61,6 +64,14 @@ public class TopMoviesFragment extends Fragment {
                 Log.e("Tag", "Failed to connect to The Move Db");
             }
         });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (topMoviesCall != null) {
+            topMoviesCall.cancel();
+        }
     }
 
     private void dismissProgressBar() {
