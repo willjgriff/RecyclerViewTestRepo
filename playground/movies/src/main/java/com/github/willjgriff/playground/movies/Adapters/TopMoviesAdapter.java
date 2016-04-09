@@ -17,8 +17,8 @@ import com.github.willjgriff.playground.utils.SharedPreferenceUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.github.willjgriff.playground.movies.Utils.MovieImageSize.ImageSize.SMALL;
-import static com.github.willjgriff.playground.movies.Utils.MovieImageSize.ImageType.BACKDROP;
+import static com.github.willjgriff.playground.movies.MovieImageSizeUtil.ImageSize.SMALL;
+import static com.github.willjgriff.playground.movies.MovieImageSizeUtil.ImageType.BACKDROP;
 import static com.github.willjgriff.playground.utils.Defaults.isNull;
 import static com.github.willjgriff.playground.utils.SharedPreferenceUtils.readObjectFromPreferences;
 

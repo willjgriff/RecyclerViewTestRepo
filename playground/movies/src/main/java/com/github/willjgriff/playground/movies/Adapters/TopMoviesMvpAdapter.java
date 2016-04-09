@@ -6,8 +6,8 @@ import android.view.ViewGroup;
 
 import com.example.will.Playground.R;
 import com.github.willjgriff.playground.api.model.movies.Movie;
-import com.github.willjgriff.playground.movies.MoviePresenter;
-import com.github.willjgriff.playground.movies.MoviePresenterImpl;
+import com.github.willjgriff.playground.movies.Presenters.MoviePresenter;
+import com.github.willjgriff.playground.movies.Presenters.MoviePresenterImpl;
 import com.github.willjgriff.playground.movies.Views.TopMoviesViewHolder;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.MvpRecyclerListAdapter;
 

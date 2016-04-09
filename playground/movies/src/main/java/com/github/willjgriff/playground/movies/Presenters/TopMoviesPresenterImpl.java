@@ -1,4 +1,4 @@
-package com.github.willjgriff.playground.movies;
+package com.github.willjgriff.playground.movies.Presenters;
 
 import android.util.Log;
 

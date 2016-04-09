@@ -12,8 +12,8 @@ import android.widget.ProgressBar;
 import com.example.will.Playground.R;
 import com.github.willjgriff.playground.api.model.movies.Movie;
 import com.github.willjgriff.playground.movies.Adapters.TopMoviesMvpAdapter;
-import com.github.willjgriff.playground.movies.TopMoviesPresenter;
-import com.github.willjgriff.playground.movies.TopMoviesPresenterImpl;
+import com.github.willjgriff.playground.movies.Presenters.TopMoviesPresenter;
+import com.github.willjgriff.playground.movies.Presenters.TopMoviesPresenterImpl;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.MvpFragment;
 
 import java.util.List;

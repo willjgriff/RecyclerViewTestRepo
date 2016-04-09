@@ -1,4 +1,4 @@
-package com.github.willjgriff.playground.movies;
+package com.github.willjgriff.playground.movies.Presenters;
 
 import com.github.willjgriff.playground.api.model.movies.Movie;
 import com.github.willjgriff.playground.movies.Views.MovieView;

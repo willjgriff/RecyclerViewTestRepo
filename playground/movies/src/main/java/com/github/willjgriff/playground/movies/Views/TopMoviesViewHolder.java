@@ -6,11 +6,11 @@ import android.widget.TextView;
 
 import com.example.will.Playground.R;
 import com.github.willjgriff.playground.api.ApiMovieImageUtils;
-import com.github.willjgriff.playground.movies.MoviePresenter;
+import com.github.willjgriff.playground.movies.Presenters.MoviePresenter;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.MvpViewHolder;
 
-import static com.github.willjgriff.playground.movies.Utils.MovieImageSize.ImageSize.MEDIUM;
-import static com.github.willjgriff.playground.movies.Utils.MovieImageSize.ImageType.BACKDROP;
+import static com.github.willjgriff.playground.movies.MovieImageSizeUtil.ImageSize.MEDIUM;
+import static com.github.willjgriff.playground.movies.MovieImageSizeUtil.ImageType.BACKDROP;
 
 /**
  * Created by Will on 09/04/2016.
