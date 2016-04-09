@@ -5,4 +5,8 @@ package com.github.willjgriff.playground.movies.Views;
  */
 public interface MovieView {
     void setImage(String backdropImage);
+
+    void setTitle(String title);
+
+    void setDescription(String overview);
 }

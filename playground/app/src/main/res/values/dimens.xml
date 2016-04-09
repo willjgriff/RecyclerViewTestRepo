@@ -7,6 +7,7 @@
     <dimen name="headline">24sp</dimen>
     <dimen name="display">34sp</dimen>
 
+    <dimen name="xxxsmall">4dp</dimen>
     <dimen name="xxsmall">8dp</dimen>
     <!-- Default screen margin-->
     <dimen name="xsmall">16dp</dimen>

@@ -17,6 +17,8 @@ import com.github.willjgriff.playground.utils.SharedPreferenceUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.github.willjgriff.playground.movies.Utils.MovieImageSize.ImageSize.SMALL;
+import static com.github.willjgriff.playground.movies.Utils.MovieImageSize.ImageType.BACKDROP;
 import static com.github.willjgriff.playground.utils.Defaults.isNull;
 import static com.github.willjgriff.playground.utils.SharedPreferenceUtils.readObjectFromPreferences;
 
@@ -72,7 +74,7 @@ public class TopMoviesAdapter extends RecyclerView.Adapter<TopMoviesAdapter.TopM
             }
             ApiMovieImageUtils.showImage(movie.getBackdropImage(), mMovieImage)
                     .withPlaceholder(R.drawable.movie_banner_placeholder)
-                    .withImageSize(smallPosterSize)
+                    .withTypeSize(BACKDROP, SMALL)
                     .now();
         }
     }

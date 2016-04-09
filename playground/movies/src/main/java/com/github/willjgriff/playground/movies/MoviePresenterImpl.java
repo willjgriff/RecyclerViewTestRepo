@@ -12,5 +12,7 @@ public class MoviePresenterImpl extends BasePresenter<Movie, MovieView> implemen
     @Override
     protected void updateView() {
         view().setImage(model.getBackdropImage());
+        view().setTitle(model.getTitle());
+        view().setDescription(model.getOverview());
     }
 }

@@ -1,4 +1,4 @@
-package com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.ExampleUsage;
+package com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.ExampleMultiModelUsage;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -23,6 +23,11 @@ public class ExampleActivity extends MvpActivity<ExamplePresenterImpl> implement
 
     @Override
     public void setMovieTitle(String title) {
+        // Update title View.
+    }
 
+    @Override
+    public void setPersonName(String mName) {
+        // Update other View.
     }
 }

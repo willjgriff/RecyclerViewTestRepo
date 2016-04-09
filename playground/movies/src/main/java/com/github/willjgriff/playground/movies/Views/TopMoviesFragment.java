@@ -39,7 +39,6 @@ public class TopMoviesFragment extends MvpFragment<TopMoviesPresenter> implement
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mTopMovieList.setLayoutManager(linearLayoutManager);
 
-//        mAdapter = new TopMoviesAdapter();
         mAdapter = new TopMoviesMvpAdapter();
         mTopMovieList.setAdapter(mAdapter);
 
@@ -47,38 +46,22 @@ public class TopMoviesFragment extends MvpFragment<TopMoviesPresenter> implement
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-//        if (topMoviesCall != null) {
-//            topMoviesCall.cancel();
-//        }
+    protected TopMoviesPresenter setPresenter() {
+        return new TopMoviesPresenterImpl();
     }
-
-//    private void dismissProgressBar() {
-//        mProgressBar.setVisibility(View.INVISIBLE);
-//    }
 
     @Override
     public void showEmpty() {
-
     }
 
     @Override
     public void showLoading() {
-//        mProgressBar.setVisibility(View.VISIBLE);
-//        mTopMovieList.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void showData(List<Movie> movie) {
         mAdapter.clearAndAddAll(movie);
-//        mProgressBar.setVisibility(View.INVISIBLE);
-//        mTopMovieList.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    protected TopMoviesPresenter setPresenter() {
-        return new TopMoviesPresenterImpl();
+        mProgressBar.setVisibility(View.INVISIBLE);
     }
 
 

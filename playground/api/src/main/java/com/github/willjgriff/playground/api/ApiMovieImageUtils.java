@@ -4,6 +4,9 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.widget.ImageView;
 
+import com.github.willjgriff.playground.movies.Utils.MovieImageSize;
+import com.github.willjgriff.playground.movies.Utils.MovieImageSize.ImageSize;
+import com.github.willjgriff.playground.movies.Utils.MovieImageSize.ImageType;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 
@@ -41,8 +44,8 @@ public class ApiMovieImageUtils {
             return this;
         }
 
-        public Builder withImageSize(String imageSize) {
-            mImageSize = imageSize;
+        public Builder withTypeSize(ImageType type, ImageSize size) {
+            mImageSize = MovieImageSize.imageSizeString(mImageView.getContext(), type, size);
             return this;
         }
 
@@ -72,8 +75,7 @@ public class ApiMovieImageUtils {
 
             completeUri = completeUri + mImageUri;
 
-//            return completeUri;
-            return "http://image.tmdb.org/t/p/w1280/vsjBeMPZtyB7yNsYY56XYxifaQZ.jpg";
+            return completeUri;
         }
     }
 }

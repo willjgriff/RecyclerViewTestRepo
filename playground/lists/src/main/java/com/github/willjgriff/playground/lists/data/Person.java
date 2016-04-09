@@ -8,6 +8,7 @@ import android.os.Parcelable;
  */
 public class Person implements Parcelable {
 
+    // These shouldn't be public, I think I was being lazy when I built this Person.
     public String mName;
     public String mAge;
     public int mPhotoId;

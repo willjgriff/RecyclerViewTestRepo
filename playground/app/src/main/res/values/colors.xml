@@ -11,7 +11,7 @@
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#727272</color>
     <color name="lite_text">@color/white</color>
-    <color name="secondary_lite_text">#dedede</color>
+    <color name="secondary_lite_text">#bfbfbf</color>
     <color name="icons">#727272</color>
     <color name="divider">#B6B6B6</color>
 

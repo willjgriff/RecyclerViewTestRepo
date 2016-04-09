@@ -17,6 +17,9 @@ public class Movie implements Entity {
     @SerializedName("original_title")
     private String title;
 
+    @SerializedName("overview")
+    private String overview;
+
     @SerializedName("release_date")
     private String releaseDate;
 
@@ -32,6 +35,10 @@ public class Movie implements Entity {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getOverview() {
+        return overview;
     }
 
     public String getReleaseDate() {
