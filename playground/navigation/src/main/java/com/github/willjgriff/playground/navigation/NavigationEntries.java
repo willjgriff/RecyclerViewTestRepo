@@ -8,7 +8,7 @@ import android.view.View;
 import com.example.will.Playground.R;
 import com.github.willjgriff.playground.coord.CoordsFragment;
 import com.github.willjgriff.playground.lists.ListsFragment;
-import com.github.willjgriff.playground.movies.TopMoviesFragment;
+import com.github.willjgriff.playground.movies.Views.TopMoviesFragment;
 import com.github.willjgriff.playground.soquestions.StackOverflowQuestionsFragment;
 import com.github.willjgriff.playground.tabs.TabLayoutFragment;
 

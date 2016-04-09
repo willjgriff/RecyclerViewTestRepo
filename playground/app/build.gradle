@@ -37,6 +37,7 @@ ext {
     gsonVersion = '2.4'
     retrofitVersion = '2.0.0-beta2'
     picassoVersion = '2.5.2'
+    guavaVersion = '18.0'
 }
 
 dependencies {
@@ -50,4 +51,5 @@ dependencies {
     compile "com.squareup.retrofit:converter-gson:${retrofitVersion}"
     compile "com.getbase:floatingactionbutton:${fabVersion}"
     compile "com.squareup.picasso:picasso:${picassoVersion}"
+    compile "com.google.guava:guava:${guavaVersion}"
 }

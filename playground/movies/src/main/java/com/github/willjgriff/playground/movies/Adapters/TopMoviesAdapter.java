@@ -1,6 +1,5 @@
-package com.github.willjgriff.playground.movies;
+package com.github.willjgriff.playground.movies.Adapters;
 
-import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -27,15 +26,10 @@ import static com.github.willjgriff.playground.utils.SharedPreferenceUtils.readO
 public class TopMoviesAdapter extends RecyclerView.Adapter<TopMoviesAdapter.TopMoviesViewHolder> {
 
     List<Movie> mMovies = new ArrayList<>();
-    Context mContext;
-
-    public TopMoviesAdapter(Context context) {
-        this.mContext = context;
-    }
 
     @Override
     public TopMoviesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View movieView = LayoutInflater.from(mContext).inflate(R.layout.view_movie_item, parent, false);
+        View movieView = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_movie_item, parent, false);
         return new TopMoviesViewHolder(movieView);
     }
 
@@ -76,7 +70,7 @@ public class TopMoviesAdapter extends RecyclerView.Adapter<TopMoviesAdapter.TopM
                 List<String> backdropSizes = moviesConfig.getImageConfig().getBackdropSizes();
                 smallPosterSize = backdropSizes.get(backdropSizes.size() - 2);
             }
-            ApiMovieImageUtils.showImage(movie.getBackdropPath(), mMovieImage)
+            ApiMovieImageUtils.showImage(movie.getBackdropImage(), mMovieImage)
                     .withPlaceholder(R.drawable.movie_banner_placeholder)
                     .withImageSize(smallPosterSize)
                     .now();

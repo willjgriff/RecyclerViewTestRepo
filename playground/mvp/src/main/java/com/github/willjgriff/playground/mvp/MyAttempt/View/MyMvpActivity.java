@@ -1,16 +1,16 @@
-package com.github.willjgriff.playground.mvp.View;
+package com.github.willjgriff.playground.mvp.MyAttempt.View;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.github.willjgriff.playground.mvp.Presenter.MvpPresenter;
+import com.github.willjgriff.playground.mvp.MyAttempt.Presenter.MyBaseMvpPresenter;
 
 /**
- * Created by Will on 05/04/2016.
+ * Created by Will on 04/04/2016.
  */
-public abstract class MvpFragment<PRESENTER extends MvpPresenter> extends Fragment implements MvpView {
+public abstract class MyMvpActivity<PRESENTER extends MyBaseMvpPresenter> extends AppCompatActivity implements MyMvpView {
 
     private PRESENTER mPresenter;
 
@@ -24,9 +24,9 @@ public abstract class MvpFragment<PRESENTER extends MvpPresenter> extends Fragme
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getPresenter() == null) {
+        if (setPresenter() == null) {
             Log.e("No Presenter Set", "No presenter set. Override setPresenter() returning a valid presenter");
         }
         if (savedInstanceState != null) {
@@ -41,7 +41,7 @@ public abstract class MvpFragment<PRESENTER extends MvpPresenter> extends Fragme
      * / add more protected methods from the Presenter, to onCreate onStart onStop or onDestroy).
      */
     @Override
-    public void onResume() {
+    protected void onResume() {
         super.onResume();
         if (mPresenter != null) {
             //noinspection unchecked (Not ideal, need to understand generics better)
@@ -50,7 +50,7 @@ public abstract class MvpFragment<PRESENTER extends MvpPresenter> extends Fragme
     }
 
     @Override
-    public void onPause() {
+    protected void onPause() {
         super.onPause();
         mPresenter.removeView();
     }
@@ -60,7 +60,7 @@ public abstract class MvpFragment<PRESENTER extends MvpPresenter> extends Fragme
      * when being recreated after the system ends the View
      */
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         mPresenter.saveState(outState);
     }

@@ -1,11 +1,12 @@
 package com.github.willjgriff.playground.api.model.movies;
 
+import com.github.willjgriff.playground.api.model.Entity;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by Will on 26/03/2016.
  */
-public class Movie {
+public class Movie implements Entity {
 
     // For Gson conversion
 //    public String DATE_FORMAT = "yyyy-MM-dd";
@@ -41,7 +42,7 @@ public class Movie {
         return posterImage;
     }
 
-    public String getBackdropPath() {
+    public String getBackdropImage() {
         return backdropPath;
     }
 }

@@ -12,7 +12,7 @@ public class Person implements Parcelable {
     public String mAge;
     public int mPhotoId;
 
-    Person (String name, String age, int photoId) {
+    public Person (String name, String age, int photoId) {
         this.mName = name;
         this.mAge = age;
         this.mPhotoId = photoId;

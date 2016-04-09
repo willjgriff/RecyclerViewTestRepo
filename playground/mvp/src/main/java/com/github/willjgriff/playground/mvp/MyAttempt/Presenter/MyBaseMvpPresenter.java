@@ -1,13 +1,17 @@
-package com.github.willjgriff.playground.mvp.Presenter;
+package com.github.willjgriff.playground.mvp.MyAttempt.Presenter;
 
 import android.os.Bundle;
 
-import com.github.willjgriff.playground.mvp.View.MvpView;
+import com.github.willjgriff.playground.mvp.MyAttempt.View.MyMvpView;
 
 /**
  * Created by Will on 04/04/2016.
+ * </p>
+ * I came up with this MVP structure. But after some research I found a few much better examples,
+ * one specifically that integrates MVP into Collection Views (Remind101) that I expect I
+ * will use. Unfortunately it requires Guava...
  */
-public abstract class MvpPresenter<VIEW extends MvpView> {
+public abstract class MyBaseMvpPresenter<VIEW extends MyMvpView> implements MyMvpPresenter<VIEW> {
 
     private VIEW mView;
 
@@ -16,7 +20,7 @@ public abstract class MvpPresenter<VIEW extends MvpView> {
     }
 
     /**
-     * Called in MvpActivity onResume()
+     * Called in MyMvpActivity onResume()
      */
     public void setView(VIEW view) {
         mView = view;
@@ -24,13 +28,11 @@ public abstract class MvpPresenter<VIEW extends MvpView> {
     }
 
     /**
-     * Called in MvpActivity onPause()
+     * Called in MyMvpActivity onPause()
      */
     public void removeView() {
-        if (mView != null) {
-            mView = null;
-        }
         onRemoveView();
+        mView = null;
     }
 
     protected void onSetView() {

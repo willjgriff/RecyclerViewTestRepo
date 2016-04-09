@@ -72,7 +72,8 @@ public class ApiMovieImageUtils {
 
             completeUri = completeUri + mImageUri;
 
-            return completeUri;
+//            return completeUri;
+            return "http://image.tmdb.org/t/p/w1280/vsjBeMPZtyB7yNsYY56XYxifaQZ.jpg";
         }
     }
 }
