@@ -22,7 +22,11 @@ public class TopMoviesPresenterImpl extends ListLoadingPresenter<Movie, TopMovie
     // get null pointer exceptions. The only issue may be a hanging call that doesn't
     // cancel ever. I expect that Retrofit fails them, should check.
     public TopMoviesPresenterImpl() {
+        fetchTopMovies();
+    }
 
+    @Override
+    public void fetchTopMovies() {
         setLoading(true);
         RetrofitCalls.topMoviesCall().enqueue(new Callback<TopMovies>() {
             @Override

@@ -2,6 +2,7 @@ package com.github.willjgriff.playground.movies.Views;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -26,6 +27,7 @@ public class TopMoviesFragment extends MvpFragment<TopMoviesPresenter> implement
     private TopMoviesMvpAdapter mAdapter;
     private ProgressBar mProgressBar;
     private RecyclerView mTopMovieList;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Nullable
     @Override
@@ -41,6 +43,17 @@ public class TopMoviesFragment extends MvpFragment<TopMoviesPresenter> implement
 
         mAdapter = new TopMoviesMvpAdapter();
         mTopMovieList.setAdapter(mAdapter);
+
+        // TODO: Add a clear method to the adapter so we can see if this actually updates the list.
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.fragment_top_movies_swipe_refresh);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.accent);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getPresenter().fetchTopMovies();
+            }
+        });
+
 
         return view;
     }
@@ -62,6 +75,7 @@ public class TopMoviesFragment extends MvpFragment<TopMoviesPresenter> implement
     public void showData(List<Movie> movie) {
         mAdapter.clearAndAddAll(movie);
         mProgressBar.setVisibility(View.INVISIBLE);
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 
 
