@@ -1,5 +1,6 @@
 package com.github.willjgriff.playground.movies.Views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -11,10 +12,11 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.example.will.Playground.R;
-import com.github.willjgriff.playground.api.model.movies.Movie;
+import com.github.willjgriff.playground.api.model.movies.MovieListItem;
 import com.github.willjgriff.playground.movies.Adapters.TopMoviesMvpAdapter;
 import com.github.willjgriff.playground.movies.Presenters.TopMoviesPresenter;
 import com.github.willjgriff.playground.movies.Presenters.TopMoviesPresenterImpl;
+import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.Adapter.MvpRecyclerListAdapter;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.MvpFragment;
 
 import java.util.List;
@@ -42,18 +44,22 @@ public class TopMoviesFragment extends MvpFragment<TopMoviesPresenter> implement
         mTopMovieList.setLayoutManager(linearLayoutManager);
 
         mAdapter = new TopMoviesMvpAdapter();
+        mAdapter.setOnClickListener(new MvpRecyclerListAdapter.OnItemClickListener<MovieListItem>() {
+            @Override
+            public void onItemClicked(View view, MovieListItem movieListItem) {
+                getPresenter().onMovieItemClicked(movieListItem.getId());
+            }
+        });
         mTopMovieList.setAdapter(mAdapter);
 
-        // TODO: Add a clear method to the adapter so we can see if this actually updates the list.
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.fragment_top_movies_swipe_refresh);
         mSwipeRefreshLayout.setColorSchemeResources(R.color.accent);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                getPresenter().fetchTopMovies();
+                getPresenter().loadDataModel();
             }
         });
-
 
         return view;
     }
@@ -69,14 +75,22 @@ public class TopMoviesFragment extends MvpFragment<TopMoviesPresenter> implement
 
     @Override
     public void showLoading() {
+        mProgressBar.setVisibility(View.VISIBLE);
+        mTopMovieList.setVisibility(View.INVISIBLE);
     }
 
     @Override
-    public void showData(List<Movie> movie) {
-        mAdapter.clearAndAddAll(movie);
+    public void showData(List<MovieListItem> movieListItem) {
+        mAdapter.clearAndAddAll(movieListItem);
         mProgressBar.setVisibility(View.INVISIBLE);
+        mTopMovieList.setVisibility(View.VISIBLE);
         mSwipeRefreshLayout.setRefreshing(false);
     }
 
-
+    @Override
+    public void openMovieDetailScreen(String movieId) {
+        Intent intent = new Intent(getContext(), MovieDetailsActivity.class);
+        intent.putExtra(MovieDetailsActivity.EXTRA_MOVIE_ID, movieId);
+        startActivity(intent);
+    }
 }

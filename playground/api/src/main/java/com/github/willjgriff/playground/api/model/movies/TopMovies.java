@@ -11,9 +11,9 @@ import java.util.List;
 public class TopMovies {
 
     @SerializedName("results")
-    private List<Movie> topMovies = new ArrayList<>();
+    private List<MovieListItem> topMovies = new ArrayList<>();
 
-    public List<Movie> getTopMovies() {
+    public List<MovieListItem> getTopMovies() {
         return topMovies;
     }
 

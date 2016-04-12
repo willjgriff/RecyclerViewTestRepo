@@ -1,7 +1,7 @@
 package com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.ExampleMultiModelUsage;
 
 import com.github.willjgriff.playground.api.model.Entity;
-import com.github.willjgriff.playground.api.model.movies.Movie;
+import com.github.willjgriff.playground.api.model.movies.MovieListItem;
 import com.github.willjgriff.playground.lists.data.Person;
 
 /**
@@ -11,9 +11,9 @@ public interface ExampleMultiModel extends Entity {
 
     Person getPerson();
 
-    Movie getMovie();
+    MovieListItem getMovie();
 
     void setPerson(Person person);
 
-    void setMovie(Movie movie);
+    void setMovie(MovieListItem movieListItem);
 }

@@ -11,12 +11,12 @@ import java.lang.ref.WeakReference;
  * completely created my own but, I'm still a baby, I'll be capable one day. The Views
  * are pretty much my own. Shame it requires Guava for a Cache Map, maybe we can remove it...
  */
-public abstract class BasePresenter<M, V> implements Presenter<M, V> {
-    protected M model;
-    private WeakReference<V> view;
+public abstract class BasePresenter<MODEL, VIEW> implements Presenter<MODEL, VIEW> {
+    protected MODEL model;
+    private WeakReference<VIEW> view;
 
     @Override
-    public void setModel(M model) {
+    public void setModel(MODEL model) {
         resetState();
         this.model = model;
         if (setupDone()) {
@@ -28,7 +28,7 @@ public abstract class BasePresenter<M, V> implements Presenter<M, V> {
     }
 
     @Override
-    public void bindView(@NonNull V view) {
+    public void bindView(@NonNull VIEW view) {
         this.view = new WeakReference<>(view);
         if (setupDone()) {
             updateView();
@@ -40,7 +40,7 @@ public abstract class BasePresenter<M, V> implements Presenter<M, V> {
         this.view = null;
     }
 
-    protected V view() {
+    protected VIEW view() {
         if (view == null) {
             return null;
         } else {

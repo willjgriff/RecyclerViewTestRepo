@@ -10,42 +10,40 @@ import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.MvpView
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class MvpRecyclerAdapter<M extends Entity, P extends Presenter, VH extends MvpViewHolder<P>> extends RecyclerView.Adapter<VH> {
-    protected final Map<Object, P> presenters;
+public abstract class MvpRecyclerAdapter<MODEL extends Entity, PRESENTER extends Presenter, VIEWHOLDER extends MvpViewHolder<PRESENTER>> extends RecyclerView.Adapter<VIEWHOLDER> {
+    protected final Map<Object, PRESENTER> mPresenters;
 
     public MvpRecyclerAdapter() {
-        presenters = new HashMap<>();
+        mPresenters = new HashMap<>();
     }
 
-    @NonNull protected P getPresenter(@NonNull M model) {
+    @NonNull protected PRESENTER getPresenter(@NonNull MODEL model) {
         System.err.println("Getting presenter for item " + getModelId(model));
-        return presenters.get(getModelId(model));
+        return mPresenters.get(getModelId(model));
     }
 
-    @NonNull protected abstract P createPresenter(@NonNull M model);
+    @NonNull protected abstract PRESENTER createPresenter(@NonNull MODEL model);
 
-    @NonNull protected abstract Object getModelId(@NonNull M model);
+    @NonNull protected abstract Object getModelId(@NonNull MODEL model);
 
     @Override
-    public void onViewRecycled(VH holder) {
+    public void onViewRecycled(VIEWHOLDER holder) {
         super.onViewRecycled(holder);
-
         holder.unbindPresenter();
     }
 
     @Override
-    public boolean onFailedToRecycleView(VH holder) {
+    public boolean onFailedToRecycleView(VIEWHOLDER holder) {
         // Sometimes, if animations are running on the itemView's children, the RecyclerView won't
         // be able to recycle the view. We should still unbind the presenter.
         holder.unbindPresenter();
-
         return super.onFailedToRecycleView(holder);
     }
 
     @Override
-    public void onBindViewHolder(VH holder, int position) {
+    public void onBindViewHolder(VIEWHOLDER holder, int position) {
         holder.bindPresenter(getPresenter(getItem(position)));
     }
 
-    protected abstract M getItem(int position);
+    protected abstract MODEL getItem(int position);
 }

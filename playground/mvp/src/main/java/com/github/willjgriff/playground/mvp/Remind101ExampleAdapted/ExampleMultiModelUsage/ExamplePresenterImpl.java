@@ -1,7 +1,7 @@
 package com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.ExampleMultiModelUsage;
 
 import com.example.will.Playground.R;
-import com.github.willjgriff.playground.api.model.movies.Movie;
+import com.github.willjgriff.playground.api.model.movies.MovieListItem;
 import com.github.willjgriff.playground.lists.data.Person;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.Presenter.BasePresenter;
 
@@ -14,12 +14,12 @@ public class ExamplePresenterImpl extends BasePresenter<ExampleMultiModel, Examp
 
     public ExamplePresenterImpl() {
         // If you must have multiple Models (eg waiting for multiple Api Responses at the same time)
-        // maybe do it like this. It's really not pretty though, there must be a better way.
+        // maybe do it like this. It's not pretty though, there must be a better way.
         // Hopefully I can force one Model per View in the Model structure. If I can, there's no need for this.
 
         // Imagine this is an Asynchronous Api Request.
-        Movie movie = new Movie();
-        multiModel.setMovie(movie);
+        MovieListItem movieListItem = new MovieListItem();
+        multiModel.setMovie(movieListItem);
         if (modelComplete()) {
             setModel(multiModel);
         }

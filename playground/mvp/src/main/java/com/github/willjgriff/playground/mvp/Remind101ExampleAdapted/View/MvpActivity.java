@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.Presenter.BasePresenter;
+import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.Presenter.Presenter;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.Presenter.PresenterManager;
 
 /**
  * Created by Will on 08/04/2016.
  */
-public abstract class MvpActivity<PRESENTER extends BasePresenter> extends AppCompatActivity implements MvpView {
+public abstract class MvpActivity<PRESENTER extends Presenter> extends AppCompatActivity implements MvpView {
 
     private PRESENTER mPresenter;
 

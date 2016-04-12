@@ -9,6 +9,9 @@ import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.Presenter.Pr
 
 /**
  * Created by Will on 09/04/2016.
+ * <p>
+ * At some point I will create an abstract MvpLoadingFragment which implements {@link MvpLoadingView}
+ * and an MvpListLoadingFragment which implements {@link MvpListLoadingView}
  */
 public abstract class MvpFragment<PRESENTER extends Presenter> extends Fragment implements MvpView {
 

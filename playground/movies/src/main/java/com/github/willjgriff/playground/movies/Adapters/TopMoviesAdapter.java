@@ -9,16 +9,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.will.Playground.R;
-import com.github.willjgriff.playground.api.ApiMovieImageUtils;
-import com.github.willjgriff.playground.api.model.movies.Movie;
+import com.github.willjgriff.playground.api.utils.ApiMovieImageUtils;
+import com.github.willjgriff.playground.api.model.movies.MovieListItem;
 import com.github.willjgriff.playground.api.model.movies.MoviesConfig;
 import com.github.willjgriff.playground.utils.SharedPreferenceUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.github.willjgriff.playground.movies.MovieImageSizeUtil.ImageSize.SMALL;
-import static com.github.willjgriff.playground.movies.MovieImageSizeUtil.ImageType.BACKDROP;
+import static com.github.willjgriff.playground.api.utils.MovieImageSizeUtil.ImageSize.SMALL;
+import static com.github.willjgriff.playground.api.utils.MovieImageSizeUtil.ImageType.BACKDROP;
 import static com.github.willjgriff.playground.utils.Defaults.isNull;
 import static com.github.willjgriff.playground.utils.SharedPreferenceUtils.readObjectFromPreferences;
 
@@ -27,7 +27,7 @@ import static com.github.willjgriff.playground.utils.SharedPreferenceUtils.readO
  */
 public class TopMoviesAdapter extends RecyclerView.Adapter<TopMoviesAdapter.TopMoviesViewHolder> {
 
-    List<Movie> mMovies = new ArrayList<>();
+    List<MovieListItem> mMovies = new ArrayList<>();
 
     @Override
     public TopMoviesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -45,7 +45,7 @@ public class TopMoviesAdapter extends RecyclerView.Adapter<TopMoviesAdapter.TopM
         return mMovies.size();
     }
 
-    public void setMovies(List<Movie> movies) {
+    public void setMovies(List<MovieListItem> movies) {
         mMovies = new ArrayList<>(movies);
         notifyDataSetChanged();
     }
@@ -65,14 +65,14 @@ public class TopMoviesAdapter extends RecyclerView.Adapter<TopMoviesAdapter.TopM
 //            mMovieDescription = (TextView) itemView.findViewById(R.id.view_movie_item_description);
         }
 
-        public void bindView(Movie movie) {
+        public void bindView(MovieListItem movieListItem) {
             MoviesConfig moviesConfig = readObjectFromPreferences(itemView.getContext(), SharedPreferenceUtils.SHARED_MOVIES_CONFIG, MoviesConfig.class);
             String smallPosterSize = null;
             if (!isNull(moviesConfig)) {
                 List<String> backdropSizes = moviesConfig.getImageConfig().getBackdropSizes();
                 smallPosterSize = backdropSizes.get(backdropSizes.size() - 2);
             }
-            ApiMovieImageUtils.showImage(movie.getBackdropImage(), mMovieImage)
+            ApiMovieImageUtils.showImage(movieListItem.getBackdropImage(), mMovieImage)
                     .withPlaceholder(R.drawable.movie_banner_placeholder)
                     .withTypeSize(BACKDROP, SMALL)
                     .now();

@@ -6,7 +6,7 @@ import com.github.willjgriff.playground.mvp.MyAttempt.View.MyMvpView;
 
 /**
  * Created by Will on 04/04/2016.
- * </p>
+ * <p>
  * I came up with this MVP structure. But after some research I found a few much better examples,
  * one specifically that integrates MVP into Collection Views (Remind101) that I expect I
  * will use. Unfortunately it requires Guava...

@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by Will on 26/03/2016.
  */
-public class Movie implements Entity {
+public class MovieListItem implements Entity {
 
     // For Gson conversion
 //    public String DATE_FORMAT = "yyyy-MM-dd";

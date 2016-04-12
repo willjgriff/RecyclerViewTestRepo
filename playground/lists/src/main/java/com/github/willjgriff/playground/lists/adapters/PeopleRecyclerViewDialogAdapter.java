@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * Created by Will on 10/02/2016.
- * </p>
+ * <p>
  * I would probably create a new recyclerView here instead
  * of extending one but for testing purposes this is acceptable.
  */

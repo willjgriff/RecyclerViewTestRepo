@@ -5,23 +5,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.will.Playground.R;
-import com.github.willjgriff.playground.api.ApiMovieImageUtils;
-import com.github.willjgriff.playground.movies.Presenters.MoviePresenter;
+import com.github.willjgriff.playground.api.utils.ApiMovieImageUtils;
+import com.github.willjgriff.playground.movies.Presenters.MovieListItemPresenter;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.MvpViewHolder;
 
-import static com.github.willjgriff.playground.movies.MovieImageSizeUtil.ImageSize.MEDIUM;
-import static com.github.willjgriff.playground.movies.MovieImageSizeUtil.ImageType.BACKDROP;
+import static com.github.willjgriff.playground.api.utils.MovieImageSizeUtil.ImageSize.MEDIUM;
+import static com.github.willjgriff.playground.api.utils.MovieImageSizeUtil.ImageType.BACKDROP;
 
 /**
  * Created by Will on 09/04/2016.
  */
-public class TopMoviesViewHolder extends MvpViewHolder<MoviePresenter> implements MovieView {
+public class MovieListItemViewHolder extends MvpViewHolder<MovieListItemPresenter> implements MovieListItemView {
 
     private ImageView mMovieBackdrop;
     private TextView mTitle;
     private TextView mDescription;
 
-    public TopMoviesViewHolder(View itemView) {
+    public MovieListItemViewHolder(final View itemView) {
         super(itemView);
         mMovieBackdrop = (ImageView) itemView.findViewById(R.id.view_movie_item_image);
         mTitle = (TextView) itemView.findViewById(R.id.view_movie_item_title);

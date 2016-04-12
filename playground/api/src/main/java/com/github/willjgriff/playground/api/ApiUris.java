@@ -3,7 +3,7 @@ package com.github.willjgriff.playground.api;
 /**
  * Created by Will on 31/03/2016.
  */
-public class ApiConstants {
+public class ApiUris {
 
     public static final class StackOverflow {
 

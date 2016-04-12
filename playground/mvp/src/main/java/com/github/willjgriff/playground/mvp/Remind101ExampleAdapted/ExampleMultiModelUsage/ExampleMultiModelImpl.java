@@ -1,6 +1,6 @@
 package com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.ExampleMultiModelUsage;
 
-import com.github.willjgriff.playground.api.model.movies.Movie;
+import com.github.willjgriff.playground.api.model.movies.MovieListItem;
 import com.github.willjgriff.playground.lists.data.Person;
 
 /**
@@ -9,7 +9,7 @@ import com.github.willjgriff.playground.lists.data.Person;
 public class ExampleMultiModelImpl implements ExampleMultiModel {
 
     private Person mPerson;
-    private Movie mMovie;
+    private MovieListItem mMovieListItem;
 
     @Override
     public Person getPerson() {
@@ -17,8 +17,8 @@ public class ExampleMultiModelImpl implements ExampleMultiModel {
     }
 
     @Override
-    public Movie getMovie() {
-        return mMovie;
+    public MovieListItem getMovie() {
+        return mMovieListItem;
     }
 
     @Override
@@ -30,7 +30,7 @@ public class ExampleMultiModelImpl implements ExampleMultiModel {
         this.mPerson = person;
     }
 
-    public void setMovie(Movie movie) {
-        this.mMovie = movie;
+    public void setMovie(MovieListItem movieListItem) {
+        this.mMovieListItem = movieListItem;
     }
 }

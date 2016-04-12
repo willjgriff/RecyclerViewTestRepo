@@ -8,22 +8,34 @@ import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.Presenter.Pr
 /**
  * This is weak. I can't work out how to have this abstract class implement an interface that
  * extends the RecyclerView.ViewHolder and therefore it won't be accepted when being passed
- * to RecyclerView.Adapter<VH>. For now this class won't have an interface, lame...
- * I may remove all interfaces from the MVP stuff. Not very SOLID though.
+ * to RecyclerView.Adapter<VH>. For now this class won't have an interface. Not very SOLID.
  */
-public abstract class MvpViewHolder<P extends Presenter> extends RecyclerView.ViewHolder {
-    protected P presenter;
+public abstract class MvpViewHolder<PRESENTER extends Presenter> extends RecyclerView.ViewHolder {
+    protected PRESENTER mPresenter;
 
     public MvpViewHolder(View itemView) {
         super(itemView);
     }
 
-    public void bindPresenter(P presenter) {
-        this.presenter = presenter;
+    public void bindPresenter(PRESENTER presenter) {
+        this.mPresenter = presenter;
         presenter.bindView(this);
     }
 
     public void unbindPresenter() {
-        presenter = null;
+        mPresenter = null;
+    }
+
+    public void setViewHolderItemClickListener(final OnViewHolderItemClickListener clickListener){
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickListener.viewHolderItemClick(v, getAdapterPosition());
+            }
+        });
+    }
+
+    public interface OnViewHolderItemClickListener {
+        void viewHolderItemClick(View v, int position);
     }
 }

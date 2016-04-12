@@ -1,16 +1,15 @@
-package com.github.willjgriff.playground.api;
+package com.github.willjgriff.playground.api.utils;
 
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.widget.ImageView;
 
-import com.github.willjgriff.playground.movies.MovieImageSizeUtil;
-import com.github.willjgriff.playground.movies.MovieImageSizeUtil.ImageSize;
-import com.github.willjgriff.playground.movies.MovieImageSizeUtil.ImageType;
+import com.github.willjgriff.playground.api.utils.MovieImageSizeUtil.ImageSize;
+import com.github.willjgriff.playground.api.utils.MovieImageSizeUtil.ImageType;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 
-import static com.github.willjgriff.playground.api.ApiConstants.TheMovieDb.URI_MOVIE_IMAGE;
+import static com.github.willjgriff.playground.api.ApiUris.TheMovieDb.URI_MOVIE_IMAGE;
 
 /**
  * Created by Will on 01/04/2016.

@@ -32,9 +32,9 @@ import static com.github.willjgriff.playground.utils.SharedPreferenceUtils.SHARE
 
 /**
  * Created by Will on 18/02/2016.
- * </p>
- * Note: In future I'll try using a NavigationView instead of a RecyclerView
- * for navigation.
+ * <p>
+ * Note: In future I'll try using a {@link android.support.design.widget.NavigationView} instead of a
+ * {@link RecyclerView} for navigation.
  */
 public class NavigationActivity extends AppCompatActivity implements NavigationEntries.NavigationListener {
 

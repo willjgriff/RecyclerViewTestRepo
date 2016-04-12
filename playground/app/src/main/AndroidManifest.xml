@@ -45,11 +45,21 @@
             />
         </activity>
 
-        RecyclerItemActivity
         <activity
             android:name="com.github.willjgriff.playground.lists.RecyclerItemActivity"
             android:label="Recycler Item Activity"
             android:theme="@style/Theme.Playground.RecyclerItem"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.github.willjgriff.playground.navigation.NavigationActivity" />
+            />
+        </activity>
+
+        <activity
+            android:name="com.github.willjgriff.playground.movies.Views.MovieDetailsActivity"
+            android:label="Movie Details"
+            android:theme="@style/Theme.Playground.MovieDetails"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

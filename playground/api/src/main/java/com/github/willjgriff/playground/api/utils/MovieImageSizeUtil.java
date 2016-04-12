@@ -1,4 +1,4 @@
-package com.github.willjgriff.playground.movies;
+package com.github.willjgriff.playground.api.utils;
 
 import android.content.Context;
 
@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * Created by Will on 09/04/2016.
- * </p>
+ * <p>
  * Would ideally make Unit tests for this class.
  *
  * Example Json representing sizes:
