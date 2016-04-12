@@ -9,6 +9,8 @@ import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.Presenter.Pr
 
 /**
  * Created by Will on 08/04/2016.
+ * <p>
+ * I will create an MvpLoadingActivity which extends this.
  */
 public abstract class MvpActivity<PRESENTER extends Presenter> extends AppCompatActivity implements MvpView {
 

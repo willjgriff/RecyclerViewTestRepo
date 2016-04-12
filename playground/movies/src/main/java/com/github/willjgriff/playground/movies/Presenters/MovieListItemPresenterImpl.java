@@ -11,8 +11,8 @@ public class MovieListItemPresenterImpl extends BasePresenter<MovieListItem, Mov
 
     @Override
     protected void updateView() {
-        view().setImage(model.getBackdropImage());
-        view().setTitle(model.getTitle());
-        view().setDescription(model.getOverview());
+        view().setImage(mModel.getBackdropImage());
+        view().setTitle(mModel.getTitle());
+        view().setDescription(mModel.getOverview());
     }
 }

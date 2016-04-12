@@ -12,10 +12,10 @@ public abstract class BaseLoadingListPresenter<MODEL, VIEW extends MvpListLoadin
 
     @Override
     protected void updateView() {
-        if (model.size() == 0) {
+        if (mModel.size() == 0) {
             view().showEmpty();
         } else {
-            view().showData(model);
+            view().showData(mModel);
         }
     }
 }

@@ -34,8 +34,8 @@ public class ExamplePresenterImpl extends BasePresenter<ExampleMultiModel, Examp
 
     @Override
     protected void updateView() {
-        view().setMovieTitle((model.getMovie().getTitle()));
-        view().setPersonName((model.getPerson().mName));
+        view().setMovieTitle((mModel.getMovie().getTitle()));
+        view().setPersonName((mModel.getPerson().mName));
     }
 
     private boolean modelComplete() {

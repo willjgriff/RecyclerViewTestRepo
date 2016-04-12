@@ -2,12 +2,18 @@ package com.github.willjgriff.playground.movies.Views;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.will.Playground.R;
-import com.github.willjgriff.playground.api.model.movies.MovieFull;
+import com.github.willjgriff.playground.api.utils.ApiMovieImageUtils;
 import com.github.willjgriff.playground.movies.Presenters.MovieDetailsPresenter;
 import com.github.willjgriff.playground.movies.Presenters.MovieDetailsPresenterImpl;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.MvpActivity;
+
+import static com.github.willjgriff.playground.api.utils.MovieImageSizeUtil.ImageSize.LARGE;
+import static com.github.willjgriff.playground.api.utils.MovieImageSizeUtil.ImageType.POSTER;
 
 /**
  * Created by Will on 11/04/2016.
@@ -16,30 +22,44 @@ public class MovieDetailsActivity extends MvpActivity<MovieDetailsPresenter> imp
 
     public static final String EXTRA_MOVIE_ID = "com.github.willjgriff.playground.movies.Views.MovieDetailsActivity;EXTRA_MOVIE_ID";
 
+    TextView mTitle;
+    ImageView mPoster;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_top_movies);
+        setContentView(R.layout.activity_movie_details);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_movie_details_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        bindViews();
+    }
+
+    private void bindViews() {
+        mTitle = (TextView) findViewById(R.id.activity_movie_details_title);
+        mPoster = (ImageView) findViewById(R.id.activity_movie_details_poster);
     }
 
     @Override
     protected MovieDetailsPresenter setPresenter() {
-        String movidId = getIntent().getExtras().getString(EXTRA_MOVIE_ID);
-        return new MovieDetailsPresenterImpl(movidId);
+        String movieId = getIntent().getExtras().getString(EXTRA_MOVIE_ID);
+        return new MovieDetailsPresenterImpl(movieId);
     }
 
     @Override
-    public void showData(MovieFull movieFull) {
-
+    public void setName(String title) {
+        mTitle.setText(title);
     }
 
     @Override
-    public void showEmpty() {
-
+    public void setPoster(String posterImage) {
+        ApiMovieImageUtils
+                .showImage(posterImage, mPoster)
+                .withTypeSize(POSTER, LARGE)
+                .now();
     }
 
-    @Override
-    public void showLoading() {
-
-    }
 }

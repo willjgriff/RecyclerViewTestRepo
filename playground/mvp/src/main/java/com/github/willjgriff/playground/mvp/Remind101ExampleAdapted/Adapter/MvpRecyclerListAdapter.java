@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * I should extend this to include a loading footer.
+ */
 public abstract class MvpRecyclerListAdapter<MODEL extends Entity, PRESENTER extends Presenter, VIEWHOLDER extends MvpViewHolder<PRESENTER>> extends MvpRecyclerAdapter<MODEL, PRESENTER, VIEWHOLDER> {
     private final List<MODEL> mModels;
     private OnItemClickListener<MODEL> mItemClickListener;
