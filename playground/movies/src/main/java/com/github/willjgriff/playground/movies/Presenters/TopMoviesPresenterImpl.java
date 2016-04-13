@@ -35,7 +35,7 @@ public class TopMoviesPresenterImpl extends BaseLoadingListPresenter<MovieListIt
             public void onFailure(Throwable t) {
                 setLoading(false);
                 // TODO: Find an Android-less way of communicating errors.
-                Log.e("Tag", "Failed to connect to The Move Db");
+                Log.e("Tag", "Failed to connect to The Movie Db");
             }
         });
     }

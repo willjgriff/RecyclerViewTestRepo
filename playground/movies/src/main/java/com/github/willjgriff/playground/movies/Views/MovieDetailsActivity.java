@@ -58,6 +58,7 @@ public class MovieDetailsActivity extends MvpActivity<MovieDetailsPresenter> imp
     public void setPoster(String posterImage) {
         ApiMovieImageUtils
                 .showImage(posterImage, mPoster)
+                .withPlaceholder(R.drawable.movie_poster_placeholder)
                 .withTypeSize(POSTER, LARGE)
                 .now();
     }

@@ -6,14 +6,18 @@ import com.github.willjgriff.playground.api.model.movies.MovieFull;
 import com.github.willjgriff.playground.api.model.movies.MoviesConfig;
 import com.github.willjgriff.playground.api.model.movies.TopMovies;
 import com.github.willjgriff.playground.api.model.stackoverflow.StackOverflowQuestions;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.squareup.okhttp.OkHttpClient;
 
 import retrofit.Call;
+import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 
 import static com.github.willjgriff.playground.api.ApiUris.StackOverflow.URI_STACK_OVERFLOW;
 import static com.github.willjgriff.playground.api.ApiUris.TheMovieDb.MOVIES_API_KEY;
 import static com.github.willjgriff.playground.api.ApiUris.TheMovieDb.URI_THE_MOVIE_DB;
+import static com.github.willjgriff.playground.api.model.movies.MovieListItem.RELEASE_DATE_FORMAT;
 
 /**
  * Created by Will on 28/03/2016.
@@ -27,8 +31,9 @@ public class RetrofitCalls {
     }
 
     private static ApiTheMovieDb getTheMovieDbApi() {
+        Gson gson = new GsonBuilder().setDateFormat(RELEASE_DATE_FORMAT).create();
         OkHttpClient client = RetrofitUtils.getMoviesClientWithApiKey(MOVIES_API_KEY);
-        Retrofit retrofit = RetrofitUtils.getRetrofit(URI_THE_MOVIE_DB, client, null);
+        Retrofit retrofit = RetrofitUtils.getRetrofit(URI_THE_MOVIE_DB, client, GsonConverterFactory.create(gson));
         return retrofit.create(ApiTheMovieDb.class);
     }
 

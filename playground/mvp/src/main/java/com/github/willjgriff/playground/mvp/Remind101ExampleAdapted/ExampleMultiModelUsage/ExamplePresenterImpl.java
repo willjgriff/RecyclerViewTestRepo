@@ -14,7 +14,7 @@ public class ExamplePresenterImpl extends BasePresenter<ExampleMultiModel, Examp
 
     public ExamplePresenterImpl() {
         // If you must have multiple Models (eg waiting for multiple Api Responses at the same time)
-        // maybe do it like this. It's not pretty though, there must be a better way.
+        // maybe do it like this. It's not pretty though, there must be a better way, RxJava, RxAndroid...
         // Hopefully I can force one Model per View in the Model structure. If I can, there's no need for this.
 
         // Imagine this is an Asynchronous Api Request.

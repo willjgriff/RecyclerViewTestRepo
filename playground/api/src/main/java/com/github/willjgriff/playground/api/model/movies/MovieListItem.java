@@ -3,13 +3,14 @@ package com.github.willjgriff.playground.api.model.movies;
 import com.github.willjgriff.playground.api.model.Entity;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 /**
  * Created by Will on 26/03/2016.
  */
 public class MovieListItem implements Entity {
 
-    // For Gson conversion
-//    public String DATE_FORMAT = "yyyy-MM-dd";
+    public static final String RELEASE_DATE_FORMAT = "yyyy-MM-dd";
 
     @SerializedName("id")
     private String id;
@@ -21,7 +22,7 @@ public class MovieListItem implements Entity {
     private String overview;
 
     @SerializedName("release_date")
-    private String releaseDate;
+    private Date releaseDate;
 
     @SerializedName("poster_path")
     private String posterImage;
@@ -41,7 +42,7 @@ public class MovieListItem implements Entity {
         return overview;
     }
 
-    public String getReleaseDate() {
+    public Date getReleaseDate() {
         return releaseDate;
     }
 
