@@ -1,4 +1,4 @@
-package com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.Adapter;
+package com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.Adapter;
 
 import android.view.View;
 import android.view.ViewGroup;
