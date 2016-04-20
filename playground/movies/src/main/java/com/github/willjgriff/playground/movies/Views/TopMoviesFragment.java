@@ -16,7 +16,7 @@ import com.github.willjgriff.playground.network.model.movies.MovieListItem;
 import com.github.willjgriff.playground.movies.Adapters.TopMoviesMvpAdapter;
 import com.github.willjgriff.playground.movies.Presenters.TopMoviesPresenter;
 import com.github.willjgriff.playground.movies.Presenters.TopMoviesPresenterImpl;
-import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.Adapter.MvpRecyclerListAdapter;
+import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.Adapter.MvpRecyclerListAdapter;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.MvpFragment;
 
 import java.util.List;

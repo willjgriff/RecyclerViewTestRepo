@@ -6,6 +6,8 @@ import com.github.willjgriff.playground.network.Etherchain;
 import com.github.willjgriff.playground.network.model.ethereum.Block;
 import com.github.willjgriff.playground.network.model.ethereum.BlockCount;
 
+import java.util.List;
+
 import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
@@ -18,23 +20,28 @@ public class BlockPresenterImpl extends BasePresenter<Block, BlockView> implemen
     private BlockCount mBlockCount;
 
     public BlockPresenterImpl() {
-//        Etherchain.blockList().enqueue(new Callback<EtherchainResponse>() {
-//            @Override
-//            public void onResponse(Response<EtherchainResponse> response, Retrofit retrofit) {
-//                response.body().getData().get(0);
-//            }
-//
-//            @Override
-//            public void onFailure(Throwable t) {
-//
-//            }
-//        });
 
         Etherchain.blockCountCall().enqueue(new Callback<BlockCount>() {
             @Override
             public void onResponse(Response<BlockCount> response, Retrofit retrofit) {
                 mBlockCount = response.body();
-                setModel(new Block());
+                blockRequest();
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
+            }
+        });
+
+    }
+
+    private void blockRequest() {
+        Etherchain.blockList(0, 3).enqueue(new Callback<List<Block>>() {
+            @Override
+            public void onResponse(Response<List<Block>> response, Retrofit retrofit) {
+                Block blockSatu = response.body().get(0);
+                setModel(blockSatu);
             }
 
             @Override
@@ -47,6 +54,6 @@ public class BlockPresenterImpl extends BasePresenter<Block, BlockView> implemen
     @Override
     protected void updateView() {
         view().setBlockCount(mBlockCount.getCount());
-//        view().setBlockHash(mModel.getHash());
+        view().setBlockHash(mModel.getHash());
     }
 }

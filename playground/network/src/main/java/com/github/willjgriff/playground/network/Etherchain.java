@@ -3,11 +3,14 @@ package com.github.willjgriff.playground.network;
 import com.github.willjgriff.playground.network.endpoints.ApiEtherchain;
 import com.github.willjgriff.playground.network.model.ethereum.Block;
 import com.github.willjgriff.playground.network.model.ethereum.BlockCount;
-import com.github.willjgriff.playground.network.model.ethereum.responses.BlockCountResponse;
-import com.github.willjgriff.playground.network.model.ethereum.responses.EtherchainResponse;
 import com.github.willjgriff.playground.network.utils.RetrofitUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.List;
 
 import retrofit.Call;
 import retrofit.GsonConverterFactory;
@@ -20,9 +23,9 @@ import static com.github.willjgriff.playground.network.ApiUris.Etherchain.URI_ET
  */
 public class Etherchain {
 
-    private static ApiEtherchain getApiEtherchain() {
+    private static ApiEtherchain getApiEtherchain(TypeAdapterFactory typeAdapterFactory) {
         Gson gson = new GsonBuilder()
-                .registerTypeAdapterFactory(new ItemTypeAdapterFactory())
+                .registerTypeAdapterFactory(typeAdapterFactory)
                 .create();
 
         Retrofit retrofit = RetrofitUtils.getRetrofit(URI_ETHERCHAIN, null, GsonConverterFactory.create(gson));
@@ -30,10 +33,12 @@ public class Etherchain {
     }
 
     public static Call<BlockCount> blockCountCall() {
-        return getApiEtherchain().totalBlockCount();
+        Type typeListBlock = new TypeToken<BlockCount>() {}.getType();
+        return getApiEtherchain(new EtherchainTypeAdapterFactory(true)).totalBlockCount();
     }
 
-    public static Call<EtherchainResponse> blockList() {
-        return getApiEtherchain().blocks(0, 1);
+    public static Call<List<Block>> blockList(int offset, int count) {
+        Type typeListBlock = new TypeToken<List<Block>>() {}.getType();
+        return getApiEtherchain(new EtherchainTypeAdapterFactory(false, typeListBlock)).blocks(offset, count);
     }
 }

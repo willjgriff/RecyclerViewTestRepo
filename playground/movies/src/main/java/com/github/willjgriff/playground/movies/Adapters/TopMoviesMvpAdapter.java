@@ -9,7 +9,7 @@ import com.github.willjgriff.playground.network.model.movies.MovieListItem;
 import com.github.willjgriff.playground.movies.Presenters.MovieListItemPresenter;
 import com.github.willjgriff.playground.movies.Presenters.MovieListItemPresenterImpl;
 import com.github.willjgriff.playground.movies.Views.MovieListItemViewHolder;
-import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.Adapter.MvpRecyclerListAdapter;
+import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.Adapter.MvpRecyclerListAdapter;
 
 /**
  * Created by Will on 09/04/2016.

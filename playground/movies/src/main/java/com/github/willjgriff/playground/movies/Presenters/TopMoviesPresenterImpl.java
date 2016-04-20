@@ -6,7 +6,7 @@ import com.github.willjgriff.playground.network.TheMovieDb;
 import com.github.willjgriff.playground.network.model.movies.MovieListItem;
 import com.github.willjgriff.playground.network.model.movies.TopMovies;
 import com.github.willjgriff.playground.movies.Views.TopMoviesView;
-import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.Presenter.BaseLoadingListPresenter;
+import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.Presenter.BaseListLoadingPresenter;
 
 import retrofit.Callback;
 import retrofit.Response;
@@ -15,7 +15,7 @@ import retrofit.Retrofit;
 /**
  * Created by Will on 09/04/2016.
  */
-public class TopMoviesPresenterImpl extends BaseLoadingListPresenter<MovieListItem, TopMoviesView> implements TopMoviesPresenter {
+public class TopMoviesPresenterImpl extends BaseListLoadingPresenter<MovieListItem, TopMoviesView> implements TopMoviesPresenter {
 
     // TODO: Find out if we need to cancel ApiCalls when the Activity is destroyed.
     // I don't think we do because the Presenter detaches from the View so we can't

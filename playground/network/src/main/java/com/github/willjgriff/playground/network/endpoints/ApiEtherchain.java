@@ -1,7 +1,9 @@
 package com.github.willjgriff.playground.network.endpoints;
 
+import com.github.willjgriff.playground.network.model.ethereum.Block;
 import com.github.willjgriff.playground.network.model.ethereum.BlockCount;
-import com.github.willjgriff.playground.network.model.ethereum.responses.EtherchainResponse;
+
+import java.util.List;
 
 import retrofit.Call;
 import retrofit.http.GET;
@@ -16,5 +18,5 @@ public interface ApiEtherchain {
     Call<BlockCount> totalBlockCount();
 
     @GET("api/blocks/{offset}/{count}")
-    Call<EtherchainResponse> blocks(@Path("offset") int offset, @Path("count") int count);
+    Call<List<Block>> blocks(@Path("offset") int offset, @Path("count") int count);
 }
