@@ -9,16 +9,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.will.Playground.R;
-import com.github.willjgriff.playground.api.utils.ApiMovieImageUtils;
-import com.github.willjgriff.playground.api.model.movies.MovieListItem;
-import com.github.willjgriff.playground.api.model.movies.MoviesConfig;
+import com.github.willjgriff.playground.network.utils.ApiMovieImageUtils;
+import com.github.willjgriff.playground.network.model.movies.MovieListItem;
+import com.github.willjgriff.playground.network.model.movies.MoviesConfig;
 import com.github.willjgriff.playground.utils.SharedPreferenceUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.github.willjgriff.playground.api.utils.MovieImageSizeUtil.ImageSize.SMALL;
-import static com.github.willjgriff.playground.api.utils.MovieImageSizeUtil.ImageType.BACKDROP;
+import static com.github.willjgriff.playground.network.utils.MovieImageSizeUtil.ImageSize.SMALL;
+import static com.github.willjgriff.playground.network.utils.MovieImageSizeUtil.ImageType.BACKDROP;
 import static com.github.willjgriff.playground.utils.Defaults.isNull;
 import static com.github.willjgriff.playground.utils.SharedPreferenceUtils.readObjectFromPreferences;
 

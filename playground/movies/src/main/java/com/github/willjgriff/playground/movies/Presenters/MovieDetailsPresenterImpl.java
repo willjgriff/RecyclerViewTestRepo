@@ -1,7 +1,7 @@
 package com.github.willjgriff.playground.movies.Presenters;
 
-import com.github.willjgriff.playground.api.RetrofitCalls;
-import com.github.willjgriff.playground.api.model.movies.MovieFull;
+import com.github.willjgriff.playground.network.TheMovieDb;
+import com.github.willjgriff.playground.network.model.movies.MovieFull;
 import com.github.willjgriff.playground.movies.Views.MovieDetailsView;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.Presenter.BasePresenter;
 
@@ -18,7 +18,7 @@ public class MovieDetailsPresenterImpl extends BasePresenter<MovieFull, MovieDet
 
     public MovieDetailsPresenterImpl(String movieId) {
         this.mMovieId = movieId;
-        RetrofitCalls.movieDetailsCall(mMovieId).enqueue(new Callback<MovieFull>() {
+        TheMovieDb.movieDetailsCall(mMovieId).enqueue(new Callback<MovieFull>() {
             @Override
             public void onResponse(Response<MovieFull> response, Retrofit retrofit) {
                 setModel(response.body());

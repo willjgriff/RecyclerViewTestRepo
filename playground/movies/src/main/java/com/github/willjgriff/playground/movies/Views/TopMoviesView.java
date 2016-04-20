@@ -1,6 +1,6 @@
 package com.github.willjgriff.playground.movies.Views;
 
-import com.github.willjgriff.playground.api.model.movies.MovieListItem;
+import com.github.willjgriff.playground.network.model.movies.MovieListItem;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.MvpListLoadingView;
 
 /**

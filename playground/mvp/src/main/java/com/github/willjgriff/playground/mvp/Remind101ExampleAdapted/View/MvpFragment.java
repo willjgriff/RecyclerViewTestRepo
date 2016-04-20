@@ -17,11 +17,11 @@ public abstract class MvpFragment<PRESENTER extends Presenter> extends Fragment 
 
     private PRESENTER mPresenter;
 
-    protected abstract PRESENTER setPresenter();
+    protected abstract PRESENTER createPresenter();
 
     protected PRESENTER getPresenter() {
         if (mPresenter == null) {
-            mPresenter = setPresenter();
+            mPresenter = createPresenter();
         }
         return mPresenter;
     }

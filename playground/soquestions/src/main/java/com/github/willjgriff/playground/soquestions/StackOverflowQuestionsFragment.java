@@ -12,8 +12,8 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.example.will.Playground.R;
-import com.github.willjgriff.playground.api.RetrofitCalls;
-import com.github.willjgriff.playground.api.model.stackoverflow.StackOverflowQuestions;
+import com.github.willjgriff.playground.network.StackOverflow;
+import com.github.willjgriff.playground.network.model.stackoverflow.StackOverflowQuestions;
 
 import java.util.ArrayList;
 
@@ -50,7 +50,7 @@ public class StackOverflowQuestionsFragment extends Fragment {
 
     private void loadStackOverflowQuestions() {
         //asynchronous call (use call.execute() on a new thread for synchronous)
-        RetrofitCalls.stackOverflowQuestionsCall().enqueue(new Callback<StackOverflowQuestions>() {
+        StackOverflow.androidQuestionsCall().enqueue(new Callback<StackOverflowQuestions>() {
             @Override
             public void onResponse(Response<StackOverflowQuestions> response, Retrofit retrofit) {
                 mAdapter.addAll(response.body().getQuestions());

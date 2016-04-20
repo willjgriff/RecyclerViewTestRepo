@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.example.will.Playground.R;
 import com.github.willjgriff.playground.coord.CoordsFragment;
+import com.github.willjgriff.playground.ethereum.views.BlockFragment;
 import com.github.willjgriff.playground.lists.ListsFragment;
 import com.github.willjgriff.playground.movies.Views.TopMoviesFragment;
 import com.github.willjgriff.playground.soquestions.StackOverflowQuestionsFragment;
@@ -18,6 +19,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag.COORD;
+import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag.ETHEREUM;
 import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag.LISTS;
 import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag.SO_QUESTIONS;
 import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag.TABS;
@@ -40,7 +42,8 @@ public class NavigationEntries {
         COORD(R.string.navigation_coord_fragment, R.integer.navigation_coord_fragment),
         TABS(R.string.navigation_tab_layout_fragment, R.integer.navigation_tab_layout_fragment),
         SO_QUESTIONS(R.string.navigation_so_questions_fragment, R.integer.navigation_so_questions_fragment),
-        TOP_MOVIES(R.string.navigation_top_movies_fragment, R.integer.navigation_top_movies_fragment);
+        TOP_MOVIES(R.string.navigation_top_movies_fragment, R.integer.navigation_top_movies_fragment),
+        ETHEREUM(R.string.navigation_ethereum, R.integer.navigation_ethereum);
 
         private int mTitle;
         private int mPosition;
@@ -95,6 +98,12 @@ public class NavigationEntries {
             @Override
             public void onClick(View v) {
                 mNavigationListener.onEntryClicked(new TopMoviesFragment(), TOP_MOVIES);
+            }
+        }));
+        navEntries.add(new NavigationEntry(mContext.getString(ETHEREUM.getTitle()), mContext.getResources().getInteger(ETHEREUM.getPosition()), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mNavigationListener.onEntryClicked(new BlockFragment(), ETHEREUM);
             }
         }));
 

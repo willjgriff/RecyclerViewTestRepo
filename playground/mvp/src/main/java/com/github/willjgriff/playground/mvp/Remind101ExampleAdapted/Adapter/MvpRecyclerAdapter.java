@@ -3,7 +3,7 @@ package com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.Adapter;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 
-import com.github.willjgriff.playground.api.model.Entity;
+import com.github.willjgriff.playground.network.model.Entity;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.Presenter.Presenter;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.MvpViewHolder;
 

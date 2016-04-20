@@ -16,8 +16,8 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.will.Playground.R;
-import com.github.willjgriff.playground.api.RetrofitCalls;
-import com.github.willjgriff.playground.api.model.movies.MoviesConfig;
+import com.github.willjgriff.playground.network.TheMovieDb;
+import com.github.willjgriff.playground.network.model.movies.MoviesConfig;
 import com.github.willjgriff.playground.lists.ListsFragment;
 import com.github.willjgriff.playground.utils.SharedPreferenceUtils;
 import com.github.willjgriff.playground.utils.UiUtils;
@@ -148,7 +148,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationE
     }
 
     private void startupApiCalls() {
-        RetrofitCalls.moviesConfigCall().enqueue(new Callback<MoviesConfig>() {
+        TheMovieDb.moviesConfigCall().enqueue(new Callback<MoviesConfig>() {
             @Override
             public void onResponse(Response<MoviesConfig> response, Retrofit retrofit) {
                 Log.d("TAG", "Successfully retrieved TheMovieDb Configuration");

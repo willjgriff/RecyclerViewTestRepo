@@ -27,7 +27,7 @@ public abstract class MyMvpFragment<PRESENTER extends MyBaseMvpPresenter> extend
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getPresenter() == null) {
-            Log.e("No Presenter Set", "No presenter set. Override setPresenter() returning a valid presenter");
+            Log.e("No Presenter Set", "No presenter set. Override createPresenter() returning a valid presenter");
         }
         if (savedInstanceState != null) {
             getPresenter().loadState(savedInstanceState);

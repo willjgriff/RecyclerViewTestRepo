@@ -5,12 +5,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.will.Playground.R;
-import com.github.willjgriff.playground.api.utils.ApiMovieImageUtils;
+import com.github.willjgriff.playground.network.utils.ApiMovieImageUtils;
 import com.github.willjgriff.playground.movies.Presenters.MovieListItemPresenter;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.MvpViewHolder;
 
-import static com.github.willjgriff.playground.api.utils.MovieImageSizeUtil.ImageSize.MEDIUM;
-import static com.github.willjgriff.playground.api.utils.MovieImageSizeUtil.ImageType.BACKDROP;
+import static com.github.willjgriff.playground.network.utils.MovieImageSizeUtil.ImageSize.MEDIUM;
+import static com.github.willjgriff.playground.network.utils.MovieImageSizeUtil.ImageType.BACKDROP;
 
 /**
  * Created by Will on 09/04/2016.

@@ -1,6 +1,6 @@
 package com.github.willjgriff.playground.movies.Presenters;
 
-import com.github.willjgriff.playground.api.model.movies.MovieFull;
+import com.github.willjgriff.playground.network.model.movies.MovieFull;
 import com.github.willjgriff.playground.movies.Views.MovieDetailsView;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.Presenter.Presenter;
 

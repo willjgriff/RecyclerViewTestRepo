@@ -1,7 +1,7 @@
 package com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.ExampleMultiModelUsage;
 
-import com.github.willjgriff.playground.api.model.Entity;
-import com.github.willjgriff.playground.api.model.movies.MovieListItem;
+import com.github.willjgriff.playground.network.model.Entity;
+import com.github.willjgriff.playground.network.model.movies.MovieListItem;
 import com.github.willjgriff.playground.lists.data.Person;
 
 /**

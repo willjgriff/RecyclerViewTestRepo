@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.example.will.Playground.R;
-import com.github.willjgriff.playground.api.model.movies.MovieListItem;
+import com.github.willjgriff.playground.network.model.movies.MovieListItem;
 import com.github.willjgriff.playground.movies.Presenters.MovieListItemPresenter;
 import com.github.willjgriff.playground.movies.Presenters.MovieListItemPresenterImpl;
 import com.github.willjgriff.playground.movies.Views.MovieListItemViewHolder;

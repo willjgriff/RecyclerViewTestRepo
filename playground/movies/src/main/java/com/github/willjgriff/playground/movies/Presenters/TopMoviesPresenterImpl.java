@@ -2,9 +2,9 @@ package com.github.willjgriff.playground.movies.Presenters;
 
 import android.util.Log;
 
-import com.github.willjgriff.playground.api.RetrofitCalls;
-import com.github.willjgriff.playground.api.model.movies.MovieListItem;
-import com.github.willjgriff.playground.api.model.movies.TopMovies;
+import com.github.willjgriff.playground.network.TheMovieDb;
+import com.github.willjgriff.playground.network.model.movies.MovieListItem;
+import com.github.willjgriff.playground.network.model.movies.TopMovies;
 import com.github.willjgriff.playground.movies.Views.TopMoviesView;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.Presenter.BaseLoadingListPresenter;
 
@@ -24,7 +24,7 @@ public class TopMoviesPresenterImpl extends BaseLoadingListPresenter<MovieListIt
     @Override
     public void loadDataModel() {
         setLoading(true);
-        RetrofitCalls.topMoviesCall().enqueue(new Callback<TopMovies>() {
+        TheMovieDb.topMoviesCall().enqueue(new Callback<TopMovies>() {
             @Override
             public void onResponse(Response<TopMovies> response, Retrofit retrofit) {
                 setModel(response.body().getTopMovies());
