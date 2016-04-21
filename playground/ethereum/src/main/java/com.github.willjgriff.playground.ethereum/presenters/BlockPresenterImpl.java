@@ -20,7 +20,6 @@ public class BlockPresenterImpl extends BasePresenter<Block, BlockView> implemen
     private BlockCount mBlockCount;
 
     public BlockPresenterImpl() {
-
         Etherchain.blockCountCall().enqueue(new Callback<BlockCount>() {
             @Override
             public void onResponse(Response<BlockCount> response, Retrofit retrofit) {
@@ -56,4 +55,5 @@ public class BlockPresenterImpl extends BasePresenter<Block, BlockView> implemen
         view().setBlockCount(mBlockCount.getCount());
         view().setBlockHash(mModel.getHash());
     }
+
 }

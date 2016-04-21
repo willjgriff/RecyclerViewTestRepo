@@ -16,9 +16,10 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.will.Playground.R;
+import com.github.willjgriff.playground.RxJavaFun;
+import com.github.willjgriff.playground.lists.ListsFragment;
 import com.github.willjgriff.playground.network.TheMovieDb;
 import com.github.willjgriff.playground.network.model.movies.MoviesConfig;
-import com.github.willjgriff.playground.lists.ListsFragment;
 import com.github.willjgriff.playground.utils.SharedPreferenceUtils;
 import com.github.willjgriff.playground.utils.UiUtils;
 
@@ -75,6 +76,9 @@ public class NavigationActivity extends AppCompatActivity implements NavigationE
 
         setNavigationToggle();
         startupApiCalls();
+
+        // TODO: this is just for testing RxAndroid
+        new RxJavaFun().play();
     }
 
     @Override

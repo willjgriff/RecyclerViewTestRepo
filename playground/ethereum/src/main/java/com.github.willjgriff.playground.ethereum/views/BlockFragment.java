@@ -17,6 +17,7 @@ import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.MvpFrag
  */
 public class BlockFragment extends MvpFragment<BlockPresenter> implements BlockView {
 
+    TextView mRxOutput;
     TextView mTotalBlockCount;
     TextView mBlockHash;
 
@@ -31,6 +32,7 @@ public class BlockFragment extends MvpFragment<BlockPresenter> implements BlockV
         View view = inflater.inflate(R.layout.fragment_block, container, false);
         mTotalBlockCount = (TextView) view.findViewById(R.id.fragment_block_total_block_count);
         mBlockHash = (TextView) view.findViewById(R.id.fragment_block_current_hash);
+        mRxOutput = (TextView) view.findViewById(R.id.fragment_block_rx_output);
         return view;
     }
 
@@ -43,4 +45,6 @@ public class BlockFragment extends MvpFragment<BlockPresenter> implements BlockV
     public void setBlockHash(String hash) {
         mBlockHash.setText(hash);
     }
+
+
 }
