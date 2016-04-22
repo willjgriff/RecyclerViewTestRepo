@@ -1,12 +1,15 @@
 package com.github.willjgriff.playground;
 
 import android.util.Log;
+import android.widget.Button;
 
 import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.android.view.OnClickEvent;
+import rx.android.view.ViewObservable;
 import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.functions.Func2;
@@ -21,6 +24,7 @@ public class RxJavaFun {
         rxPlay();
         rxPlayLists();
         rxPlayThreads();
+        rxPlayView();
     }
 
     private void rxPlay() {
@@ -155,6 +159,29 @@ public class RxJavaFun {
                 log(s);
             }
         });
+    }
+
+    /**
+     * This shit won't work! But for demonstration purposes
+     */
+    private void rxPlayView() {
+        Button button = new Button(PlaygroundApplication.app());
+
+        Observable<OnClickEvent> clickObservable = ViewObservable.clicks(button);
+
+        clickObservable
+                // Skip first click...
+                .skip(1)
+                .subscribe(new Action1<OnClickEvent>() {
+            @Override
+            public void call(OnClickEvent onClickEvent) {
+                log("Buttonwa Clicketh");
+            }
+        });
+
+        // Ah maybe it will...
+        button.callOnClick();
+        button.callOnClick();
     }
 
     private void log(String message) {
