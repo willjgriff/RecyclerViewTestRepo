@@ -49,6 +49,7 @@ dependencies {
     compile "com.android.support:recyclerview-v7:${supportLibVersion}"
 
     compile "com.squareup.retrofit:retrofit:${retrofitVersion}"
+    compile "com.squareup.retrofit:adapter-rxjava:${retrofitVersion}"
     compile "com.squareup.retrofit:converter-gson:${retrofitVersion}"
     compile "com.getbase:floatingactionbutton:${fabVersion}"
     compile "com.squareup.picasso:picasso:${picassoVersion}"

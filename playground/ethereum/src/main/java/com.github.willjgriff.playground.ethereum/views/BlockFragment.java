@@ -10,14 +10,13 @@ import android.widget.TextView;
 import com.example.will.Playground.R;
 import com.github.willjgriff.playground.ethereum.presenters.BlockPresenter;
 import com.github.willjgriff.playground.ethereum.presenters.BlockPresenterImpl;
-import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.MvpFragment;
+import com.github.willjgriff.playground.mvp.RxMvp.RxView.RxMvpFragment;
 
 /**
  * Created by Will on 18/04/2016.
  */
-public class BlockFragment extends MvpFragment<BlockPresenter> implements BlockView {
+public class BlockFragment extends RxMvpFragment<BlockPresenter> implements BlockView {
 
-    TextView mRxOutput;
     TextView mTotalBlockCount;
     TextView mBlockHash;
 
@@ -32,7 +31,6 @@ public class BlockFragment extends MvpFragment<BlockPresenter> implements BlockV
         View view = inflater.inflate(R.layout.fragment_block, container, false);
         mTotalBlockCount = (TextView) view.findViewById(R.id.fragment_block_total_block_count);
         mBlockHash = (TextView) view.findViewById(R.id.fragment_block_current_hash);
-        mRxOutput = (TextView) view.findViewById(R.id.fragment_block_rx_output);
         return view;
     }
 

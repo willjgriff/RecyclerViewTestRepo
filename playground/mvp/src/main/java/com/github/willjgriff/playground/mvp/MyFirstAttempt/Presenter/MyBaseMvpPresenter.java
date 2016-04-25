@@ -1,8 +1,8 @@
-package com.github.willjgriff.playground.mvp.MyAttempt.Presenter;
+package com.github.willjgriff.playground.mvp.MyFirstAttempt.Presenter;
 
 import android.os.Bundle;
 
-import com.github.willjgriff.playground.mvp.MyAttempt.View.MyMvpView;
+import com.github.willjgriff.playground.mvp.MyFirstAttempt.View.MyMvpView;
 
 /**
  * Created by Will on 04/04/2016.

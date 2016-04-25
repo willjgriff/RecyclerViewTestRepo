@@ -1,6 +1,6 @@
-package com.github.willjgriff.playground.mvp.MyAttempt.Presenter;
+package com.github.willjgriff.playground.mvp.MyFirstAttempt.Presenter;
 
-import com.github.willjgriff.playground.mvp.MyAttempt.View.MyMvpView;
+import com.github.willjgriff.playground.mvp.MyFirstAttempt.View.MyMvpView;
 
 /**
  * Created by Will on 05/04/2016.

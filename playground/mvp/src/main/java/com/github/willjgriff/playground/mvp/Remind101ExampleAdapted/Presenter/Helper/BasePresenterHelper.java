@@ -12,6 +12,8 @@ import com.github.willjgriff.playground.PlaygroundApplication;
  */
 public class BasePresenterHelper implements PresenterHelper {
 
+    // This is undesirable, ideally just get the Application Context from an Activity or
+    // other Context when we want to use the global leak free Context of the Application.
     @Override
     public String getString(@StringRes int stringId) {
         return PlaygroundApplication.app().getString(stringId);

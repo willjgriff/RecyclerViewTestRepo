@@ -14,6 +14,7 @@ import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.functions.Func2;
 import rx.schedulers.Schedulers;
+import rx.subjects.BehaviorSubject;
 
 /**
  * Created by Will on 21/04/2016.
@@ -25,6 +26,7 @@ public class RxJavaFun {
         rxPlayLists();
         rxPlayThreads();
         rxPlayView();
+        rxSubject();
     }
 
     private void rxPlay() {
@@ -179,9 +181,33 @@ public class RxJavaFun {
             }
         });
 
-        // Ah maybe it will...
+        // Ah, maybe it will...
         button.callOnClick();
         button.callOnClick();
+    }
+
+    private void rxSubject() {
+        BehaviorSubject<String> subject = BehaviorSubject.create();
+
+        subject.subscribe(new Action1<String>() {
+            @Override
+            public void call(String s) {
+                log("subjected: " + s);
+            }
+        });
+
+        subject.onNext("satu");
+        subject.onNext("dua");
+
+        subject.subscribe(new Action1<String>() {
+            @Override
+            public void call(String s) {
+                log("dubsected: " + s);
+            }
+        });
+
+        subject.onNext("tiga");
+        subject.onNext("empat");
     }
 
     private void log(String message) {

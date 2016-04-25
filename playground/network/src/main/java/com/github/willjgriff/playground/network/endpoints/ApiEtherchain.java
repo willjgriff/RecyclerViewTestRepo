@@ -5,9 +5,9 @@ import com.github.willjgriff.playground.network.model.ethereum.BlockCount;
 
 import java.util.List;
 
-import retrofit.Call;
 import retrofit.http.GET;
 import retrofit.http.Path;
+import rx.Observable;
 
 /**
  * Created by Will on 18/04/2016.
@@ -15,8 +15,8 @@ import retrofit.http.Path;
 public interface ApiEtherchain {
 
     @GET("api/blocks/count")
-    Call<BlockCount> totalBlockCount();
+    Observable<BlockCount> totalBlockCount();
 
     @GET("api/blocks/{offset}/{count}")
-    Call<List<Block>> blocks(@Path("offset") int offset, @Path("count") int count);
+    Observable<List<Block>> blocks(@Path("offset") int offset, @Path("count") int count);
 }
