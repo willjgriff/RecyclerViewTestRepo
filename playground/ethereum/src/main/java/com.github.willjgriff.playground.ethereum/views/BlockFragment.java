@@ -17,7 +17,7 @@ import com.github.willjgriff.playground.mvp.RxMvp.RxView.RxMvpFragment;
  */
 public class BlockFragment extends RxMvpFragment<BlockPresenter> implements BlockView {
 
-    TextView mTotalBlockCount;
+    LabelTextView mTotalBlockCount;
     TextView mBlockHash;
 
     @Override
@@ -29,14 +29,14 @@ public class BlockFragment extends RxMvpFragment<BlockPresenter> implements Bloc
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_block, container, false);
-        mTotalBlockCount = (TextView) view.findViewById(R.id.fragment_block_total_block_count);
+        mTotalBlockCount = (LabelTextView) view.findViewById(R.id.fragment_block_total_block_count);
         mBlockHash = (TextView) view.findViewById(R.id.fragment_block_current_hash);
         return view;
     }
 
     @Override
     public void setBlockCount(long count) {
-        mTotalBlockCount.setText(String.valueOf(count));
+        mTotalBlockCount.setDescription(String.valueOf(count));
     }
 
     @Override

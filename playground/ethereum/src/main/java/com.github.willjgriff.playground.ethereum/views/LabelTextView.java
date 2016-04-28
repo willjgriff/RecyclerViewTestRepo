@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -21,6 +22,9 @@ public class LabelTextView extends LinearLayout {
     private TextView mDescription;
     private Paint mPaint;
 
+    int mWidth;
+    int mHeight;
+
     public LabelTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setupAttrs(context, attrs);
@@ -31,13 +35,28 @@ public class LabelTextView extends LinearLayout {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawRect(0, 0, 100, 100, mPaint);
+        drawCheckers(canvas, 6, 40);
+
+        Drawable backgroundGradient = ContextCompat.getDrawable(getContext(), R.drawable.label_text_view_gradient);
+        backgroundGradient.setBounds(0, 0, getMeasuredWidth(), getMeasuredHeight());
+        backgroundGradient.draw(canvas);
     }
 
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    // I'm sure I could create this shape and set it as a background drawable, but where's the fun in that...
+    // Was suppose to look like blocks, it sort of does :)
+    private void drawCheckers(Canvas canvas, int height, int width) {
+        int checkerHeight = getMeasuredHeight() / height;
+        int checkerWidth = getMeasuredWidth() / width;
+        int checkerTop;
+        int checkerLeft;
 
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j+=2) {
+                checkerTop = checkerHeight * i;
+                checkerLeft = i % 2 == 0 ? checkerWidth * j : (checkerWidth * j) + checkerWidth;
+                canvas.drawRect(checkerLeft, checkerTop, checkerLeft + checkerWidth, checkerTop + checkerHeight, mPaint);
+            }
+        }
     }
 
     private void setupPaint(Context context) {
@@ -64,6 +83,7 @@ public class LabelTextView extends LinearLayout {
 
         int padding = getResources().getDimensionPixelSize(R.dimen.xxsmall);
         setPadding(padding, padding, padding, padding);
+        setBackground(ContextCompat.getDrawable(context, R.drawable.label_text_view_gradient));
     }
 
     public void setLabel(String label) {
@@ -72,7 +92,7 @@ public class LabelTextView extends LinearLayout {
         requestLayout();
     }
 
-    public void setmDescription(String description) {
+    public void setDescription(String description) {
         mDescription.setText(description);
         invalidate();
         requestLayout();

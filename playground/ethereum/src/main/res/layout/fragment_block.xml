@@ -4,35 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
-
-    <com.github.willjgriff.playground.ethereum.views.LabelTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:LabelTextLabel="Difficulty: "
-        app:LabelTextDescription="23246344534"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            style="@style/Text.Headline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Difficulty: " />
-
-        <TextView
-            android:id="@+id/fragment_block_total_block_count"
-            style="@style/Text.Headline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="234234987"
-            android:gravity="right"/>
-    </LinearLayout>
-
+    android:orientation="vertical"
+    android:background="@color/bg_main">
 
     <TextView
         android:id="@+id/fragment_block_current_hash"
@@ -40,5 +13,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="24r97hqworifn3048jrfqw0e9fj34" />
+
+    <com.github.willjgriff.playground.ethereum.views.LabelTextView
+        android:id="@+id/fragment_block_total_block_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium"
+        app:LabelTextLabel="@string/fragment_block_difficulty"
+        />
 
 </LinearLayout>

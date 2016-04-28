@@ -3,12 +3,13 @@ package com.github.willjgriff.playground.mvp.RxMvp.RxPresenter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
+import com.github.willjgriff.playground.network.utils.PlaygroundSubscriber;
+
 import java.lang.ref.WeakReference;
 
 import rx.Observable;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
@@ -55,11 +56,11 @@ public abstract class RxBasePresenter<VIEW> implements RxPresenter<VIEW> {
         subscriptions.add(subscription);
     }
 
-    protected <M> void addSubscription(Observable<M> observable, Action1<M> action1) {
+    protected <M> void addSubscription(Observable<M> observable, PlaygroundSubscriber<M> subscriber) {
         observable
                 .cache()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(action1);
+                .subscribe(subscriber);
     }
 }
