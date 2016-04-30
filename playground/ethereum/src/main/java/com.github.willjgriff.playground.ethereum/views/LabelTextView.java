@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.example.will.Playground.R;
 
+import java.util.ArrayList;
+
 /**
  * Created by Will on 26/04/2016.
  */
@@ -42,16 +44,24 @@ public class LabelTextView extends LinearLayout {
         backgroundGradient.draw(canvas);
     }
 
-    // I'm sure I could create this shape and set it as a background drawable, but where's the fun in that...
-    // Was suppose to look like blocks, it sort of does :)
+    // I don't know if this is at all efficient. I expect it isn't.
     private void drawCheckers(Canvas canvas, int height, int width) {
         int checkerHeight = getMeasuredHeight() / height;
         int checkerWidth = getMeasuredWidth() / width;
         int checkerTop;
         int checkerLeft;
+        int color;
+
+        ArrayList<Integer> coloursList = new ArrayList<>();
+        coloursList.add(R.color.accent);
+        coloursList.add(R.color.primary);
+        coloursList.add(R.color.yellow);
+        coloursList.add(R.color.aqua);
 
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j+=2) {
+                color = coloursList.get((i + j) % coloursList.size());
+                mPaint.setColor(ContextCompat.getColor(getContext(), color));
                 checkerTop = checkerHeight * i;
                 checkerLeft = i % 2 == 0 ? checkerWidth * j : (checkerWidth * j) + checkerWidth;
                 canvas.drawRect(checkerLeft, checkerTop, checkerLeft + checkerWidth, checkerTop + checkerHeight, mPaint);
@@ -62,7 +72,6 @@ public class LabelTextView extends LinearLayout {
     private void setupPaint(Context context) {
         mPaint = new Paint();
         mPaint.setStyle(Paint.Style.FILL);
-        mPaint.setColor(ContextCompat.getColor(context, R.color.accent_alpha26));
     }
 
     private void setupAttrs(Context context, AttributeSet attrs) {

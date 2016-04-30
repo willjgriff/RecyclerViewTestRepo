@@ -24,9 +24,13 @@
 
     <color name="status_bar_colour_hack">#995b00</color>
 
-    <color name="transparent">#00FFFFFF</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="black_26alpha">#42000000</color>
-    <color name="white_26alpha">#42FFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
+
+    <!--Checker colors-->
+    <color name="green">#00f908</color>
+    <color name="yellow">#f9e400</color>
+    <color name="aqua">#00f9e8</color>
 </resources>

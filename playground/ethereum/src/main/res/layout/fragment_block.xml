@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="@color/bg_main">
+    android:background="@color/bg_main"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/fragment_block_current_hash"
         style="@style/Text.Display"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textIsSelectable="true"
         tools:text="24r97hqworifn3048jrfqw0e9fj34" />
 
     <com.github.willjgriff.playground.ethereum.views.LabelTextView
@@ -19,7 +20,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/medium"
-        app:LabelTextLabel="@string/fragment_block_difficulty"
-        />
+        app:LabelTextLabel="@string/fragment_block_difficulty" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/fragment_block_pickaxe_left"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center"
+            android:rotation="-10"
+            android:src="@drawable/ic_pickaxe"
+            android:transformPivotX="45dp"
+            android:transformPivotY="90dp" />
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="90dp"
+            android:src="@drawable/ic_mine2"
+            android:layout_gravity="bottom"
+            />
+
+        <ImageView
+            android:id="@+id/fragment_block_pickaxe_right"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center"
+            android:rotation="20"
+            android:src="@drawable/ic_pickaxe"
+            android:transformPivotX="45dp"
+            android:transformPivotY="90dp" />
+
+    </LinearLayout>
 
 </LinearLayout>
