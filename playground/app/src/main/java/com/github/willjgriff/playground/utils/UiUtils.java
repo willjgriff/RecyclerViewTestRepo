@@ -3,6 +3,8 @@ package com.github.willjgriff.playground.utils;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 /**
  * Created by Will on 09/03/2016.
@@ -13,5 +15,13 @@ public class UiUtils {
         Resources resources = context.getResources();
         DisplayMetrics metrics = resources.getDisplayMetrics();
         return dp * (metrics.densityDpi / 160f);
+    }
+
+    public static void hideSoftKeyboard(View view, Context context) {
+        if (view != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager)
+                    context.getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 }

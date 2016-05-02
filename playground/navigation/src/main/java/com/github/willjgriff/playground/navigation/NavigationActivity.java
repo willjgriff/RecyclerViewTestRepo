@@ -77,7 +77,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationE
         setNavigationToggle();
         startupApiCalls();
 
-        // TODO: this is just for testing RxAndroid
+        // This is just for testing RxAndroid, it will output using the standard Log.
         new RxJavaFun().play();
     }
 
@@ -104,6 +104,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationE
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        UiUtils.hideSoftKeyboard(getCurrentFocus(), this);
         return super.onOptionsItemSelected(item) || mNavigationToggle.onOptionsItemSelected(item);
     }
 

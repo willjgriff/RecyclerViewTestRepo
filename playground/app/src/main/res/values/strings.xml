@@ -28,4 +28,5 @@
 
     <!--Ethereum-->
     <string name="fragment_block_difficulty">Difficulty:</string>
+    <string name="fragment_signup_button">Signup</string>
 </resources>

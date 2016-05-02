@@ -9,6 +9,7 @@ import com.example.will.Playground.R;
 import com.github.willjgriff.playground.coord.CoordsFragment;
 import com.github.willjgriff.playground.ethereum.views.BlockFragment;
 import com.github.willjgriff.playground.lists.ListsFragment;
+import com.github.willjgriff.playground.login.LoginFragment;
 import com.github.willjgriff.playground.movies.Views.TopMoviesFragment;
 import com.github.willjgriff.playground.soquestions.StackOverflowQuestionsFragment;
 import com.github.willjgriff.playground.tabs.TabLayoutFragment;
@@ -21,6 +22,7 @@ import java.util.List;
 import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag.COORD;
 import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag.ETHEREUM;
 import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag.LISTS;
+import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag.LOGIN;
 import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag.SO_QUESTIONS;
 import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag.TABS;
 import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag.TOP_MOVIES;
@@ -43,7 +45,8 @@ public class NavigationEntries {
         TABS(R.string.navigation_tab_layout_fragment, R.integer.navigation_tab_layout_fragment),
         SO_QUESTIONS(R.string.navigation_so_questions_fragment, R.integer.navigation_so_questions_fragment),
         TOP_MOVIES(R.string.navigation_top_movies_fragment, R.integer.navigation_top_movies_fragment),
-        ETHEREUM(R.string.navigation_ethereum, R.integer.navigation_ethereum);
+        ETHEREUM(R.string.navigation_ethereum, R.integer.navigation_ethereum),
+        LOGIN(R.string.navigation_login, R.integer.navigation_login);
 
         private int mTitle;
         private int mPosition;
@@ -104,6 +107,12 @@ public class NavigationEntries {
             @Override
             public void onClick(View v) {
                 mNavigationListener.onEntryClicked(new BlockFragment(), ETHEREUM);
+            }
+        }));
+        navEntries.add(new NavigationEntry(mContext.getString(LOGIN.getTitle()), mContext.getResources().getInteger(LOGIN.getPosition()), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mNavigationListener.onEntryClicked(new LoginFragment(), LOGIN);
             }
         }));
 

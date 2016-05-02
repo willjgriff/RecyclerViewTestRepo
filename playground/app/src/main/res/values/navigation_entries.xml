@@ -8,6 +8,7 @@
     <string name="navigation_so_questions_fragment">Stack Overflow Questions</string>
     <string name="navigation_top_movies_fragment">Top Movies</string>
     <string name="navigation_ethereum">Ethereum</string>
+    <string name="navigation_login">Login</string>
 
     <!--Navigation positions-->
     <integer name="navigation_list_activity">1</integer>
@@ -16,4 +17,5 @@
     <integer name="navigation_so_questions_fragment">4</integer>
     <integer name="navigation_top_movies_fragment">5</integer>
     <integer name="navigation_ethereum">6</integer>
+    <integer name="navigation_login">7</integer>
 </resources>
