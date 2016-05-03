@@ -29,4 +29,7 @@
     <!--Ethereum-->
     <string name="fragment_block_difficulty">Difficulty:</string>
     <string name="fragment_signup_button">Signup</string>
+    <string name="fragment_signup_username_error">Username must be 5 characters or more</string>
+    <string name="fragment_signup_password_error">Password must be 8 characters or more and contain letters and numbers</string>
+    <string name="fragment_signup_confirm_password_error">Passwords must match</string>
 </resources>

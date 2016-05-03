@@ -10,6 +10,7 @@ import java.lang.ref.WeakReference;
 import rx.Observable;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.observables.ConnectableObservable;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
@@ -57,10 +58,18 @@ public abstract class RxBasePresenter<VIEW> implements RxPresenter<VIEW> {
     }
 
     protected <M> void addSubscription(Observable<M> observable, PlaygroundSubscriber<M> subscriber) {
-        observable
+        subscriptions.add(observable
                 .cache()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
+                .subscribe(subscriber));
+    }
+
+    protected <M> void addConnectableSubscription(ConnectableObservable<M> observable, PlaygroundSubscriber<M> subscriber) {
+        subscriptions.add(observable
+                .cache()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber));
     }
 }
