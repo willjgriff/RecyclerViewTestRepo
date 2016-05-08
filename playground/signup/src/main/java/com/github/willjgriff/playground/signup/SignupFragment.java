@@ -10,17 +10,13 @@ import android.widget.EditText;
 
 import com.example.will.Playground.R;
 import com.github.willjgriff.playground.mvp.RxMvp.RxView.RxMvpFragment;
-import com.github.willjgriff.playground.network.model.ethereum.Block;
-
-import java.util.List;
+import com.github.willjgriff.playground.network.utils.PlaygroundSubscriber;
 
 import rx.Observable;
 import rx.android.view.OnClickEvent;
 import rx.android.view.ViewObservable;
-import rx.android.widget.OnTextChangeEvent;
 import rx.android.widget.WidgetObservable;
 import rx.functions.Action1;
-import rx.functions.Func1;
 import rx.functions.Func3;
 import rx.observables.ConnectableObservable;
 
@@ -40,7 +36,7 @@ public class SignupFragment extends RxMvpFragment<SignupPresenter> implements Si
     private Observable<OnClickEvent> mSignupObservable;
 
     // TODO: Ideally generalise the type here somehow.
-    private ConnectableObservable<List<Block>> mSignupCallObservable;
+    private ConnectableObservable<?> mSignupCallObservable;
 
     @Override
     protected SignupPresenter createPresenter() {
@@ -67,33 +63,17 @@ public class SignupFragment extends RxMvpFragment<SignupPresenter> implements Si
                 // distinctUntilChanged() Prevents the observable outputting until
                 // the output will be different from the previous. For performance.
                 .distinctUntilChanged()
-                .map(new Func1<OnTextChangeEvent, Boolean>() {
-                    @Override
-                    public Boolean call(OnTextChangeEvent onTextChangeEvent) {
-                        return onTextChangeEvent.text().length() > 4;
-                    }
-                });
+                .map(u -> u.text().length() > 4);
 
         // TODO: Would like to understand how to do multiple mappings without using a filter.
         // Using a large regex here instead.
         mPasswordObservable = WidgetObservable.text(mPassword)
                 .distinctUntilChanged()
-                .map(new Func1<OnTextChangeEvent, Boolean>() {
-                    @Override
-                    public Boolean call(OnTextChangeEvent onTextChangeEvent) {
-                        return String.valueOf(onTextChangeEvent.text()).matches("^(?=.*\\d)(?=.*[a-zA-Z]).{8,}$");
-                    }
-                });
+                .map(p -> String.valueOf(p.text()).matches("^(?=.*\\d)(?=.*[a-zA-Z]).{8,}$"));
 
         mConfirmPasswordObservable = WidgetObservable.text(mConfirmPassword)
                 .distinctUntilChanged()
-                .map(new Func1<OnTextChangeEvent, Boolean>() {
-                    @Override
-                    public Boolean call(OnTextChangeEvent onTextChangeEvent) {
-                        String currentConfirmPass = String.valueOf(onTextChangeEvent.text());
-                        return currentConfirmPass.equals(String.valueOf(mPassword.getText()));
-                    }
-                });
+                .map(cp -> String.valueOf(cp.text()).equals(String.valueOf(mPassword.getText())));
 
         mSignupObservable = ViewObservable.clicks(mSignup);
     }
@@ -148,18 +128,20 @@ public class SignupFragment extends RxMvpFragment<SignupPresenter> implements Si
 
                 // I expect there's a better way of using Rx in Mvp, needs playing with though.
                 mSignupCallObservable = getPresenter().signup(username, password);
-//                mSignupCallObservable.subscribe(new PlaygroundSubscriber<List<Block>>() {
-//                    @Override
-//                    public void onError(Throwable e) {
-//                        signupEnabled(true);
-//                    }
-//
-//                    @Override
-//                    public void onNext(List<Block> blocks) {
-//                        // Just for testing purposes, this call would actually only belong in onError.
-//                        signupEnabled(true);
-//                    }
-//                });
+                mSignupCallObservable.subscribe(new PlaygroundSubscriber<Object>() {
+                    @Override
+                    public void onError(Throwable e) {
+                        signupEnabled(true);
+                    }
+
+                    @Override
+                    public void onNext(Object blocks) {
+                        // Just for testing purposes, this call would actually only belong in onError().
+                        // This would probably do nothing and the presenters onNext would direct
+                        // the user to a new screen.
+                        signupEnabled(true);
+                    }
+                });
                 mSignupCallObservable.connect();
             }
         });

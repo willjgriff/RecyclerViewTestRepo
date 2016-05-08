@@ -65,11 +65,16 @@ public abstract class RxBasePresenter<VIEW> implements RxPresenter<VIEW> {
                 .subscribe(subscriber));
     }
 
-    protected <M> void addConnectableSubscription(ConnectableObservable<M> observable, PlaygroundSubscriber<M> subscriber) {
-        subscriptions.add(observable
+    protected <M> ConnectableObservable<M> addConnectableSubscription(Observable<M> observable, PlaygroundSubscriber<M> subscriber) {
+        ConnectableObservable<M> connectableObservable = observable
                 .cache()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .publish();
+
+        subscriptions.add(connectableObservable
                 .subscribe(subscriber));
+
+        return connectableObservable;
     }
 }

@@ -1,9 +1,6 @@
 package com.github.willjgriff.playground.signup;
 
 import com.github.willjgriff.playground.mvp.RxMvp.RxPresenter.RxPresenter;
-import com.github.willjgriff.playground.network.model.ethereum.Block;
-
-import java.util.List;
 
 import rx.observables.ConnectableObservable;
 
@@ -12,5 +9,5 @@ import rx.observables.ConnectableObservable;
  */
 public interface SignupPresenter extends RxPresenter<SignupView> {
 
-    ConnectableObservable<List<Block>> signup(String username, String password);
+    ConnectableObservable<?> signup(String username, String password);
 }

@@ -15,24 +15,18 @@ import rx.observables.ConnectableObservable;
 public class SignupPresenterImpl extends RxBasePresenter<SignupView> implements SignupPresenter {
 
     @Override
-    public ConnectableObservable<List<Block>> signup(String username, String password) {
+    public ConnectableObservable<?> signup(String username, String password) {
         // Imagine this is a signup request sending the username and password instead of '0, 30'
-        ConnectableObservable<List<Block>> signupCall = Etherchain.blockList(0, 300).publish();
-
-        addConnectableSubscription(signupCall, new PlaygroundSubscriber<List<Block>>() {
+        return addConnectableSubscription(Etherchain.blockList(0, 300), new PlaygroundSubscriber<List<Block>>() {
             @Override
             public void onError(Throwable e) {
                 // Show error? Error also handled in View. Not sure about Mvp responsibilities here.
-                view().hashCode();
             }
 
             @Override
             public void onNext(List<Block> blocks) {
                 // Successfully completed signup, go to next screen or show confirmation message.
-                view().hashCode();
             }
         });
-
-        return signupCall;
     }
 }
