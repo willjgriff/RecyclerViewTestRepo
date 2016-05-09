@@ -6,6 +6,6 @@ I have attempted to create a base MVP Architecture which is a work in progress. 
 </br><b>Remind101ExampleAdapted</b> - An adaptation of an example from http://engineering.remind.com/android-code-that-scales/ which integrates MVP in list structures and considers ViewHolders to be Views. See Movies for basic usage.
 </br><b>RxMvp</b> - Finally I've started creating one using Rx which I'll continue building as I understand Rx. See Ethereum and Login for basic usage.
 
-I've played with RxAndroid (see Login), Retrofit (see Network) and Picasso here at a basic level as well as many fundamental Android components. I'm interested in using Dagger which I'm yet to get round to.
+I've played with RxAndroid (see Signup), Retrofit (see Network) and Picasso here at a basic level as well as many fundamental Android components. I'm interested in using Dagger which I'm yet to get round to.
 
-Once I have enough UI ideas I'll create a basic Ethereum blockchain explorer.
+Once I have enough UI ideas I'll create a basic Ethereum blockchain explorer. (Ethereum is a decentralised network similar to Bitcoin)
