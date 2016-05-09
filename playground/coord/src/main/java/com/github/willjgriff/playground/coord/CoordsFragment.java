@@ -22,14 +22,14 @@ public class CoordsFragment extends Fragment {
         view.findViewById(R.id.fragment_coord_buttons_fab_coord).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent fabCoordIntent = new Intent(getActivity(), CoordFabActivity.class);
+                Intent fabCoordIntent = new Intent(getActivity(), CoordToolbarActivity.class);
                 getActivity().startActivity(fabCoordIntent);
             }
         });
         view.findViewById(R.id.fragment_coord_buttons_toolbar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toolbarCoordIntent = new Intent(getActivity(), CoordToolbarActivity.class);
+                Intent toolbarCoordIntent = new Intent(getActivity(), CoordParallaxActivity.class);
                 getActivity().startActivity(toolbarCoordIntent);
             }
         });

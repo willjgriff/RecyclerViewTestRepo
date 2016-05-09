@@ -24,7 +24,7 @@ public class BlockPresenterImpl extends RxBasePresenter<BlockView> implements Bl
         addSubscription(Etherchain.blockCountCall(), new PlaygroundSubscriber<BlockCount>() {
             @Override
             public void onError(Throwable e) {
-                Log.e("ERROR", "Etherchain block count request failed");
+                Log.e("ERROR", "Etherchain block count request failed", e);
             }
 
             @Override
@@ -36,7 +36,7 @@ public class BlockPresenterImpl extends RxBasePresenter<BlockView> implements Bl
         addSubscription(Etherchain.blockList(0, 3), new PlaygroundSubscriber<List<Block>>() {
             @Override
             public void onError(Throwable e) {
-                Log.e("ERROR", "Etherchain block list request failed");
+                Log.e("ERROR", "Etherchain block list request failed", e);
             }
 
             @Override

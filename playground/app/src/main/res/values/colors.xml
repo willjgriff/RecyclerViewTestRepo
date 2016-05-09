@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Main Colours-->
     <color name="primary_dark">#F57C00</color>
     <color name="primary">#ff9800</color>
     <color name="primary_light">#ffe0b2</color>
@@ -7,7 +8,8 @@
     <color name="accent_dark">#c638de</color>
     <color name="accent_alpha26">#42e040fb</color>
     <color name="tab_selected">@color/white</color>
-    
+
+    <!--Text Colours-->
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#727272</color>
     <color name="lite_text">@color/white</color>
@@ -15,22 +17,24 @@
     <color name="icons">#727272</color>
     <color name="divider">#B6B6B6</color>
 
+    <!--Background Colours-->
     <color name="bg_main">@color/white</color>
     <color name="bg_secondary">#f7f7f7</color>
     <color name="bg_selected">#f4f4f4</color>
     <color name="bg_dark">#818181</color>
 
+    <!--Icon Colours-->
     <color name="ic_white">@color/white</color>
 
-    <color name="status_bar_colour_hack">#995b00</color>
-
+    <!--Plain Colours-->
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="black_26alpha">#42000000</color>
     <color name="transparent">#00FFFFFF</color>
-
-    <!--Checker colors-->
     <color name="green">#00f908</color>
     <color name="yellow">#f9e400</color>
     <color name="aqua">#00f9e8</color>
+
+    <!--Misc Colours-->
+    <color name="status_bar_colour_hack">#995b00</color>
 </resources>

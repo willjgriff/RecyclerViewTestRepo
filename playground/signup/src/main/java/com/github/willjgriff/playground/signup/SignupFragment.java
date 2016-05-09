@@ -17,7 +17,6 @@ import rx.android.view.OnClickEvent;
 import rx.android.view.ViewObservable;
 import rx.android.widget.WidgetObservable;
 import rx.functions.Action1;
-import rx.functions.Func3;
 import rx.observables.ConnectableObservable;
 
 /**
@@ -79,21 +78,15 @@ public class SignupFragment extends RxMvpFragment<SignupPresenter> implements Si
     }
 
     private void setupSubscribers() {
-        mUsernameObservable.subscribe(new Action1<Boolean>() {
-            @Override
-            public void call(Boolean usernameValid) {
-                if (!usernameValid) {
-                    mUsername.setError(getContext().getString(R.string.fragment_signup_username_error));
-                }
+        mUsernameObservable.subscribe(usernameValid -> {
+            if (!usernameValid) {
+                mUsername.setError(getContext().getString(R.string.fragment_signup_username_error));
             }
         });
 
-        mPasswordObservable.subscribe(new Action1<Boolean>() {
-            @Override
-            public void call(Boolean passwordValid) {
-                if (!passwordValid) {
-                    mPassword.setError(getContext().getString(R.string.fragment_signup_password_error));
-                }
+        mPasswordObservable.subscribe(passwordValid -> {
+            if (!passwordValid) {
+                mPassword.setError(getContext().getString(R.string.fragment_signup_password_error));
             }
         });
 
@@ -106,44 +99,33 @@ public class SignupFragment extends RxMvpFragment<SignupPresenter> implements Si
             }
         });
 
-        Observable.combineLatest(mUsernameObservable, mPasswordObservable, mConfirmPasswordObservable, new Func3<Boolean, Boolean, Boolean, Boolean>() {
-            @Override
-            public Boolean call(Boolean usernameValid, Boolean passwordValid, Boolean confirmValid) {
-                return usernameValid && passwordValid && confirmValid;
-            }
-        }).subscribe(new Action1<Boolean>() {
-            @Override
-            public void call(Boolean buttonClickable) {
-                mSignup.setEnabled(buttonClickable);
-            }
-        });
+        Observable.combineLatest(mUsernameObservable, mPasswordObservable, mConfirmPasswordObservable,
+                (usernameValid, passwordValid, confirmValid) -> usernameValid && passwordValid && confirmValid)
+                .subscribe(buttonClickable -> mSignup.setEnabled(buttonClickable));
 
-        mSignupObservable.subscribe(new Action1<OnClickEvent>() {
-            @Override
-            public void call(OnClickEvent onClickEvent) {
-                // Not sure sticking all of this stuff here is very Rx, but for now...
-                signupEnabled(false);
-                String username = String.valueOf(mUsername.getText());
-                String password = String.valueOf(mPassword.getText());
+        mSignupObservable.subscribe(onClickEvent -> {
+            // Not sure sticking all of this stuff here is very Rx, but for now...
+            signupEnabled(false);
+            String username = String.valueOf(mUsername.getText());
+            String password = String.valueOf(mPassword.getText());
 
-                // I expect there's a better way of using Rx in Mvp, needs playing with though.
-                mSignupCallObservable = getPresenter().signup(username, password);
-                mSignupCallObservable.subscribe(new PlaygroundSubscriber<Object>() {
-                    @Override
-                    public void onError(Throwable e) {
-                        signupEnabled(true);
-                    }
+            // I expect there's a better way of using Rx in Mvp, needs playing with though.
+            mSignupCallObservable = getPresenter().signup(username, password);
+            mSignupCallObservable.subscribe(new PlaygroundSubscriber<Object>() {
+                @Override
+                public void onError(Throwable e) {
+                    signupEnabled(true);
+                }
 
-                    @Override
-                    public void onNext(Object blocks) {
-                        // Just for testing purposes, this call would actually only belong in onError().
-                        // This would probably do nothing and the presenters onNext would direct
-                        // the user to a new screen.
-                        signupEnabled(true);
-                    }
-                });
-                mSignupCallObservable.connect();
-            }
+                @Override
+                public void onNext(Object blocks) {
+                    // Just for testing purposes, this call would actually only belong in onError().
+                    // This would probably do nothing and the presenters onNext would direct
+                    // the user to a new screen.
+                    signupEnabled(true);
+                }
+            });
+            mSignupCallObservable.connect();
         });
     }
 

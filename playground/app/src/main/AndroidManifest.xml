@@ -25,8 +25,8 @@
         </activity>
 
         <activity
-            android:name="com.github.willjgriff.playground.coord.CoordFabActivity"
-            android:label="Fab Coord Activity"
+            android:name="com.github.willjgriff.playground.coord.CoordToolbarActivity"
+            android:label="Hide Toolbar Coord Activity"
             android:theme="@style/Theme.Playground.FabCoord"
             android:screenOrientation="portrait">
             <meta-data
@@ -36,8 +36,8 @@
         </activity>
 
         <activity
-            android:name="com.github.willjgriff.playground.coord.CoordToolbarActivity"
-            android:label="Toolbar Coord Activity"
+            android:name="com.github.willjgriff.playground.coord.CoordParallaxActivity"
+            android:label="Parallax Toolbar Coord Activity"
             android:theme="@style/Theme.Playground.ToolbarCoord"
             android:screenOrientation="portrait">
             <meta-data

@@ -71,10 +71,8 @@ public abstract class RxBasePresenter<VIEW> implements RxPresenter<VIEW> {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .publish();
-
         subscriptions.add(connectableObservable
                 .subscribe(subscriber));
-
         return connectableObservable;
     }
 }

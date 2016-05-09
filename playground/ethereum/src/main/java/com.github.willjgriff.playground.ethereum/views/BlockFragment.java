@@ -21,11 +21,10 @@ import com.github.willjgriff.playground.mvp.RxMvp.RxView.RxMvpFragment;
  */
 public class BlockFragment extends RxMvpFragment<BlockPresenter> implements BlockView {
 
-    LabelTextView mTotalBlockCount;
-    TextView mBlockHash;
-    ImageView mPickaxeLeft;
-    ImageView mPickaxeRight;
-
+    private LabelTextView mTotalBlockCount;
+    private TextView mBlockHash;
+    private ImageView mPickaxeLeft;
+    private ImageView mPickaxeRight;
 
     @Override
     protected BlockPresenter createPresenter() {

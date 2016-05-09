@@ -16,7 +16,7 @@ public class SignupPresenterImpl extends RxBasePresenter<SignupView> implements 
 
     @Override
     public ConnectableObservable<?> signup(String username, String password) {
-        // Imagine this is a signup request sending the username and password instead of '0, 30'
+        // Imagine this is a signup request sending the username and password instead of '0, 300'
         return addConnectableSubscription(Etherchain.blockList(0, 300), new PlaygroundSubscriber<List<Block>>() {
             @Override
             public void onError(Throwable e) {

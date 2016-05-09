@@ -4,7 +4,7 @@
     android:id="@+id/fragment_coord_toolbar_coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    >
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/fragment_coord_toolbar_app_bar"
@@ -37,7 +37,6 @@
                 android:id="@+id/fragment_coord_toolbar_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:fitsSystemWindows="true"
                 app:contentScrim="@color/primary"
                 app:layout_collapseMode="pin" />
 
