@@ -9,12 +9,12 @@ import com.github.willjgriff.playground.network.utils.MovieImageSizeUtil.ImageTy
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 
-import static com.github.willjgriff.playground.network.ApiUris.TheMovieDb.URI_MOVIE_IMAGE;
+import static com.github.willjgriff.playground.network.api.ApiUris.TheMovieDb.URI_MOVIE_IMAGE;
 
 /**
  * Created by Will on 01/04/2016.
  */
-public class ApiMovieImageUtils {
+public class MovieApiImageUtils {
 
     public static Builder showImage(String imageUri, ImageView imageView) {
         return new Builder(imageUri, imageView);

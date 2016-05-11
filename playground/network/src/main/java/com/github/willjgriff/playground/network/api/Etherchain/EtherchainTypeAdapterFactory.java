@@ -1,4 +1,4 @@
-package com.github.willjgriff.playground.network;
+package com.github.willjgriff.playground.network.api.Etherchain;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;

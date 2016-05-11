@@ -2,7 +2,7 @@ package com.github.willjgriff.playground.movies.Presenters;
 
 import android.util.Log;
 
-import com.github.willjgriff.playground.network.TheMovieDb;
+import com.github.willjgriff.playground.network.api.TheMovieDb.TheMovieDbCalls;
 import com.github.willjgriff.playground.network.model.movies.MovieListItem;
 import com.github.willjgriff.playground.network.model.movies.TopMovies;
 import com.github.willjgriff.playground.movies.Views.TopMoviesView;
@@ -24,7 +24,7 @@ public class TopMoviesPresenterImpl extends BaseListLoadingPresenter<MovieListIt
     @Override
     public void loadDataModel() {
         setLoading(true);
-        TheMovieDb.topMoviesCall().enqueue(new Callback<TopMovies>() {
+        TheMovieDbCalls.topMoviesCall().enqueue(new Callback<TopMovies>() {
             @Override
             public void onResponse(Response<TopMovies> response, Retrofit retrofit) {
                 setModel(response.body().getTopMovies());

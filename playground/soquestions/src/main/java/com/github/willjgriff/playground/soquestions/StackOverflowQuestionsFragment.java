@@ -12,10 +12,13 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.example.will.Playground.R;
-import com.github.willjgriff.playground.network.StackOverflow;
+import com.github.willjgriff.playground.PlaygroundApplication;
+import com.github.willjgriff.playground.dagger2.StackOverflowDagger;
 import com.github.willjgriff.playground.network.model.stackoverflow.StackOverflowQuestions;
 
 import java.util.ArrayList;
+
+import javax.inject.Inject;
 
 import retrofit.Callback;
 import retrofit.Response;
@@ -28,11 +31,14 @@ public class StackOverflowQuestionsFragment extends Fragment {
 
     ArrayAdapter<Object> mAdapter;
     ProgressBar mProgressBar;
+    @Inject StackOverflowDagger mStackOverflow;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_stack_overflow_questions, container, false);
+
+        PlaygroundApplication.app().getSoComponent().inject(this);
 
         mProgressBar = (ProgressBar) view.findViewById(R.id.fragment_stack_overflow_questions_progress_bar);
         ListView soQuestionsList = (ListView) view.findViewById(R.id.fragment_stack_overflow_questions_list);
@@ -50,7 +56,7 @@ public class StackOverflowQuestionsFragment extends Fragment {
 
     private void loadStackOverflowQuestions() {
         //asynchronous call (use call.execute() on a new thread for synchronous)
-        StackOverflow.androidQuestionsCall().enqueue(new Callback<StackOverflowQuestions>() {
+        mStackOverflow.androidQuestionsCall().enqueue(new Callback<StackOverflowQuestions>() {
             @Override
             public void onResponse(Response<StackOverflowQuestions> response, Retrofit retrofit) {
                 mAdapter.addAll(response.body().getQuestions());

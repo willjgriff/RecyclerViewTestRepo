@@ -18,7 +18,7 @@ import android.view.MenuItem;
 import com.example.will.Playground.R;
 import com.github.willjgriff.playground.RxJavaFun;
 import com.github.willjgriff.playground.lists.ListsFragment;
-import com.github.willjgriff.playground.network.TheMovieDb;
+import com.github.willjgriff.playground.network.api.TheMovieDb.TheMovieDbCalls;
 import com.github.willjgriff.playground.network.model.movies.MoviesConfig;
 import com.github.willjgriff.playground.utils.SharedPreferenceUtils;
 import com.github.willjgriff.playground.utils.UiUtils;
@@ -153,7 +153,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationE
     }
 
     private void startupApiCalls() {
-        TheMovieDb.moviesConfigCall().enqueue(new Callback<MoviesConfig>() {
+        TheMovieDbCalls.moviesConfigCall().enqueue(new Callback<MoviesConfig>() {
             @Override
             public void onResponse(Response<MoviesConfig> response, Retrofit retrofit) {
                 Log.d("TAG", "Successfully retrieved TheMovieDb Configuration");

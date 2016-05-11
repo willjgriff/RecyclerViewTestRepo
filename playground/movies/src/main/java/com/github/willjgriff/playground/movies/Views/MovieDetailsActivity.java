@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.will.Playground.R;
-import com.github.willjgriff.playground.network.utils.ApiMovieImageUtils;
+import com.github.willjgriff.playground.network.utils.MovieApiImageUtils;
 import com.github.willjgriff.playground.movies.Presenters.MovieDetailsPresenter;
 import com.github.willjgriff.playground.movies.Presenters.MovieDetailsPresenterImpl;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.MvpActivity;
@@ -60,7 +60,7 @@ public class MovieDetailsActivity extends MvpActivity<MovieDetailsPresenter> imp
 
     @Override
     public void setPoster(String posterImage) {
-        ApiMovieImageUtils
+        MovieApiImageUtils
                 .showImage(posterImage, mPoster)
                 .withPlaceholder(R.drawable.movie_poster_placeholder)
                 .withTypeSize(POSTER, LARGE)

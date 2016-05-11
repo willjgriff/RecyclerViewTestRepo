@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.will.Playground.R;
-import com.github.willjgriff.playground.network.utils.ApiMovieImageUtils;
+import com.github.willjgriff.playground.network.utils.MovieApiImageUtils;
 import com.github.willjgriff.playground.network.model.movies.MovieListItem;
 import com.github.willjgriff.playground.network.model.movies.MoviesConfig;
 import com.github.willjgriff.playground.utils.SharedPreferenceUtils;
@@ -72,7 +72,7 @@ public class TopMoviesAdapter extends RecyclerView.Adapter<TopMoviesAdapter.TopM
                 List<String> backdropSizes = moviesConfig.getImageConfig().getBackdropSizes();
                 smallPosterSize = backdropSizes.get(backdropSizes.size() - 2);
             }
-            ApiMovieImageUtils.showImage(movieListItem.getBackdropImage(), mMovieImage)
+            MovieApiImageUtils.showImage(movieListItem.getBackdropImage(), mMovieImage)
                     .withPlaceholder(R.drawable.movie_banner_placeholder)
                     .withTypeSize(BACKDROP, SMALL)
                     .now();

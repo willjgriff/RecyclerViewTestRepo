@@ -1,4 +1,4 @@
-package com.github.willjgriff.playground.network;
+package com.github.willjgriff.playground.network.api.Etherchain;
 
 import com.github.willjgriff.playground.network.endpoints.ApiEtherchain;
 import com.github.willjgriff.playground.network.model.ethereum.Block;
@@ -16,12 +16,12 @@ import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
 import rx.Observable;
 
-import static com.github.willjgriff.playground.network.ApiUris.Etherchain.URI_ETHERCHAIN;
+import static com.github.willjgriff.playground.network.api.ApiUris.Etherchain.URI_ETHERCHAIN;
 
 /**
  * Created by Will on 28/03/2016.
  */
-public class Etherchain {
+public class EtherchainApiCalls {
 
     private static ApiEtherchain getApiEtherchain(TypeAdapterFactory typeAdapterFactory) {
         Gson gson = new GsonBuilder()

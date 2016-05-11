@@ -5,7 +5,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.will.Playground.R;
-import com.github.willjgriff.playground.network.utils.ApiMovieImageUtils;
+import com.github.willjgriff.playground.network.utils.MovieApiImageUtils;
 import com.github.willjgriff.playground.movies.Presenters.MovieListItemPresenter;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.MvpViewHolder;
 
@@ -30,7 +30,7 @@ public class MovieListItemViewHolder extends MvpViewHolder<MovieListItemPresente
 
     @Override
     public void setImage(String backdropImage) {
-        ApiMovieImageUtils.showImage(backdropImage, mMovieBackdrop)
+        MovieApiImageUtils.showImage(backdropImage, mMovieBackdrop)
                 .withPlaceholder(R.drawable.movie_banner_placeholder)
                 .withTypeSize(BACKDROP, MEDIUM)
                 .now();

@@ -1,4 +1,4 @@
-package com.github.willjgriff.playground.network;
+package com.github.willjgriff.playground.network.api;
 
 /**
  * Created by Will on 31/03/2016.
