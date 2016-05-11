@@ -1,6 +1,7 @@
 package com.github.willjgriff.playground.coord;
 
 import android.content.Context;
+import android.support.annotation.Keep;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewCompat;
@@ -10,6 +11,9 @@ import android.view.View;
 /**
  * Created by Will on 12/03/2016.
  */
+// This behaviour has a bug where we can show a snackbar, then scroll, hiding the fab,
+// the snackbar dissapears but when we scroll again the fab reappears higher than it should.
+@Keep
 public class ScrollAwareFabBehaviour extends FloatingActionButton.Behavior {
 
     public ScrollAwareFabBehaviour(Context context, AttributeSet attrs) {

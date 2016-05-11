@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fragment_fab_coordinator"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
         android:layout_height="wrap_content"
@@ -27,13 +28,13 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fragment_coord_fab_button"
-        android:layout_gravity="bottom|end"
+        android:layout_gravity="bottom|end|right"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/xsmall"
         android:layout_width="wrap_content"
         android:src="@drawable/ic_extension_white_24dp"
         app:layout_anchor="@id/fragment_coord_fab_recycler_view"
         app:layout_anchorGravity="bottom|right|end"
-        app:layout_behavior="com.github.willjgriff.playground.coord.ScrollAwareFabBehaviour" />
+        app:layout_behavior="com.github.willjgriff.playground.coord.ShrinkingFabBehaviour" />
 
 </android.support.design.widget.CoordinatorLayout>
