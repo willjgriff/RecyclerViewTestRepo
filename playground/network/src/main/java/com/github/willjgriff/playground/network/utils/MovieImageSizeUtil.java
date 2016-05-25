@@ -56,7 +56,7 @@ public class MovieImageSizeUtil {
             case MEDIUM:
                 return imageSizes.get((imageSizes.size() / 2) - 1);
             case LARGE:
-                // Note that the last item in the list is always 'original' not a size. So use the one before it.
+                // Note that the last item in the list is always 'original' not a size number. So use the one before it.
                 return imageSizes.get(imageSizes.size() - 2);
         }
         return "original";

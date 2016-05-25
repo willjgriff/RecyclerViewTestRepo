@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 
-import com.example.will.Playground.R;
+import com.github.willjgriff.playground.R;
 
 import com.github.willjgriff.playground.lists.adapters.PeopleRecyclerViewDialogAdapter;
 import com.github.willjgriff.playground.lists.adapters.PeopleRecyclerViewDialogAdapter.RecyclerViewDialogListener;

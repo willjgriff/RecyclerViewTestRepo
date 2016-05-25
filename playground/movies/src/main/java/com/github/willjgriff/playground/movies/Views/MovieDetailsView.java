@@ -7,7 +7,7 @@ import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.MvpView
  */
 public interface MovieDetailsView extends MvpView {
 
-    void setName(String title);
+    void setMovieName(String title);
 
     void setPoster(String posterImage);
 }

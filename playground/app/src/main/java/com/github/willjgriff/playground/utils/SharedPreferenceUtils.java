@@ -28,7 +28,7 @@ public class SharedPreferenceUtils {
         PreferenceManager.getDefaultSharedPreferences(context);
         Gson gson = new Gson();
         SharedPreferences prefs = context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE);
-        return gson.fromJson(prefs.getString(SHARED_MOVIES_CONFIG, ""), returnType);
+        return gson.fromJson(prefs.getString(key, ""), returnType);
     }
 
 }

@@ -10,7 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.will.Playground.R;
+import com.github.willjgriff.playground.R;
 
 import java.util.ArrayList;
 import java.util.List;

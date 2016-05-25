@@ -1,4 +1,4 @@
-package com.example.will.Playground;
+package com.github.willjgriff.playground;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

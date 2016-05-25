@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.will.Playground.R;
+import com.github.willjgriff.playground.R;
 
 /**
  * Created by Will on 16/03/2016.

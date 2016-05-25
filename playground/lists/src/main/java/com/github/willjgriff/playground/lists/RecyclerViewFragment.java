@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.will.Playground.R;
+import com.github.willjgriff.playground.R;
 import com.github.willjgriff.playground.lists.adapters.PeopleRecyclerViewAdapter;
 import com.github.willjgriff.playground.lists.adapters.PeopleRecyclerViewWithClickAdapter;
 import com.github.willjgriff.playground.lists.adapters.PeopleRecyclerViewWithClickAdapter.RecyclerViewListener;

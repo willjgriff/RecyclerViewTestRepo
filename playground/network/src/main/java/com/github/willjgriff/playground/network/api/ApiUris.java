@@ -1,5 +1,7 @@
 package com.github.willjgriff.playground.network.api;
 
+import com.github.willjgriff.playground.BuildConfig;
+
 /**
  * Created by Will on 31/03/2016.
  */
@@ -12,7 +14,7 @@ public class ApiUris {
 
     public static final class TheMovieDb {
 
-        public static final String MOVIES_API_KEY = "4eeec5eabda1a778430eed3981449334";
+        public static final String MOVIES_API_KEY = BuildConfig.THE_MOVIE_DB_API_KEY;
 
         public static final String URI_THE_MOVIE_DB = "https://api.themoviedb.org/";
 

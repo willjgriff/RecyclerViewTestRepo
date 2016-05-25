@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.will.Playground.R;
+import com.github.willjgriff.playground.R;
 
 import java.util.List;
 

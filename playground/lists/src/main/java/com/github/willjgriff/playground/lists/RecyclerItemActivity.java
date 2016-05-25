@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.will.Playground.R;
+import com.github.willjgriff.playground.R;
 import com.github.willjgriff.playground.lists.data.Person;
 
 /**

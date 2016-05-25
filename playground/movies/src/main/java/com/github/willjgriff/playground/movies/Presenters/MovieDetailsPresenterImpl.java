@@ -1,10 +1,10 @@
 package com.github.willjgriff.playground.movies.Presenters;
 
-import com.github.willjgriff.playground.network.api.TheMovieDb.TheMovieDbCalls;
-import com.github.willjgriff.playground.network.model.movies.MovieFull;
 import com.github.willjgriff.playground.movies.Views.MovieDetailsView;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.Presenter.BasePresenter;
+import com.github.willjgriff.playground.network.model.movies.MovieFull;
 
+import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
@@ -14,14 +14,18 @@ import retrofit.Retrofit;
  */
 public class MovieDetailsPresenterImpl extends BasePresenter<MovieFull, MovieDetailsView> implements MovieDetailsPresenter {
 
-    String mMovieId;
+    private String mMovieId;
+    private Call<MovieFull> mMovieFullCall;
 
-    public MovieDetailsPresenterImpl(String movieId) {
-        this.mMovieId = movieId;
-        TheMovieDbCalls.movieDetailsCall(mMovieId).enqueue(new Callback<MovieFull>() {
+    public MovieDetailsPresenterImpl(String movieId, Call<MovieFull> apiRequest) {
+        mMovieId = movieId;
+        mMovieFullCall = apiRequest;
+        mMovieFullCall.enqueue(new Callback<MovieFull>() {
             @Override
             public void onResponse(Response<MovieFull> response, Retrofit retrofit) {
-                setModel(response.body());
+                if (response.isSuccess()) {
+                    setModel(response.body());
+                }
             }
 
             @Override
@@ -32,7 +36,7 @@ public class MovieDetailsPresenterImpl extends BasePresenter<MovieFull, MovieDet
 
     @Override
     protected void updateView() {
-        view().setName(mModel.getTitle());
+        view().setMovieName(mModel.getTitle());
         view().setPoster(mModel.getPosterImage());
     }
 }

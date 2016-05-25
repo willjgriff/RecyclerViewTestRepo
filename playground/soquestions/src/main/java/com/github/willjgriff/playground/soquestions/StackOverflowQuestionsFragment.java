@@ -11,7 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
-import com.example.will.Playground.R;
+import com.github.willjgriff.playground.R;
 import com.github.willjgriff.playground.PlaygroundApplication;
 import com.github.willjgriff.playground.dagger2.StackOverflowDagger;
 import com.github.willjgriff.playground.network.model.stackoverflow.StackOverflowQuestions;

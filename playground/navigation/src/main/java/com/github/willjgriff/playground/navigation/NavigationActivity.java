@@ -15,7 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.example.will.Playground.R;
+import com.github.willjgriff.playground.R;
 import com.github.willjgriff.playground.RxJavaFun;
 import com.github.willjgriff.playground.lists.ListsFragment;
 import com.github.willjgriff.playground.network.api.TheMovieDb.TheMovieDbCalls;

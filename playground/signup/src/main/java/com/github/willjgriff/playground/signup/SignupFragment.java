@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.will.Playground.R;
+import com.github.willjgriff.playground.R;
 import com.github.willjgriff.playground.mvp.RxMvp.RxView.RxMvpFragment;
 import com.github.willjgriff.playground.network.utils.PlaygroundSubscriber;
 

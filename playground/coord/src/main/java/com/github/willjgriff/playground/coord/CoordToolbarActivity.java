@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.example.will.Playground.R;
+import com.github.willjgriff.playground.R;
 
 import com.github.willjgriff.playground.lists.adapters.PeopleRecyclerViewAdapter;
 import com.github.willjgriff.playground.lists.data.People;

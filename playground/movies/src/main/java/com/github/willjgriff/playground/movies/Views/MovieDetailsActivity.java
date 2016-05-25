@@ -7,11 +7,12 @@ import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.will.Playground.R;
-import com.github.willjgriff.playground.network.utils.MovieApiImageUtils;
+import com.github.willjgriff.playground.R;
 import com.github.willjgriff.playground.movies.Presenters.MovieDetailsPresenter;
 import com.github.willjgriff.playground.movies.Presenters.MovieDetailsPresenterImpl;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.MvpActivity;
+import com.github.willjgriff.playground.network.api.TheMovieDb.TheMovieDbCalls;
+import com.github.willjgriff.playground.network.utils.MovieApiImageUtils;
 import com.github.willjgriff.playground.utils.UiUtils;
 
 import static com.github.willjgriff.playground.network.utils.MovieImageSizeUtil.ImageSize.LARGE;
@@ -50,11 +51,11 @@ public class MovieDetailsActivity extends MvpActivity<MovieDetailsPresenter> imp
     @Override
     protected MovieDetailsPresenter setPresenter() {
         String movieId = getIntent().getExtras().getString(EXTRA_MOVIE_ID);
-        return new MovieDetailsPresenterImpl(movieId);
+        return new MovieDetailsPresenterImpl(movieId, TheMovieDbCalls.movieDetailsCall(movieId));
     }
 
     @Override
-    public void setName(String title) {
+    public void setMovieName(String title) {
         mTitle.setText(title);
     }
 

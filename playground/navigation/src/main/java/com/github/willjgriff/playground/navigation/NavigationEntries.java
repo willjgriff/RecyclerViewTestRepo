@@ -5,7 +5,7 @@ import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.example.will.Playground.R;
+import com.github.willjgriff.playground.R;
 import com.github.willjgriff.playground.coord.CoordsFragment;
 import com.github.willjgriff.playground.ethereum.views.BlockFragment;
 import com.github.willjgriff.playground.lists.ListsFragment;

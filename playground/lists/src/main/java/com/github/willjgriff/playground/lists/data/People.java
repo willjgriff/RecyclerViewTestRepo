@@ -1,6 +1,6 @@
 package com.github.willjgriff.playground.lists.data;
 
-import com.example.will.Playground.R;
+import com.github.willjgriff.playground.R;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.will.Playground.R;
+import com.github.willjgriff.playground.R;
 import com.github.willjgriff.playground.network.utils.MovieApiImageUtils;
 import com.github.willjgriff.playground.network.model.movies.MovieListItem;
 import com.github.willjgriff.playground.network.model.movies.MoviesConfig;

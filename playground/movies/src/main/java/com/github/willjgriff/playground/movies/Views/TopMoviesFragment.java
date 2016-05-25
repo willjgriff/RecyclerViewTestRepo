@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.example.will.Playground.R;
+import com.github.willjgriff.playground.R;
 import com.github.willjgriff.playground.network.model.movies.MovieListItem;
 import com.github.willjgriff.playground.movies.Adapters.TopMoviesMvpAdapter;
 import com.github.willjgriff.playground.movies.Presenters.TopMoviesPresenter;
