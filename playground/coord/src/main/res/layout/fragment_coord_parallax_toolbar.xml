@@ -4,6 +4,7 @@
     android:id="@+id/fragment_coord_toolbar_coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     >
 
     <android.support.design.widget.AppBarLayout
@@ -11,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/coord_toolbar_height"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:background="@color/transparent" >
+        android:background="@color/transparent"
+        android:fitsSystemWindows="true">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/fragment_coord_toolbar_collapsing_toolbar"
