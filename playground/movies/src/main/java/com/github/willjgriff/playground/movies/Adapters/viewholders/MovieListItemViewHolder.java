@@ -1,16 +1,17 @@
-package com.github.willjgriff.playground.movies.Views;
+package com.github.willjgriff.playground.movies.Adapters.viewholders;
 
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.willjgriff.playground.R;
-import com.github.willjgriff.playground.network.utils.MovieApiImageUtils;
 import com.github.willjgriff.playground.movies.Presenters.MovieListItemPresenter;
+import com.github.willjgriff.playground.movies.Views.MovieListItemView;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.MvpViewHolder;
+import com.github.willjgriff.playground.network.utils.MovieApiImageUtils;
 
-import static com.github.willjgriff.playground.network.utils.MovieImageSizeUtil.ImageSize.MEDIUM;
-import static com.github.willjgriff.playground.network.utils.MovieImageSizeUtil.ImageType.BACKDROP;
+import static com.github.willjgriff.playground.network.utils.MovieImageSize.ImageSize.MEDIUM;
+import static com.github.willjgriff.playground.network.utils.MovieImageSize.ImageType.BACKDROP;
 
 /**
  * Created by Will on 09/04/2016.

@@ -1,4 +1,4 @@
-package com.github.willjgriff.playground.movies.Views;
+package com.github.willjgriff.playground.movies;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,13 +10,14 @@ import android.widget.TextView;
 import com.github.willjgriff.playground.R;
 import com.github.willjgriff.playground.movies.Presenters.MovieDetailsPresenter;
 import com.github.willjgriff.playground.movies.Presenters.MovieDetailsPresenterImpl;
+import com.github.willjgriff.playground.movies.Views.MovieDetailsView;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.MvpActivity;
 import com.github.willjgriff.playground.network.api.TheMovieDb.TheMovieDbCalls;
 import com.github.willjgriff.playground.network.utils.MovieApiImageUtils;
 import com.github.willjgriff.playground.utils.UiUtils;
 
-import static com.github.willjgriff.playground.network.utils.MovieImageSizeUtil.ImageSize.LARGE;
-import static com.github.willjgriff.playground.network.utils.MovieImageSizeUtil.ImageType.POSTER;
+import static com.github.willjgriff.playground.network.utils.MovieImageSize.ImageSize.LARGE;
+import static com.github.willjgriff.playground.network.utils.MovieImageSize.ImageType.POSTER;
 
 /**
  * Created by Will on 11/04/2016.
@@ -25,15 +26,14 @@ public class MovieDetailsActivity extends MvpActivity<MovieDetailsPresenter> imp
 
     public static final String EXTRA_MOVIE_ID = "com.github.willjgriff.playground.movies.Views.MovieDetailsActivity;EXTRA_MOVIE_ID";
 
-    TextView mTitle;
-    ImageView mPoster;
+    private TextView mTitle;
+    private ImageView mPoster;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
 
-        // TODO: Get rid of this toolbar boilerplate, maybe in the mvpFragment or mvpActivity.
         Toolbar toolbar = (Toolbar) findViewById(R.id.activity_movie_details_toolbar);
         ViewCompat.setElevation(toolbar, UiUtils.convertDpToPixel(4, this));
         setSupportActionBar(toolbar);

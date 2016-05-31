@@ -1,4 +1,4 @@
-package com.github.willjgriff.playground.movies.Views;
+package com.github.willjgriff.playground.movies;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.github.willjgriff.playground.R;
+import com.github.willjgriff.playground.movies.Views.TopMoviesView;
 import com.github.willjgriff.playground.network.model.movies.MovieListItem;
 import com.github.willjgriff.playground.movies.Adapters.TopMoviesMvpAdapter;
 import com.github.willjgriff.playground.movies.Presenters.TopMoviesPresenter;

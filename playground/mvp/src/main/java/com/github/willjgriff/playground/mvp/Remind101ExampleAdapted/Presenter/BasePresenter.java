@@ -53,4 +53,5 @@ public abstract class BasePresenter<MODEL, VIEW> implements Presenter<MODEL, VIE
     protected boolean setupDone() {
         return view() != null && mModel != null;
     }
+
 }

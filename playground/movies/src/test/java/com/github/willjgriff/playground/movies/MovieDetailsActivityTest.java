@@ -1,4 +1,4 @@
-package com.github.willjgriff.playground.movies.Views;
+package com.github.willjgriff.playground.movies;
 
 import android.content.Intent;
 import android.os.Build;
@@ -25,22 +25,22 @@ import org.robolectric.annotation.Config;
 public class MovieDetailsActivityTest {
 
     private static final String EXTRA_TEST_MOVIE_ID = "elThoro";
-    private MovieDetailsActivity mMovieDetailsActivity;
+    private MovieDetailsActivity mActivitySubject;
 
     @Before
     public void createActivity() {
         Intent intent = new Intent().putExtra(MovieDetailsActivity.EXTRA_MOVIE_ID, EXTRA_TEST_MOVIE_ID);
-        mMovieDetailsActivity = Robolectric.buildActivity(MovieDetailsActivity.class).withIntent(intent).create().get();
+        mActivitySubject = Robolectric.buildActivity(MovieDetailsActivity.class).withIntent(intent).create().get();
     }
 
     @Test
     public void testMovieDetailsActivitySetName_setsTheCorrectName() {
         // Setup
         String expectedName = "que pasa";
-        TextView movieName = (TextView) mMovieDetailsActivity.findViewById(R.id.activity_movie_details_title);
+        TextView movieName = (TextView) mActivitySubject.findViewById(R.id.activity_movie_details_title);
 
         // Act
-        mMovieDetailsActivity.setMovieName(expectedName);
+        mActivitySubject.setMovieName(expectedName);
 
         // Assert
         Assert.assertNull(movieName);

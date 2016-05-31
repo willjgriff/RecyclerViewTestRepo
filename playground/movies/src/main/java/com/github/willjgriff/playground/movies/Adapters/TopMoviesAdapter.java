@@ -9,18 +9,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.willjgriff.playground.R;
-import com.github.willjgriff.playground.network.utils.MovieApiImageUtils;
 import com.github.willjgriff.playground.network.model.movies.MovieListItem;
-import com.github.willjgriff.playground.network.model.movies.MoviesConfig;
-import com.github.willjgriff.playground.utils.SharedPreferenceUtils;
+import com.github.willjgriff.playground.network.utils.MovieApiImageUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.github.willjgriff.playground.network.utils.MovieImageSizeUtil.ImageSize.SMALL;
-import static com.github.willjgriff.playground.network.utils.MovieImageSizeUtil.ImageType.BACKDROP;
-import static com.github.willjgriff.playground.utils.Defaults.isNull;
-import static com.github.willjgriff.playground.utils.SharedPreferenceUtils.readObjectFromPreferences;
+import static com.github.willjgriff.playground.network.utils.MovieImageSize.ImageSize.SMALL;
+import static com.github.willjgriff.playground.network.utils.MovieImageSize.ImageType.BACKDROP;
 
 /**
  * Created by Will on 30/03/2016.
@@ -66,12 +62,6 @@ public class TopMoviesAdapter extends RecyclerView.Adapter<TopMoviesAdapter.TopM
         }
 
         public void bindView(MovieListItem movieListItem) {
-            MoviesConfig moviesConfig = readObjectFromPreferences(itemView.getContext(), SharedPreferenceUtils.SHARED_MOVIES_CONFIG, MoviesConfig.class);
-            String smallPosterSize = null;
-            if (!isNull(moviesConfig)) {
-                List<String> backdropSizes = moviesConfig.getImageConfig().getBackdropSizes();
-                smallPosterSize = backdropSizes.get(backdropSizes.size() - 2);
-            }
             MovieApiImageUtils.showImage(movieListItem.getBackdropImage(), mMovieImage)
                     .withPlaceholder(R.drawable.movie_banner_placeholder)
                     .withTypeSize(BACKDROP, SMALL)

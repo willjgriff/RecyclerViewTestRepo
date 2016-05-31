@@ -5,11 +5,11 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.github.willjgriff.playground.R;
-import com.github.willjgriff.playground.network.model.movies.MovieListItem;
+import com.github.willjgriff.playground.movies.Adapters.viewholders.MovieListItemViewHolder;
 import com.github.willjgriff.playground.movies.Presenters.MovieListItemPresenter;
 import com.github.willjgriff.playground.movies.Presenters.MovieListItemPresenterImpl;
-import com.github.willjgriff.playground.movies.Views.MovieListItemViewHolder;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.View.Adapter.MvpRecyclerListAdapter;
+import com.github.willjgriff.playground.network.model.movies.MovieListItem;
 
 /**
  * Created by Will on 09/04/2016.

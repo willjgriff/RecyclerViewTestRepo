@@ -4,8 +4,8 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.widget.ImageView;
 
-import com.github.willjgriff.playground.network.utils.MovieImageSizeUtil.ImageSize;
-import com.github.willjgriff.playground.network.utils.MovieImageSizeUtil.ImageType;
+import com.github.willjgriff.playground.network.utils.MovieImageSize.ImageSize;
+import com.github.willjgriff.playground.network.utils.MovieImageSize.ImageType;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 
@@ -44,7 +44,8 @@ public class MovieApiImageUtils {
         }
 
         public Builder withTypeSize(ImageType type, ImageSize size) {
-            mImageSize = MovieImageSizeUtil.imageSizeString(mImageView.getContext(), type, size);
+            MovieImageSize movieImageSize = new MovieImageSize(type, size);
+            mImageSize = movieImageSize.getSizeString(mImageView.getContext());
             return this;
         }
 

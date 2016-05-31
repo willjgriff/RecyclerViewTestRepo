@@ -4,7 +4,7 @@ import android.os.Build;
 import android.test.suitebuilder.annotation.SmallTest;
 
 import com.github.willjgriff.playground.BuildConfig;
-import com.github.willjgriff.playground.movies.Views.MovieDetailsActivity;
+import com.github.willjgriff.playground.movies.MovieDetailsActivity;
 import com.github.willjgriff.playground.network.model.movies.MovieFull;
 
 import org.junit.Before;

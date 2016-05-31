@@ -58,7 +58,7 @@
         </activity>
 
         <activity
-            android:name="com.github.willjgriff.playground.movies.Views.MovieDetailsActivity"
+            android:name="com.github.willjgriff.playground.movies.MovieDetailsActivity"
             android:label="Movie Details"
             android:theme="@style/Theme.Playground.MovieDetails"
             android:screenOrientation="portrait">

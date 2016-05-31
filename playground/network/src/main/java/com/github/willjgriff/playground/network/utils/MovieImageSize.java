@@ -5,6 +5,7 @@ import android.content.Context;
 import com.github.willjgriff.playground.network.model.movies.MoviesConfig;
 import com.github.willjgriff.playground.utils.SharedPreferenceUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,7 +17,10 @@ import java.util.List;
  * "backdrop_sizes": ["w300","w780","w1280","original"],
  * "logo_sizes": ["w45","w92","w154","w185","w300","w500","original"]
  */
-public class MovieImageSizeUtil {
+public class MovieImageSize {
+
+    ImageType mImageType;
+    ImageSize mImageSize;
 
     public enum ImageType {
         BACKDROP,
@@ -32,34 +36,46 @@ public class MovieImageSizeUtil {
         LARGE;
     }
 
-    public static String imageSizeString(Context context, ImageType type, ImageSize size) {
-        MoviesConfig moviesConfig = SharedPreferenceUtils.readObjectFromPreferences(context, SharedPreferenceUtils.SHARED_MOVIES_CONFIG, MoviesConfig.class);
-        switch (type) {
-            case BACKDROP:
-                return getSize(size, moviesConfig.getImageConfig().getBackdropSizes());
-            case LOGO:
-                return getSize(size, moviesConfig.getImageConfig().getLogoSizes());
-            case POSTER:
-                return getSize(size, moviesConfig.getImageConfig().getPosterSizes());
-            case PROFILE:
-                return getSize(size, moviesConfig.getImageConfig().getPosterSizes());
-            case STILL:
-                return getSize(size, moviesConfig.getImageConfig().getStillSizes());
-        }
-        return "original";
+    public MovieImageSize(ImageType type, ImageSize size) {
+        mImageType = type;
+        mImageSize = size;
     }
 
-    private static String getSize(ImageSize size, List<String> imageSizes) {
-        switch (size) {
+    public String getSizeString(Context context) {
+        List<String> imageSizes = new ArrayList<>();
+        String imageSize = null;
+        MoviesConfig moviesConfig = SharedPreferenceUtils.readObjectFromPreferences(context, SharedPreferenceUtils.SHARED_MOVIES_CONFIG, MoviesConfig.class);
+
+        switch (mImageType) {
+            case BACKDROP:
+                imageSizes = moviesConfig.getImageConfig().getBackdropSizes();
+                break;
+            case LOGO:
+                imageSizes = moviesConfig.getImageConfig().getLogoSizes();
+                break;
+            case POSTER:
+                imageSizes = moviesConfig.getImageConfig().getPosterSizes();
+                break;
+            case PROFILE:
+                imageSizes = moviesConfig.getImageConfig().getPosterSizes();
+                break;
+            case STILL:
+                imageSizes = moviesConfig.getImageConfig().getStillSizes();
+        }
+
+        switch (mImageSize) {
             case SMALL:
-                return imageSizes.get(0);
+                imageSize = imageSizes.get(0);
+                break;
             case MEDIUM:
-                return imageSizes.get((imageSizes.size() / 2) - 1);
+                imageSize = imageSizes.get((imageSizes.size() / 2) - 1);
+                break;
             case LARGE:
                 // Note that the last item in the list is always 'original' not a size number. So use the one before it.
-                return imageSizes.get(imageSizes.size() - 2);
+                imageSize = imageSizes.get(imageSizes.size() - 2);
         }
-        return "original";
+
+        return imageSize != null ? imageSize : "original";
     }
 
 }

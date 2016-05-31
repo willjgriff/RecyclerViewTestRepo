@@ -79,6 +79,7 @@ dependencies {
 
     // Testing
     testCompile "org.robolectric:robolectric:${robolectric}"
+    testCompile "org.robolectric:shadows-support-v4:3.0"
     testCompile "org.mockito:mockito-core:1.+"
 
 }

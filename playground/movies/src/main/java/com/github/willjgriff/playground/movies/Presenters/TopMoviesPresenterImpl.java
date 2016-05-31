@@ -34,7 +34,6 @@ public class TopMoviesPresenterImpl extends BaseListLoadingPresenter<MovieListIt
             @Override
             public void onFailure(Throwable t) {
                 setLoading(false);
-                // TODO: Find an Android-less way of communicating errors.
                 Log.e("Tag", "Failed to connect to The Movie Db");
             }
         });
