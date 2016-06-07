@@ -1,10 +1,12 @@
 package com.github.willjgriff.playground.ethereum.views;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -24,11 +26,28 @@ public class LabelTextView extends LinearLayout {
     private TextView mDescription;
     private Paint mPaint;
 
-    int mWidth;
-    int mHeight;
+    public LabelTextView(Context context) {
+        super(context);
+        setup(context, null);
+    }
 
     public LabelTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        setup(context, attrs);
+    }
+
+    public LabelTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        setup(context, attrs);
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public LabelTextView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        setup(context, attrs);
+    }
+
+    private void setup(Context context, AttributeSet attrs) {
         setupAttrs(context, attrs);
         setupPaint(context);
         setWillNotDraw(false);
@@ -80,7 +99,7 @@ public class LabelTextView extends LinearLayout {
         mLabel = (TextView) findViewById(R.id.view_label_text_label);
         mDescription = (TextView) findViewById(R.id.view_label_text_description);
 
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.LabelTextView, 0, 0);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.LabelTextView);
         try {
             String labelText = typedArray.getString(R.styleable.LabelTextView_LabelTextLabel);
             mLabel.setText(labelText);
@@ -97,13 +116,12 @@ public class LabelTextView extends LinearLayout {
 
     public void setLabel(String label) {
         mLabel.setText(label);
-        invalidate();
-        requestLayout();
     }
 
     public void setDescription(String description) {
         mDescription.setText(description);
-        invalidate();
-        requestLayout();
+        // Maybe do the below (check if in setText())
+//        invalidate();
+//        requestLayout();
     }
 }
