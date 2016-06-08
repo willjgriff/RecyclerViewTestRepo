@@ -63,7 +63,16 @@ public class LabelTextView extends LinearLayout {
         backgroundGradient.draw(canvas);
     }
 
-    // I don't know if this is at all efficient. I expect it isn't.
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        // For reference, we can calculate stuff as the size of the View changes.
+        // oldw = the old width, w = the current width. Can be called anytime before onDraw().
+        // But not necessarily before onMeasure().
+    }
+
+    // This is not efficient, don't do this!!! The draw pass should be quick, along with
+    // the measure and layout passes of the ViewTree.
     private void drawCheckers(Canvas canvas, int height, int width) {
         int checkerHeight = getMeasuredHeight() / height;
         int checkerWidth = getMeasuredWidth() / width;

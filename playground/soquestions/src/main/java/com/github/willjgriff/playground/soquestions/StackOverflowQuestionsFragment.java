@@ -7,13 +7,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
-import com.github.willjgriff.playground.R;
 import com.github.willjgriff.playground.PlaygroundApplication;
+import com.github.willjgriff.playground.R;
 import com.github.willjgriff.playground.dagger2.StackOverflowDagger;
+import com.github.willjgriff.playground.network.model.stackoverflow.StackOverflowQuestion;
 import com.github.willjgriff.playground.network.model.stackoverflow.StackOverflowQuestions;
 
 import java.util.ArrayList;
@@ -37,17 +39,21 @@ public class StackOverflowQuestionsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_stack_overflow_questions, container, false);
-
         PlaygroundApplication.app().getSoComponent().inject(this);
 
-        mProgressBar = (ProgressBar) view.findViewById(R.id.fragment_stack_overflow_questions_progress_bar);
         ListView soQuestionsList = (ListView) view.findViewById(R.id.fragment_stack_overflow_questions_list);
-        mAdapter = new ArrayAdapter<>(getActivity(),
-                        android.R.layout.simple_list_item_1,
-                        android.R.id.text1,
-                        new ArrayList<>());
+        mAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, new ArrayList<>());
         soQuestionsList.setAdapter(mAdapter);
 
+        soQuestionsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String soQuestionLink = ((StackOverflowQuestion) parent.getAdapter().getItem(position)).getLink();
+                WebViewActivity.startInstance(getContext(), soQuestionLink);
+            }
+        });
+
+        mProgressBar = (ProgressBar) view.findViewById(R.id.fragment_stack_overflow_questions_progress_bar);
         showProgressBar();
         loadStackOverflowQuestions();
 
