@@ -1,5 +1,6 @@
 package com.github.willjgriff.playground.soquestions;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,11 +16,12 @@ import com.github.willjgriff.playground.R;
  * Created by Will on 08/06/2016.
  */
 
-public class WebViewActivity extends AppCompatActivity implements StackOverflowClient.ProgressListener {
+public class WebViewActivity extends AppCompatActivity implements StackOverflowClient.ProgressListener, StackOverflowChromeClient.ProgressListener {
 
     private static final String ARG_INITIAL_LINK = "com.github.willjgriff.plaground.soquestions.WebViewActivity;ARG_INITIAL_LINK";
     private WebView mWebView;
     private ProgressBar mProgressBar;
+    private ProgressDialog mProgressDialog;
 
     public static void startInstance(Context context, String initialLink) {
         Intent intent = new Intent(context, WebViewActivity.class);
@@ -36,6 +38,7 @@ public class WebViewActivity extends AppCompatActivity implements StackOverflowC
 
         mWebView = (WebView) findViewById(R.id.activity_web_view_web_view);
         mProgressBar = (ProgressBar) findViewById(R.id.activity_web_view_progress);
+        setupWebView();
 
         String initialLink = getIntent().getExtras().getString(ARG_INITIAL_LINK);
         loadLink(initialLink);
@@ -46,9 +49,9 @@ public class WebViewActivity extends AppCompatActivity implements StackOverflowC
         mWebView.getSettings().setLoadsImagesAutomatically(true);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        // Configure the client to use when opening URLs
+//         Configure the client to use when opening URLs
         mWebView.setWebViewClient(new StackOverflowClient(this));
-//        mWebView.setWebChromeClient(new StackOverflowClient());
+        mWebView.setWebChromeClient(new StackOverflowChromeClient(this));
     }
 
 
@@ -66,5 +69,18 @@ public class WebViewActivity extends AppCompatActivity implements StackOverflowC
     public void stopLoading() {
         mWebView.setVisibility(View.VISIBLE);
         mProgressBar.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void loading(int progress) {
+        if (mProgressDialog == null) {
+            mProgressDialog = new ProgressDialog(this);
+            mProgressDialog.show();
+        }
+        mProgressDialog.setMessage("Loading " + String.valueOf(progress) + "%");
+        if (progress == 100) {
+            mProgressDialog.dismiss();
+            mProgressDialog = null;
+        }
     }
 }

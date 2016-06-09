@@ -1,6 +1,5 @@
 package com.github.willjgriff.playground.soquestions;
 
-import android.graphics.Bitmap;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -15,23 +14,23 @@ public class StackOverflowClient extends WebViewClient {
         mProgressListener = progressListener;
     }
 
+    @Override
+    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        view.loadUrl(url);
+        return true;
+    }
+
 //    @Override
-//    public void onProgressChanged(WebView view, int newProgress) {
-//        super.onProgressChanged(view, newProgress);
+//    public void onPageStarted(WebView view, String url, Bitmap favicon) {
+//        super.onPageStarted(view, url, favicon);
+//        mProgressListener.startLoading();
 //    }
-
-    @Override
-    public void onPageStarted(WebView view, String url, Bitmap favicon) {
-        super.onPageStarted(view, url, favicon);
-        mProgressListener.startLoading();
-    }
-
-    // TODO: This doesn't really work as the page doesn't stop loading for ages after it appears.
-    @Override
-    public void onPageFinished(WebView view, String url) {
-        super.onPageFinished(view, url);
-        mProgressListener.stopLoading();
-    }
+//
+//    @Override
+//    public void onPageFinished(WebView view, String url) {
+//        super.onPageFinished(view, url);
+//        mProgressListener.stopLoading();
+//    }
 
     public interface ProgressListener {
         void startLoading();
