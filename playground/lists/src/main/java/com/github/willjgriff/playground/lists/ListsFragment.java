@@ -12,14 +12,13 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.github.willjgriff.playground.R;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.github.willjgriff.playground.R;
+import com.github.willjgriff.playground.lists.data.People;
+import com.github.willjgriff.playground.lists.data.Person;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.github.willjgriff.playground.lists.data.People;
-import com.github.willjgriff.playground.lists.data.Person;
 
 public class ListsFragment extends Fragment implements RecyclerViewDialogFragment.DialogFragmentListener {
 
@@ -40,21 +39,18 @@ public class ListsFragment extends Fragment implements RecyclerViewDialogFragmen
                 openFragment(new RecyclerViewFragment(), People.getPeople());
             }
         });
-
         view.findViewById(R.id.fragment_lists_fab_list_view).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 openFragment(new ListViewFragment(), People.getPeople());
             }
         });
-
         view.findViewById(R.id.fragment_lists_fab_list_fragment).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 openFragment(new ListFragmentFragment(), People.getPeople());
             }
         });
-
         view.findViewById(R.id.fragment_lists_fab_recycler_view_dialog).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.github.willjgriff.playground.BuildConfig;
 import com.github.willjgriff.playground.R;
+import com.github.willjgriff.playground.ethereum.widget.LabelTextView;
 
 import junit.framework.Assert;
 

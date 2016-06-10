@@ -1,4 +1,4 @@
-package com.github.willjgriff.playground.ethereum.views;
+package com.github.willjgriff.playground.ethereum.widget;
 
 import android.annotation.TargetApi;
 import android.content.Context;

@@ -15,7 +15,7 @@
         android:textIsSelectable="true"
         tools:text="24r97hqworifn3048jrfqw0e9fj34" />
 
-    <com.github.willjgriff.playground.ethereum.views.LabelTextView
+    <com.github.willjgriff.playground.ethereum.widget.LabelTextView
         android:id="@+id/fragment_block_total_block_count"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -23,7 +23,7 @@ public class StackOverflowModule {
     @Provides
     @Singleton
     Cache provideOkHttpCache(Application application) {
-        int cacheSize = 8 * 1024 * 1024; // 10MB
+        int cacheSize = 10 * 1024 * 1024; // 10MB
         Cache cache = new Cache(application.getCacheDir(), cacheSize);
         return cache;
     }

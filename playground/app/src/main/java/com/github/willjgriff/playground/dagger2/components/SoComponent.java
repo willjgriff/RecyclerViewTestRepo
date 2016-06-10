@@ -15,6 +15,6 @@ import dagger.Component;
 @Component(modules={AppModule.class, StackOverflowModule.class})
 public interface SoComponent {
 
-    // Injection targets.
+    // Injection targets. Note we can inject into any objects. Just specify them here.
     void inject(StackOverflowQuestionsFragment fragment);
 }

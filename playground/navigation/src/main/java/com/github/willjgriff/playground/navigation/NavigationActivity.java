@@ -131,7 +131,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationE
     private void setNavigationToggle() {
         mNavigationToggle = new ActionBarDrawerToggle(this, mNavigationDrawer, R.string.drawer_open, R.string.drawer_close);
         mNavigationToggle.setDrawerIndicatorEnabled(true);
-        mNavigationDrawer.setDrawerListener(mNavigationToggle);
+        mNavigationDrawer.addDrawerListener(mNavigationToggle);
     }
 
     private void replaceFragment(Fragment fragment, EntryTag entryTag) {

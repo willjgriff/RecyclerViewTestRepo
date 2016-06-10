@@ -1,4 +1,4 @@
-package com.github.willjgriff.playground.ethereum.views;
+package com.github.willjgriff.playground.ethereum;
 
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.github.willjgriff.playground.R;
 import com.github.willjgriff.playground.ethereum.presenters.BlockPresenter;
 import com.github.willjgriff.playground.ethereum.presenters.BlockPresenterImpl;
+import com.github.willjgriff.playground.ethereum.views.BlockView;
+import com.github.willjgriff.playground.ethereum.widget.LabelTextView;
 import com.github.willjgriff.playground.mvp.RxMvp.RxView.RxMvpFragment;
 
 /**

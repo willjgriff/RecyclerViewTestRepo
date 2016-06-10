@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.github.willjgriff.playground.R;
 import com.github.willjgriff.playground.coord.CoordsFragment;
-import com.github.willjgriff.playground.ethereum.views.BlockFragment;
+import com.github.willjgriff.playground.ethereum.BlockFragment;
 import com.github.willjgriff.playground.lists.ListsFragment;
 import com.github.willjgriff.playground.signup.SignupFragment;
 import com.github.willjgriff.playground.movies.TopMoviesFragment;

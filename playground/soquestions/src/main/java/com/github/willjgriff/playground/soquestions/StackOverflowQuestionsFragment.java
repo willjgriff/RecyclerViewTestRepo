@@ -31,8 +31,8 @@ import retrofit.Retrofit;
  */
 public class StackOverflowQuestionsFragment extends Fragment {
 
-    ArrayAdapter<Object> mAdapter;
-    ProgressBar mProgressBar;
+    private ArrayAdapter<Object> mAdapter;
+    private ProgressBar mProgressBar;
     @Inject StackOverflowDagger mStackOverflow;
 
     @Nullable
