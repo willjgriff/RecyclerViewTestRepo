@@ -31,7 +31,7 @@ public class CoordParallaxActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        PeopleRecyclerViewAdapter adapter = new PeopleRecyclerViewAdapter(this, People.getPeople());
+        PeopleRecyclerViewAdapter adapter = new PeopleRecyclerViewAdapter(People.getPeople());
         recyclerView.setAdapter(adapter);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.fragment_coord_toolbar_toolbar);

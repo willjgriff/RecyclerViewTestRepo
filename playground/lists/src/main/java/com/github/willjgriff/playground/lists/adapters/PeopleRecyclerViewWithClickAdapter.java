@@ -19,12 +19,12 @@ public class PeopleRecyclerViewWithClickAdapter extends PeopleRecyclerViewAdapte
     }
 
     public PeopleRecyclerViewWithClickAdapter(Context context, List<Person> mPeople, RecyclerViewListener viewListener) {
-        super(context, mPeople);
+        super(mPeople);
         mRecyclerViewListener = viewListener;
     }
 
     @Override
-    public void onBindViewHolder(final RecyclerViewHolder holder, final int position) {
+    public void onBindViewHolder(final PersonViewHolder holder, final int position) {
         super.onBindViewHolder(holder, position);
         holder.mLayoutView.setOnClickListener(new View.OnClickListener() {
             @Override

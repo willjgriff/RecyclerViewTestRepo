@@ -39,7 +39,7 @@ public abstract class MvpActivity<PRESENTER extends Presenter> extends AppCompat
     protected void onResume() {
         super.onResume();
         // noinspection unchecked
-        mPresenter.bindView(this);
+        getPresenter().bindView(this);
     }
 
     @Override

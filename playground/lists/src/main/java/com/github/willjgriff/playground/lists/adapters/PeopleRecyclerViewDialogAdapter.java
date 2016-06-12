@@ -22,12 +22,12 @@ public class PeopleRecyclerViewDialogAdapter extends PeopleRecyclerViewAdapter {
     }
 
     public PeopleRecyclerViewDialogAdapter(RecyclerViewDialogListener recyclerViewDialogListener, List<Person> mPeople, @LayoutRes int layoutItem) {
-        super(null, mPeople, layoutItem);
+        super(mPeople, layoutItem);
         mRecyclerViewDialogListener = recyclerViewDialogListener;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerViewHolder holder, final int position) {
+    public void onBindViewHolder(PersonViewHolder holder, final int position) {
         super.onBindViewHolder(holder, position);
         holder.mLayoutView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -19,10 +19,13 @@ import java.util.List;
  */
 public class NavigationRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    private static final int HEADER_ITEMS = 1;
     private List<NavigationEntry> mNavEntries;
     private int mSelectedPosition;
 
-    enum ItemType {
+    // Ideally I would create multiple data types for each ItemType and this Adapter would hold
+    // a list of those data types. Also, could use enumerated annotations instead of enum...
+    private enum ItemType {
         ITEM,
         HEADER
     }
@@ -38,7 +41,6 @@ public class NavigationRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
 
         if (viewType == ItemType.HEADER.ordinal()) {
             View header = layoutInflater.inflate(R.layout.view_navigation_header_item, parent, false);
-            ViewCompat.setElevation(header, UiUtils.convertDpToPixel(4, parent.getContext()));
             viewHolder = new NavHeaderViewHolder(header);
         } else if (viewType == ItemType.ITEM.ordinal()) {
             View navEntry = layoutInflater.inflate(R.layout.view_navigation_item, parent, false);
@@ -48,6 +50,10 @@ public class NavigationRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
         return viewHolder;
     }
 
+    // TODO: There must be a way to avoid reflection here...
+    // If the data list (mNavEntries) is generic and contains the header then the specific data item can include it's
+    // type. Then we can just bind the data at mNavEntries(position) to a generic ViewHolder with a bind method.
+    // Overkill here just to get rid of reflection and slightly confusing item counts, will do in PeopleRecyclerViewAdapter.
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof NavHeaderViewHolder) {
@@ -59,11 +65,11 @@ public class NavigationRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
 
     @Override
     public int getItemViewType(int position) {
-        int itemType = ItemType.ITEM.ordinal();
         if (isHeaderPosition(position)) {
-            itemType = ItemType.HEADER.ordinal();
+            return ItemType.HEADER.ordinal();
+        } else {
+            return ItemType.ITEM.ordinal();
         }
-        return itemType;
     }
 
     private boolean isHeaderPosition(int position) {
@@ -72,21 +78,24 @@ public class NavigationRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
 
     @Override
     public int getItemCount() {
-        return mNavEntries.size() + 1;
+        return mNavEntries.size() + HEADER_ITEMS;
     }
 
     private NavigationEntry getItem(int position) {
-        return mNavEntries.get(position - 1);
+        return mNavEntries.get(position - HEADER_ITEMS);
     }
 
     public void setSelectedPosition(int position) {
-        mSelectedPosition = position + 1;
-        notifyDataSetChanged();
+        int oldSelectedPosition = mSelectedPosition;
+        mSelectedPosition = position + HEADER_ITEMS;
+        notifyItemChanged(mSelectedPosition);
+        notifyItemChanged(oldSelectedPosition);
     }
 
     public class NavHeaderViewHolder extends RecyclerView.ViewHolder {
         public NavHeaderViewHolder(View itemView) {
             super(itemView);
+            ViewCompat.setElevation(itemView, UiUtils.convertDpToPixel(R.dimen.elevation, itemView.getContext()));
         }
     }
 

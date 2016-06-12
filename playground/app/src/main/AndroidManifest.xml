@@ -60,7 +60,7 @@
             android:name="com.github.willjgriff.playground.movies.MovieDetailsActivity"
             android:label="Movie Details"
             android:theme="@style/Theme.Playground.MovieDetails"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.github.willjgriff.playground.navigation.NavigationActivity" />

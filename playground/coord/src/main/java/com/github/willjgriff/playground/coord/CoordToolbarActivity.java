@@ -32,7 +32,7 @@ public class CoordToolbarActivity extends AppCompatActivity {
         mCoordList.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mCoordList.setLayoutManager(linearLayoutManager);
-        mCoordList.setAdapter(new PeopleRecyclerViewAdapter(this, People.getPeople()));
+        mCoordList.setAdapter(new PeopleRecyclerViewAdapter(People.getPeople()));
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.fragment_coord_fab_toolbar);
         setSupportActionBar(toolbar);
