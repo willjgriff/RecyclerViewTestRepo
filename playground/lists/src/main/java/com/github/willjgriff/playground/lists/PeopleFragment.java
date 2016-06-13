@@ -28,7 +28,7 @@ import static com.github.willjgriff.playground.lists.ListsFragment.FRAGMENT_ARGS
 /**
  * Created by Will on 01/02/2016.
  */
-public class RecyclerViewFragment extends Fragment implements PersonItemListener {
+public class PeopleFragment extends Fragment implements PersonItemListener {
 
     RecyclerView mRecyclerView;
 

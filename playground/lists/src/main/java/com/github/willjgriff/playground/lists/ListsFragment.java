@@ -36,7 +36,7 @@ public class ListsFragment extends Fragment implements RecyclerViewDialogFragmen
         view.findViewById(R.id.fragment_lists_fab_recycler_view).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                openFragment(new RecyclerViewFragment(), People.getPeople());
+                openFragment(new PeopleFragment(), People.getPeople());
             }
         });
         view.findViewById(R.id.fragment_lists_fab_list_view).setOnClickListener(new OnClickListener() {
@@ -61,7 +61,7 @@ public class ListsFragment extends Fragment implements RecyclerViewDialogFragmen
         mParentFrameLayout = (FrameLayout) view.findViewById(R.id.fragment_lists_container);
         mFabMenu = (FloatingActionsMenu) view.findViewById(R.id.fragment_lists_fab_menu);
 
-        openFragment(new RecyclerViewFragment(), People.getPeople());
+        openFragment(new PeopleFragment(), People.getPeople());
 
         return view;
     }

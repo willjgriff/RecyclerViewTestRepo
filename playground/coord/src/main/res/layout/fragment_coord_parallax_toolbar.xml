@@ -39,7 +39,6 @@
                 android:id="@+id/fragment_coord_toolbar_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:contentScrim="@color/primary"
                 app:layout_collapseMode="pin" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
