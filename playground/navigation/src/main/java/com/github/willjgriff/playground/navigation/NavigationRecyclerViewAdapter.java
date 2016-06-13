@@ -50,10 +50,8 @@ public class NavigationRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
         return viewHolder;
     }
 
-    // TODO: There must be a way to avoid reflection here...
-    // If the data list (mNavEntries) is generic and contains the header then the specific data item can include it's
-    // type. Then we can just bind the data at mNavEntries(position) to a generic ViewHolder with a bind method.
-    // Overkill here just to get rid of reflection and slightly confusing item counts, will do in PeopleRecyclerViewAdapter.
+    // See {@link com.github.willjgriff.playground.lists.adapters.PeopleAdapter} for a setup
+    // with headers that doesn't use reflection.
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof NavHeaderViewHolder) {

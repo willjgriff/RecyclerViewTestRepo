@@ -1,6 +1,7 @@
-package com.github.willjgriff.playground.lists.data;
+package com.github.willjgriff.playground.lists.model.data;
 
 import com.github.willjgriff.playground.R;
+import com.github.willjgriff.playground.lists.model.Person;
 
 import java.util.ArrayList;
 import java.util.List;

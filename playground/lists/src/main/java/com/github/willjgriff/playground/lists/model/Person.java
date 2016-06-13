@@ -1,4 +1,4 @@
-package com.github.willjgriff.playground.lists.data;
+package com.github.willjgriff.playground.lists.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

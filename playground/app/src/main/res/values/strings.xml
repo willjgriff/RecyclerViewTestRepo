@@ -11,6 +11,7 @@
     <string name="fragment_lists_change_fragment_list_view">List View</string>
     <string name="fragment_lists_change_fragment_recycler_view_dialog">Dialog Grid View</string>
     <string name="fragment_lists_change_fragment_list_fragment">List Fragment</string>
+    <string name="fragment_lists_recycler_view_header">Que tal header!</string>
 
     <!--Tab layout-->
     <string name="fragment_tab_layout_page_number">Page #%1$d</string>

@@ -11,33 +11,30 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.github.willjgriff.playground.R;
+import com.github.willjgriff.playground.lists.adapters.PeopleAdapter;
+import com.github.willjgriff.playground.lists.adapters.viewholders.PersonViewHolder.PersonItemListener;
+import com.github.willjgriff.playground.lists.model.data.People;
+import com.github.willjgriff.playground.lists.model.PeopleAdapterModel;
+import com.github.willjgriff.playground.lists.model.PeopleAdapterPerson;
+import com.github.willjgriff.playground.lists.model.Person;
 
-import com.github.willjgriff.playground.lists.adapters.PeopleRecyclerViewAdapter;
-import com.github.willjgriff.playground.lists.data.People;
+import java.util.List;
 
 /**
  * Created by Will on 13/03/2016.
  */
-public class CoordParallaxActivity extends AppCompatActivity {
+public class CoordParallaxActivity extends AppCompatActivity implements PersonItemListener {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_coord_parallax_toolbar);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.fragment_coord_toolbar_recycler_view);
-        recyclerView.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        PeopleRecyclerViewAdapter adapter = new PeopleRecyclerViewAdapter(People.getPeople());
-        recyclerView.setAdapter(adapter);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.fragment_coord_toolbar_toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setupPeopleList();
+        setupToolbar();
 
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.fragment_coord_toolbar_collapsing_toolbar);
         collapsingToolbarLayout.setTitle(getString(R.string.fragment_coord_toolbar_title));
@@ -50,5 +47,25 @@ public class CoordParallaxActivity extends AppCompatActivity {
                 Snackbar.make(coordinatorLayout, R.string.fragment_coord_snackbar, Snackbar.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void setupPeopleList() {
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.fragment_coord_toolbar_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        List<PeopleAdapterModel> peopleAdapterList = PeopleAdapterPerson.getPeopleAdapterList(People.getPeople());
+        PeopleAdapter adapter = new PeopleAdapter(peopleAdapterList, this);
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void setupToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.fragment_coord_toolbar_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public void personItemClick(Person person, View transitionImage, View transitionName, View transitionAge) {
+        Toast.makeText(this, "WASSUP " + person.mName, Toast.LENGTH_SHORT).show();
     }
 }

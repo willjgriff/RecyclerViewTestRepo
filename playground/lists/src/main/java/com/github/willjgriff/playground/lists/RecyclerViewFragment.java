@@ -13,10 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.willjgriff.playground.R;
-import com.github.willjgriff.playground.lists.adapters.PeopleRecyclerViewAdapter;
-import com.github.willjgriff.playground.lists.adapters.PeopleRecyclerViewWithClickAdapter;
-import com.github.willjgriff.playground.lists.adapters.PeopleRecyclerViewWithClickAdapter.RecyclerViewListener;
-import com.github.willjgriff.playground.lists.data.Person;
+import com.github.willjgriff.playground.lists.adapters.PeopleAdapter;
+import com.github.willjgriff.playground.lists.adapters.viewholders.PersonViewHolder.PersonItemListener;
+import com.github.willjgriff.playground.lists.model.PeopleAdapterHeader;
+import com.github.willjgriff.playground.lists.model.PeopleAdapterModel;
+import com.github.willjgriff.playground.lists.model.PeopleAdapterPerson;
+import com.github.willjgriff.playground.lists.model.Person;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +28,7 @@ import static com.github.willjgriff.playground.lists.ListsFragment.FRAGMENT_ARGS
 /**
  * Created by Will on 01/02/2016.
  */
-public class RecyclerViewFragment extends Fragment implements RecyclerViewListener {
+public class RecyclerViewFragment extends Fragment implements PersonItemListener {
 
     RecyclerView mRecyclerView;
 
@@ -34,27 +36,37 @@ public class RecyclerViewFragment extends Fragment implements RecyclerViewListen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recycler_view_layout, container, false);
+        setupPeopleList(view);
+        return view;
+    }
 
-        List<Person> people = new ArrayList<>();
-        Bundle args = getArguments();
-        if (args != null) {
-            people = args.getParcelableArrayList(FRAGMENT_ARGS);
-        }
-
+    private void setupPeopleList(View view) {
         mRecyclerView = (RecyclerView) view.findViewById(R.id.fragment_recycler_view_recycler_view);
         mRecyclerView.setHasFixedSize(true);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
-        PeopleRecyclerViewAdapter peopleRecyclerViewAdapter = new PeopleRecyclerViewWithClickAdapter(getContext(), people, this);
-        mRecyclerView.setAdapter(peopleRecyclerViewAdapter);
+        PeopleAdapter peopleAdapter = new PeopleAdapter(getPeople(), this);
+        mRecyclerView.setAdapter(peopleAdapter);
+    }
 
-        return view;
+    private List<PeopleAdapterModel> getPeople() {
+        List<PeopleAdapterModel> peopleAdapterList = new ArrayList<>();
+        peopleAdapterList.add(new PeopleAdapterHeader());
+
+        List<Person> people = new ArrayList<>();
+        Bundle args = getArguments();
+        if (args != null) {
+            people = args.getParcelableArrayList(FRAGMENT_ARGS);
+        }
+        peopleAdapterList.addAll(PeopleAdapterPerson.getPeopleAdapterList(people));
+
+        return peopleAdapterList;
     }
 
     @Override
-    public void recyclerViewItemClick(Person person, View transitionImage, View transitionName, View transitionAge) {
+    public void personItemClick(Person person, View transitionImage, View transitionName, View transitionAge) {
         Intent intent = new Intent(getActivity(), RecyclerItemActivity.class);
         intent.putExtra(RecyclerItemActivity.EXTRA_PERSON, person);
 

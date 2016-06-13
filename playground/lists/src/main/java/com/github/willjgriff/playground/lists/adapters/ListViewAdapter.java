@@ -9,10 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.willjgriff.playground.R;
+import com.github.willjgriff.playground.lists.model.Person;
 
 import java.util.List;
-
-import com.github.willjgriff.playground.lists.data.Person;
 
 /**
  * Created by Will on 02/02/2016.

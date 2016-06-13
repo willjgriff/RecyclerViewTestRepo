@@ -9,7 +9,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import com.github.willjgriff.playground.lists.adapters.ListViewAdapter;
-import com.github.willjgriff.playground.lists.data.Person;
+import com.github.willjgriff.playground.lists.model.Person;
 
 /**
  * Created by Will on 18/02/2016.

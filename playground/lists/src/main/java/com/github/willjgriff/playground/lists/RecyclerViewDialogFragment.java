@@ -13,16 +13,16 @@ import android.view.ViewGroup;
 import android.view.Window;
 
 import com.github.willjgriff.playground.R;
-
-import com.github.willjgriff.playground.lists.adapters.PeopleRecyclerViewDialogAdapter;
-import com.github.willjgriff.playground.lists.adapters.PeopleRecyclerViewDialogAdapter.RecyclerViewDialogListener;
-import com.github.willjgriff.playground.lists.data.People;
-import com.github.willjgriff.playground.lists.data.Person;
+import com.github.willjgriff.playground.lists.adapters.PeopleAdapter;
+import com.github.willjgriff.playground.lists.adapters.viewholders.PersonViewHolder.PersonItemListener;
+import com.github.willjgriff.playground.lists.model.data.People;
+import com.github.willjgriff.playground.lists.model.PeopleAdapterPerson;
+import com.github.willjgriff.playground.lists.model.Person;
 
 /**
  * Created by Will on 09/02/2016.
  */
-public class RecyclerViewDialogFragment extends DialogFragment implements RecyclerViewDialogListener {
+public class RecyclerViewDialogFragment extends DialogFragment implements PersonItemListener {
 
     public interface DialogFragmentListener {
         void itemSelected(Person person);
@@ -36,10 +36,7 @@ public class RecyclerViewDialogFragment extends DialogFragment implements Recycl
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_recycler_view_dialog_recycler_view);
 //        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-        recyclerView.setAdapter(new PeopleRecyclerViewDialogAdapter(this, People.getPeople(), R.layout.view_recycler_view_grid_item));
-
-//      Remember AlertDialog allows you to set a custom title view!
-//        getDialog().setTitle("I AM DIALOG");
+        recyclerView.setAdapter(new PeopleAdapter(PeopleAdapterPerson.getPeopleAdapterList(People.getPeople()), this));
 
         return view;
     }
@@ -53,7 +50,7 @@ public class RecyclerViewDialogFragment extends DialogFragment implements Recycl
     }
 
     @Override
-    public void recyclerViewItemClick(Person person) {
+    public void personItemClick(Person person, View transitionImage, View transitionName, View transitionAge) {
         ((DialogFragmentListener) getParentFragment()).itemSelected(person);
         dismiss();
     }

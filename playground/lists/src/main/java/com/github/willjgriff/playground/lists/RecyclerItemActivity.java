@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.willjgriff.playground.R;
-import com.github.willjgriff.playground.lists.data.Person;
+import com.github.willjgriff.playground.lists.model.Person;
 
 /**
  * Created by Will on 22/03/2016.

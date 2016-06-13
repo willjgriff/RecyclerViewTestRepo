@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.willjgriff.playground.lists.adapters.ListViewAdapter;
-import com.github.willjgriff.playground.lists.data.Person;
+import com.github.willjgriff.playground.lists.model.Person;
 
 import static com.github.willjgriff.playground.lists.ListsFragment.FRAGMENT_ARGS;
 

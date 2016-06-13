@@ -2,7 +2,7 @@ package com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.ExampleMult
 
 import com.github.willjgriff.playground.network.model.Entity;
 import com.github.willjgriff.playground.network.model.movies.MovieListItem;
-import com.github.willjgriff.playground.lists.data.Person;
+import com.github.willjgriff.playground.lists.model.Person;
 
 /**
  * Created by Will on 09/04/2016.

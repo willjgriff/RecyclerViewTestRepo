@@ -14,8 +14,8 @@ import android.widget.TextView;
 
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.github.willjgriff.playground.R;
-import com.github.willjgriff.playground.lists.data.People;
-import com.github.willjgriff.playground.lists.data.Person;
+import com.github.willjgriff.playground.lists.model.data.People;
+import com.github.willjgriff.playground.lists.model.Person;
 
 import java.util.ArrayList;
 import java.util.List;
