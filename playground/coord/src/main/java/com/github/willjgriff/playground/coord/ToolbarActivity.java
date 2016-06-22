@@ -13,17 +13,17 @@ import android.widget.Toast;
 import com.github.willjgriff.playground.R;
 import com.github.willjgriff.playground.lists.adapters.PeopleAdapter;
 import com.github.willjgriff.playground.lists.adapters.viewholders.PersonViewHolder;
-import com.github.willjgriff.playground.lists.model.data.People;
 import com.github.willjgriff.playground.lists.model.PeopleAdapterModel;
 import com.github.willjgriff.playground.lists.model.PeopleAdapterPerson;
 import com.github.willjgriff.playground.lists.model.Person;
+import com.github.willjgriff.playground.lists.model.data.People;
 
 import java.util.List;
 
 /**
  * Created by Will on 04/02/2016.
  */
-public class CoordToolbarActivity extends AppCompatActivity implements PersonViewHolder.PersonItemListener {
+public class ToolbarActivity extends AppCompatActivity implements PersonViewHolder.PersonItemListener {
 
     private RecyclerView mCoordList;
 

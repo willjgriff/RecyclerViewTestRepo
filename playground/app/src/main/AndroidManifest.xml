@@ -24,7 +24,7 @@
         </activity>
 
         <activity
-            android:name="com.github.willjgriff.playground.coord.CoordToolbarActivity"
+            android:name="com.github.willjgriff.playground.coord.ToolbarActivity"
             android:label="Hide Toolbar Coord Activity"
             android:theme="@style/Theme.Playground.FabCoord"
             android:screenOrientation="portrait">
@@ -35,7 +35,7 @@
         </activity>
 
         <activity
-            android:name="com.github.willjgriff.playground.coord.CoordParallaxActivity"
+            android:name="com.github.willjgriff.playground.coord.ParallaxActivity"
             android:label="Parallax Toolbar Coord Activity"
             android:theme="@style/Theme.Playground.ToolbarCoord"
             android:screenOrientation="portrait">
@@ -70,6 +70,17 @@
         <activity android:name=".soquestions.WebViewActivity"
             android:theme="@style/Theme.Playground.WebView"
             android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.github.willjgriff.playground.coord.CoordAnimationActivity"
+            android:label="Animation Activity"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.github.willjgriff.playground.navigation.NavigationActivity" />
+            />
+        </activity>
 
     </application>
 

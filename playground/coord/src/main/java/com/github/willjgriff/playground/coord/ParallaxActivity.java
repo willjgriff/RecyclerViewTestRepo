@@ -11,22 +11,21 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Toast;
 
 import com.github.willjgriff.playground.R;
 import com.github.willjgriff.playground.lists.adapters.PeopleAdapter;
 import com.github.willjgriff.playground.lists.adapters.viewholders.PersonViewHolder.PersonItemListener;
-import com.github.willjgriff.playground.lists.model.data.People;
 import com.github.willjgriff.playground.lists.model.PeopleAdapterModel;
 import com.github.willjgriff.playground.lists.model.PeopleAdapterPerson;
 import com.github.willjgriff.playground.lists.model.Person;
+import com.github.willjgriff.playground.lists.model.data.People;
 
 import java.util.List;
 
 /**
  * Created by Will on 13/03/2016.
  */
-public class CoordParallaxActivity extends AppCompatActivity implements PersonItemListener {
+public class ParallaxActivity extends AppCompatActivity implements PersonItemListener {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,6 +65,7 @@ public class CoordParallaxActivity extends AppCompatActivity implements PersonIt
 
     @Override
     public void personItemClick(Person person, View transitionImage, View transitionName, View transitionAge) {
-        Toast.makeText(this, "WASSUP " + person.mName, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "WASSUP " + person.mName, Toast.LENGTH_SHORT).show();
+
     }
 }

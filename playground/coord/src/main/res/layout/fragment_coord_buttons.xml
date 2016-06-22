@@ -20,4 +20,11 @@
         android:theme="@style/ButtonStyle"
         android:text="@string/fragment_coord_buttons_toolbar_coordinator_layout"/>
 
+    <Button
+        android:id="@+id/fragment_coord_parallax_switch_animation_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ButtonStyle"
+        android:text="@string/fragment_coord_buttons_toolbar_coordinator_layout"/>
+
 </LinearLayout>

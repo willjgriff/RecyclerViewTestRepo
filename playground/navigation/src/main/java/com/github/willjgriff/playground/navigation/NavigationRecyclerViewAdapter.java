@@ -16,6 +16,8 @@ import java.util.List;
 
 /**
  * Created by Will on 21/02/2016.
+ *
+ * See PeopleAdapter for an alternative way of dealing with multiple item types.
  */
 public class NavigationRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -23,8 +25,6 @@ public class NavigationRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
     private List<NavigationEntry> mNavEntries;
     private int mSelectedPosition;
 
-    // Ideally I would create multiple data types for each ItemType and this Adapter would hold
-    // a list of those data types. Also, could use enumerated annotations instead of enum...
     private enum ItemType {
         ITEM,
         HEADER

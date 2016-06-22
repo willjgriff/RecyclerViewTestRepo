@@ -1,4 +1,4 @@
-package com.github.willjgriff.playground.coord;
+package com.github.willjgriff.playground.coord.behaviours;
 
 import android.content.Context;
 import android.support.annotation.Keep;

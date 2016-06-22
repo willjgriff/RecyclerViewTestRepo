@@ -60,4 +60,12 @@
         app:layout_anchor="@id/fragment_coord_toolbar_app_bar"
         app:layout_anchorGravity="bottom|right|end"/>
 
+    <View
+        android:id="@+id/fragment_coord_parallax_toolbar_animated_view"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/accent"
+        android:layout_gravity="bottom"
+        android:visibility="invisible"/>
+
 </android.support.design.widget.CoordinatorLayout>

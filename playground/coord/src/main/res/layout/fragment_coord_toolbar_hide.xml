@@ -35,6 +35,6 @@
         android:src="@drawable/ic_extension_white_24dp"
         app:layout_anchor="@id/fragment_coord_fab_recycler_view"
         app:layout_anchorGravity="bottom|right|end"
-        app:layout_behavior="com.github.willjgriff.playground.coord.ShrinkingFabBehaviour" />
+        app:layout_behavior="com.github.willjgriff.playground.coord.behaviours.ShrinkingFabBehaviour" />
 
 </android.support.design.widget.CoordinatorLayout>
