@@ -25,6 +25,8 @@ import com.github.willjgriff.playground.lists.model.data.People;
 
 import java.util.List;
 
+import static android.view.View.INVISIBLE;
+
 /**
  * Created by Will on 22/06/2016.
  */
@@ -51,17 +53,23 @@ public class ParallaxFragment extends Fragment implements PersonItemListener {
                 animateView(0);
             }
         });
+        return view;
+    }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
 //        mAnimatedView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
 //            @Override
 //            public void onGlobalLayout() {
 //                mAnimatedView.setY(mAnimatedView.getY() + mAnimatedView.getHeight());
 //                animateView();
-//        
+//
 //                mAnimatedView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 //            }
 //        });
+
 
         mAnimatedView.post(new Runnable() {
             @Override
@@ -72,8 +80,6 @@ public class ParallaxFragment extends Fragment implements PersonItemListener {
             }
         });
 
-
-        return view;
     }
 
     private void animateView(int delay) {
@@ -86,17 +92,15 @@ public class ParallaxFragment extends Fragment implements PersonItemListener {
                     @Override
                     public void onAnimationStart(Animator animation) {
                         super.onAnimationStart(animation);
-                        mAnimatedView.setVisibility(View.VISIBLE);
+                        setViewToVisible();
                     }
                 });
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-//        mAnimatedView.setY(mAnimatedView.getY() - 200);
-
+    private void setViewToVisible() {
+        if (mAnimatedView.getVisibility() == INVISIBLE) {
+            mAnimatedView.setVisibility(View.VISIBLE);
+        }
     }
 
     private void setupToolbar(View view) {
