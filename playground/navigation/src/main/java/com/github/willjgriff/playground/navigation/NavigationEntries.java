@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.github.willjgriff.playground.R;
+import com.github.willjgriff.playground.constraint.ConstraintFragment;
 import com.github.willjgriff.playground.coord.CoordsFragment;
 import com.github.willjgriff.playground.ethereum.BlockFragment;
 import com.github.willjgriff.playground.lists.ListsFragment;
@@ -19,6 +20,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag.CONSTRAINT;
 import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag.COORD;
 import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag.ETHEREUM;
 import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag.LISTS;
@@ -46,7 +48,8 @@ public class NavigationEntries {
         SO_QUESTIONS(R.string.navigation_so_questions_fragment, R.integer.navigation_so_questions_fragment),
         TOP_MOVIES(R.string.navigation_top_movies_fragment, R.integer.navigation_top_movies_fragment),
         ETHEREUM(R.string.navigation_ethereum, R.integer.navigation_ethereum),
-        SIGNUP(R.string.navigation_signup, R.integer.navigation_signup);
+        SIGNUP(R.string.navigation_signup, R.integer.navigation_signup),
+        CONSTRAINT(R.string.navigation_constraint, R.integer.navigation_constraint);
 
         private int mTitle;
         private int mPosition;
@@ -113,6 +116,12 @@ public class NavigationEntries {
             @Override
             public void onClick(View v) {
                 mNavigationListener.onEntryClicked(new SignupFragment(), SIGNUP);
+            }
+        }));
+        navEntries.add(new NavigationEntry(mContext.getString(CONSTRAINT.getTitle()), mContext.getResources().getInteger(CONSTRAINT.getPosition()), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mNavigationListener.onEntryClicked(new ConstraintFragment(), CONSTRAINT);
             }
         }));
 

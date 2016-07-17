@@ -20,6 +20,7 @@
     <!--Coordinator layout-->
     <string name="fragment_coord_buttons_title">Fab Coordinator Layout</string>
     <string name="fragment_coord_buttons_toolbar_coordinator_layout">Toolbar Coordinator Layout</string>
+    <string name="fragment_coord_buttons_animator_coordinator_layout">Animation Coordinator Layout</string>
     <string name="fragment_coord_toolbar_title">Coordinator Layout</string>
     <string name="fragment_coord_snackbar">FAB-ulous</string>
 
