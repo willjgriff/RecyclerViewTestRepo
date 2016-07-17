@@ -26,6 +26,15 @@ android {
         }
     }
 
+    productFlavors {
+        prod {
+
+        }
+        mock {
+            applicationIdSuffix = ".mock"
+        }
+    }
+
     def appModules = ['network', 'mvp', 'navigation', 'lists', 'tabs', 'coord', 'soquestions', 'movies', 'ethereum', 'signup', 'constraint']
 
     sourceSets {

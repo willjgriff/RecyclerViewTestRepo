@@ -2,7 +2,7 @@ package com.github.willjgriff.playground.dagger2.modules;
 
 import android.app.Application;
 
-import com.github.willjgriff.playground.dagger2.StackOverflowDagger;
+import com.github.willjgriff.playground.dagger2.retrofitapis.ProdStackOverflowDagger;
 import com.github.willjgriff.playground.network.api.ApiUris;
 import com.squareup.okhttp.Cache;
 import com.squareup.okhttp.OkHttpClient;
@@ -49,8 +49,8 @@ public class StackOverflowModule {
 
     @Provides
     @Singleton
-    StackOverflowDagger provideStackOverflow(Retrofit retrofit) {
-        StackOverflowDagger stackOverflow = new StackOverflowDagger(retrofit);
+    ProdStackOverflowDagger provideStackOverflow(Retrofit retrofit) {
+        ProdStackOverflowDagger stackOverflow = new ProdStackOverflowDagger(retrofit);
         return stackOverflow;
     }
 }

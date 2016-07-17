@@ -14,7 +14,7 @@ import android.widget.ProgressBar;
 
 import com.github.willjgriff.playground.PlaygroundApplication;
 import com.github.willjgriff.playground.R;
-import com.github.willjgriff.playground.dagger2.StackOverflowDagger;
+import com.github.willjgriff.playground.dagger2.retrofitapis.ProdStackOverflowDagger;
 import com.github.willjgriff.playground.network.model.stackoverflow.StackOverflowQuestion;
 import com.github.willjgriff.playground.network.model.stackoverflow.StackOverflowQuestions;
 
@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
+import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
@@ -33,7 +34,9 @@ public class StackOverflowQuestionsFragment extends Fragment {
 
     private ArrayAdapter<Object> mAdapter;
     private ProgressBar mProgressBar;
-    @Inject StackOverflowDagger mStackOverflow;
+    @Inject
+    ProdStackOverflowDagger mStackOverflow;
+    private Call<StackOverflowQuestions> mAndroidQuestionsCall;
 
     @Nullable
     @Override
@@ -62,7 +65,8 @@ public class StackOverflowQuestionsFragment extends Fragment {
 
     private void loadStackOverflowQuestions() {
         //asynchronous call (use call.execute() on a new thread for synchronous)
-        mStackOverflow.androidQuestionsCall().enqueue(new Callback<StackOverflowQuestions>() {
+        mAndroidQuestionsCall = mStackOverflow.androidQuestionsCall();
+        mAndroidQuestionsCall.enqueue(new Callback<StackOverflowQuestions>() {
             @Override
             public void onResponse(Response<StackOverflowQuestions> response, Retrofit retrofit) {
                 mAdapter.addAll(response.body().getQuestions());
@@ -85,5 +89,12 @@ public class StackOverflowQuestionsFragment extends Fragment {
         mProgressBar.setVisibility(View.INVISIBLE);
     }
 
-
+    @Override
+    public void onDestroy() {
+        if (mAndroidQuestionsCall != null) {
+            mAndroidQuestionsCall.cancel();
+            mAndroidQuestionsCall = null;
+        }
+        super.onDestroy();
+    }
 }
