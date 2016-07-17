@@ -53,20 +53,12 @@ public class NavigationActivity extends AppCompatActivity implements NavigationE
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_navigation);
 
-		mNavigationList = (RecyclerView) findViewById(R.id.activity_navigation_view);
 		mNavigationDrawer = (DrawerLayout) findViewById(R.id.activity_navigation_drawer);
 
-		mNavigationList.setHasFixedSize(true);
-		LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-		mNavigationList.setLayoutManager(linearLayoutManager);
-		mNavAdapter = new NavigationRecyclerViewAdapter(new NavigationEntries(this, this).getNavEntries());
-		mNavigationList.setAdapter(mNavAdapter);
-
-		mToolbar = (Toolbar) findViewById(R.id.activity_navigation_toolbar);
-		ViewCompat.setElevation(mToolbar, UiUtils.convertDpToPixel(4, this));
-		setSupportActionBar(mToolbar);
-		getSupportActionBar().setHomeButtonEnabled(true);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		setupNavigationList();
+		setupToolbar();
+		setNavigationToggle();
+		startupApiCalls();
 
 		replaceFragment(new ListsFragment(), LISTS);
 
@@ -77,11 +69,25 @@ public class NavigationActivity extends AppCompatActivity implements NavigationE
 			}
 		});
 
-		setNavigationToggle();
-		startupApiCalls();
-
 		// This is just for testing RxAndroid, it will output using the standard Log.
 		new RxJavaFun().play();
+	}
+
+	private void setupNavigationList() {
+		mNavigationList = (RecyclerView) findViewById(R.id.activity_navigation_view);
+		mNavigationList.setHasFixedSize(true);
+		LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+		mNavigationList.setLayoutManager(linearLayoutManager);
+		mNavAdapter = new NavigationRecyclerViewAdapter(new NavigationEntries(this, this).getNavEntries());
+		mNavigationList.setAdapter(mNavAdapter);
+	}
+
+	private void setupToolbar() {
+		mToolbar = (Toolbar) findViewById(R.id.activity_navigation_toolbar);
+		ViewCompat.setElevation(mToolbar, UiUtils.convertDpToPixel(4, this));
+		setSupportActionBar(mToolbar);
+		getSupportActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
 	@Override
