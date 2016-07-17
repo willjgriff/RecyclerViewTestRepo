@@ -17,13 +17,13 @@ import android.view.MenuItem;
 
 import com.github.willjgriff.playground.R;
 import com.github.willjgriff.playground.RxJavaFun;
-import com.github.willjgriff.playground.constraint.ConstraintFragment;
 import com.github.willjgriff.playground.lists.ListsFragment;
 import com.github.willjgriff.playground.network.api.TheMovieDb.TheMovieDbCalls;
 import com.github.willjgriff.playground.network.model.movies.MoviesConfig;
 import com.github.willjgriff.playground.utils.SharedPreferenceUtils;
 import com.github.willjgriff.playground.utils.UiUtils;
 
+import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
@@ -40,131 +40,144 @@ import static com.github.willjgriff.playground.utils.SharedPreferenceUtils.SHARE
  */
 public class NavigationActivity extends AppCompatActivity implements NavigationEntries.NavigationListener {
 
-    private ActionBarDrawerToggle mNavigationToggle;
-    private RecyclerView mNavigationList;
-    private DrawerLayout mNavigationDrawer;
-    private NavigationRecyclerViewAdapter mNavAdapter;
-    private Toolbar mToolbar;
+	private ActionBarDrawerToggle mNavigationToggle;
+	private RecyclerView mNavigationList;
+	private DrawerLayout mNavigationDrawer;
+	private NavigationRecyclerViewAdapter mNavAdapter;
+	private Toolbar mToolbar;
+	// This ApiCall should probably live outside of the Activity. Ideally use MVP.
+	private Call<MoviesConfig> mMoviesConfigCall;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_navigation);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_navigation);
 
-        mNavigationList = (RecyclerView) findViewById(R.id.activity_navigation_view);
-        mNavigationDrawer = (DrawerLayout) findViewById(R.id.activity_navigation_drawer);
+		mNavigationList = (RecyclerView) findViewById(R.id.activity_navigation_view);
+		mNavigationDrawer = (DrawerLayout) findViewById(R.id.activity_navigation_drawer);
 
-        mNavigationList.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        mNavigationList.setLayoutManager(linearLayoutManager);
-        mNavAdapter = new NavigationRecyclerViewAdapter(new NavigationEntries(this, this).getNavEntries());
-        mNavigationList.setAdapter(mNavAdapter);
+		mNavigationList.setHasFixedSize(true);
+		LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+		mNavigationList.setLayoutManager(linearLayoutManager);
+		mNavAdapter = new NavigationRecyclerViewAdapter(new NavigationEntries(this, this).getNavEntries());
+		mNavigationList.setAdapter(mNavAdapter);
 
-        mToolbar = (Toolbar) findViewById(R.id.activity_navigation_toolbar);
-        ViewCompat.setElevation(mToolbar, UiUtils.convertDpToPixel(4, this));
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		mToolbar = (Toolbar) findViewById(R.id.activity_navigation_toolbar);
+		ViewCompat.setElevation(mToolbar, UiUtils.convertDpToPixel(4, this));
+		setSupportActionBar(mToolbar);
+		getSupportActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        replaceFragment(new ListsFragment(), LISTS);
+		replaceFragment(new ListsFragment(), LISTS);
 
-        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
-            @Override
-            public void onBackStackChanged() {
-                updateView();
-            }
-        });
+		getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+			@Override
+			public void onBackStackChanged() {
+				updateView();
+			}
+		});
 
-        setNavigationToggle();
-        startupApiCalls();
+		setNavigationToggle();
+		startupApiCalls();
 
-        // This is just for testing RxAndroid, it will output using the standard Log.
-        new RxJavaFun().play();
-    }
+		// This is just for testing RxAndroid, it will output using the standard Log.
+		new RxJavaFun().play();
+	}
 
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        mNavigationToggle.syncState();
-    }
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		mNavigationToggle.syncState();
+	}
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        mNavigationToggle.onConfigurationChanged(newConfig);
-    }
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		mNavigationToggle.onConfigurationChanged(newConfig);
+	}
 
-    @Override
-    public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
-            getSupportFragmentManager().popBackStack();
-        } else {
-            finish();
-        }
-    }
+	@Override
+	public void onBackPressed() {
+		if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+			getSupportFragmentManager().popBackStack();
+		} else {
+			finish();
+		}
+	}
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        UiUtils.hideSoftKeyboard(getCurrentFocus(), this);
-        return super.onOptionsItemSelected(item) || mNavigationToggle.onOptionsItemSelected(item);
-    }
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		UiUtils.hideSoftKeyboard(getCurrentFocus(), this);
+		return super.onOptionsItemSelected(item) || mNavigationToggle.onOptionsItemSelected(item);
+	}
 
-    @Override
-    public void onEntryClicked(Fragment fragment, NavigationEntries.EntryTag entryTag) {
-        replaceFragment(fragment, entryTag);
-    }
+	@Override
+	public void onEntryClicked(Fragment fragment, NavigationEntries.EntryTag entryTag) {
+		replaceFragment(fragment, entryTag);
+	}
 
-    private void updateView() {
-        String fragmentTag = getSupportFragmentManager().findFragmentById(R.id.activity_navigation_fragment_holder).getTag();
-        EntryTag entryTag = EntryTag.valueOf(fragmentTag);
+	private void updateView() {
+		String fragmentTag = getSupportFragmentManager().findFragmentById(R.id.activity_navigation_fragment_holder).getTag();
+		EntryTag entryTag = EntryTag.valueOf(fragmentTag);
 
-        // Update selected navigation entry
-        int entryPositionRes = entryTag.getPosition();
-        mNavAdapter.setSelectedPosition(getResources().getInteger(entryPositionRes) - 1);
+		// Update selected navigation entry
+		int entryPositionRes = entryTag.getPosition();
+		mNavAdapter.setSelectedPosition(getResources().getInteger(entryPositionRes) - 1);
 
-        // Update toolbar title
-        int entryTitleRes = entryTag.getTitle();
-        getSupportActionBar().setTitle(getString(entryTitleRes));
+		// Update toolbar title
+		int entryTitleRes = entryTag.getTitle();
+		getSupportActionBar().setTitle(getString(entryTitleRes));
 
-        mNavigationDrawer.closeDrawer(mNavigationList);
-    }
+		mNavigationDrawer.closeDrawer(mNavigationList);
+	}
 
-    private void setNavigationToggle() {
-        mNavigationToggle = new ActionBarDrawerToggle(this, mNavigationDrawer, R.string.drawer_open, R.string.drawer_close);
-        mNavigationToggle.setDrawerIndicatorEnabled(true);
-        mNavigationDrawer.addDrawerListener(mNavigationToggle);
-    }
+	private void setNavigationToggle() {
+		mNavigationToggle = new ActionBarDrawerToggle(this, mNavigationDrawer, R.string.drawer_open, R.string.drawer_close);
+		mNavigationToggle.setDrawerIndicatorEnabled(true);
+		mNavigationDrawer.addDrawerListener(mNavigationToggle);
+	}
 
-    private void replaceFragment(Fragment fragment, EntryTag entryTag) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        Fragment currentFragment = fragmentManager.findFragmentById(R.id.activity_navigation_fragment_holder);
+	private void replaceFragment(Fragment fragment, EntryTag entryTag) {
+		FragmentManager fragmentManager = getSupportFragmentManager();
+		Fragment currentFragment = fragmentManager.findFragmentById(R.id.activity_navigation_fragment_holder);
 
-        FragmentTransaction fragmentTransaction = fragmentManager
-                .beginTransaction()
-                .setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out, R.anim.fragment_fade_in, R.anim.fragment_fade_out)
-                .replace(R.id.activity_navigation_fragment_holder, fragment, entryTag.name());
+		FragmentTransaction fragmentTransaction = fragmentManager
+			.beginTransaction()
+			.setCustomAnimations(R.anim.fragment_fade_in, R.anim.fragment_fade_out, R.anim.fragment_fade_in, R.anim.fragment_fade_out)
+			.replace(R.id.activity_navigation_fragment_holder, fragment, entryTag.name());
 
-        if (currentFragment != null && currentFragment.getTag().equals(entryTag.name())) {
-            mNavigationDrawer.closeDrawer(mNavigationList);
-        } else {
-            fragmentTransaction.addToBackStack(entryTag.name());
-        }
+		if (currentFragment != null && currentFragment.getTag().equals(entryTag.name())) {
+			mNavigationDrawer.closeDrawer(mNavigationList);
+		} else {
+			fragmentTransaction.addToBackStack(entryTag.name());
+		}
 
-        fragmentTransaction.commit();
-    }
+		fragmentTransaction.commit();
+	}
 
-    private void startupApiCalls() {
-        TheMovieDbCalls.moviesConfigCall().enqueue(new Callback<MoviesConfig>() {
-            @Override
-            public void onResponse(Response<MoviesConfig> response, Retrofit retrofit) {
-                Log.d("TAG", "Successfully retrieved TheMovieDb Configuration");
-                SharedPreferenceUtils.writeObjectToPreferences(NavigationActivity.this, SHARED_MOVIES_CONFIG, response.body());
-            }
+	private void startupApiCalls() {
+		mMoviesConfigCall = TheMovieDbCalls.moviesConfigCall();
+		mMoviesConfigCall.enqueue(new Callback<MoviesConfig>() {
+			@Override
+			public void onResponse(Response<MoviesConfig> response, Retrofit retrofit) {
+				Log.d("TAG", "Successfully retrieved TheMovieDb Configuration");
+				SharedPreferenceUtils.writeObjectToPreferences(NavigationActivity.this, SHARED_MOVIES_CONFIG, response.body());
+			}
 
-            @Override
-            public void onFailure(Throwable t) {
-                Log.e("TAG", "Failed to get TheMovieDb Configuration");
-            }
-        });
-    }
+			@Override
+			public void onFailure(Throwable t) {
+				Log.e("TAG", "Failed to get TheMovieDb Configuration");
+			}
+		});
+	}
+
+	@Override
+	protected void onStop() {
+		if (mMoviesConfigCall != null) {
+			mMoviesConfigCall.cancel();
+			mMoviesConfigCall = null;
+		}
+		super.onStop();
+
+	}
 }
