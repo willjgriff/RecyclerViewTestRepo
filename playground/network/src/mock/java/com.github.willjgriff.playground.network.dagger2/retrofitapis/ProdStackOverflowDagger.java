@@ -1,5 +1,6 @@
 package com.github.willjgriff.playground.dagger2.retrofitapis;
 
+import com.github.willjgriff.playground.network.dagger2.retrofitapis.StackOverflowDagger;
 import com.github.willjgriff.playground.network.endpoints.ApiStackOverflow;
 import com.github.willjgriff.playground.network.model.stackoverflow.StackOverflowQuestions;
 

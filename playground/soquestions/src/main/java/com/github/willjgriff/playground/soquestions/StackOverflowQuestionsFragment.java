@@ -14,7 +14,8 @@ import android.widget.ProgressBar;
 
 import com.github.willjgriff.playground.PlaygroundApplication;
 import com.github.willjgriff.playground.R;
-import com.github.willjgriff.playground.dagger2.retrofitapis.ProdStackOverflowDagger;
+import com.github.willjgriff.playground.network.dagger2.retrofitapis.ProdStackOverflowDagger;
+import com.github.willjgriff.playground.network.dagger2.retrofitapis.StackOverflowDagger;
 import com.github.willjgriff.playground.network.model.stackoverflow.StackOverflowQuestion;
 import com.github.willjgriff.playground.network.model.stackoverflow.StackOverflowQuestions;
 
@@ -35,7 +36,7 @@ public class StackOverflowQuestionsFragment extends Fragment {
     private ArrayAdapter<Object> mAdapter;
     private ProgressBar mProgressBar;
     @Inject
-    ProdStackOverflowDagger mStackOverflow;
+    StackOverflowDagger mStackOverflow;
     private Call<StackOverflowQuestions> mAndroidQuestionsCall;
 
     @Nullable

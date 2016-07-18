@@ -1,7 +1,7 @@
-package com.github.willjgriff.playground.dagger2.components;
+package com.github.willjgriff.playground.network.dagger2.components;
 
-import com.github.willjgriff.playground.dagger2.modules.AppModule;
-import com.github.willjgriff.playground.dagger2.modules.StackOverflowModule;
+import com.github.willjgriff.playground.network.dagger2.modules.AppModule;
+import com.github.willjgriff.playground.network.dagger2.modules.StackOverflowModule;
 import com.github.willjgriff.playground.soquestions.StackOverflowQuestionsFragment;
 
 import javax.inject.Singleton;

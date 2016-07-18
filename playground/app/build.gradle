@@ -41,12 +41,20 @@ android {
         main {
             java.srcDirs += appModules.collect { "../$it/src/main/java" }
             res.srcDirs += appModules.collect { "../$it/src/main/res" }
+
         }
         test {
             java.srcDirs += appModules.collect { "../$it/src/test/java" }
         }
         androidTest {
             java.srcDirs += appModules.collect { "../$it/src/androidTest/java" }
+        }
+        prod {
+            java.srcDirs += appModules.collect { "../$it/src/prod/java" }
+        }
+        mock {
+            java.srcDirs += appModules.collect { "../$it/src/mock/java" }
+            assets.srcDirs += appModules.collect { "../$it/src/mock/assets" }
         }
 
     }

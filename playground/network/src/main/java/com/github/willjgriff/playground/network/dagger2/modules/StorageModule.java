@@ -1,4 +1,4 @@
-package com.github.willjgriff.playground.dagger2.modules;
+package com.github.willjgriff.playground.network.dagger2.modules;
 
 import android.app.Application;
 import android.content.SharedPreferences;

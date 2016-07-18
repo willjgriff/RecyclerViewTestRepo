@@ -17,6 +17,11 @@ public class TopMovies {
         return topMovies;
     }
 
+    // Used only for creating mocks for use in automation testing.
+    public void setTopMovies(List<MovieListItem> topMovies) {
+        this.topMovies = topMovies;
+    }
+
 //    public static TopMovies parseResponse(String response) {
 //        Gson gson = new GsonBuilder().create();
 //        TopMovies topMoviesList = gson.fromJson(response, TopMovies.class);

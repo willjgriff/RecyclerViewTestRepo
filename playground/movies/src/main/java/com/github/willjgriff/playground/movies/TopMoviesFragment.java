@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 
 import com.github.willjgriff.playground.R;
 import com.github.willjgriff.playground.movies.Views.TopMoviesView;
+import com.github.willjgriff.playground.movies.data.TopMoviesData;
 import com.github.willjgriff.playground.network.model.movies.MovieListItem;
 import com.github.willjgriff.playground.movies.Adapters.TopMoviesMvpAdapter;
 import com.github.willjgriff.playground.movies.Presenters.TopMoviesPresenter;
@@ -67,7 +68,7 @@ public class TopMoviesFragment extends MvpFragment<TopMoviesPresenter> implement
 
     @Override
     protected TopMoviesPresenter createPresenter() {
-        return new TopMoviesPresenterImpl();
+        return new TopMoviesPresenterImpl(new TopMoviesData());
     }
 
     @Override

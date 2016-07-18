@@ -1,4 +1,4 @@
-package com.github.willjgriff.playground.dagger2.retrofitapis;
+package com.github.willjgriff.playground.network.dagger2.retrofitapis;
 
 import com.github.willjgriff.playground.network.model.stackoverflow.StackOverflowQuestions;
 

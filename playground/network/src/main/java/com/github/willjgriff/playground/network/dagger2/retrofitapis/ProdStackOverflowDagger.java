@@ -1,5 +1,6 @@
-package com.github.willjgriff.playground.dagger2.retrofitapis;
+package com.github.willjgriff.playground.network.dagger2.retrofitapis;
 
+import com.github.willjgriff.playground.network.dagger2.retrofitapis.StackOverflowDagger;
 import com.github.willjgriff.playground.network.endpoints.ApiStackOverflow;
 import com.github.willjgriff.playground.network.model.stackoverflow.StackOverflowQuestions;
 
@@ -9,7 +10,7 @@ import retrofit.Retrofit;
 /**
  * Created by Will on 11/05/2016.
  */
-public class MockStackOverflowDagger implements StackOverflowDagger {
+public class ProdStackOverflowDagger implements StackOverflowDagger {
 
     private ApiStackOverflow mApiStackOverflow;
 

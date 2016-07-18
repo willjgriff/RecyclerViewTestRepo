@@ -2,10 +2,10 @@ package com.github.willjgriff.playground;
 
 import android.app.Application;
 
-import com.github.willjgriff.playground.dagger2.components.DaggerSoComponent;
-import com.github.willjgriff.playground.dagger2.components.SoComponent;
-import com.github.willjgriff.playground.dagger2.modules.AppModule;
-import com.github.willjgriff.playground.dagger2.modules.StackOverflowModule;
+import com.github.willjgriff.playground.network.dagger2.components.DaggerSoComponent;
+import com.github.willjgriff.playground.network.dagger2.components.SoComponent;
+import com.github.willjgriff.playground.network.dagger2.modules.AppModule;
+import com.github.willjgriff.playground.network.dagger2.modules.StackOverflowModule;
 
 /**
  * Created by Will on 20/04/2016.
