@@ -82,7 +82,7 @@ ext {
     espresso = '2.2'
     contrib = '2.2.2'
     runner = '0.3'
-    mockserver = '2.7.0'
+    mockserver = '2.5.0'
 }
 
 dependencies {
@@ -124,6 +124,7 @@ dependencies {
     androidTestCompile("com.android.support.test:runner:${runner}") {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
+    // Need to upgrade to retrofit 2 to get mock server stuff to work I think.
     androidTestCompile "com.squareup.retrofit:retrofit-mock:${retrofit}"
     androidTestCompile "com.squareup.okhttp:mockwebserver:${mockserver}"
 
