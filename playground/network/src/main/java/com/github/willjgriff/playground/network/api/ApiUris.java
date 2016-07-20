@@ -16,7 +16,8 @@ public class ApiUris {
 
         public static final String MOVIES_API_KEY = BuildConfig.THE_MOVIE_DB_API_KEY;
 
-        public static final String URI_THE_MOVIE_DB = "https://api.themoviedb.org/";
+        // Not private so we can mock it. Should probably find a different method for doing that.
+        public static String URI_THE_MOVIE_DB = "https://api.themoviedb.org/";
 
         public static final String URI_MOVIE_IMAGE = "http://image.tmdb.org/t/p/";
     }

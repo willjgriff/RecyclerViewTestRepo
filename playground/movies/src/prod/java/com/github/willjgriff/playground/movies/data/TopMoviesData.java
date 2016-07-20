@@ -1,7 +1,5 @@
 package com.github.willjgriff.playground.movies.data;
 
-import android.util.Log;
-
 import com.github.willjgriff.playground.network.api.TheMovieDb.TheMovieDbCalls;
 import com.github.willjgriff.playground.network.model.movies.TopMovies;
 
@@ -13,7 +11,6 @@ import retrofit.Retrofit;
 /**
  * Created by Will on 18/07/2016.
  */
-
 public class TopMoviesData {
 
 	Call<TopMovies> mTopMoviesCall;

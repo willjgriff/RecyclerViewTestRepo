@@ -14,6 +14,10 @@ import static com.github.willjgriff.playground.network.model.movies.MovieListIte
 
 /**
  * Created by Will on 18/07/2016.
+ *
+ * This allows us to do automation testing without hitting endpoints.
+ * We still get real images from the url's the fake endpoint returns though.
+ * Need to work out how to deal with that.
  */
 
 public class TopMoviesData {
