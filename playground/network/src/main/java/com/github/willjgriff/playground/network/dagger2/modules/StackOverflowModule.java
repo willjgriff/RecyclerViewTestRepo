@@ -5,15 +5,15 @@ import android.app.Application;
 import com.github.willjgriff.playground.network.api.ApiUris;
 import com.github.willjgriff.playground.network.dagger2.retrofitapis.ProdStackOverflowDagger;
 import com.github.willjgriff.playground.network.dagger2.retrofitapis.StackOverflowDagger;
-import com.squareup.okhttp.Cache;
-import com.squareup.okhttp.OkHttpClient;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
+import okhttp3.Cache;
+import okhttp3.OkHttpClient;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Will on 11/05/2016.
@@ -32,8 +32,9 @@ public class StackOverflowModule {
     @Provides
     @Singleton
     OkHttpClient provideOkHttpClient(Cache cache) {
-        OkHttpClient okHttpClient = new OkHttpClient();
-        okHttpClient.setCache(cache);
+        OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
+            .cache(cache)
+            .build();
         return okHttpClient;
     }
 

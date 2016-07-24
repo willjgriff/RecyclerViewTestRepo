@@ -4,7 +4,8 @@ import com.github.willjgriff.playground.network.model.movies.MovieFull;
 import com.github.willjgriff.playground.network.model.movies.MoviesConfig;
 import com.github.willjgriff.playground.network.model.movies.TopMovies;
 
-import retrofit.Call;
+import retrofit2.Call;
+
 
 /**
  * Created by Will on 11/05/2016.

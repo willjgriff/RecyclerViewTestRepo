@@ -23,10 +23,10 @@ import com.github.willjgriff.playground.network.model.movies.MoviesConfig;
 import com.github.willjgriff.playground.utils.SharedPreferenceUtils;
 import com.github.willjgriff.playground.utils.UiUtils;
 
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag;
 import static com.github.willjgriff.playground.navigation.NavigationEntries.EntryTag.LISTS;
@@ -165,13 +165,13 @@ public class NavigationActivity extends AppCompatActivity implements NavigationE
 		mMoviesConfigCall = TheMovieDbCalls.moviesConfigCall();
 		mMoviesConfigCall.enqueue(new Callback<MoviesConfig>() {
 			@Override
-			public void onResponse(Response<MoviesConfig> response, Retrofit retrofit) {
+			public void onResponse(Call<MoviesConfig> call, Response<MoviesConfig> response) {
 				Log.d("TAG", "Successfully retrieved TheMovieDb Configuration");
 				SharedPreferenceUtils.writeObjectToPreferences(NavigationActivity.this, SHARED_MOVIES_CONFIG, response.body());
 			}
 
 			@Override
-			public void onFailure(Throwable t) {
+			public void onFailure(Call<MoviesConfig> call, Throwable t) {
 				Log.e("TAG", "Failed to get TheMovieDb Configuration");
 			}
 		});

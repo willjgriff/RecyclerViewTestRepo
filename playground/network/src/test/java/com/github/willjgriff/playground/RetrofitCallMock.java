@@ -1,16 +1,18 @@
 package com.github.willjgriff.playground;
 
+import com.github.willjgriff.playground.network.api.TheMovieDb.TheMovieDbCalls;
 import com.github.willjgriff.playground.network.model.movies.MovieFull;
 
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.Response;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-import static retrofit.Response.success;
+import static retrofit2.Response.success;
 
 /**
  * Created by Will on 17/07/2016.
@@ -29,7 +31,7 @@ public class RetrofitCallMock<RETURNTYPE> {
 			@Override
 			public Object answer(InvocationOnMock invocation) throws Throwable {
 				Callback<RETURNTYPE> callback = (Callback<RETURNTYPE>) invocation.getArguments()[0];
-				callback.onResponse(success(returnObject), null);
+				callback.onResponse(mMockCall, success(returnObject));
 				return null;
 			}
 		}).when(mMockCall).enqueue(Mockito.any());
@@ -42,7 +44,7 @@ public class RetrofitCallMock<RETURNTYPE> {
 			@Override
 			public Object answer(InvocationOnMock invocation) throws Throwable {
 				Callback<RETURNTYPE> callback = (Callback<RETURNTYPE>) invocation.getArguments()[0];
-				callback.onFailure(throwable);
+				callback.onFailure(mMockCall, throwable);
 				return null;
 			}
 		}).when(mMockCall).enqueue(Mockito.any());
@@ -55,7 +57,8 @@ public class RetrofitCallMock<RETURNTYPE> {
 			@Override
 			public Object answer(InvocationOnMock invocation) throws Throwable {
 				Callback<RETURNTYPE> callback = (Callback<RETURNTYPE>) invocation.getArguments()[0];
-				callback.onResponse(Response.error(404, null), null);
+				ResponseBody mockResponseBody = Mockito.mock(ResponseBody.class);
+				callback.onResponse(mMockCall, Response.error(404, mockResponseBody));
 				return null;
 			}
 		}).when(mMockCall).enqueue(Mockito.any());

@@ -2,9 +2,9 @@ package com.github.willjgriff.playground.network.endpoints;
 
 import com.github.willjgriff.playground.network.model.stackoverflow.StackOverflowQuestions;
 
-import retrofit.Call;
-import retrofit.http.GET;
-import retrofit.http.Query;
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 /**
  * Created by Will on 26/03/2016.

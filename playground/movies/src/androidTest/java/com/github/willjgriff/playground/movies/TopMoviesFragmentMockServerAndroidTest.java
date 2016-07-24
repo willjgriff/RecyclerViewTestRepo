@@ -38,14 +38,16 @@ public class TopMoviesFragmentMockServerAndroidTest extends InstrumentationTestC
 
 	@Before
 	public void openTopMoviesFragment() throws Exception {
-		injectInstrumentation(InstrumentationRegistry.getInstrumentation());
-
-		String contentType = "Content-type: application/json";
+		// Try alternative ways of getting the context.
+//		String contentType = "Content-type: application/json"; // MockResponse().addHeader(contentType);
 		mMockServer = new MockWebServer();
-		String movieListJson = TopMoviesTestHelper.getStringFromFile(getInstrumentation().getContext(), "MovieListJson.json");
-		mMockServer.enqueue(new MockResponse().setResponseCode(200).setBody(movieListJson).addHeader(contentType));
 		mMockServer.start();
 		ApiUris.TheMovieDb.URI_THE_MOVIE_DB = mMockServer.url("/").toString();
+
+		injectInstrumentation(InstrumentationRegistry.getInstrumentation());
+
+		String movieListJson = TopMoviesTestHelper.getStringFromFile(getInstrumentation().getContext(), "MovieListJson.json");
+		mMockServer.enqueue(new MockResponse().setResponseCode(200).setBody(movieListJson));
 
 
 		mNavigationActivityRule.launchActivity(new Intent());
@@ -54,8 +56,6 @@ public class TopMoviesFragmentMockServerAndroidTest extends InstrumentationTestC
 
 	@Test
 	public void topMoviesFirstItem_displaysTextFromTheFirstListItem() throws Exception {
-		// Try alternative ways of getting the context.
-
 		Espresso.onView(Matchers.allOf(ViewMatchers.withText("Top Movies"))).perform(ViewActions.click());
 		String expectedListItemTitle = "The Legend of Tarzan";
 		Espresso.onView(ViewMatchers.withText(expectedListItemTitle)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()));

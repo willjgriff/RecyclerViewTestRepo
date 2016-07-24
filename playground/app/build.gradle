@@ -67,22 +67,23 @@ android {
 }
 
 ext {
-    supportLib = '23.4.0'
-    constraint = '1.0.0-alpha1'
-    fab = '1.10.1'
-    gson = '2.4'
-    retrofit = '2.0.0-beta2'
-    picasso = '2.5.2'
-    guava = '18.0'
-    rxAndroid = '0.25.0'
-    dagger = '2.2'
-    javax = '1.0'
+    supportLib  = '23.4.0'
+    constraint  = '1.0.0-alpha1'
+    fab         = '1.10.1'
+    gson        = '2.4'
+//    retrofit = '2.0.0-beta2'
+    retrofit    = '2.0.0'
+    picasso     = '2.5.2'
+    guava       = '18.0'
+    rxAndroid   = '0.25.0'
+    dagger      = '2.2'
+    javax       = '1.0'
     robolectric = '3.0'
-    mockito = '1.9.5'
-    espresso = '2.2'
-    contrib = '2.2.2'
-    runner = '0.3'
-    mockserver = '2.5.0'
+    mockito     = '1.9.5'
+    espresso    = '2.2'
+    contrib     = '2.2.2'
+    runner      = '0.3'
+    mockserver  = '2.5.0'
 }
 
 dependencies {
@@ -93,9 +94,9 @@ dependencies {
     compile "com.android.support:recyclerview-v7:${supportLib}"
     compile "com.android.support.constraint:constraint-layout:${constraint}"
 
-    compile "com.squareup.retrofit:retrofit:${retrofit}"
-    compile "com.squareup.retrofit:adapter-rxjava:${retrofit}"
-    compile "com.squareup.retrofit:converter-gson:${retrofit}"
+    compile "com.squareup.retrofit2:retrofit:${retrofit}"
+    compile "com.squareup.retrofit2:adapter-rxjava:${retrofit}"
+    compile "com.squareup.retrofit2:converter-gson:${retrofit}"
     compile "com.getbase:floatingactionbutton:${fab}"
     compile "com.squareup.picasso:picasso:${picasso}"
     compile "com.google.guava:guava:${guava}"
@@ -125,7 +126,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
     // Need to upgrade to retrofit 2 to get mock server stuff to work I think.
-    androidTestCompile "com.squareup.retrofit:retrofit-mock:${retrofit}"
+    androidTestCompile "com.squareup.retrofit2:retrofit-mock:${retrofit}"
     androidTestCompile "com.squareup.okhttp:mockwebserver:${mockserver}"
 
 }

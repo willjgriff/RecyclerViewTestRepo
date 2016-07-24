@@ -3,9 +3,9 @@ package com.github.willjgriff.playground.network.api.StackOverflow;
 import com.github.willjgriff.playground.network.endpoints.ApiStackOverflow;
 import com.github.willjgriff.playground.network.model.stackoverflow.StackOverflowQuestions;
 
-import retrofit.Call;
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.github.willjgriff.playground.network.api.ApiUris.StackOverflow.URI_STACK_OVERFLOW;
 

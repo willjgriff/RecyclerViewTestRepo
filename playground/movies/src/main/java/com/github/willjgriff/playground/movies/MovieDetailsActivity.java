@@ -51,7 +51,7 @@ public class MovieDetailsActivity extends MvpActivity<MovieDetailsPresenter> imp
     @Override
     protected MovieDetailsPresenter setPresenter() {
         String movieId = getIntent().getExtras().getString(EXTRA_MOVIE_ID);
-        return new MovieDetailsPresenterImpl(movieId, TheMovieDbCalls.movieDetailsCall(movieId));
+        return new MovieDetailsPresenterImpl(TheMovieDbCalls.movieDetailsCall(movieId));
     }
 
     @Override

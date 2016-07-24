@@ -17,9 +17,9 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
-import retrofit.Call;
+import retrofit2.Call;
 
-import static retrofit.Response.success;
+import static retrofit2.Response.success;
 
 /**
  * Created by Will on 17/05/2016.
@@ -44,7 +44,7 @@ public class MovieDetailsPresenterTest {
 	@Test
 	public void testMovieDetailsPresenter_UpdateViewIsCalledWhenApiRequestSuccess() {
 		mMockCall = mRetrofitCallMock.getSuccessfulRequest(Mockito.mock(MovieFull.class));
-		MovieDetailsPresenter mSubjectPresenter = new MovieDetailsPresenterImpl("elMuavan", mMockCall);
+		MovieDetailsPresenter mSubjectPresenter = new MovieDetailsPresenterImpl(mMockCall);
 
 		mSubjectPresenter.bindView(mMockActivity);
 
@@ -54,7 +54,7 @@ public class MovieDetailsPresenterTest {
 	@Test
 	public void testMovieDetailsPresenter_UpdateViewIsNotCalledWhenApiRequestFails() {
 		mMockCall = mRetrofitCallMock.getFailedRequest(new Throwable());
-		MovieDetailsPresenter mSubjectPresenter = new MovieDetailsPresenterImpl("elMuavan", mMockCall);
+		MovieDetailsPresenter mSubjectPresenter = new MovieDetailsPresenterImpl(mMockCall);
 
 		mSubjectPresenter.bindView(mMockActivity);
 
@@ -64,7 +64,7 @@ public class MovieDetailsPresenterTest {
 	@Test
 	public void testMovieDetailsPresenter_UpdateViewIsNotCalledWhenApiResponseIsErroneous() {
 		mMockCall = mRetrofitCallMock.getErroneousRequest();
-		MovieDetailsPresenter mSubjectPresenter = new MovieDetailsPresenterImpl("elMuavan", mMockCall);
+		MovieDetailsPresenter mSubjectPresenter = new MovieDetailsPresenterImpl(mMockCall);
 
 		mSubjectPresenter.bindView(mMockActivity);
 

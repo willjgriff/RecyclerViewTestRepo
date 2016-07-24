@@ -23,10 +23,10 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 /**
  * Created by Will on 13/03/2016.
@@ -69,13 +69,13 @@ public class StackOverflowQuestionsFragment extends Fragment {
         mAndroidQuestionsCall = mStackOverflow.androidQuestionsCall();
         mAndroidQuestionsCall.enqueue(new Callback<StackOverflowQuestions>() {
             @Override
-            public void onResponse(Response<StackOverflowQuestions> response, Retrofit retrofit) {
+            public void onResponse(Call<StackOverflowQuestions> call, Response<StackOverflowQuestions> response) {
                 mAdapter.addAll(response.body().getQuestions());
                 dismissProgressBar();
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<StackOverflowQuestions> call, Throwable t) {
                 Log.e("Tag", "Failed to connect to Stack Overflow");
             }
         });

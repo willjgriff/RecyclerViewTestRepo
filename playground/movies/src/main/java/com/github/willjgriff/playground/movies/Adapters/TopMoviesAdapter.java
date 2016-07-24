@@ -50,15 +50,11 @@ public class TopMoviesAdapter extends RecyclerView.Adapter<TopMoviesAdapter.TopM
 
         public CardView mLayoutView;
         public ImageView mMovieImage;
-        public TextView mMovieName;
-        public TextView mMovieDescription;
 
         public TopMoviesViewHolder(View itemView) {
             super(itemView);
             mLayoutView = (CardView) itemView.findViewById(R.id.view_movie_item_container);
             mMovieImage = (ImageView) itemView.findViewById(R.id.view_movie_item_image);
-//            mMovieName = (TextView) itemView.findViewById(R.id.view_movie_item_name);
-//            mMovieDescription = (TextView) itemView.findViewById(R.id.view_movie_item_description);
         }
 
         public void bindView(MovieListItem movieListItem) {

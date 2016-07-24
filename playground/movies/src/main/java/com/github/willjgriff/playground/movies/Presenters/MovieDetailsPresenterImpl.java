@@ -1,35 +1,36 @@
 package com.github.willjgriff.playground.movies.Presenters;
 
+import android.util.Log;
+
 import com.github.willjgriff.playground.movies.Views.MovieDetailsView;
 import com.github.willjgriff.playground.mvp.Remind101ExampleAdapted.Presenter.BasePresenter;
 import com.github.willjgriff.playground.network.model.movies.MovieFull;
 
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 /**
  * Created by Will on 11/04/2016.
  */
 public class MovieDetailsPresenterImpl extends BasePresenter<MovieFull, MovieDetailsView> implements MovieDetailsPresenter {
 
-    private String mMovieId;
     private Call<MovieFull> mMovieFullCall;
 
-    public MovieDetailsPresenterImpl(String movieId, Call<MovieFull> apiRequest) {
-        mMovieId = movieId;
+    public MovieDetailsPresenterImpl(Call<MovieFull> apiRequest) {
         mMovieFullCall = apiRequest;
         mMovieFullCall.enqueue(new Callback<MovieFull>() {
             @Override
-            public void onResponse(Response<MovieFull> response, Retrofit retrofit) {
-                if (response.isSuccess()) {
+            public void onResponse(Call<MovieFull> call, Response<MovieFull> response) {
+                if (response.isSuccessful()) {
                     setModel(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<MovieFull> call, Throwable t) {
+                Log.d("TAG", "Movie Details request failed");
             }
         });
     }
