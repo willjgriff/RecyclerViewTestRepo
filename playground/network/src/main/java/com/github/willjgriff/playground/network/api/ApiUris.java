@@ -19,6 +19,7 @@ public class ApiUris {
         // Not private so we can mock it. Should probably find a different method for doing that.
         public static String URI_THE_MOVIE_DB = "https://api.themoviedb.org/";
 
+        // TODO: This should be set by the config file requested at app start.
         public static final String URI_MOVIE_IMAGE = "http://image.tmdb.org/t/p/";
     }
 

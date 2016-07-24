@@ -34,7 +34,7 @@ public class TopMoviesData {
 	private String getMovieListJson() {
 		String json = "";
 		try {
-			InputStream movieListInputStream = PlaygroundApplication.app().getApplicationContext().getAssets().open("MovieListJson.json");
+			InputStream movieListInputStream = PlaygroundApplication.app().getApplicationContext().getAssets().open("TheMovieDbListJson.json");
 			int size = movieListInputStream.available();
 			byte[] buffer = new byte[size];
 

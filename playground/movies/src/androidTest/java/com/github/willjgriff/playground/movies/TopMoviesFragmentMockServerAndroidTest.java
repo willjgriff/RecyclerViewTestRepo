@@ -34,30 +34,44 @@ public class TopMoviesFragmentMockServerAndroidTest extends InstrumentationTestC
 
 	@Rule
 	public ActivityTestRule<NavigationActivity> mNavigationActivityRule = new ActivityTestRule<>(NavigationActivity.class, true, false);
+	private String contentType = "Content-type: application/json";
 	private MockWebServer mMockServer;
 
 	@Before
 	public void openTopMoviesFragment() throws Exception {
 		// Try alternative ways of getting the context.
-//		String contentType = "Content-type: application/json"; // MockResponse().addHeader(contentType);
-		mMockServer = new MockWebServer();
-		mMockServer.start();
-		ApiUris.TheMovieDb.URI_THE_MOVIE_DB = mMockServer.url("/").toString();
-
 		injectInstrumentation(InstrumentationRegistry.getInstrumentation());
 
-		String movieListJson = TopMoviesTestHelper.getStringFromFile(getInstrumentation().getContext(), "MovieListJson.json");
-		mMockServer.enqueue(new MockResponse().setResponseCode(200).setBody(movieListJson));
-
+		setupMockServer();
 
 		mNavigationActivityRule.launchActivity(new Intent());
 		Espresso.onView(ViewMatchers.withId(R.id.activity_navigation_drawer)).perform(DrawerActions.open());
 	}
 
+	private void setupMockServer() throws Exception {
+		mMockServer = new MockWebServer();
+		mMockServer.start();
+		ApiUris.TheMovieDb.URI_THE_MOVIE_DB = mMockServer.url("/").toString();
+		addConfigResponseToServer(mMockServer);
+	}
+
+	// TheMovieDb config request is made when we open the NavActivity, so this must be enqueued first.
+	private void addConfigResponseToServer(MockWebServer mockServer) throws Exception {
+		String movieConfigJson = TopMoviesTestHelper.getStringFromFile(getInstrumentation().getContext(), "TheMovieDbConfig.json");
+		mockServer.enqueue(new MockResponse().setResponseCode(200).setBody(movieConfigJson).addHeader(contentType));
+	}
+
 	@Test
 	public void topMoviesFirstItem_displaysTextFromTheFirstListItem() throws Exception {
+		addMovieListResponseToServer(mMockServer);
+
 		Espresso.onView(Matchers.allOf(ViewMatchers.withText("Top Movies"))).perform(ViewActions.click());
 		String expectedListItemTitle = "The Legend of Tarzan";
 		Espresso.onView(ViewMatchers.withText(expectedListItemTitle)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+	}
+
+	private void addMovieListResponseToServer(MockWebServer mockServer) throws Exception {
+		String movieListJson = TopMoviesTestHelper.getStringFromFile(getInstrumentation().getContext(), "TheMovieDbListJson.json");
+		mockServer.enqueue(new MockResponse().setResponseCode(200).setBody(movieListJson).addHeader(contentType));
 	}
 }

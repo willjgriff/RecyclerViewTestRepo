@@ -64,13 +64,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/prod/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/prod/jni" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/prod/rs" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestProd/res" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestProd/resources" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestProd/assets" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestProd/aidl" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestProd/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestProd/jni" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTestProd/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testProd/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testProd/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testProd/assets" type="java-test-resource" />
@@ -78,6 +71,13 @@
       <sourceFolder url="file://$MODULE_DIR$/src/testProd/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testProd/jni" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testProd/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestProd/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestProd/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestProd/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestProd/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestProd/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestProd/jni" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTestProd/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/debug/assets" type="java-resource" />
@@ -99,13 +99,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/jni" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/rs" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/res" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/resources" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/assets" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/aidl" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/jni" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/assets" type="java-test-resource" />
@@ -113,6 +106,13 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/jni" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/jni" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/rs" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/build/dependency-cache" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/assets" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/blame" />
@@ -145,6 +145,9 @@
       <excludeFolder url="file://$MODULE_DIR$/build/retrolambda" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
+    <content url="file://$MODULE_DIR$/../constraint/src/androidTest/assets">
+      <sourceFolder url="file://$MODULE_DIR$/../constraint/src/androidTest/assets" type="java-test-resource" />
+    </content>
     <content url="file://$MODULE_DIR$/../constraint/src/androidTest/java">
       <sourceFolder url="file://$MODULE_DIR$/../constraint/src/androidTest/java" isTestSource="true" />
     </content>
@@ -154,14 +157,14 @@
     <content url="file://$MODULE_DIR$/../constraint/src/main/res">
       <sourceFolder url="file://$MODULE_DIR$/../constraint/src/main/res" type="java-resource" />
     </content>
-    <content url="file://$MODULE_DIR$/../constraint/src/mock/assets">
-      <sourceFolder url="file://$MODULE_DIR$/../constraint/src/mock/assets" type="java-test-resource" />
-    </content>
     <content url="file://$MODULE_DIR$/../constraint/src/prod/java">
       <sourceFolder url="file://$MODULE_DIR$/../constraint/src/prod/java" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/../constraint/src/test/java">
       <sourceFolder url="file://$MODULE_DIR$/../constraint/src/test/java" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../coord/src/androidTest/assets">
+      <sourceFolder url="file://$MODULE_DIR$/../coord/src/androidTest/assets" type="java-test-resource" />
     </content>
     <content url="file://$MODULE_DIR$/../coord/src/androidTest/java">
       <sourceFolder url="file://$MODULE_DIR$/../coord/src/androidTest/java" isTestSource="true" />
@@ -172,14 +175,14 @@
     <content url="file://$MODULE_DIR$/../coord/src/main/res">
       <sourceFolder url="file://$MODULE_DIR$/../coord/src/main/res" type="java-resource" />
     </content>
-    <content url="file://$MODULE_DIR$/../coord/src/mock/assets">
-      <sourceFolder url="file://$MODULE_DIR$/../coord/src/mock/assets" type="java-test-resource" />
-    </content>
     <content url="file://$MODULE_DIR$/../coord/src/prod/java">
       <sourceFolder url="file://$MODULE_DIR$/../coord/src/prod/java" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/../coord/src/test/java">
       <sourceFolder url="file://$MODULE_DIR$/../coord/src/test/java" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../ethereum/src/androidTest/assets">
+      <sourceFolder url="file://$MODULE_DIR$/../ethereum/src/androidTest/assets" type="java-test-resource" />
     </content>
     <content url="file://$MODULE_DIR$/../ethereum/src/androidTest/java">
       <sourceFolder url="file://$MODULE_DIR$/../ethereum/src/androidTest/java" isTestSource="true" />
@@ -190,14 +193,14 @@
     <content url="file://$MODULE_DIR$/../ethereum/src/main/res">
       <sourceFolder url="file://$MODULE_DIR$/../ethereum/src/main/res" type="java-resource" />
     </content>
-    <content url="file://$MODULE_DIR$/../ethereum/src/mock/assets">
-      <sourceFolder url="file://$MODULE_DIR$/../ethereum/src/mock/assets" type="java-test-resource" />
-    </content>
     <content url="file://$MODULE_DIR$/../ethereum/src/prod/java">
       <sourceFolder url="file://$MODULE_DIR$/../ethereum/src/prod/java" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/../ethereum/src/test/java">
       <sourceFolder url="file://$MODULE_DIR$/../ethereum/src/test/java" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../lists/src/androidTest/assets">
+      <sourceFolder url="file://$MODULE_DIR$/../lists/src/androidTest/assets" type="java-test-resource" />
     </content>
     <content url="file://$MODULE_DIR$/../lists/src/androidTest/java">
       <sourceFolder url="file://$MODULE_DIR$/../lists/src/androidTest/java" isTestSource="true" />
@@ -208,14 +211,14 @@
     <content url="file://$MODULE_DIR$/../lists/src/main/res">
       <sourceFolder url="file://$MODULE_DIR$/../lists/src/main/res" type="java-resource" />
     </content>
-    <content url="file://$MODULE_DIR$/../lists/src/mock/assets">
-      <sourceFolder url="file://$MODULE_DIR$/../lists/src/mock/assets" type="java-test-resource" />
-    </content>
     <content url="file://$MODULE_DIR$/../lists/src/prod/java">
       <sourceFolder url="file://$MODULE_DIR$/../lists/src/prod/java" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/../lists/src/test/java">
       <sourceFolder url="file://$MODULE_DIR$/../lists/src/test/java" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../movies/src/androidTest/assets">
+      <sourceFolder url="file://$MODULE_DIR$/../movies/src/androidTest/assets" type="java-test-resource" />
     </content>
     <content url="file://$MODULE_DIR$/../movies/src/androidTest/java">
       <sourceFolder url="file://$MODULE_DIR$/../movies/src/androidTest/java" isTestSource="true" />
@@ -226,14 +229,14 @@
     <content url="file://$MODULE_DIR$/../movies/src/main/res">
       <sourceFolder url="file://$MODULE_DIR$/../movies/src/main/res" type="java-resource" />
     </content>
-    <content url="file://$MODULE_DIR$/../movies/src/mock/assets">
-      <sourceFolder url="file://$MODULE_DIR$/../movies/src/mock/assets" type="java-test-resource" />
-    </content>
     <content url="file://$MODULE_DIR$/../movies/src/prod/java">
       <sourceFolder url="file://$MODULE_DIR$/../movies/src/prod/java" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/../movies/src/test/java">
       <sourceFolder url="file://$MODULE_DIR$/../movies/src/test/java" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../mvp/src/androidTest/assets">
+      <sourceFolder url="file://$MODULE_DIR$/../mvp/src/androidTest/assets" type="java-test-resource" />
     </content>
     <content url="file://$MODULE_DIR$/../mvp/src/androidTest/java">
       <sourceFolder url="file://$MODULE_DIR$/../mvp/src/androidTest/java" isTestSource="true" />
@@ -244,14 +247,14 @@
     <content url="file://$MODULE_DIR$/../mvp/src/main/res">
       <sourceFolder url="file://$MODULE_DIR$/../mvp/src/main/res" type="java-resource" />
     </content>
-    <content url="file://$MODULE_DIR$/../mvp/src/mock/assets">
-      <sourceFolder url="file://$MODULE_DIR$/../mvp/src/mock/assets" type="java-test-resource" />
-    </content>
     <content url="file://$MODULE_DIR$/../mvp/src/prod/java">
       <sourceFolder url="file://$MODULE_DIR$/../mvp/src/prod/java" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/../mvp/src/test/java">
       <sourceFolder url="file://$MODULE_DIR$/../mvp/src/test/java" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../navigation/src/androidTest/assets">
+      <sourceFolder url="file://$MODULE_DIR$/../navigation/src/androidTest/assets" type="java-test-resource" />
     </content>
     <content url="file://$MODULE_DIR$/../navigation/src/androidTest/java">
       <sourceFolder url="file://$MODULE_DIR$/../navigation/src/androidTest/java" isTestSource="true" />
@@ -262,14 +265,14 @@
     <content url="file://$MODULE_DIR$/../navigation/src/main/res">
       <sourceFolder url="file://$MODULE_DIR$/../navigation/src/main/res" type="java-resource" />
     </content>
-    <content url="file://$MODULE_DIR$/../navigation/src/mock/assets">
-      <sourceFolder url="file://$MODULE_DIR$/../navigation/src/mock/assets" type="java-test-resource" />
-    </content>
     <content url="file://$MODULE_DIR$/../navigation/src/prod/java">
       <sourceFolder url="file://$MODULE_DIR$/../navigation/src/prod/java" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/../navigation/src/test/java">
       <sourceFolder url="file://$MODULE_DIR$/../navigation/src/test/java" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../network/src/androidTest/assets">
+      <sourceFolder url="file://$MODULE_DIR$/../network/src/androidTest/assets" type="java-test-resource" />
     </content>
     <content url="file://$MODULE_DIR$/../network/src/androidTest/java">
       <sourceFolder url="file://$MODULE_DIR$/../network/src/androidTest/java" isTestSource="true" />
@@ -280,14 +283,14 @@
     <content url="file://$MODULE_DIR$/../network/src/main/res">
       <sourceFolder url="file://$MODULE_DIR$/../network/src/main/res" type="java-resource" />
     </content>
-    <content url="file://$MODULE_DIR$/../network/src/mock/assets">
-      <sourceFolder url="file://$MODULE_DIR$/../network/src/mock/assets" type="java-test-resource" />
-    </content>
     <content url="file://$MODULE_DIR$/../network/src/prod/java">
       <sourceFolder url="file://$MODULE_DIR$/../network/src/prod/java" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/../network/src/test/java">
       <sourceFolder url="file://$MODULE_DIR$/../network/src/test/java" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../signup/src/androidTest/assets">
+      <sourceFolder url="file://$MODULE_DIR$/../signup/src/androidTest/assets" type="java-test-resource" />
     </content>
     <content url="file://$MODULE_DIR$/../signup/src/androidTest/java">
       <sourceFolder url="file://$MODULE_DIR$/../signup/src/androidTest/java" isTestSource="true" />
@@ -298,14 +301,14 @@
     <content url="file://$MODULE_DIR$/../signup/src/main/res">
       <sourceFolder url="file://$MODULE_DIR$/../signup/src/main/res" type="java-resource" />
     </content>
-    <content url="file://$MODULE_DIR$/../signup/src/mock/assets">
-      <sourceFolder url="file://$MODULE_DIR$/../signup/src/mock/assets" type="java-test-resource" />
-    </content>
     <content url="file://$MODULE_DIR$/../signup/src/prod/java">
       <sourceFolder url="file://$MODULE_DIR$/../signup/src/prod/java" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/../signup/src/test/java">
       <sourceFolder url="file://$MODULE_DIR$/../signup/src/test/java" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../soquestions/src/androidTest/assets">
+      <sourceFolder url="file://$MODULE_DIR$/../soquestions/src/androidTest/assets" type="java-test-resource" />
     </content>
     <content url="file://$MODULE_DIR$/../soquestions/src/androidTest/java">
       <sourceFolder url="file://$MODULE_DIR$/../soquestions/src/androidTest/java" isTestSource="true" />
@@ -316,14 +319,14 @@
     <content url="file://$MODULE_DIR$/../soquestions/src/main/res">
       <sourceFolder url="file://$MODULE_DIR$/../soquestions/src/main/res" type="java-resource" />
     </content>
-    <content url="file://$MODULE_DIR$/../soquestions/src/mock/assets">
-      <sourceFolder url="file://$MODULE_DIR$/../soquestions/src/mock/assets" type="java-test-resource" />
-    </content>
     <content url="file://$MODULE_DIR$/../soquestions/src/prod/java">
       <sourceFolder url="file://$MODULE_DIR$/../soquestions/src/prod/java" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/../soquestions/src/test/java">
       <sourceFolder url="file://$MODULE_DIR$/../soquestions/src/test/java" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../tabs/src/androidTest/assets">
+      <sourceFolder url="file://$MODULE_DIR$/../tabs/src/androidTest/assets" type="java-test-resource" />
     </content>
     <content url="file://$MODULE_DIR$/../tabs/src/androidTest/java">
       <sourceFolder url="file://$MODULE_DIR$/../tabs/src/androidTest/java" isTestSource="true" />
@@ -333,9 +336,6 @@
     </content>
     <content url="file://$MODULE_DIR$/../tabs/src/main/res">
       <sourceFolder url="file://$MODULE_DIR$/../tabs/src/main/res" type="java-resource" />
-    </content>
-    <content url="file://$MODULE_DIR$/../tabs/src/mock/assets">
-      <sourceFolder url="file://$MODULE_DIR$/../tabs/src/mock/assets" type="java-test-resource" />
     </content>
     <content url="file://$MODULE_DIR$/../tabs/src/prod/java">
       <sourceFolder url="file://$MODULE_DIR$/../tabs/src/prod/java" isTestSource="false" />
@@ -369,8 +369,8 @@
     <orderEntry type="library" exported="" scope="TEST" name="javax.annotation-api-1.2" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="robolectric-resources-3.0" level="project" />
     <orderEntry type="library" exported="" name="retrofit-2.0.0" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="asm-tree-5.0.1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="sqlite4java-0.282" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="asm-tree-5.0.1" level="project" />
     <orderEntry type="library" exported="" name="cardview-v7-23.4.0" level="project" />
     <orderEntry type="library" exported="" name="constraint-layout-1.0.0-alpha1" level="project" />
     <orderEntry type="library" exported="" name="converter-gson-2.0.0" level="project" />
@@ -403,8 +403,8 @@
     <orderEntry type="library" exported="" scope="TEST" name="robolectric-annotations-3.0" level="project" />
     <orderEntry type="library" exported="" name="javax.inject-1" level="project" />
     <orderEntry type="library" exported="" name="rxjava-1.1.1" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="asm-analysis-5.0.1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="robolectric-utils-3.0" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="asm-analysis-5.0.1" level="project" />
     <orderEntry type="library" exported="" name="adapter-rxjava-2.0.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="hamcrest-core-1.3" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="vtd-xml-2.11" level="project" />
