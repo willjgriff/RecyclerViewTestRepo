@@ -1,8 +1,5 @@
 package com.github.willjgriff.playground;
 
-import com.github.willjgriff.playground.network.api.TheMovieDb.TheMovieDbCalls;
-import com.github.willjgriff.playground.network.model.movies.MovieFull;
-
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
@@ -17,7 +14,6 @@ import static retrofit2.Response.success;
 /**
  * Created by Will on 17/07/2016.
  */
-
 public class RetrofitCallMock<RETURNTYPE> {
 
 	private Call<RETURNTYPE> mMockCall;
@@ -52,12 +48,11 @@ public class RetrofitCallMock<RETURNTYPE> {
 		return mMockCall;
 	}
 
-	public Call<RETURNTYPE> getErroneousRequest() {
+	public Call<RETURNTYPE> getErroneousRequest(ResponseBody mockResponseBody) {
 		Mockito.doAnswer(new Answer() {
 			@Override
 			public Object answer(InvocationOnMock invocation) throws Throwable {
 				Callback<RETURNTYPE> callback = (Callback<RETURNTYPE>) invocation.getArguments()[0];
-				ResponseBody mockResponseBody = Mockito.mock(ResponseBody.class);
 				callback.onResponse(mMockCall, Response.error(404, mockResponseBody));
 				return null;
 			}

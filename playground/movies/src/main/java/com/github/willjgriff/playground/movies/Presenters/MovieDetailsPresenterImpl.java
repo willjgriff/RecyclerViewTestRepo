@@ -40,4 +40,13 @@ public class MovieDetailsPresenterImpl extends BasePresenter<MovieFull, MovieDet
         view().setMovieName(mModel.getTitle());
         view().setPoster(mModel.getPosterImage());
     }
+
+    @Override
+    public void unbindView() {
+        super.unbindView();
+        if (mMovieFullCall != null) {
+            mMovieFullCall.cancel();
+            mMovieFullCall = null;
+        }
+    }
 }

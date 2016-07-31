@@ -79,6 +79,7 @@ ext {
     javax       = '1.0'
     robolectric = '3.0'
     mockito     = '1.9.5'
+    powermock   = '1.6.4'
     espresso    = '2.2'
     contrib     = '2.2.2'
     runner      = '0.3'
@@ -109,6 +110,11 @@ dependencies {
     testCompile "org.robolectric:robolectric:${robolectric}"
     testCompile "org.robolectric:shadows-support-v4:${robolectric}"
     testCompile "org.mockito:mockito-core:${mockito}"
+
+    testCompile "org.powermock:powermock-module-junit4:${powermock}"
+    testCompile "org.powermock:powermock-module-junit4-rule:${powermock}"
+    testCompile "org.powermock:powermock-api-mockito:${powermock}"
+    testCompile "org.powermock:powermock-classloading-xstream:${powermock}"
 
     androidTestCompile("com.android.support.test.espresso:espresso-core:${espresso}") {
         exclude group: 'com.android.support', module: 'support-annotations'
