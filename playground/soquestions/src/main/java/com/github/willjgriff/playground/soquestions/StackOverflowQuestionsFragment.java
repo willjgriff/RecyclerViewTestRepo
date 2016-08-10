@@ -33,7 +33,7 @@ import retrofit2.Retrofit;
  */
 public class StackOverflowQuestionsFragment extends Fragment {
 
-    private ArrayAdapter<Object> mAdapter;
+    private ArrayAdapter<StackOverflowQuestion> mAdapter;
     private ProgressBar mProgressBar;
     @Inject
     StackOverflowDagger mStackOverflow;

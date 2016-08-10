@@ -7,6 +7,9 @@ import com.github.willjgriff.playground.network.dagger2.components.SoComponent;
 import com.github.willjgriff.playground.network.dagger2.modules.AppModule;
 import com.github.willjgriff.playground.network.dagger2.modules.StackOverflowModule;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 /**
  * Created by Will on 20/04/2016.
  */
@@ -28,6 +31,9 @@ public class PlaygroundApplication extends Application {
                 .appModule(new AppModule(this))
                 .stackOverflowModule(new StackOverflowModule())
                 .build();
+
+        RealmConfiguration config = new RealmConfiguration.Builder(this).build();
+        Realm.setDefaultConfiguration(config);
     }
 
     public SoComponent getSoComponent() {
