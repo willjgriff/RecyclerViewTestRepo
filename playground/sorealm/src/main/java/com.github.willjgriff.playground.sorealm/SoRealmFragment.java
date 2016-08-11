@@ -57,4 +57,11 @@ public class SoRealmFragment extends Fragment implements SoRealmContract.View {
 	public void addAll(List<StackOverflowQuestion> soQuestions) {
 		mAdapter.addAll(soQuestions);
 	}
+
+	@Override
+	public void clearAdapter() {
+		mAdapter.clear();
+	}
+
+
 }

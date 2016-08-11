@@ -17,6 +17,8 @@ public interface SoRealmContract {
 	interface View extends BasicView {
 
 		void addAll(List<StackOverflowQuestion> soQuestions);
+
+		void clearAdapter();
 	}
 
 	interface Presenter extends BasicPresenter {
