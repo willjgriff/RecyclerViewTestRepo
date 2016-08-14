@@ -1,81 +1,50 @@
 package com.github.willjgriff.playground.sorealm;
 
-import android.util.Log;
-
-import com.github.willjgriff.playground.network.api.StackOverflow.StackOverflowApiCalls;
-import com.github.willjgriff.playground.network.model.stackoverflow.StackOverflowQuestion;
 import com.github.willjgriff.playground.network.model.stackoverflow.StackOverflowQuestions;
-
-import io.realm.Realm;
-import io.realm.RealmChangeListener;
-import io.realm.RealmResults;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import com.github.willjgriff.playground.sorealm.data.NetworkCallerAndUpdater.NewDataListener;
+import com.github.willjgriff.playground.sorealm.data.StackOverflowDataManager;
 
 /**
  * Created by Will on 10/08/2016.
  */
-
 public class SoRealmPresenter implements SoRealmContract.Presenter {
 
 	private SoRealmContract.View mView;
-	private Realm mRealm;
-	private Call<StackOverflowQuestions> mStackOverflowQuestionsCall;
-	private RealmChangeListener mRealmChangeListener;
+	private StackOverflowDataManager mStackOverflowDataManager;
 
-	public SoRealmPresenter(SoRealmContract.View view) {
+	public SoRealmPresenter(SoRealmContract.View view, StackOverflowDataManager soDataManager) {
 		mView = view;
-		mRealm = Realm.getDefaultInstance();
+		mStackOverflowDataManager = soDataManager;
 	}
 
 	@Override
 	public void start() {
-
-		RealmResults<StackOverflowQuestion> realmResults = mRealm.where(StackOverflowQuestion.class).findAll();
-		mView.addAll(realmResults);
-
-		mRealmChangeListener = new RealmChangeListener() {
+		StackOverflowQuestions savedSoQuestions = mStackOverflowDataManager.getStackOverflowQuestions(new NewDataListener<StackOverflowQuestions>() {
 			@Override
-			public void onChange(Object element) {
-				mView.clearAdapter();
-			}
-		};
-
-		mRealm.addChangeListener(mRealmChangeListener);
-
-		getAndUpdateSoQuestions();
-	}
-
-	private void getAndUpdateSoQuestions() {
-		mStackOverflowQuestionsCall = StackOverflowApiCalls.androidQuestionsCall();
-		mStackOverflowQuestionsCall.enqueue(new Callback<StackOverflowQuestions>() {
-			@Override
-			public void onResponse(Call<StackOverflowQuestions> call, Response<StackOverflowQuestions> response) {
-				StackOverflowQuestions soQuestions = response.body();
-				updateRealmWithSoQuestions(soQuestions);
+			public void dataUpdated(StackOverflowQuestions stackOverflowQuestions) {
+				// Ideally animate in the new list items
+				mView.clearData();
+				mView.addAll(stackOverflowQuestions.getStackOverflowQuestions());
+				mView.hideNetworkLoading();
 			}
 
 			@Override
-			public void onFailure(Call<StackOverflowQuestions> call, Throwable t) {
+			public void requestFailed(Throwable t) {
 
 			}
 		});
-	}
 
-	private void updateRealmWithSoQuestions(final StackOverflowQuestions soQuestions) {
-		mRealm.executeTransaction(new Realm.Transaction() {
-			@Override
-			public void execute(Realm realm) {
-				realm.copyToRealmOrUpdate(soQuestions.getQuestions());
-			}
-		});
+		// Check if we have cached data in the DB and show appropriate loading states.
+		if (savedSoQuestions != null && savedSoQuestions.getStackOverflowQuestions() != null) {
+			mView.addAll(savedSoQuestions.getStackOverflowQuestions());
+			mView.showNetworkLoading();
+		} else {
+			mView.showLoadingView();
+		}
 	}
 
 	@Override
 	public void stop() {
-		mRealm.removeChangeListener(mRealmChangeListener);
-		mRealm.close();
-		mStackOverflowQuestionsCall.cancel();
+		mStackOverflowDataManager.close();
 	}
 }

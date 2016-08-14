@@ -70,7 +70,7 @@ public class StackOverflowQuestionsFragment extends Fragment {
         mAndroidQuestionsCall.enqueue(new Callback<StackOverflowQuestions>() {
             @Override
             public void onResponse(Call<StackOverflowQuestions> call, Response<StackOverflowQuestions> response) {
-                mAdapter.addAll(response.body().getQuestions());
+                mAdapter.addAll(response.body().getStackOverflowQuestions());
                 dismissProgressBar();
             }
 

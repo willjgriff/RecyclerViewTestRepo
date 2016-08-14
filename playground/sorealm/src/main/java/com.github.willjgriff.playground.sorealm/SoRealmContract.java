@@ -18,7 +18,13 @@ public interface SoRealmContract {
 
 		void addAll(List<StackOverflowQuestion> soQuestions);
 
-		void clearAdapter();
+		void clearData();
+
+		void showLoadingView();
+
+		void showNetworkLoading();
+
+		void hideNetworkLoading();
 	}
 
 	interface Presenter extends BasicPresenter {
