@@ -25,7 +25,7 @@ public class SoRealmPresenter implements SoRealmContract.Presenter {
 				// Ideally animate in the new list items
 				mView.clearData();
 				mView.addAll(stackOverflowQuestions.getStackOverflowQuestions());
-				mView.hideNetworkLoading();
+				mView.hideLoadingViews();
 			}
 
 			@Override

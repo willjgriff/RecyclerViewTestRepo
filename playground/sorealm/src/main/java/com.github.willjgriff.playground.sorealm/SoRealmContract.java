@@ -24,7 +24,7 @@ public interface SoRealmContract {
 
 		void showNetworkLoading();
 
-		void hideNetworkLoading();
+		void hideLoadingViews();
 	}
 
 	interface Presenter extends BasicPresenter {

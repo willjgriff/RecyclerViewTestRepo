@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.github.willjgriff.playground.R;
 import com.github.willjgriff.playground.navigation.NavigationToolbarListener;
@@ -30,6 +31,7 @@ public class SoRealmFragment extends Fragment implements SoRealmContract.View {
 	private ArrayAdapter<StackOverflowQuestion> mAdapter;
 	private File mRealmFile;
 	private NavigationToolbarListener mNavToolbarListener;
+	private ProgressBar mProgressBar;
 
 	@Nullable
 	@Override
@@ -40,6 +42,8 @@ public class SoRealmFragment extends Fragment implements SoRealmContract.View {
 		mPresenter = new SoRealmPresenter(this, new StackOverflowDataManager());
 
 		setupSoQuestionsList(view);
+
+		mProgressBar = (ProgressBar) view.findViewById(R.id.fragment_stack_overflow_questions_progress_bar);
 
 		mRealmFile = new File(getActivity().getFilesDir(), "default.realm");
 
@@ -85,7 +89,7 @@ public class SoRealmFragment extends Fragment implements SoRealmContract.View {
 
 	@Override
 	public void showLoadingView() {
-		// TODO: Show loading view.
+		mProgressBar.setVisibility(View.VISIBLE);
 	}
 
 	@Override
@@ -94,7 +98,10 @@ public class SoRealmFragment extends Fragment implements SoRealmContract.View {
 	}
 
 	@Override
-	public void hideNetworkLoading() {
+	public void hideLoadingViews() {
+		if (mProgressBar.getVisibility() != View.GONE) {
+			mProgressBar.setVisibility(View.GONE);
+		}
 		mNavToolbarListener.hideNetworkLoadingView();
 	}
 
