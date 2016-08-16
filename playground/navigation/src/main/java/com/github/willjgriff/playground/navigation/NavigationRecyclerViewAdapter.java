@@ -1,15 +1,20 @@
 package com.github.willjgriff.playground.navigation;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.github.willjgriff.playground.NotificationCreator;
 import com.github.willjgriff.playground.R;
+import com.github.willjgriff.playground.coord.ParallaxActivity;
+import com.github.willjgriff.playground.movies.MovieDetailsActivity;
 import com.github.willjgriff.playground.utils.UiUtils;
 
 import java.util.List;
@@ -91,9 +96,22 @@ public class NavigationRecyclerViewAdapter extends RecyclerView.Adapter<Recycler
     }
 
     public class NavHeaderViewHolder extends RecyclerView.ViewHolder {
+        private Button mNotifyButton;
+
         public NavHeaderViewHolder(View itemView) {
             super(itemView);
+            mNotifyButton = (Button) itemView.findViewById(R.id.view_navigation_header_item_button);
+            mNotifyButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    NotificationCreator.createNotification(itemView.getContext(), "El Notify", "Elocation", getMovieScreenIntent());
+                }
+            });
             ViewCompat.setElevation(itemView, UiUtils.convertDpToPixel(R.dimen.elevation, itemView.getContext()));
+        }
+
+        private Intent getMovieScreenIntent() {
+            return new Intent(itemView.getContext(), ParallaxActivity.class);
         }
     }
 

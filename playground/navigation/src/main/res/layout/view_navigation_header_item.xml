@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/xsmall"
     android:background="@color/primary">
 
     <TextView
+        android:id="@+id/view_navigation_header_item_label"
         android:theme="@style/Text.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,4 +16,15 @@
         android:paddingTop="@dimen/large"
         android:textColor="@color/lite_text"/>
 
-</LinearLayout>
+    <Button
+        android:id="@+id/view_navigation_header_item_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_navigation_header_notify"
+        android:theme="@style/ButtonStyle"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/view_navigation_header_item_label"
+        />
+
+</RelativeLayout>

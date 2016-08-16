@@ -15,7 +15,7 @@
     <dimen name="medium">48dp</dimen>
     <dimen name="large">56dp</dimen>
     <dimen name="xlarge">64dp</dimen>
-    <dimen name="xxlarge">72dp</dimen>
+    <dimen name="xxlarge">72dp</dimen>c
 
     <dimen name="elevation">4dp</dimen>
 

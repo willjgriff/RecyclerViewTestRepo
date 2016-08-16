@@ -5,13 +5,13 @@ apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 24
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
         applicationId "com.github.willjgriff.playground"
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
 
@@ -68,7 +68,7 @@ android {
 }
 
 ext {
-    supportLib  = '23.4.0'
+    supportLib  = '24.0.0'
     constraint  = '1.0.0-alpha1'
     fab         = '1.10.1'
     gson        = '2.4'

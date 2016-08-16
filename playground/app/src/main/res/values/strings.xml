@@ -5,6 +5,7 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="view_navigation_header_text">El Menu</string>
+    <string name="view_navigation_header_notify">Notify</string>
 
     <!--Lists-->
     <string name="fragment_lists_change_fragment_recycler_view">Recycler View</string>
@@ -34,4 +35,5 @@
     <string name="fragment_signup_username_error">Username must be 5 characters or more</string>
     <string name="fragment_signup_password_error">Password must be 8 characters or more and contain letters and numbers</string>
     <string name="fragment_signup_confirm_password_error">Passwords must match</string>
+
 </resources>

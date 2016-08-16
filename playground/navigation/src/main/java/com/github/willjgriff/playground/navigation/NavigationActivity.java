@@ -72,7 +72,7 @@ public class NavigationActivity extends AppCompatActivity
 			}
 		});
 
-		// This is just for testing RxAndroid, it will output using the standard Log.
+		// This is just for testing RxJava, it will output using the standard Log.
 		new RxJavaFun().play();
 	}
 

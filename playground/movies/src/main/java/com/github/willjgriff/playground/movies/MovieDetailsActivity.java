@@ -1,5 +1,6 @@
 package com.github.willjgriff.playground.movies;
 
+import android.app.PendingIntent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
@@ -50,8 +51,12 @@ public class MovieDetailsActivity extends MvpActivity<MovieDetailsPresenter> imp
 
     @Override
     protected MovieDetailsPresenter setPresenter() {
-        String movieId = getIntent().getExtras().getString(EXTRA_MOVIE_ID);
-        return new MovieDetailsPresenterImpl(TheMovieDbCalls.movieDetailsCall(movieId));
+        if (getIntent().getStringExtra(EXTRA_MOVIE_ID) != null) {
+            String movieId = getIntent().getStringExtra(EXTRA_MOVIE_ID);
+            return new MovieDetailsPresenterImpl(TheMovieDbCalls.movieDetailsCall(movieId));
+        } else {
+            throw new RuntimeException("No MovieId for Movie Details Activity");
+        }
     }
 
     @Override

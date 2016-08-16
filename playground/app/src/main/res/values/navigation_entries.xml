@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--Navigation titles-->
+    <string name="navigation_navigation_activity">Navigation Activity</string>
     <string name="navigation_list_activity">Lists</string>
     <string name="navigation_coord_fragment">Coordinators</string>
-    <string name="navigation_navigation_activity">Navigation Activity</string>
     <string name="navigation_tab_layout_fragment">Tab Layout</string>
     <string name="navigation_so_questions_fragment">Stack Overflow Questions</string>
     <string name="navigation_top_movies_fragment">Top Movies</string>
