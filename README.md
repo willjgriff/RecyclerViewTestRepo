@@ -4,8 +4,8 @@ Playground for learning android components. This project is for personal develop
 I have attempted to create and adapt some base MVP structures. There are multiple examples of this:
 </br><b>MyFirstAttempt</b> - My initial attempt at creating a basic structure.
 </br><b>Remind101ExampleAdapted</b> - An adaptation of an example from http://engineering.remind.com/android-code-that-scales/ which integrates MVP in list structures and considers ViewHolders to be Views. See Movies for basic usage.
-</br><b>RxMvp</b> - I've started creating one using Rx, which holds observables and cancels them all together. See Ethereum and Signup for basic usage.
-</br><b>BasicMvp</b> - A completely stripped back basic approach found at https://github.com/googlesamples/android-architecture which I expect to continue using.
+</br><b>RxMvp</b> - One using Rx, which holds observables and cancels them all together. See Ethereum and Signup for basic usage.
+</br><b>BasicMvp</b> - A completely stripped back basic approach adapted from https://github.com/googlesamples/android-architecture which I expect to continue using.
 
 I've played with RxAndroid (see Signup), Retrofit (see Network) and Picasso (see Network/utils) here at a basic level as well as many fundamental Android components. I've started playing with Dagger (see App and Soquestions) and doing some unit and automation testing (see Movies). I've also introduced a Realm DB caching structure (see Sorealm).
 
