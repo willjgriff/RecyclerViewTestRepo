@@ -6,7 +6,7 @@ buildscript {
     }
 
     ext {
-        gradle      = '2.2.0-alpha5'
+        gradle      = '2.2.0'
         dexcount    = '0.5.0'
         retro       = '2.5.0'
         dagger2     = '1.8'
